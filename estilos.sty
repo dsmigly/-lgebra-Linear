@@ -1,0 +1,140 @@
+
+\usepackage[utf8]{inputenc}
+\usepackage[a4paper, total={6in,8in}]{geometry}
+\usepackage[portuguese]{babel}
+\usepackage{csquotes} 
+\usepackage{amsmath}
+\usepackage{commath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage{physics}
+\usepackage{fancyhdr}
+\usepackage{siunitx}
+\usepackage{placeins}
+\usepackage{subfig}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{mathrsfs}  
+\usepackage{verbatim}
+%\usepackage{esint}
+\usepackage{cancel}
+\usepackage{tikz-cd}
+\usetikzlibrary{positioning}
+
+% set arrows as stealth fighter jets
+\tikzset{>=stealth}
+\usepackage{imakeidx}
+
+%Aqui começa a implementação do Comic Sans.
+%Se quiser tirá-la, apague esse trecho e também vá ao menu e mude o compilador de XeLaTeX para o pdfLaTeX.
+
+%\usepackage{fontspec}
+%\defaultfontfeatures{Scale = MatchUppercase}
+%\setmainfont{Comic Sans MS}[Scale = 1.0]
+
+%Esse pacote transforma a fonte de parte do texto em mathmode na fonte do texto principal
+\usepackage{mathastext}
+
+%Aqui acaba a parte do Comic Sans.
+
+\makeatletter
+\providecommand{\bigsqcap}{%
+  \mathop{%
+    \mathpalette\@updown\bigsqcup
+  }%
+}
+\newcommand*{\@updown}[2]{%
+  \rotatebox[origin=c]{180}{$\m@th#1#2$}%
+}
+\makeatother
+
+%\usepackage[dvipsnames]{xcolor}
+
+\usepackage{tikz-cd}
+%\usepackage{times}                   
+\usepackage{type1cm}                    % fontes realmente escaláveis
+\usepackage{listings}                   % para formatar código-fonte (ex. em Java)
+\usepackage{titletoc}
+%\usepackage[bf,small,compact]{titlesec} % cabeçalhos dos títulos: menores e compactos
+\usepackage[fixlanguage]{babelbib}
+%\usepackage[font=small,format=plain,labelfont=bf,up,textfont=it,up]{caption}
+%\usepackage[table, xcdraw, usenames,svgnames,dvipsnames]{xcolor}
+%\usepackage[a4paper,top=2.54cm,bottom=2.0cm,left=2.0cm,right=2.54cm]{geometry} % margens
+%\usepackage[pdftex,plainpages=false,pdfpagelabels,pagebackref,colorlinks=true,citecolor=black,linkcolor=black,urlcolor=black,filecolor=black,bookmarksopen=true]{hyperref} % links em preto
+%\usepackage[pdftex,plainpages=false,pdfpagelabels,pagebackref,colorlinks=true,citecolor=DarkGreen,linkcolor=NavyBlue,urlcolor=DarkRed,filecolor=green,bookmarksopen=true]{hyperref} % links coloridos
+%\usepackage[all]{hypcap}  
+
+%-----------------  Cores  -----------------%
+\definecolor{Floresta}{rgb}{0.13,0.54,0.13}
+\definecolor{Rosadif}{rgb}{0.6196,0.1254,0.6980} %9E20B2
+
+\definecolor{Rosa}{rgb}{0.8705, 0.0862, 0.5058} %DE1681
+\definecolor{Verdeest}{rgb}{0.0549, 0.7529, 0.1450} %14C025
+\definecolor{Verde}{rgb}{0.1254,0.70196,0.1254} %20B320
+
+\definecolor{OrangeRed}{rgb}{0.9294,0.0509,0.3529} %ED135A
+\definecolor{Laranja}{rgb}{1,0.4352941176, 0}  %FF6F00
+\definecolor{Amarelo}{rgb}{0.9215, 0.8196, 0.18}   %EBD12E
+
+\pagestyle{fancy}
+
+
+\fancyhead{}
+\setlength{\headheight}{14pt}
+\fancyfoot{}
+\setlength{\headheight}{29pt}
+
+\fancyhead[L]{\leftmark}
+\fancyhead[R]{\rightmark}
+\fancyfoot[C]{\thepage}
+
+\DeclareMathOperator{\sgn}{\textrm{sgn}}
+\newcommand{\sen}{{\rm sen}}
+\newcommand{\Ker}{{\rm Ker}}
+\newcommand{\codim}{{\rm codim}}
+\newcommand{\Ran}{{\rm Ran}}
+\newcommand{\Li}{{\mathcal{L}^c (X, Y) }}
+
+%Naipes
+
+
+\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
+\DeclareMathSymbol{\varheart}{\mathalpha}{extraup}{86}
+\DeclareMathSymbol{\vardiamond}{\mathalpha}{extraup}{87}
+
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}[section] % reset theorem numbering for each chapter
+
+\theoremstyle{definition}
+\newtheorem{definicao}[thm]{Definição}
+
+\theoremstyle{definition}
+\newtheorem{exemplo}[thm]{Exemplo}
+
+\theoremstyle{definition}
+\newtheorem{corolario}[thm]{Corolário}
+
+\theoremstyle{definition}
+\newtheorem{teorema}[thm]{Teorema}
+
+\theoremstyle{definition}
+\newtheorem{afirmacao}[thm]{Afirmação}
+
+\theoremstyle{definition}
+\newtheorem{proposicao}[thm]{Proposição}
+
+\theoremstyle{definition}
+\newtheorem{observacao}[thm]{Observação}
+
+\theoremstyle{definition}
+\newtheorem{lema}[thm]{Lema}
+
+\theoremstyle{definition}
+\newtheorem{sublema}[thm]{Sublema}
+
+\theoremstyle{definition}
+\newtheorem{notacao}[thm]{Notação}

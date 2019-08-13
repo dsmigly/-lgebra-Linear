@@ -1,0 +1,779 @@
+\PassOptionsToPackage{dvipsnames}{xcolor}
+
+\documentclass[11pt,twoside,a4paper]{book}
+
+\usepackage{estilos} %Relacionado ao arquivo estilos.sty com os packages usados
+\makeindex
+\title{Álgebra Linear \\  Douglas Smigly}
+\author{MAT5730}
+\date{2º semestre de 2019}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\newpage
+
+\chapter{Espaços vetoriais}
+
+Durante este capítulo, sempre adotaremos $K$ como sendo um copo qualquer.
+
+\section{Base e Dimensão}
+
+\begin{definicao}\index{Espaço Vetorial!Base}
+Seja $V \neq 0$ um espaço vetorial sobre um corpo $K$. Um subconjunto $B\subseteq V$ chama-se uma \textbf{base} de $V$ se:
+\begin{itemize}
+\item $B$ é linearmente independente.
+\item $B$ gera $V$.
+\end{itemize}
+\end{definicao}
+Lembramos aqui que $B$ é linearmente independente se todo subconjunto finito de $B$ é linearmente independente, ou seja
+\[
+\sum\limits_{\substack{J \subseteq I \\ \abs{J} \le \aleph_0}} \alpha_j v_j = 0, \ \alpha_j \in K, v_j \in B \Rightarrow \alpha_j = 0 \ \forall j \in J 
+\]
+\begin{teorema}
+Seja $V$ um espaço vetorial e sejam $I\subseteq V$ linearmente independente e $S\subseteq V$ gerador de $V$ tais que $I\subseteq S$. Então existe uma base $B$ de $V$ tal que \[I\subseteq B\subseteq S.\]
+\end{teorema}
+\begin{proof}
+Consideremos o conjunto:
+\[
+\mathcal{M}=\{M\subseteq S\mid M\text{ é linearmente independente e }I\subseteq M\}
+\]
+Então $\langle \mathcal{M},\subseteq \rangle$ é um conjunto parcialmente ordenado indutivo (ou seja, todo subconjunto totalmente ordenado possui uma cota superior). De fato, $I\in\mathcal{M}$, o que nos mostra que $\mathcal{M} \neq \emptyset,$ e para subconjunto totalmente ordenado não vazio $\mathcal{C}\subseteq\mathcal{M}$ então $\bigcup\limits_{M \in \mathcal{C}} M \in\mathcal{M}.$ 
+
+Logo, pelo Lema de Zorn, $\mathcal{M}$ possui um elemento maximal $B$. Vamos provar que esse elemento maximal é de fato uma base para $V.$
+\begin{itemize}
+    \item \textbf{$B$ é linearmente independente:} segue da definição de $\mathcal{M}.$
+    \item \textbf{$B$ gera $V$:} Suponha por absurdo que $B$ não gera $V$. Então existe $v\in S$ que não é combinação linear de elementos de $B$, aí $B\cup\{v\}$ é linearmente independente e $I\subseteq B\cup\{v\}\subseteq S$. Então $B\cup\mathcal{v}\in\mathcal{M}$, uma contradição, pois $B$ já é um elemento maximal de $\mathcal{M}$ e obviamente $B \subseteq B \cup \{ v \}$. Logo $B$ gera $V$. Portanto, $B$ é uma base de $V$ e $I\subseteq B\subseteq S$.
+    \end{itemize}
+\end{proof}
+
+O resultado acima mostra que todo espaço vetorial tem base, bastando para isso tomar $I = \{ v \}$ e $S = V.$
+\begin{corolario}
+Temos o seguinte:
+\begin{itemize}
+\item Todo espaço vetorial $V$ tem uma base.
+\item Para todo $I\subseteq V$ linearmente independente, existe uma base $B$ de $V$ que contém $I$.
+\item Para todo $S\subseteq V$ gerador de $V$, existe uma base $B$ de $V$ tal que $B\subseteq S$.
+\end{itemize}
+\end{corolario}
+
+
+\begin{lema}
+Sejam $\{v_i\}_{i \in \mathbb{N}_{\le n}}$ linearmente independente e $\{u_j\}_{j\in \mathbb{N}_{\le m}}$ um conjunto gerador de $V$. Então $n\leq m$.
+\end{lema}
+
+\begin{sublema}
+Um conjunto $\{v_i\}_{i \in \mathbb{N}_{\le n}}$ é linearmente dependente se e somente se existem $i\in  \mathbb{N}_{\le n}$ e um $\alpha: i\rightarrow K$ tais que \[v_i=\sum\limits_{j <i}\alpha_jv_j\]
+\begin{proof}
+Se $\{v_i\}_{i\in n}$ é linearmente dependente, então existe $\alpha:n\rightarrow K$ tal que $\exists i\in n:\alpha_n$ e $\sum_{i\in n}\alpha_iv_i=0$. Seja $i$ o maior elemento de $n$ tal que $\alpha_i\neq 0$. Então 
+\[
+\alpha_1 v_1 + \ldots + \alpha_i v_i = 0 \Rightarrow \alpha_1v_1 + \ldots + \alpha_{i-1} v_{i-1} = - \alpha_i v_i \Rightarrow
+\]
+\[v_i= - \sum\limits_{j\in i}\frac{\alpha_j}{\alpha_i}v_j\]
+\end{proof}
+\end{sublema}
+
+Vamos relembrar o que fizemos até aqui com um exemplo:
+\begin{exemplo}
+Considere $V = \mathbb{R}^4$ um $\mathbb{R}$-espaço vetorial. Sejam os vetores:
+\[
+\begin{array}{l}
+v_1 = (1,0,0,0) \\
+v_2 = (0,1,0,-1) \\
+v_3 = (0,0,1,-1) \\
+v_4 = (1,-1,0,0) \\
+v_5 = (1,2,1,0) 
+\end{array}
+\]
+Considere $I = \{ v_1, v_2 \}$ e $S  =\{ v_1,v_2,v_3,v_4,v_5 \}.$ Observe que $I$ é LI; de fato,
+\[
+\alpha_1v_1 + \alpha_2v_2 = 0 \Rightarrow \alpha_1(1,0,0,0) + \alpha_2 (0,1,0,-1) = 0 \Rightarrow \left\{ \begin{array}{l} \alpha_1 = 0 \\ \alpha_2 = 0 \\ - \alpha_2 = 0 \end{array} \right. \Rightarrow \alpha_1 = \alpha_2 = 0
+\]
+
+Ademais, tomando $v = (x,y,z,w) \in \mathbb{R}^4,$ temos que
+\[
+(x-z+w+y)v_1 + (z- w - \varepsilon)v_2 + (z - \varepsilon)v_3 + (z-w-y + \varepsilon)v_4 + \varepsilon_5 = v,
+\]
+para todo $\varepsilon \in \mathbb{R}.$ Logo, $S$ gera $V.$ 
+
+Então, existe uma base $B$ de $\mathbb{R}^4$ tal que 
+\[
+\{ v_1, v_2 \} \subseteq B \subseteq \{v_1,v_2,v_3,v_4,v_5 \}
+\]
+De fato, esta base é $B \{v_1, v_2, v_3, v_4 \},$ pois percebe-se que
+\[
+v_5 = \frac{5}{2}v_1 + \frac{1}{2} v_2 - \frac{1}{2}v_3 - \frac{3}{2} v_4
+\]
+\end{exemplo}
+
+
+
+
+Para trabalhar com a cardinalidade das bases, utilizaremos alguns fatos conhecidos, enunciados na
+\begin{proposicao}
+Se $\lambda$ e $\mu$ são cardinais, então:
+\begin{itemize}
+\item Se $\lambda\leq\mu$ e $\mu\leq\lambda$, então $\lambda=\mu$. (Teorema de Cantor-Bernstein)\index{Teorema de Cantor-Bernstein}
+\item Se $\lambda$ e $\mu$ são infinitos, então \[\lambda+\mu=\lambda\mu=\max\{\lambda,\mu\}.\]
+\end{itemize}
+\end{proposicao}
+
+\begin{teorema}
+Seja $V$ um espaço vetorial, então duas bases quaisquer têm o mesmo cardinal.
+\end{teorema}
+\begin{proof}
+Sejam $B$ e $C$ bases de $V$. Para $u\in C$ existem um conjunto finito $I_u\subseteq B$ e uma função $\alpha_u:I_u\rightarrow K$ tais que $u=\sum_{i\in I_u}\alpha_{u,i}i$. Seja $I\subseteq\bigcup_{u\in C}\subseteq B$. Então $I$ gera $V$, assim $I=C$. Desse modo:
+\[
+\abs{B}=\abs{I}=\abs{\bigcup_{u\in C}I_u}\leq\sum_{u\in C}\abs{I_u}\leq\aleph_0\cdot\abs{C}=\abs{C},
+\]
+assim $\abs{B}\leq\abs{C}$. Analogamente $\abs{C}\leq\abs{B}$. Portanto $\abs{B}=\abs{C}$.
+\end{proof}
+\begin{definicao}\index{Espaço Vetorial!Dimensão}
+Dizemos que a \textbf{dimensão} de um espaço vetorial é a cardinalidade de sua base.
+\end{definicao}
+\section{Subespaços}
+
+\begin{proposicao}
+Seja $V$ um espaço vetorial e seja $\mathcal{W}$ um conjunto de subespaços. Então $\bigcap\mathcal{M}$ é um subespaço de $V$.
+\end{proposicao}
+
+\begin{definicao}
+Se $S$ é subconjunto de $V$, definimos:
+\[
+\langle S\rangle=\left\{\sum\limits_{v\in I}\alpha_vv\mid I\subseteq S\text{ e }I\text{ é finito e }\alpha\in K^I\right\}
+\]
+e chamamos de \textbf{subespaço gerado} por $S$.
+\end{definicao}
+
+\begin{proposicao}
+Se $S$ é subconjunto de $V$, então:
+\[
+\langle S\rangle=\{W\mid W\text{ é subespaço de }V\text{ e }W\subseteq S\}.
+\]
+\end{proposicao}
+A intersecção de subsespaços sempre é um subespaço, mas o mesmo não acontece com a união de subespaços.
+\begin{proposicao}
+Se $A$ e $B$ são subespaços de $V$ tais que $A\nsubseteq B$ e $B\nsubseteq A$, então $A\cup B$ não é subespaço de $V$.
+\end{proposicao}
+\begin{proof}
+Nesse caso, existe $a\in A$ tal que $a\notin B$ e existe $b\in B$ tal que $b\notin A$. Seja $c=a+b$. Então:
+\begin{itemize}
+    \item Se $c \in A,$ $b = c - a \in A,$ o que é impossível.
+    \item Se $c \in B,$ $a = c - b \in b,$ o que é impossível.
+\end{itemize}
+Logo, concluímos que $c \notin A \cup B,$ absurdo.
+
+%Então $c-a=b\notin A$ e $a\in A$, de modo que $c\notin A$, e $c-b=a\notin B$ e $b\in B$, de modo que $c\notin B$, assim $c\notin A\cup B$.
+\end{proof}
+
+Na verdade, $A \cup B$ é um subespaço se e somente se $A \subseteq B$ ou $B \subseteq A.$
+
+\begin{observacao}
+Seja $K = F_2 = \{ 0, 1 \},$ e tome $V = K^2.$ Então,
+\[
+V = \langle (0,1) \rangle \cup \langle (1,0) \rangle \cup \langle (1,1) \rangle
+\]
+Na verdade, $V$ só pode ser escrito como união de seus subespaços se $K$ for um corpo finito.
+\end{observacao}
+
+Apesar de não podermos trabalhar com a união, podemos realizar a soma de subespaços, e esta sim é um subespaço:
+
+\begin{definicao}
+Sejam $W_i \subseteq V$, $i \in I,$ subespaços de $V.$ Definimos:
+\[
+\sum\limits_{i \in I} W_i = \{ w_{i_1} + \ldots + w_{i_k} | k \in \mathbb{N}, w_i \in W_i \}
+\]
+\end{definicao}
+Pode-se mostrar que $\sum\limits_{i \in I} W_i $ é subespaço de $V$.
+\begin{definicao}\index{Espaço Vetorial!Soma direta}
+Uma soma $\sum\limits_{i \in I} W_i$ chama-se \textbf{soma direta} se para todo $i \in I$
+\[
+W_i \cap \left( \sum\limits_{j \neq i} W_j \right) = 0
+\]
+\end{definicao}
+\begin{teorema}
+Para subespaço $A$ de $V$, então existe subespaço $B\subseteq V$ tal que $V=A\oplus B$.
+\end{teorema}
+
+\begin{teorema}
+\[
+\dim(A+B)+\dim(A\cap B)=\dim(A)+\dim(B).
+\]
+\end{teorema}
+\begin{proof}
+Seja $E$ base de $A\cap B$. Então existe $F$ tal que $B\cap F=\emptyset$ e $E\cup F$ seja base de $A$ e existe $G$ tal que $A\cap G=\emptyset$ e $E\cup G$ seja base de $B$. Então $E\cup F\cup G$ é base de $A+B$. Daí:
+\[
+\textcolor{Green}{\dim(A+B)} + \textcolor{Blue}{\dim(A \cap B)} = \textcolor{Green}{\abs{E} + \abs{F} + \abs{G}} + \textcolor{Blue}{\abs{E}} = \textcolor{Red}{\abs{E} + \abs{F}} + \textcolor{Laranja}{\abs{E} + \abs{G}} = \textcolor{Red}{\dim(A)} + \textcolor{Laranja}{\dim(B)}
+\]
+\end{proof}
+
+\begin{exemplo}
+Considere novamente $V = \mathbb{R}^4$. Sejam
+\[
+W_1 = \{(x,y,z,t) \in \mathbb{R}^4 | y + z + t = 0 \}
+\]
+\[
+W_2 = \{(x,y,z,t) \in \mathbb{R}^4 | x +y = 0 \mbox{ e } z - 2t = 0 \}
+\]
+
+$W_1$ e $W_2$ são subespaços de $V.$ Assim, $W_1 + W_2$ e $W_1 \cap W_2$ são subespaços de $V.$ Vamos encontrar bases para eles.
+Note que 
+\[
+\begin{array}{lcl}
+W_1 &=& \{(x,y,z,t) \in \mathbb{R}^4 | y + z + t = 0 \} \\
+&=& \{(x,y,z,-y-z) \in \mathbb{R}^4 | x,y,z \in \mathbb{R} \} \\
+&=& \{ (x,0,0,0) + (0,y,0-y) + (0,0,z,-z) : x,y,z \in \mathbb{R} \} \\
+&=& \langle (1,0,0,0), (0,1,0-1), (0,0,1,-1) \rangle\\
+\end{array}
+\]
+Verifica-se também que $(1,0,0,0), (0,1,0-1), (0,0,1,-1)$ são linearmente independentes. Logo, $B_1 = \{ (1,0,0,0), (0,1,0-1), (0,0,1,-1) \}$ é base para $W_1.$
+Analogamente, mostra-se que $B_2 = \{ (1,-1,0,0), (0,0,2,1) \}$ é base para $W_2.$
+Agora, para determinar uma base de $W_1 + W_2,$ podemos escalonar a matriz
+\[
+\left( \begin{array}{cccc}
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & -1 \\
+0 & 0 & 1 & -1 \\
+1 & -1 & 0 & 0\\
+0 & 0 & 2 & 1
+
+\end{array} \right) \rightarrow \cdots \rightarrow \left( \begin{array}{cccc}
+1 & 0 & 0 & 0\\
+0 & 1 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0& 0& 0 & 1\\
+0 & 0 & 0 & 0
+
+\end{array} \right)
+\]
+Portanto, o conjunto
+\[
+\mathcal{B} = \{ (1,0,0,0), (0,1,0,-1),(0,0,1,-1),(1,-1,0,0) \}\]
+é base de $W_1 + W_2.$
+
+Para determinar uma base de $W_1 \cap W_2,$ basta resolver o sistema
+\[
+\left\{ \begin{array}{l}
+y+z+t = 0 \\x+y = 0 \\z - 2t = 0
+\end{array} \right.
+\]
+Assim, $W_1 \cap W_2 = \langle (3,-3,2,1) \rangle.$
+
+Observe que
+\[
+\dim(W_1 \cap W_2) + \dim(W_1 + W_2) = 1 + 4 = 5 = 3 + 2 = \dim(W_1) + \dim(W_2)
+\]
+
+Como $\dim(W_1 + W_2) = 4,$ temos que $W_1 + W_2 = V = \mathbb{R}^4.$
+Observe também que, como $\dim(W_1 \cap W_2) = 1,$ a soma $W_1 + W_2$ não é direta. 
+\end{exemplo}
+\section{Coordenadas}
+
+\begin{definicao}
+Seja $V$ um espaço vetorial de dimensão finita. Seja $B$ uma base de $V$. Então para $v\in V$ existe um único $\alpha:B\rightarrow K$ tal que \[v=\sum\limits_{b\in B}\alpha_bb,\] e chamamos esse $\alpha$ de $[v]_B$.
+\end{definicao}
+
+\chapter{Transformações Lineares}
+\index{Espaço Vetorial!Transformações Lineares}
+
+\section{Definições}
+
+\begin{definicao}
+Uma função $T:U\rightarrow V$ se chama uma \textbf{transformação linear} se para quaisquer $\alpha,\beta\in K$ e $u,v\in V$ tivermos $T(\alpha u+\beta v)=\alpha T(u)+\beta T(v)$.
+\end{definicao}
+
+\begin{definicao}
+Para espaços vetoriais $U$ e $V$, denotamos o conjunto das transformações lineares de $U$ a $V$ por $\mathcal{L}(U,V).$
+\end{definicao}
+
+\begin{teorema}
+Sejam $U$ e $V$ espaços vetoriais sobre $K$, seja $B$ uma base de $U$ e $f:B\rightarrow V$ uma função. Então existe uma única transformação linear $T\in\mathcal{L}(U,V)$ tal que $\forall b\in B:T(b)=f(b)$.
+\end{teorema}
+
+\begin{definicao}
+Seja $T\in\mathcal{L}(U,V)$. Definimos $\mathrm{Ker}(T)=\{u\in U:T(u)=0\}$. Definimos $\mathrm{Rank}(T)=\dim(\mathrm{Im}(T))$.
+\end{definicao}
+
+\begin{proposicao}
+Seja $T\in\mathcal{L}(U,V)$. Então:
+\begin{itemize}
+\item $\mathrm{Ker}(T)$ é um subespaço de $U$.
+\item $\mathrm{Im}(T)$ é um subespaço de $V$.
+\item $T$ é injetora se e só se $\mathrm{Ker}(T)=0$.
+\item Se $T$ é bijetora, então $T^{-1}\in\mathcal{L}(V,U)$.
+\end{itemize}
+\end{proposicao}
+
+\begin{teorema}
+Seja $\mathcal{L}(U,V)$, seja $B$ uma base de $\mathrm{Ker}(T)$, e seja $C$ um conjunto tal que $T[C]$ seja base de $\mathrm{Im}(T)$. Então $B\cup C$ é base $V$.
+\end{teorema}
+\begin{proof}
+Para $v\in V$ então $T(v)\in\mathrm{Im}(T)$, então existem um conjunto finito $F\subseteq C$ e $\alpha:F\rightarrow K$ tais que $T(v)=\sum\limits_{w\in F}\alpha_wT(w)$, assim $T\left(v-\sum\limits_{w\in F}\alpha_ww\right)=0$, aí $v-\sum\limits_{w\in F}\alpha_ww\in\mathrm{Ker}(T)$, assim existem conjunto finito $E\subseteq B$ e função $\beta:B\rightarrow K$ tal que $v-\sum\limits_{w\in F}\alpha_ww=\sum\limits_{u\in E}\beta_uu$, aí $v=\sum\limits_{u\in E}\beta_uu+\sum\limits_{w\in F}\alpha_ww$.
+
+\medskip
+\noindent
+Por outro lado, para subconjunto finito $E\subseteq B\cup C$ e função $\alpha:E\rightarrow K$ tal que $\sum_{e\in E}\alpha_ee=0$, então $\sum_{e\in E\cap C}\alpha_eT(e)=0$, aí $\forall E\cap C:\alpha_e=0$, aí $bla$. 
+\end{proof}
+
+\begin{teorema}[Teorema do Núcleo-Imagem] \index{Espaço Vetorial!Teorema do Núcleo-Imagem}
+Seja $T \in \mathcal{L}(U,V).$ Então
+\[
+U = \mathrm{Ker}(T) \oplus \mathrm{Im}(T)
+\]
+
+\end{teorema}
+\begin{corolario}
+\[
+\dim V=\dim(\mathrm{Ker}(T))+\dim(\mathrm{Im}(T)).
+\]
+\end{corolario}
+
+\begin{definicao}\index{Transformações Lineares!Isomorfismos}
+Se $T\in\mathcal{L}(U,V)$ é bijetora, dizemos que $T$ é um \textbf{isomorfismo} de $U$ a $V$.
+\end{definicao}
+\begin{proposicao}
+$T \in \mathcal{L}(U,V)$ é isomorfismo se e somente se $T^{-1}$ também o é.
+\end{proposicao}
+
+\begin{proposicao}
+dois espaços vetoriais $U$ e $V$ são isomorfos se e somente se quaisquer duas bases $\mathcal{B}$ de $U$ e $\mathcal{C}$ de $V$ possuem a mesma cardinalidade.
+\end{proposicao}
+\begin{teorema}
+Para espaços vetoriais $U$ e $V$, então $U$ é isomorfo a $V$ se e só se $\dim(U)=\dim(V)$.
+\end{teorema}
+
+\section{Espaço Dual}
+
+\begin{definicao}
+Seja $V$ um espaço vetorial sobre $K$. Denotamos $V^*=\mathcal{L}(V,K)$. O espaço $V^*$ chama-se o \textbf{espaço dual} de $V$. Os elementos de $V$ chama-se \textbf{funcionais lineares}.
+\end{definicao}
+
+\medskip
+\noindent
+Se $\dim(V)=n$, então $\dim(V^*)=n\cdot 1=n$. Assim, $V$ e $V^*$ são isomorfos (no caso de $\dim(V)=n<\aleph_0$).
+
+\begin{teorema}
+Seja $V$ um espaço vetorial com $\dim(V)=n$ e $B=\{v_i\}_{i\in n}$ uma base de $V$. Então existe uma base $B^*=\{f_i\}_{i\in n}$ de $V^*$ tal que $f_i(v_j)=\delta_{i,j}$ para $i,j\in n$. Além disso, $\forall v\in V:v=\sum_{i\in n}f_i(v)v_i$ e $\forall f\in V^*:f=\sum_{i\in n}f(v_i)f_i$.
+\end{teorema}
+\begin{proof}
+Para todo $i\in n$, existe uma única função linear $f_i:V\rightarrow K$ tal que:
+\[
+f_i(v_j)=\left\{\begin{array}{rl}0,&i\neq j\\1,&i=j\end{array}\right.
+\]
+Seja $\alpha:n\rightarrow K$ tal que:
+\[
+\sum_{i\in n}\alpha_if_i=0.
+\]
+Para $j\in n$, aplicando este funcional para o vetor $v_j\in B$, então:
+\[
+0=0(v_j)=\sum_{i\in n}\alpha_if_i(v_j)=\alpha_j,
+\]
+ou seja, $\alpha_j=0$. Portanto $B^*$ é linearmente independente.
+
+\medskip
+\noindent
+Além disso, para $v\in V$ existe $\alpha:n\rightarrow K$ tal que $v=\sum_{i\in n}\alpha_iv_i$, aí para $i\in n$ temos $f_i(v)=\alpha_if_i(v_i)=\alpha_i$; logo $f(v)=\sum_{i\in n}\alpha_if(v_i)=\sum_{i\in n}f(v_i)f_i(v)$. 
+\end{proof}
+
+\begin{definicao}\index{Espaço Vetorial!Base dual}
+A base $B^*$ chama-se a \textbf{base dual} da base $B$.
+\end{definicao}
+
+\section{Espaço Bidual}
+
+\begin{definicao}
+Seja $V$ um espaço vetorial sobre $K$. O espaço $V^{**}=(V^*)^*$ chama-se o \textbf{espaço bidual} do espaço $V$.
+\end{definicao}
+
+\begin{definicao}
+Para $v\in V$, definamos $\varphi_v:V^*\rightarrow K$ assim:
+\[
+\forall f\in V^*:\varphi_v(f)=f(v).
+\]
+Então $\varphi_v\in V^{**}$.
+\end{definicao}
+
+\begin{proposicao}
+$\varphi\in\mathcal{L}(V,V^{**})$ e $\varphi$ é injetora.
+\end{proposicao}
+\begin{proof}
+Para $v\in\mathrm{Ker}(\varphi)$, então $\varphi_v=0$, aí para todo $f\in V^*$ temos $f(v)=\varphi_v(f)=0$, aí para todo $i\in n$ temos $f_i(v)=0$, aí $v=\sum_{i\in n}f_i(v)v_i=0$, aí $v=0$.
+\end{proof}
+
+\noindent
+Seja $B$ uma base de $V$, então para cada $a\in B$ definimos a transformação linear $f_a\in V^*$ por $f_a(b)=\delta_{a,b}$, então $(f_a)_{a\in B}$ é linearmente independente em $V^*$ e para todo $v\in V$ existem um conjunto finito $F\subseteq B$ tal que $v=\sum_{b\in F}f_b(v)b$.
+
+\begin{corolario}
+Se $\dim(V)=n<\aleph_0$ então $\varphi:V\rightarrow V^{**}$ é um isomorfismo.
+\end{corolario}
+\begin{proof}
+\[
+\dim(V)=\dim(V^*)=\dim(V^{**}).
+\]
+\end{proof}
+
+\begin{observacao}
+Nesse caso $\varphi$ é um isomorfismo natural, ou seja, não depende da escolha de uma base.
+\end{observacao}
+
+\begin{corolario}
+Se $\dim(V)<\aleph_0$, então toda base de $V^*$ é a base dual para uma base de $V$.
+\end{corolario}
+\begin{proof}
+Seja $C$ uma base de $V^*$. Consideremos a base dual $C^*$ de $V^{**}$. Mas $V^{**}\cong V$, então existe $v:C\rightarrow V$ tal que $\forall c\in C:f_c=\varphi_{v_c}$, assim:
+\[
+c(v_d)=\varphi_{v_d}(c)=f_d(v_c)=\delta_{d,c}=\delta_{c,d},
+\]
+logo $C$ é base dual da base $(v_c)_{c\in C}$ de $V$.
+\end{proof}
+
+\section{Anuladores}
+
+\begin{definicao}
+Seja $V$ um espaço vetorial e seja $S\subseteq V$ um subconjunto. Então definimos:
+\[
+S^0=\{f\in V^*\mid\forall s\in S:f(s)=0\}.
+\]
+O conjunto $S^0$ chama-se o \textbf{anulador} de $S$.
+\end{definicao}
+
+\begin{proposicao}
+$S^0$ é um subespaço de $V$.
+\end{proposicao}
+
+\begin{teorema}
+Seja $V$ um espaço com $\dim(V)<\aleph_0$ e $W\subseteq V$ um subespaço. Então:
+\[
+\dim(V)=\dim(W)+\dim(V^0).
+\]
+\end{teorema}
+\begin{proof}
+Seja $\dim(V)=n$ e $\dim(W)=m$. Escolhemos uma base $(v_i)_{i\in m}$ de $W$ e completemo-la até uma base $(v_i)_{i\in n}$ de $V$. Consideremos a base dual $(f_{v_i})_{i\in n}$ de $V^*$. Mostraremos que $(f_{v_i})_{i\in n\setminus m}$ é uma base de $W^0$. É claro que $\forall i\in n\setminus m:f_{v_i}\in W^0$. Seja $f\in W^0$, então $f=\sum_{i\in n}f(v_i)f_{v_i}=\sum_{i\in n\setminus m}f(v_i)f_{v_i}$.
+\end{proof}
+
+\begin{teorema}
+Se $\dim(V)<\aleph_0$ e $V=U\oplus W$, então $V^*=U^0\oplus W^0$ e $U^0\cong W^*$ e $W_0\cong U^*$.
+\end{teorema}
+\begin{proof}
+Seja $B=B_U\cup B_W$ uma base de $V$, em que $B_U$ é base de $U$ e $B_W$ é base de $W$. Então na base dual temos $B^*=B_U^*\cup B_V^*$, e pelo teorema anterior temos $\langle B_U^*\rangle=W^0$ e $\langle B_V^*\rangle=U^0$.
+\end{proof}
+
+\section{Transpostas}
+
+\begin{definicao}
+Sejam $U$ e $V$ espaços vetoriais sobre $K$, e $T\in\mathcal{L}(U,V)$. Então definimos a \textbf{transposta} de $T$ como a função:
+\[
+\begin{array}{rcl}
+T^t:V^t&\rightarrow&U^t\\f&\mapsto&T^t(f)=f\circ T
+\end{array}
+\]
+\end{definicao}
+
+\begin{proposicao}
+Se $\dim(U)<\aleph_0$ e $T\in\mathcal{L}(U,V)$, então:
+\begin{itemize}
+\item[a)] $\mathrm{Ker}(T^t)=(\mathrm{Im}(T))^0$.
+\item[b)] $\mathrm{Rank}(T^t)=\mathrm{Rank}(T)$.
+\item[c)] $\mathrm{Im}(T^t)=(\mathrm{Ker}(T))^0$.
+\end{itemize}
+\end{proposicao}
+\begin{proof}
+Temos o seguinte:
+\begin{itemize}
+\item[a)] Temos:
+\[
+\begin{array}{rcl}
+\mathrm{Ker}(T^t)&=&\{f\in V^*\mid T^t(f)=0\}\\&=&\{f\in V^*\mid f\circ T=0\}\\&=&\{f\in V^*\mid \forall u\in U:f(T(u))=0\}\\&=&\{f\in V^*\mid f[\mathrm{Im}(T)]=0\}\\&=&(\mathrm{Im}(T))^0.
+\end{array}
+\]
+\item[b)] Temos $\mathrm{Rank}(T^t)=\dim(\mathrm{Im}(T^t))$ e $\mathrm{Rank}(T)=\dim(\mathrm{Im}(T))$. Além disso:
+\[
+\dim(V^*)=\dim(\mathrm{Im}(T^t))+\dim(\mathrm{Ker}(T^t))
+\]
+\[
+\dim(V^*)=\dim(\mathrm{Im}(T))+\dim(\mathrm{Im}(T))^0
+\]
+mas $\dim(V^*)=\dim(V)$ e $\dim(\mathrm{Ker}(T^t))+\dim(\mathrm{Im}(T))^0$.
+\item[c)] Temos $\mathrm{Im}(T^t)\subseteq(\mathrm{Ker}(T))^0$. Seja $\varphi\in\mathrm{Im}(T^t)$, então existe $g\in V^*$ tal que $\varphi=T^t(g)$, aí para todo $u\in U$ nós temos $\varphi(u)=T^t(g)(u)=g(T(u))$. Se $u\in\mathrm{Ker}(T)$ então $T(u)=0$, aí $\varphi(u)=0$; logo $\varphi\in(\mathrm{Ker}(T))^0$. Além disso:
+\[
+\dim(U)=\dim(\mathrm{Ker}(T))+\dim(\mathrm{Ker}(T))^0
+\]
+\[
+\dim(U)=\dim(\mathrm{Ker}(T))+\dim(\mathrm{Im}(T))
+\]
+aí $\dim(\mathrm{Ker}(T))^0=\dim(\mathrm{Im}(T))$, aí $(\mathrm{Ker}(T))^0=\mathrm{Im}(T)$.
+\end{itemize}
+\end{proof}
+
+\begin{teorema}
+Sejam $U$ e $V$ espaços vetoriais de dimensão finita com bases $B$ e $C$ e bases duais $B^*$ e $C^*$. Se $T\in\mathcal{L}(U,V)$, então:
+\[
+([T]_{B,C})^t=[T^t]_{C^*,B^*}
+\]
+\end{teorema}
+
+\begin{corolario}
+Se $A\in M_{m,n}(K)$, então:
+\[
+\mathrm{Row Rank}(A)=\mathrm{Column Rank}(A).
+\]
+\end{corolario}
+\begin{proof}
+Consideremos $T:K^n\rightarrow K^m$ dada por $T(v)=Av$. Sejam $B$ e $C$ as bases canônicas de $K^n$ e $K^m$, então $[T]_{B,C}=A$. Temos:
+\[
+\begin{array}{ccccc}
+\mathrm{Rank}(T)&=&\mathrm{Column Rank}(A)&&\\
+\mathrm{Rank}(T^t)&=&\mathrm{Column Rank}(A^t)&=&\mathrm{Row Rank}(A).
+\end{array}
+\]
+
+\noindent
+\end{proof}
+
+\section{Espaços Quocientes}
+
+\begin{definicao}
+Seja $V$ um espaço, $W\subseteq V$ um subespaço. Para $u,v\in V$, digamos que $u\sim v$ se e só se $u-v\in W$. Então $\sim$ é uma relação de equivalência, ou seja:
+\begin{itemize}
+\item Reflexiva, ou seja, $v\sim v$ sempre.
+\item Simétrica, ou seja, se $v\sim u$ então $u\sim v$.
+\item Transitiva, ou seja, se $v\sim u$ e $u\sim w$, então $v\sim w$.
+\end{itemize}
+Seja $V/W$ o conjunto das classes de equivalência relativamente a $\sim$. Para $v\in V$ seja $\overline{v}$ a classe de equivalência de $v$.
+\begin{itemize}
+\item Definamos em $V/W$ uma estrutura de espaço vetorial. Para $\overline{v},\overline{w}\in V/W$ definamos $\overline{v}+\overline{w}=\overline{v+w}$.
+\item Para $\alpha\in K$ e $\overline{v}\in V$ definamos $\alpha\cdot\overline{v}=\overline{\alpha v}$. Então $V/W$ é um espaço vetorial chamado \textbf{espaço quociente}.
+\end{itemize}
+\end{definicao}
+
+\begin{observacao}
+As operações estão ``bem definidas'' pois:
+\begin{itemize}
+\item Se $\overline{v}=\overline{v'}$ e $\overline{u}=\overline{u'}$, então $v\sim v'$ e $u\sim u'$, aí $v-v',u-u'\in W$, aí $(v+u)-(v'+u')=(v-v')+(u-u')\in W$, aí $\overline{v+u}=\overline{v'+u'}$, aí $\overline{v}+\overline{u}=\overline{v'}+\overline{u'}$.
+\item Analogamente para a outra propriedade.
+\end{itemize}
+Também verificaremos algumas propriedades, deixando o resto ao leitor.
+\begin{itemize}
+\item Temos a comutatividade da adição, pois $\overline{u}+\overline{v}=\overline{v}+\overline{u}$ equivale a $\overline{u+v}=\overline{v+u}$, que é verdade pois $u+v=v+u$.
+\item O que é o $\overline{0}$ de $V/W$? Temos $\overline{0}=W$, e também para todo $w\in W$ temos $w\sim 0$, aí $\overline{w}=\overline{0}=W$.
+\end{itemize}
+Também temos o seguinte:
+\begin{itemize}
+\item Se $W=V$, então $V/V=\{\overline{0}\}$.
+\item Se $W=\{0\}$, então $V/\{0\}\cong V$.
+\end{itemize}
+\end{observacao}
+
+\begin{proposicao}
+Consideremos a aplicação:
+\[
+\pi:V\rightarrow V/W,\quad\quad v\mapsto\overline{v}.
+\]
+Então $\pi\in\mathcal{L}(V,V/W)$, com $\mathrm{Ker}(\pi)=W$.
+\end{proposicao}
+
+\begin{notacao}
+$\pi$ chama-se a \textbf{projeção canônica} de $V$ para $V/W$.
+\end{notacao}
+
+\begin{proof}
+Temos o seguinte:
+\begin{itemize}
+\item $\pi(v+u)=\overline{v+u}=\overline{v}+\overline{u}=\pi(v)+\pi(u)$.
+\item $\pi(\alpha v)=\overline{\alpha v}=\alpha\overline{v}=\alpha\pi(v)$.
+\end{itemize}
+Além disso, se $w\in W$ então $\pi(w)=\overline{w}=W$
+\end{proof}
+
+\begin{proposicao}
+Seja $T\in\mathcal{L}(U,V)$ e $W\subseteq U$ tal que $W\subseteq\mathrm{Ker}(T)$. Então existe um único $\overline{T}\in\mathcal{L}(U/W,V)$ tal que para todo $u\in U$ tenhamos:
+\[
+\overline{T}(\overline{u})=T(u).
+\]
+\end{proposicao}
+\begin{proof}
+Temos o seguinte:
+
+\medskip
+\noindent
+1) Mostraremos que $\overline{T}$ está ``bem definida''. Se $\overline{u}=\overline{v}$, então $u-v\in W\in\mathrm{Ker}(T)$, aí $T(u-v)=0$, aí $T(u)=T(v)$.
+
+\medskip
+\noindent
+2) Mostraremos que $\overline{T}$ é uma transformação linear.
+
+\begin{itemize}
+\item $\overline{T}(\overline{u}+\overline{v})=\overline{T}(\overline{u+v})=T(u+v)=T(u)+T(v)=\overline{T}(\overline{u})+\overline{T}(\overline{v})$.
+\item 
+\end{itemize}
+\end{proof}
+
+\begin{teorema}
+Sejam $U$ e $V$ espaços vetoriais sobre $K$, e seja $T\in\mathcal{L}(U,V)$. Então $U/\mathrm{Ker}(T)\cong\mathrm{Im}(T)$.
+\end{teorema}
+\begin{proof}
+Pela proposição anterior, existe uma única $\overline{T}:U/\mathrm{Ker}(T)\rightarrow V$ tal que para todo $u\in U$ tenhamos:
+\[
+\overline{T}(\overline{u})=T(u).
+\]
+Observemos que $\mathrm{Im}(\overline{T})=\mathrm{Im}(T)=\{T(u)\mid u\in U\}$.
+
+\medskip
+\noindent
+Além disso, para $\overline{u}\in\mathrm{Ker}(\overline{T})$, então $T(u)=\overline{T}(\overline{u})=0$, aí $u\in\mathrm{Ker}(T)$, aí $\overline{u}=\overline{0}$, de modo que $\overline{T}$ é injetora.
+\end{proof}
+
+\begin{teorema}
+Seja $W$ subespaço de $V$. Então todos os complementos de $W$ em $V$ são isomorfos ao $V/W$.
+\end{teorema}
+\begin{proof}
+Seja $V=W\oplus U$. Consideremos a projeção canônica:
+\[
+\pi:V\rightarrow V/W.
+\]
+Seja $\overline{\pi}=\pi\upharpoonright U$. Então $\mathrm{Ker}(\overline{\pi})=U\cap\mathrm{Ker}(\pi)=U\cap W=\{0\}$. Logo $\overline{\pi}$ é injetora.
+
+\medskip
+\noindent
+Para $\overline{v}\in V/W$, seja $v=w+u$, com $w\in W$ e $u\in U$. Então $\pi(v)=\pi(w)+\pi(u)=\pi(u)=\overline{\pi}(u)$, aí $\overline{v}=\overline{\pi}(u)$, assim $\overline{\pi}$ é sobre $V/W$.
+\end{proof}
+
+\begin{corolario}
+Seja $W\subseteq V$ um subespaço. Então $\dim V=\dim W+\dim V/W$.
+\end{corolario}
+\begin{proof}
+Seja $V=W\oplus U$, então $\dim V=\dim W+\dim U$, mas $U\cong V/W$, aí $\dim U=\dim V/W$.
+\end{proof}
+
+\begin{observacao}
+Existem espaços vetoriais $W$ e $U$ e $W'$ e $U'$ tais que $W\oplus U\cong W'\oplus U'$ e $W\cong W'$, mas $U\ncong U'$. De fato podemos tomar $W=\bigoplus_{i=0}^\infty Ke_{2i}$ e $U=\bigoplus_{i=0}^\infty Ke_{2i+1}$ e $W'=\bigoplus_{i=0}^\infty Ke_i$ e $U'=\{0\}$.
+\end{observacao}
+
+\chapter{Determinantes}
+
+\section{Formas Multilineares}
+
+\begin{definicao}
+Seja $V$ um espaço vetorial e $V^r=V\times\dots\times V$. Uma \textbf{forma $r$-linear} sobre $V$ é uma função:
+\[
+F:V^r\rightarrow K,\quad\quad (v_i)_{i\in r}\mapsto F((v_i)_{i\in r})\in K
+\]
+que é linear em cada argumento, ou seja, para $i\in r$ temos:
+\[
+F(v_0,\dots,\alpha v_i+\beta v'_i,\dots,v_{r-1})=\alpha F(v_0,\dots,v_i,\dots,v_{r-1})+\beta F(v_0,\dots,v'_i,\dots,v_{r-1}).
+\]
+Denotamos por $L_r(V)$ o conjunto das formas $r$-lineares sobre $V$.
+\end{definicao}
+
+\begin{exemplo}
+Seja $V=K^2$ e:
+\[
+F((x_0,y_0),(x_1,y_1),(x_2,y_2))=x_0y_1x_2-x_0x_1x_2.
+\]
+Então $F$ é uma forma 3-linear.
+\end{exemplo}
+
+\begin{definicao}
+Uma forma $F\in L_r(V)$ chama-se \textbf{alternativa} se e só se para $v\in V^r$, se $v$ não é injetora, então $F(v)=0$. Denotamos por $A_r(V)$ o conjunto das formas $r$-lineares alternativas.
+\end{definicao}
+
+\begin{definicao}
+Uma forma $F$ é chamada \textbf{antissimétrica} se para $v\in V^r$ e para $i,j\in r$ tais que $i\neq j$, então:
+\[
+F(v_0,\dots,v_i,\dots,v_j,\dots,v_{r-1})=-F(v_0,\dots,v_j,\dots,v_i,\dots,v_{r-1}).
+\]
+\end{definicao}
+
+\begin{proposicao}
+Toda forma alternativa é antissimétrica.
+\end{proposicao}
+\begin{proof}
+Seja $F\in A_r(V)$. Sejam $v\in V^r$ e $i,j\in r$ tais que $i\neq j$. Então:
+\[
+\begin{array}{rcl}
+0&=&F(v_0,\dots,v_i+v_j,\dots,v_i+v_j,\dots,v_{r-1})\\&=&F(v_0,\dots,v_i,\dots,v_i,\dots,v_{r-1})+F(v_0,\dots,v_i,\dots,v_j,\dots,v_{r-1})\\&&+F(v_0,\dots,v_j,\dots,v_i,\dots,v_{r-1})+F(v_0,\dots,v_j,\dots,v_j,\dots,v_{r-1})\\&=&F(v_0,\dots,v_i,\dots,v_j,\dots,v_{r-1})+F(v_0,\dots,v_j,\dots,v_i,\dots,v_{r-1})
+\end{array}
+\]
+\end{proof}
+
+\begin{proposicao}
+Se a característica do corpo é $\neq 2$, então toda forma antissimétrica é reflexiva.
+\end{proposicao}
+\begin{proof}
+Para $F$ antissimétrica e $v\in V^r$ e $i,j\in r$ tais que $i\neq j$, se $v_i=v_j$, sendo $v=v_i$, então:
+\[
+F(v_0,\dots,v,\dots,v,\dots,v_{r-1})=-F(v_0,\dots,v,\dots,v,\dots,v_{r-1}),
+\]
+aí:
+\[
+2F(v_0,\dots,v,\dots,v,\dots,v_{r-1})=0,
+\]
+aí:
+\[
+F(v_0,\dots,v,\dots,v,\dots,v_{r-1})=0.
+\]
+\end{proof}
+
+\begin{definicao}
+Seja $F\in L_r(V)$ e $\sigma\in S_r$ uma permutação. Então, para $v\in V^r$, definamos $(\sigma F)(v)=F(v\circ\sigma)$. Então é fácil ver que $\sigma F\in L_r(V)$.
+\end{definicao}
+
+\begin{observacao}
+Para $F\in L_r(V)$, então $F$ é antissimétrica se e somente se para toda transposição $\tau\in S_r$ tivermos $\tau F=-F$.
+\end{observacao}
+
+\begin{proposicao}
+Seja $F\in L_r(V)$ uma forma antissimétrica. Então para $\sigma\in S_r$, temos $\sigma F=(\sgn\sigma)F$.
+\end{proposicao}
+\begin{proof}
+Para $\sigma\in S_r$, então $\sigma$ pode ser escrita como $\sigma=\tau_0\dots\tau_{k-1}$, em que $\tau_i$ são transposições, e $\sigma$ é par se e só se $k$ é par.
+
+\medskip
+\noindent
+Temos $\sigma F=(\tau_0\dots\tau_{k-1})F=(-1)^k F=(\sgn\sigma)F$, pois $\sgn\sigma=(-1)^k$.
+\end{proof}
+
+\begin{proposicao}
+Toda forma $r$-linear determina uma forma $r$-linear alternada da seguinte maneira:
+\[
+F\mapsto\varphi(F)=\sum_{\sigma\in S_r}\sgn\sigma(\sigma F).
+\]
+\end{proposicao}
+\begin{proof}
+Seja $v_i=v_j=v$ com $i\neq j$. Precisamos provar que $\varphi(F)(v)=0$. Seja $\tau$ a transposição $(i,j)$, então $S=A_r\cup A_r\tau$ e $A_r\cap A_r\tau=\emptyset$. Então temos o seguinte:
+\[
+\begin{array}{rcl}
+\varphi(F)(v)&=&\sum_{\sigma\in S_r}(\sgn\sigma)(\sigma F(v))\\&=&\sum_{\sigma\in A_r}(\sigma F(v))-\sum_{\sigma\in A_r}(\sigma\tau F(v))\\&=&\sum_{\sigma\in A_r}(\sigma F(v))-\sum_{\sigma\in A_r}(\sigma F(v))\\&=&0
+\end{array}
+\]
+\end{proof}
+
+\begin{observacao}
+Se $F\in A_r(V)$ e $v\in V^r$ é linearmente dependente, então:
+\[
+F(v)=0.
+\]
+\end{observacao}
+
+\begin{lema}
+Seja $\dim V=n$ e $F\in A_n(V)$. Seja $(e_i)_{i\in n}$ uma base de $V$, então $F$ é completamente determinada pelo valor $F(e)$.
+\end{lema}
+\begin{proof}
+Seja $v\in V^n$. Então existe $\alpha:n\times n\rightarrow K$ tal que:
+\[
+v_i=\sum_{j\in n}\alpha_{i,j}e_j.
+\]
+Assim:
+\[
+\begin{array}{rcl}
+F(v)&=&F((\sum_{j\in n}\alpha_{i,j}e_j)_{j\in n})\\&=&\sum_{j\in n^n}\prod_{i\in n}\alpha_{i,j(i)}F(e\circ j)\\&=&\sum_{\sigma\in S_n}\prod_{i\in n}\alpha_{i,\sigma(i)}F(e\circ \sigma)\\&=&\sum_{\sigma\in S_n}\prod_{i\in n}\alpha_{i,\sigma(i)}\sgn\sigma F(e).
+\end{array}
+\]
+\end{proof}
+
+\printindex
+
+\end{document}
