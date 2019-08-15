@@ -7,12 +7,12 @@
 %Environments para esta lista
 % ---------------------------------------------------
 \definecolor{Floresta}{rgb}{0.13,0.54,0.13}
-\newcommand{\exercicio}[1]{\section*{Exercício #1} \textcolor{blue}{\bf(#1)}}
+\newcommand{\exercicio}[1]{\subsection{Exercício #1} \textcolor{blue}{\bf(#1)}}
 \newcommand{\dividiritens}[1]{\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1) #1 \end{tasks}}
 \newcommand{\pers}[1]{\textcolor{Floresta}{$\negrito{(#1)} $}}
 
 \newcommand{\solucao}[1]{
-\textbf{\textcolor{red}{Solução:}} #1}
+\textbf{\\ \\ \textcolor{red}{Solução:}} #1}
 \newcommand{\figura}[1]{\input Arquivos_de_figs_Exercicios/#1} %Adicionar figuras do latex
 
 % ---------------------------------------------------
@@ -36,24 +36,192 @@
 \section{\textcolor{Floresta}{Lista 1}}
 
 
-\exercicio{1}
-Exemplo
+\exercicio{1} Sejam $V$ um $K$-espaço vetorial e $W$ um subespaço de $V.$ Seja $S = \{v_i\}_{i\in I} \subset V$ tal que $S = \{v_i + W\}_{i\in I}$ é linearmente independente no espaço quociente $V/W.$ Mostre que se $A$ é um conjunto linearmente independente de $W$ então $S \cup A$ é um conjunto linearmente independente de $V.$
+\solucao{}
+
+\exercicio{2} Sejam $V$ um $K$-espaço vetorial e $W$ um subespaço de $V.$ Seja $S = \{v_i\}_{i \in I} \subset V$ tal que $S = \{v_i + W\}_{i \in I}$ gera o espaço quociente $V/W.$ Mostre que se $A$ é um conjunto gerador de
+$W$ então $S \cup A$ é um conjunto gerador de $V$.
+\solucao{}
+
+\exercicio{3} Seja $V$ um $K$-espaço vetorial e sejam $U$ e $W$ subespaços de $V.$ Prove:
 \dividiritens{
-\task[\pers{1}] Item 1
-\task[\pers{2}] Item 2
-\task[\pers{3}] Item 3
+    \task[\pers{a}] O Segundo Teorema do Isomorfismo:
+    \[
+    \frac{U + W}{W} \cong \frac{U}{U \cap W}.
+    \]
+        \task[\pers{b}] O Terceiro Teorema do Isomorfismo: Se $U \subset W,$
+        \[
+        \frac{V}{W} \cong \frac{V/U}{W/U}
+        \]
 }
 
-\solucao{
-  \dividiritens{
-\task[\pers{1}] Solução 1
+\solucao{}
 
-\task[\pers{2}] Solução 2
+\exercicio{4} Seja $V$ um $K$-espaço vetorial e sejam $U$ e $W$ subespaços de $V$ tais que $\dim (V/U) = m$ e $\dim (V/W) = n.$ Prove que $\dim (V/(U \cap W)) \le m + n.$
 
-\task[\pers{3}] Solução 3
+\solucao{}
+
+\exercicio{5} Mostre que
+\dividiritens{
+    \task[\pers{a}] $W \oplus U= W^{\prime} \oplus U^{\prime} \ \mbox{e} \ W \cong W^{\prime} \nrightarrow U \cong U^{\prime}.$
+   \task[\pers{b}] $V \cong V^{\prime}, V = W \oplus U \ \mbox{e} \ V^{\prime} = W \oplus U^{\prime} \nrightarrow U \cong U^{\prime}.$
 }
 
 
+\solucao{}
+
+\exercicio{6} Seja $V$ um espaço vetorial e seja $W$ um subespaço de $V.$ Suponha que $V = V_1 \oplus \ldots \oplus V_n$ e $S = S_1 \oplus \ldots \oplus S_n,$ com $S_i \subseteq V_i$ subespaços de $V$ para todo $i = 1, \ldots, n.$ Mostre que
+\[
+\frac{V}{S} \cong \frac{V_1}{S_1} \oplus \ldots \oplus \frac{V_n}{S_n}.
+\]
+\solucao{}
+
+\exercicio{7} Seja $V$ um $K$-espaço vetorial e seja $W$ um subespaço de $V.$ Seja $T \in \mathcal{L}(V)$ e defina $\overline{T} \colon V/W \to V/W$ por
+\[
+\overline{T}(v+ W) = T(v) + W, \mbox{ para todo } v + W \in V/W.
+\]
+\dividiritens{
+    \task[\pers{a}]  Determine uma condição necessária e suficiente sobre $W$ para que $\overline{T}$ esteja bem definida.
+   \task[\pers{b}]  Se $\overline{T}$ estiver bem definida, mostre que ela é linear e determine seu núcleo e sua imagem.
 }
-DuglAS
+\solucao{}
+
+\exercicio{8} Seja $T \in \mathcal{L}(\mathbb{R}^3)$ o operador linear definido por $T(x, y, z) = (x, x, x).$ Seja $T \colon \mathbb{R}^3/W \to \mathbb{R}^3/W$
+tal que $\overline{T}((x, y, z) + W) = T(x, y, z) + W,$ em que $W = \mbox{ker } T.$ Descreva $\overline{T}.$
+
+\solucao{}
+
+\exercicio{9} Sejam $V$ e $U$ $K$-espaços vetoriais. Seja $W$ um subespaço de $V$ e $\pi \colon V \to V/W$ a projeção canônica. Mostre que a função $\mathcal{L}(V/W, U) \to \mathcal{L}(V, U),$ dada por $T \to T \circ \pi,$ é injetora.
+
+\solucao{}
+
+\exercicio{10} Seja $V$ um $K$-espaço vetorial e seja $W$ um subespaço de $V.$ Mostre que $(V/W)^{*} \cong W^{0}$ e que $V^{*}/W^{0} \cong W^{*}.$
+
+\solucao{}
+
+\exercicio{11} Sejam $A,B,C \in \mathcal{M}_n(K).$ Prove que
+\[
+\det \left[ \begin{array}{cc} 0 & C \\ A & B \end{array} \right] = (-1)^n \det(A) \det(C).
+\]
+\solucao{}
+
+\exercicio{12} Calcule o determinante da matriz de Vandermonde, isto é, prove que
+\[
+\det \left[ \begin{array}{cccc} 1 & 1 & \ldots & 1 \\ c_1 & c_2 & \ldots & c_n \\ \vdots & \vdots & \ddots & \vdots \\ c_1^{n-1} & c_2^{n-1} & \ldots & c_n^{n-1} \end{array} \right] = \prod\limits_{1 \le i < j \le n} (c_j - c_i)
+\]
+\solucao{}
+
+\exercicio{13} Mostre que
+\[
+\det \left[ \begin{array}{cccc} a & -b & -c & -d \\ b & a & -d & c \\ c & d & a & -b \\ d & -c & b & a \end{array} \right] = (a^2 + b^2 + c^2 + d^2)^2
+\]
+\solucao{}
+
+\exercicio{14} Sejam $A, B \in \mathcal{M}_n(K).$ Mostre que se $A$ é inversível então existem no máximo $n$ escalares $c$
+tais que $cA + B$ não é inversível. 
+
+\solucao{}
+
+\exercicio{15} Sejam $A, B, C, D\in \mathcal{M}_n(K)$ com $D$ inversível.
+
+\dividiritens{
+    \task[\pers{a}] Mostre que
+\[\det \left[ \begin{array}{cc} A & B \\ C & D \end{array} \right] = \det(AD - BD^{-1}CD)\]
+   \task[\pers{b}] Se $CD = DC,$ mostre que
+\[\det \left[ \begin{array}{cc} A & B \\ C & D \end{array} \right] = \det(AD - BC).\] O que acontece quando $D$ não é inversível?
+\task[\pers{c}] Se $DB = BD,$ calcule $\det \left[ \begin{array}{cc} A & B \\ C & D \end{array} \right].$
+}
+
+\solucao{}
+
+\exercicio{16} Seja $A \in \mathcal{M}_{m\ times n}(K).$ Prove que
+\[
+\det(I_m + AA^t) = \det(I_n + A^tA)
+\]
+\solucao{}
+
+\exercicio{17} Seja $\sigma \in S_n$ e defina 
+\[
+\fullfunction{T_\sigma}{K^n}{K^n}{e_i}{T_\sigma(e_i) = e_{\sigma(i)}},
+\]
+para $i = \{ 1, 2, \ldots, n \}$ e $\{e_1, e_2, \ldots, e_n\}$ é a base canônica de $K^n.$ Calcule $\det(T_\sigma).$
+\solucao{}
+
+\exercicio{18} Seja $C \in \mathcal{M}_n(K)$ a matriz
+\[
+\left[ \begin{array}{cccccc} x & 0 & 0 & \ldots & 0 & c_0 \\ -1 & x & 0 & \ldots & 0 & c_1 \\0 & -1 & x & \ldots & 0 & c_2 \\ \vdots & \vdots & \vdots & \ddots & \vdots & \vdots \\  0 & 0 & 0 & \ldots & x & c_{n-2}  \\  0 & 0 & 0 & \ldots & -1 & x + c_{n-1}\end{array} \right]
+\]
+
+Prove que $\det C = x^n + c_{n-1}x^{n-1} + \ldots + c_1x + c_0.$
+\solucao{}
+
+\exercicio{19} Seja $K$ um corpo e $A_1, \ldots, A_n$ matrizes quadradas sobre $n$. Seja $B$ a matriz triangular por blocos 
+\[
+ \left[ \begin{array}{cccc} A_1 & * & \ldots & * \\ 0 & A_2 & \ddots & \vdots \\ \vdots & \ddots & \ddots & * \\ 0 & \ldots & 0 & A_n \end{array} \right]
+\]
+
+Mostre que $\det B = \det(A_1)\det(A_2)\ldots \det(A_n).$
+\solucao{}
+
+\exercicio{20} Seja $K$ um corpo e $a,b,c,d,e,f,g \in K.$ Mostre que
+\[\det \left[ \begin{array}{ccc} a & b & b \\ c & d & e \\ f & g & g \end{array} \right] + \det \left[ \begin{array}{ccc} a & b & b \\ e & c & d \\ f & g & g \end{array} \right] + \det \left[ \begin{array}{ccc} a & b & b \\ d & e & c \\  f & g & g \end{array} \right] = 0\]
+\solucao{}
+
+\exercicio{21} Sabendo que os números inteiros $23028, 31882, 86469, 6327$ e $61902$ são todos múltiplos de $19,$ mostre que o número inteiro \[\det  \left[ \begin{array}{ccccc} 2 & 3 &0  & 2 & 8\\ 3 & 1 & 8 & 8 & 2 \\ 8 & 6 & 4 & 6 & 9 \\ 0 & 6 & 3 & 2 & 7 \\ 6 & 1 & 9 & 0 & 2 \end{array} \right]\] é múltiplo de 19.
+
+\solucao{}
+
+
+\exercicio{22} Seja $K$ corpo e $a,b,c \in K.$ Usando a matriz $ \left[ \begin{array}{ccc} b & c & 0\\ a & 0 & c \\ 0 & a & b \end{array} \right],$ calcule 
+\[\det \left[ \begin{array}{ccc} b^2 + c^2 & ab & ac\\ab & a^2 + c^2 & bc \\ ac & bc & a^2 + b^2 \end{array} \right]\]
+\solucao{}
+
+
+\exercicio{23} Seja $K$ um corpo e $n$ um inteiro positivo. Dadas matrizes $A, B \in \mathcal{M}_n(K)$ mostre que
+\[
+\det \left[ \begin{array}{cc} A & B \\B & A \end{array} \right] = \det(A+B) \det(A-B)
+\]
+
+\solucao{}
+
+\exercicio{24} Seja $K$ um corpo e $V$ um espaço vetorial de dimensão finita $n.$ Sejam $B = (e_1,\ldots ,e_n)$ e $C = (d_1, \ldots , d_n)$ duas bases de $V.$ Sejam $\varphi$ a única forma $n$-linear tal que $\varphi(e_1, \ldots ,e_n) = 1$ e $\psi$ a única forma $n$-linear tal que $\psi(d_1, \ldots, d_n) = 1.$ Qual o valor de $\psi(e_1, \ldots ,e_n)$ e de $\varphi(d_1, \ldots, d_n)?$ Use isso para dar uma relação entre $\psi$ e $\varphi.$
+\solucao{}
+
+\exercicio{25} Seja $K$ um corpo, $n$ um inteiro positivo e $K_n[t]$ o conjunto de polinômios de grau menor ou igual que $n$ com coeficientes em $K.$ Sejam $t_1,  \ldots, t_{n+1} \in K$ dois a dois distintos. Considere para $i = 1, \ldots, n+1$ as funções de avaliação
+\[\fullfunction{\tau_i}{K_n[t]}{K_p(t)}{p(t)}{\tau_i(p(t)) = p(t_i)}\]
+
+\dividiritens{
+    \task[\pers{a}] Mostre que $\mathcal{B} = \{ \tau_1, \ldots, \tau_{n+1}\}$ é base de $K_n[t]^{*}.$ (Sugestão: use o exercício 12.)
+   \task[\pers{b}] Mostre que os \emph{polinômios de Lagrange}
+\[L_i(t) = \prod\limits_{j \neq i} \frac{t-t_j}{t_i - t_j}, i = 1, \ldots, n+1,\] formam uma base dual de $\mathcal{B}.$
+\task[\pers{c}] Mostre que para quaisquer $a_1,\ldots , a_{n+1} \in K$ existe um único polinômio $p(t)$ de grau menor o igual que $n$ tal que $p(t_i) = a_i,$ para $i=1, \ldots, n+1.$ (O resultado do item (c) é a conhecida \emph{Fórmula de Interpolação de Lagrange})
+}
+\solucao{}
+
+\exercicio{26} Seja $n > 1$ um inteiro e $I \subseteq \mathbb{R}$ um intervalo aberto. Seja $\mathcal{C}^{(n-1)}(I, \mathbb{R})$ o conjunto das funções de classe $n - 1,$ i.e. deriváveis $n - 1$ vezes com derivada $n - 1$ contínua. Dadas $f_1,\ldots, f_n \in \mathcal{C}^{(n−1)}(I, \mathbb{R}),$ o \emph{Wronskiano} de $f_1,\ldots, f_n $ é a função
+\[
+\fullfunction{W(f_1,\ldots, f_n)}{I}{\mathbb{R}}{t}{(W(f_1,\ldots, f_n))(t)}\]
+definida como
+\[
+(W(f_1,\ldots, f_n))(t) = \det \left[ \begin{array}{cccc} f_1(t) & f_2(t) & \ldots & f_n(t) \\ f_1^{\prime}(t) & f_2^{\prime}(t) & \ldots & f_n^{\prime}(t) \\ \vdots & \vdots & \ddots & \vdots \\ f_1^{(n-1)}(t) & f_2^{(n-1)}(t)  & \ldots & f_n^{(n-1)}(t)  \end{array} \right]
+\]
+Mostre que se existir $t \in I$ tal que $(W(f_1,\ldots, f_n))(t) \neq 0$ então $\{ ff_1,\ldots, f_n \} \subset \mathcal{C}^{(n-1)}(I, \mathbb{R})$ é $\mathbb{R}$-linearmente independente.
+
+Observe que a recíproca não é verdadeira. Por exemplo, seja $ I = (-1, 1), f_1  \colon t \to t^3, f_2 \colon t \to \abs{t^3}.$ O conjunto $\{ f_1, f_2 \}$ é $\mathbb{R}$-linearmente independente, mas $(W(f_1, f_2))(t) = 0$ para todo $t \in (-1, 1).$
+
+\solucao{}
+
+\exercicio{27} Seja $V$ um $K$-espaço vetorial de dimensão finita $n$ e sejam $f_1, f_2, \ldots, f_r \in V^{*}.$ Defina
+\[f_1 \wedge f_2 \wedge \ldots \wedge f_r \colon V \times V \times \ldots \times V \to K\]
+por $f_1 \wedge f_2 \wedge \ldots \wedge f_r (v_1, v_2, \ldots, v_r) = \det f_i(v_j).$
+\dividiritens{
+    \task[\pers{a}] Verifique que $f_1 \wedge f_2 \wedge \ldots \wedge f_r $ é $r$-linear e alternada.
+    \task[\pers{b}] Mostre que $f_1 \wedge f_2 \wedge \ldots \wedge f_r  \neq 0$ se, e somente se $\{ f_1, f_2, \ldots, f_r\}$ é linearmente independente. 
+        \task[\pers{c}] Prove que se $\{ f_1, f_2, \ldots, f_n\}$é uma base de $V^{*}$ então o conjunto
+        \[
+        \{f_J = f_{j_1} \wedge f_{j_2} \wedge \ldots \wedge f_{j_r} \}, \mbox{ para todo } J = \{j_1 < j_2 < \ldots j_r \} \subset \{1,2, \ldots, n \} \}
+        \]
+        é uma base de $\mathcal{A}_r(V).$
+                \task[\pers{d}] ) Sejam $B$ de uma base de $V$ e $B^{*} =  \{ f_1, f_2, \ldots,  f_n\}$ sua base dual. Descreva a base de $\mathcal{A}_r(V)$ que obtemos usando o item anterior. (A forma linear $f_1 \wedge f_2 \wedge \ldots \wedge f_r$ é chamada de \emph{produto exterior} dos funcionais $f_1, f_2, \ldots, f_r.$)
+    }
 \end{document} 
