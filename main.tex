@@ -773,10 +773,162 @@ F(v)&=&F((\sum_{j\in n}\alpha_{i,j}e_j)_{j\in n})\\&=&\sum_{j\in n^n}\prod_{i\in
 \end{array}
 \]
 \end{proof}
+
+\noindent
 Note então que o valor $\sum\limits_{\sigma\in S_n}\prod_{i\in n}\alpha_{i,\sigma(i)} \sgn\sigma$ \emph{determina} $F$ para qualquer $v \in V^n.$ Chamaremos este valor de \textbf{determinante} de $F.$
+
 \begin{exemplo}
 
 \end{exemplo}
+
+\section{Determinantes}
+
+Seja $K$ um corpo e consideremos o anel das matrizes $M_n(K)$. Identificaremos os elementos de $M_n(K)$ com os elementos de $(K^n)^n$ assim:
+\[
+A=(a_{i,j})_{(i,j)\in n\times n}\leftrightarrow ((a_{i,j})_{j\in n})_{i\in n}
+\]
+Portanto, uma função $n$-linear aqui é uma função $n$-linear nas linhas da matriz.
+
+\begin{definicao}
+Uma função $\det:M_n(K)\rightarrow K$ é dita uma função \textbf{determinante} se e só se $\det$ é $n$-linear alternada e $\det(I)=1$.
+\end{definicao}
+
+\noindent
+Pelo que vimos, existe e é única a função determinante: É a forma $n$-linear alternada que vale $1$ na base canônica de $K^n$.
+
+\medskip
+\noindent
+Logo, se $A=(a_{i,j})\in M_n(K)$, então:
+\[
+\det(A)=\sum_{\sigma\in S_n}\sgn(\sigma)\prod_{i\in n}a_{i,\sigma(i)}.
+\]
+
+\begin{exemplo}
+Para $n=2$, temos $S_2=\{I,(0,1)\}$, e assim, sendo:
+\[
+A=\begin{pmatrix}
+a_{0,0}&a_{0,1}\\a_{1,0}&a_{1,1}
+\end{pmatrix},
+\]
+então temos:
+\[
+\det(A)=a_{0,0}a_{1,1}-a_{0,1}a_{1,0}.
+\]
+\end{exemplo}
+
+\begin{exemplo}
+Agora, se $n=3$, então $S_3=\{I,(0,1,2),(0,2,1),(0,1),(0,2),(1,2)\}$, e assim, sendo:
+\[
+A=\begin{pmatrix}
+a_{0,0}&a_{0,1}&a_{0,2}\\a_{1,0}&a_{1,1}&a_{1,2}\\a_{2,0}&a_{2,1}&a_{2,2}
+\end{pmatrix},
+\]
+então temos:
+\[
+\det(A)=a_{0,0}a_{1,1}a_{2,2}+a_{0,1}a_{1,2}a_{2,0}+a_{0,2}a_{1,0}a_{2,1}-a_{0,1}a_{1,0}a_{2,2}-a_{0,2}a_{1,1}a_{2,0}-a_{0,0}a_{1,2}a_{2,1}.
+\]
+\end{exemplo}
+
+\begin{proposicao}
+Temos as seguintes propriedades:
+\begin{itemize}
+\item[1)] Para todo $A\in M_n(K)$ temos $\det(A)=\det(A^t)$.
+\item[2)] Para $A,B\in M_n(K)$ vale $\det(AB)=\det(A)\det(B)$.
+\item[3)] Para $A\in M_n(K)$, então $A$ é inversível se e só se $\det(A)\neq 0$. Neste caso, temos $\det(A^{-1})=(\det(A))^{-1}$.
+\end{itemize}
+\end{proposicao}
+\begin{proof}
+Temos o seguinte:
+\begin{itemize}
+\item[1)] Sendo $A=(a_{i,j})_{(i,j)\in n\times n}$, então temos:
+\[
+\begin{array}{rcl}
+\det(A)&=&\sum_{\sigma\in S_n}\sgn(\sigma)\prod_{i\in n}a_{i,\sigma(i)}\\&=&\sum_{\sigma\in S_n}\sgn(\sigma)\prod_{i\in n}a_{\sigma^{-1}(i),i}\\&=&\sum_{\tau\in S_n}\sgn(\tau^{-1})\prod_{i\in n}a_{\tau(i),i}\\&=&\sum_{\tau\in S_n}\sgn(\tau)\prod_{i\in n}a^t_{i,\tau(i)}\\&=&\det(A^t).
+\end{array}
+\]
+\item[2)] Seja $F_A:M_n(K)\rightarrow K$ tal que $\forall X\in M_n(K):F_A(X)=\det(AX)$. Então a função $F_A$ é uma função $n$-linear alternada sobre as colunas, mas também $F_A(I)=\det(A)$, aí $F_A(B)=\det(A)\det(B)$, assim $\det(AB)=\det(A)\det(B)$
+\item[3)] Se $A$ é inversível, então existe a inversa $A^{-1}$, assim $1=\det(I)=\det(AA^{-1})=\det(A)\det(A)^{-1}$, aí $\det(A)\neq 0$ e $\det(A^{-1})=(\det(A))^{-1}$. Por outro lado, se $\det(A)\neq 0$, então $\det(A^t)\neq 0$, aí as colunas de $A$ são linearmente independentes, aí consideremos $T:K^n\rightarrow K^n$ tal que $[T]_{\mathrm{can}}=A$, então $T$ é inversível, assim $A=[T]_{\mathrm{can}}$ é inversível.
+\end{itemize}
+\end{proof}
+
+\noindent
+Assim lembremo-nos do seguinte: a função $\det$ é uma função $n$-linear e alternada nas linhas (ou nas colunas) da matriz, logo:
+\begin{itemize}
+\item[1)] Trocar duas linhas (ou colunas) da matriz muda o sinal do determinante.
+\item[2)] Somar a uma linha (ou coluna) uma combinação linear das demais linhas (colunas) não altera o valor do determinante.
+\item[3)] Ao multiplicar uma linha (ou coluna) por um escalar, o determinante fica multiplicado por esse escalar.
+\end{itemize}
+
+\begin{proposicao}
+Temos o seguinte:
+\begin{itemize}
+\item[1)] O determinante de uma matriz triangular é o produto dos elementos da diagonal da matriz.
+\item[2)] Se:
+\[
+A=\begin{pmatrix}
+B&0\\C&D
+\end{pmatrix}
+\]
+em que $B\in M_r(K)$ e $D\in M_{n-r}(K)$ e $C\in M_{n-r,r}(K)$ e $0\in M_{r,n-r}(K)$, então:
+\[
+\det(A)=\det(B)\det(D).
+\]
+\end{itemize}
+\end{proposicao}
+\begin{proof}
+Temos o seguinte:
+\begin{itemize}
+\item[1)] Seja $A=(a_{i,j})_{(i,j)\in n\times n}$ uma matriz triangular inferior, então para $i,j\in n$ tais que $i<j$ temos $a_{i,j}=0$, mas a única permutação $\sigma\in S_n$ tal que $\forall i\in n:i\geq\sigma(i)$ é a identidade, assim temos:
+\[
+\det(A)=\sum_{\sigma\in S_n}\sgn(\sigma)\prod_{i\in n}a_{i,\sigma(i)}=\sgn(I)\prod_{i\in n}a_{i,I(i)}=\prod_{i\in n}a_{i,i}.
+\]
+\item[2)] Seja $F:M_r(K)\rightarrow K$ tal que:
+\[
+F(X)=\det\begin{pmatrix}
+X&0\\C&D
+\end{pmatrix}.
+\]
+Então $F$ é $r$-linear alternada nas linhas de $X$, assim $F(X)=F(I)\det(X)$.
+
+\medskip
+\noindent
+Agora consideremos $G:M_{n-r}(K)\rightarrow K$ tal que:
+\[
+G(Y)=\det\begin{pmatrix}
+I&0\\C&Y
+\end{pmatrix}
+\]
+Então $G$ é $(n-r)$-linear alternada nas colunas de $Y$, logo $G(Y)=G(I)\det(Y)$. Mas:
+\[
+G(I)=\det\begin{pmatrix}
+I&0\\C&I
+\end{pmatrix}=1,
+\]
+assim $G(Y)=\det(Y)$, aí $F(I)=G(D)=\det(D)$, assim $F(X)=F(I)\det(X)=\det(X)\det(D)$, aí acaba.
+\end{itemize}
+\end{proof}
+
+\noindent
+Agora temos a \textbf{regra de Laplace}:
+
+\begin{teorema}
+Dada $A\in M_n(K)$, indicaremos por $M_{i,j}$ a matriz quadrada de tamanho $n-1$ obtida a partir de $A$ eliminando a linha $i$ e a coluna $j$.
+
+\smallskip
+\noindent
+Para cada $i\in n$, então vale:
+\[
+\det(A)=\sum_{j\in n}(-1)^{i+j}a_{i,j}\det(M_{i,j}).
+\]
+Para cada $j\in n$, então vale:
+\[
+\det(A)=\sum_{i\in n}(-1)^{i+j}a_{i,j}\det(M_{i,j}).
+\]
+\end{teorema}
+\begin{proof}
+Provaremos a primeira afirmação pois a segunda é análoga.
+\end{proof}
+
 \printindex
 
 \end{document}

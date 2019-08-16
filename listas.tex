@@ -97,7 +97,43 @@ tal que $\overline{T}((x, y, z) + W) = T(x, y, z) + W,$ em que $W = \mbox{ker } 
 
 \exercicio{10} Seja $V$ um $K$-espaço vetorial e seja $W$ um subespaço de $V.$ Mostre que $(V/W)^{*} \cong W^{0}$ e que $V^{*}/W^{0} \cong W^{*}.$
 
-\solucao{}
+\solucao{Mostremos que $(V/W)^{*} \cong W^{0}.$ Para isso, a ideia será utilizar a aplicação canônica de $V$ em $V/W$ e sua transposta, e depois aplicar o Primeiro Teorema do Isomorfismo para obter o resultado desejado. Comecemos considerando a aplicação canônica
+\[
+\fullfunction{T}{V}{V/W}{v}{T(v) = v + W}
+\]
+Veja que $T$ é sobrejetora (isto é, $\mbox{Im } T = V/W$), e $\mbox{Ker } T = W.$ Consideremos a aplicação transposta
+\[\fullfunction{T^t}{(V/W)^{*}}{V^{*}}{f}{T^t(f) = f \circ T}
+\]
+Das propriedades da transformação transposta, sabemos que
+\[
+\mbox{Ker } T^t = (\textcolor{Laranja}{\mbox{Im } T})^{0} = (\textcolor{Laranja}{V/W})^{0} = \{0\}
+\]
+\[
+\mbox{Im } T^t = (\textcolor{Rosadif}{\mbox{Ker } T})^{0} = \textcolor{Rosadif}{W}^{0}
+\]
+Pelo Primeiro Teorema do Isomorfismo, temos que
+\[
+\frac{(V/W)^{*}}{\textcolor{Laranja}{\mbox{Ker } T^t}} \cong \textcolor{Rosadif}{\mbox{Im } T^t } \Rightarrow \frac{(V/W)^{*}}{\textcolor{Laranja}{\{ 0 \}}} \cong \textcolor{Rosadif}{W^{0}} \Rightarrow \boxed{ (V/W)^{*} \cong W^0}
+\]
+
+Mostremos agora que $V^{*}/W^{0} \cong W^{*}.$ Utilizaremos a mesma estratégia, mas considerando agora a inclusão. Tome a inclusão de $W$ em $V,$ isto é:
+\[
+\fullfunction{\iota}{W}{V}{w}{\iota(w) = w}
+\]
+Note que $\mbox{Ker }\iota = \{ 0 \}$ e $\mbox{Im } \iota = W.$
+Seja
+\[
+\fullfunction{\iota^t}{V^{*}}{W^{*}}{f}{\iota(f) = f \circ \iota}
+\]
+a transposta de $\iota.$ Observe que
+\[
+\mbox{Ker } \iota^t = (\textcolor{Laranja}{\mbox{Im } \iota})^{0} = \textcolor{Laranja}{W}^{0} 
+\]
+\[
+\mbox{Im } \iota^t = (\textcolor{Rosadif}{\mbox{Ker } \iota})^{0} = \textcolor{Rosadif}{\{0\}}^{0} = W^{*}\]
+Pelo Primeiro Teorema do Isomorfismo,
+\[\frac{V^{*}}{\textcolor{Laranja}{\mbox{Ker } \iota^t}} \cong \textcolor{Rosadif}{\mbox{Im }\iota^t }\Rightarrow \frac{V^{*}}{\textcolor{Laranja}{W^{0}}} \cong \textcolor{Rosadif}{W^{*}} \Rightarrow \boxed{ V^{*}/W^0 \cong W^{*}}\]
+}
 
 \exercicio{11} Sejam $A,B,C \in \mathcal{M}_n(K).$ Prove que
 \[
@@ -109,7 +145,48 @@ tal que $\overline{T}((x, y, z) + W) = T(x, y, z) + W,$ em que $W = \mbox{ker } 
 \[
 \det \left[ \begin{array}{cccc} 1 & 1 & \ldots & 1 \\ c_1 & c_2 & \ldots & c_n \\ \vdots & \vdots & \ddots & \vdots \\ c_1^{n-1} & c_2^{n-1} & \ldots & c_n^{n-1} \end{array} \right] = \prod\limits_{1 \le i < j \le n} (c_j - c_i)
 \]
-\solucao{}
+\solucao{
+Vamos provar o resultado por indução sobre $n \ge 2.$ Para $n = 2,$ é fácil ver que
+\[
+\det \left[ \begin{array}{cc} 1 & 1 \\ c_1 & c_2 \end{array} \right] = c_2 - c_1 = \prod\limits_{1 \le i < j \le 2} (c_j - c_i)
+\]
+Assuma o resultado válido para $n - 1,$ ou seja, 
+\[
+\det \left[ \begin{array}{cccc} 1 & 1 & \ldots & 1 \\ c_1 & c_2 & \ldots & c_n \\ \vdots & \vdots & \ddots & \vdots \\ c_1^{n-2} & c_2^{n-2} & \ldots & c_n^{n-2} \end{array} \right] = \prod\limits_{1 \le i < j \le n-1} (c_j - c_i) = \prod\limits_{1 \le i < j \le n-1} (c_j - c_i)
+\]
+Provemos para a matriz $n \times n.$ Utilizando a matriz transposta, vamos aplicar operações nas colunas da matriz de modo a obter zeros na primeira linha. Para isso, vamos multiplicar cada coluna $C_i$ por $-c_1$ e somaremos com a coluna $C_{i+1},$ obtendo
+\[\begin{bmatrix} 
+\textcolor{Laranja}{1} & \textcolor{Verde}{c_1} & \textcolor{Blue}{c_1^2} & \textcolor{RawSienna}{\dots} & \textcolor{Purple}{c_1^{n-1}}\\
+\textcolor{Laranja}{1} & \textcolor{Verde}{c_2} & \textcolor{Blue}{c_2^2} & \textcolor{RawSienna}{\dots}  & \textcolor{Purple}{c_2^{n-1}}\\ 
+\textcolor{Laranja}{1} & \textcolor{Verde}{c_3} & \textcolor{Blue}{c_3^2} & \textcolor{RawSienna}{\dots}  &  \textcolor{Purple}{c_3^{n-1}}\\ 
+\textcolor{Laranja}{\vdots} & \textcolor{Verde}{\vdots} & \vdots &\textcolor{RawSienna}{\ddots}  &\vdots \\ 
+\textcolor{Laranja}{1} & \textcolor{Verde}{c_n} & \textcolor{Blue}{c_n^2} & \textcolor{RawSienna}{\dots}  &  \textcolor{Purple}{c_n^{n-1}}\\ \end{bmatrix} \xrightarrow{C_{i+1} = C_{i+1} - \textcolor{red}{c_1}C_i} \begin{bmatrix} \textcolor{Laranja}{1} & \textcolor{Verde}{c_1} - \textcolor{red}{c_1}\textcolor{Laranja}{1}  & \textcolor{Blue}{c_1^2} - \textcolor{red}{c_1}\textcolor{Verde}{c_1} & \textcolor{RawSienna}{\dots}  & \textcolor{Purple}{c_1^{n-1}} - \textcolor{red}{c_1}\textcolor{RawSienna}{c_1^{n-2}}\\ 
+\textcolor{Laranja}{1} & \textcolor{Verde}{c_2}  - \textcolor{red}{c_1}\textcolor{Laranja}{1}  &  \textcolor{Blue}{c_2^2} - \textcolor{red}{c_1}\textcolor{Verde}{c_2}  & \textcolor{RawSienna}{\dots}  & \textcolor{Purple}{c_2^{n-1}} - \textcolor{red}{c_1}\textcolor{RawSienna}{c_2^{n-2}}\\ 
+\textcolor{Laranja}{1} &  \textcolor{Verde}{c_3}  - \textcolor{red}{c_1}\textcolor{Laranja}{1} & \textcolor{Blue}{c_3^2} - \textcolor{red}{c_1}\textcolor{Verde}{c_3}  & \textcolor{RawSienna}{\dots}  & \textcolor{Purple}{c_3^{n-1}} - \textcolor{red}{c_1}\textcolor{RawSienna}{c_3^{n-2}}\\
+\vdots & \vdots & \vdots & \ddots  &\vdots \\ 
+\textcolor{Laranja}{1} &  \textcolor{Verde}{c_n}  - \textcolor{red}{c_1}\textcolor{Laranja}{1}  & \textcolor{Blue}{c_n^2} - \textcolor{red}{c_1}\textcolor{Verde}{c_n} & \textcolor{RawSienna}{\dots}  & \textcolor{Purple}{c_n^{n-1}} - \textcolor{red}{c_1}\textcolor{RawSienna}{c_n^{n-2}}\\ \end{bmatrix}=\]
+\[\begin{bmatrix} 1 & 0 & 0 & \dots & 0\\ 1 & c_2-c_1 & c_2(c_2-c_1) & \dots & c_2^{n-2}(c_2-c_1)\\ 1 & c_3-c_1 & c_3(c_3-c_1) & \dots & c_3^{n-2}(c_3-c_1)\\ \vdots & \vdots & \vdots & \ddots &\vdots \\ 1 & c_n-c_1 & c_n(c_n-c_1) & \dots & c_n^{n-2}(c_n-c_1)\\ \end{bmatrix}\]
+
+Utilizando o Teorema de Laplace, temos que
+\[
+\det \left[\begin{array}{c|cccc} 1 & 0 & 0 & \dots & 0\\ \hline 1 & c_2-c_1 & c_2(c_2-c_1) & \dots & c_2^{n-2}(c_2-c_1)\\ 1 & c_3-c_1 & c_3(c_3-c_1) & \dots & c_3^{n-2}(c_3-c_1)\\ \vdots & \vdots & \vdots & \ddots &\vdots \\ 1 & c_n-c_1 & c_n(c_n-c_1) & \dots & c_n^{n-2}(c_n-c_1)\\ \end{array}\right] =\]\[ \det \left[\begin{array}{cccc}   c_2-c_1 & c_2(c_2-c_1) & \dots & c_2^{n-2}(c_2-c_1)\\  c_3-c_1 & c_3(c_3-c_1) & \dots & c_3^{n-2}(c_3-c_1)\\  \vdots & \vdots & \ddots &\vdots \\ c_n-c_1 & c_n(c_n-c_1) & \dots & c_n^{n-2}(c_n-c_1)\\ \end{array}\right]
+\]
+Como cada linha está multiplicada por $c_i - c_1,$ por propriedades do determinante, temos que
+\[
+\det \left[\begin{array}{cccc}   \textcolor{Verde}{c_2-c_1} & c_2\textcolor{Verde}{(c_2-c_1)} & \dots & c_2^{n-2}\textcolor{Verde}{(c_2-c_1)}\\  \textcolor{Blue}{c_3-c_1} & c_3\textcolor{Blue}{(c_3-c_1)} & \dots & c_3^{n-2}\textcolor{Blue}{(c_3-c_1)}\\  \vdots & \vdots & \ddots &\vdots \\ \textcolor{Red}{c_n-c_1} & c_n\textcolor{Red}{(c_n-c_1)} & \dots & c_n^{n-2}\textcolor{Red}{(c_n-c_1)}\\ \end{array}\right] =\]\[
+\textcolor{Verde}{(c_2-c_1)}\textcolor{Blue}{(c_3-c_1)} \cdot \ldots \cdot  \textcolor{Red}{(c_n-c_1)}  \det \left[\begin{array}{ccccc}   1& c_2 & c_2^2 & \dots & c_2^{n-2}\\  1 & c_3 & c_3^2 & \dots & c_3^{n-2} \\  1 & c_4 & c_4^2 & \dots & c_4^{n-2}\\  \vdots & \vdots & \ddots &\vdots \\ 1 & c_n & c_n^2 & \dots & c_n^{n-2}\\ \end{array}\right] = \]\[
+\prod\limits_{j = 2}^n (c_j - c_1)  \det \left[\begin{array}{ccccc}   1& c_2 & c_2^2 & \dots & c_2^{n-2}\\  1 & c_3 & c_3^2 & \dots & c_3^{n-2} \\  1 & c_4 & c_4^2 & \dots & c_4^{n-2}\\  \vdots & \vdots & \ddots &\vdots \\ 1 & c_n & c_n^2 & \dots & c_n^{n-2}\\ \end{array}\right] 
+\]
+Como a matriz resultante tem tamanho $n-1 \times n-1,$ da hipótese de indução, vem
+\[
+ \det \left[\begin{array}{ccccc}   1& c_2 & c_2^2 & \dots & c_2^{n-2}\\  1 & c_3 & c_3^2 & \dots & c_3^{n-2} \\  1 & c_4 & c_4^2 & \dots & c_4^{n-2}\\  \vdots & \vdots & \ddots &\vdots \\ 1 & c_n & c_n^2 & \dots & c_n^{n-2}\\ \end{array}\right] =  \prod\limits_{2 \le i < j \le n} (c_j - c_i).
+\]
+Daí,
+\[
+\left(\prod\limits_{j = 2}^n (c_j - c_1) \right) \textcolor{red}{\det \left[\begin{array}{ccccc}   1& c_2 & c_2^2 & \dots & c_2^{n-2}\\  1 & c_3 & c_3^2 & \dots & c_3^{n-2} \\  1 & c_4 & c_4^2 & \dots & c_4^{n-2}\\  \vdots & \vdots & \ddots &\vdots \\ 1 & c_n & c_n^2 & \dots & c_n^{n-2}\\ \end{array}\right]} = \]\[\left(\prod\limits_{j = 2}^n (c_j - c_1) \right) \textcolor{red}{\left(\prod\limits_{2 \le i < j \le n} (c_j - c_i) \right)} = \prod\limits_{1 \le i < j \le n} (c_j - c_i) 
+\]
+Assim, segue o resultado.
+}
 
 \exercicio{13} Mostre que
 \[
@@ -153,9 +230,29 @@ para $i = \{ 1, 2, \ldots, n \}$ e $\{e_1, e_2, \ldots, e_n\}$ é a base canôni
 \]
 
 Prove que $\det C = x^n + c_{n-1}x^{n-1} + \ldots + c_1x + c_0.$
-\solucao{}
+\solucao{ Vamos provar o resultado por indução sobre $n \ge 2.$
 
-\exercicio{19} Seja $K$ um corpo e $A_1, \ldots, A_n$ matrizes quadradas sobre $n$. Seja $B$ a matriz triangular por blocos 
+Para $n = 2,$ temos que\[ C = \left[ \begin{array}{cc} x & c_0 \\ -1 & x+c_1 \end{array} \right].\] Portanto,
+\[
+\det C = x(x+c_1) + c_0 = x^2 + c_1x + c_0.
+\]
+Seja agora $n > 2$ e admita que o resultado é verdadeiro para matrizes $n - 1 \times n-1$ desse tipo.
+
+Usando o desenvolvimento de $\det C$ por Laplace, pela primeira linha, temos que
+\[
+\det \left[ \begin{array}{c|cccc|c} \textcolor{red}{x} & 0 & 0 & \ldots & 0 & \textcolor{Verde}{c_0} \\ \hline \textcolor{red}{-1} & \textcolor{blue}{x} & \textcolor{blue}{0} & \textcolor{blue}{\ldots} & \textcolor{blue}{0} & \textcolor{Verde}{c_1} \\ \textcolor{red}{0} & \textcolor{blue}{-1} & \textcolor{blue}{x} & \textcolor{blue}{\ldots} & \textcolor{blue}{0} & \textcolor{Verde}{c_2} \\ \vdots & \textcolor{blue}{\vdots} & \textcolor{blue}{\vdots} & \textcolor{blue}{\ddots} & \textcolor{blue}{\vdots} & \textcolor{Verde}{\vdots} \\  \textcolor{red}{0} & \textcolor{blue}{0} & \textcolor{blue}{0} & \textcolor{blue}{\ldots} & \textcolor{blue}{x} & \textcolor{Verde}{c_{n-2}}  \\  \textcolor{red}{0} & \textcolor{blue}{0} & \textcolor{blue}{0} & \textcolor{blue}{\ldots} & \textcolor{blue}{-1} & \textcolor{Verde}{x + c_{n-1}}\end{array} \right] = \]\[
+\textcolor{red}{x} \cdot \det
+\left[ \begin{array}{ccccc} \textcolor{blue}{x} & \textcolor{blue}{0} & \textcolor{blue}{\ldots} & \textcolor{blue}{0} & \textcolor{Verde}{c_1} \\ \textcolor{blue}{-1} & \textcolor{blue}{x} & \textcolor{blue}{\ldots} & \textcolor{blue}{0} & \textcolor{Verde}{c_2} \\ \textcolor{blue}{0} & \textcolor{blue}{-1} & \textcolor{blue}{\ldots} & \textcolor{blue}{0} & \textcolor{Verde}{c_3} \\ \textcolor{blue}{\vdots} & \textcolor{blue}{\vdots} & \textcolor{blue}{\ddots} & \textcolor{blue}{\vdots} & \textcolor{Verde}{\vdots} \\  \textcolor{blue}{0} & \textcolor{blue}{0} & \textcolor{blue}{\ldots} & \textcolor{blue}{x} & \textcolor{Verde}{c_{n-2}}  \\  \textcolor{blue}{0} & \textcolor{blue}{0} & \ldots & \textcolor{blue}{-1} & \textcolor{Verde}{x + c_{n-1}}\end{array} \right] + (-1)^{n+1} \textcolor{Verde}{c_0} \det
+\left[ \begin{array}{cccccc} \textcolor{red}{-1} & \textcolor{blue}{x} &\textcolor{blue}{0} & \textcolor{blue}{\ldots} & \textcolor{blue}{0} & \textcolor{blue}{0}  \\ \textcolor{red}{0} & \textcolor{blue}{-1} & \textcolor{blue}{x} & \textcolor{blue}{\ldots} & \textcolor{blue}{0} & \textcolor{blue}{0} \\ \textcolor{red}{0} & \textcolor{blue}{0} & \textcolor{blue}{-1} & \textcolor{blue}{\ldots} & \textcolor{blue}{0} & \textcolor{blue}{0} \\ \textcolor{red}{\vdots} & \textcolor{blue}{\vdots} & \textcolor{blue}{\vdots} & \textcolor{blue}{\ddots} & \textcolor{blue}{\vdots} & \textcolor{blue}{\vdots} \\  \textcolor{red}{0} & \textcolor{blue}{0} & \textcolor{blue}{0} & \textcolor{blue}{\ldots} & \textcolor{blue}{-1} & \textcolor{blue}{x}  \\  \textcolor{red}{0} & \textcolor{blue}{0} & \textcolor{blue}{0} & \textcolor{blue}{\ldots} & \textcolor{blue}{0} & \textcolor{blue}{-1} \end{array} \right]
+\]
+Pela hipótese de indução, segue que\[ \det C = x(x^{n-1} + c_{n-1}x^{n-2} + \ldots + c_2x + c_1) + (-1)^{n+1} c_0 (-1)^{n-1} = x^n + c_{n-1}x^{n-1} + \ldots + c_1x + c_0,\]
+como queríamos.
+
+
+
+}
+
+\exercicio{19} Seja $K$ um corpo e $A_1, \ldots, A_n$ matrizes quadradas sobre $K$. Seja $B$ a matriz triangular por blocos 
 \[
  \left[ \begin{array}{cccc} A_1 & * & \ldots & * \\ 0 & A_2 & \ddots & \vdots \\ \vdots & \ddots & \ddots & * \\ 0 & \ldots & 0 & A_n \end{array} \right]
 \]
@@ -165,7 +262,16 @@ Mostre que $\det B = \det(A_1)\det(A_2)\ldots \det(A_n).$
 
 \exercicio{20} Seja $K$ um corpo e $a,b,c,d,e,f,g \in K.$ Mostre que
 \[\det \left[ \begin{array}{ccc} a & b & b \\ c & d & e \\ f & g & g \end{array} \right] + \det \left[ \begin{array}{ccc} a & b & b \\ e & c & d \\ f & g & g \end{array} \right] + \det \left[ \begin{array}{ccc} a & b & b \\ d & e & c \\  f & g & g \end{array} \right] = 0\]
-\solucao{}
+\solucao{
+Temos que o determinante é uma forma $3$-linear das linhas da matriz, então:
+\[
+\det \left[ \begin{array}{ccc} a & b & b \\ c & d & e \\ f & g & g \end{array} \right] + \det \left[ \begin{array}{ccc} a & b & b \\ e & c & d \\ f & g & g \end{array} \right] + \det \left[ \begin{array}{ccc} a & b & b \\ d & e & c \\  f & g & g \end{array} \right]  = \det \left[ \begin{array}{ccc} a & b & b \\ c+d+e & d+c+e & e+d+c \\  f & g & g \end{array} \right]
+\]
+Note que a segunda e a terceira coluna são iguais. Como o determinante é $3$-linear e alternado nas colunas da matriz, segue que
+\[
+\det \left[ \begin{array}{ccc} a & b & b \\ c+d+e & d+c+e & e+d+c \\  f & g & g \end{array} \right] = 0.
+\]
+}
 
 \exercicio{21} Sabendo que os números inteiros $23028, 31882, 86469, 6327$ e $61902$ são todos múltiplos de $19,$ mostre que o número inteiro \[\det  \left[ \begin{array}{ccccc} 2 & 3 &0  & 2 & 8\\ 3 & 1 & 8 & 8 & 2 \\ 8 & 6 & 4 & 6 & 9 \\ 0 & 6 & 3 & 2 & 7 \\ 6 & 1 & 9 & 0 & 2 \end{array} \right]\] é múltiplo de 19.
 
@@ -188,7 +294,7 @@ Mostre que $\det B = \det(A_1)\det(A_2)\ldots \det(A_n).$
 \solucao{}
 
 \exercicio{25} Seja $K$ um corpo, $n$ um inteiro positivo e $K_n[t]$ o conjunto de polinômios de grau menor ou igual que $n$ com coeficientes em $K.$ Sejam $t_1,  \ldots, t_{n+1} \in K$ dois a dois distintos. Considere para $i = 1, \ldots, n+1$ as funções de avaliação
-\[\fullfunction{\tau_i}{K_n[t]}{K_p(t)}{p(t)}{\tau_i(p(t)) = p(t_i)}\]
+\[\fullfunction{\tau_i}{K_n[t]}{K}{p(t)}{\tau_i(p(t)) = p(t_i)}\]
 
 \dividiritens{
     \task[\pers{a}] Mostre que $\mathcal{B} = \{ \tau_1, \ldots, \tau_{n+1}\}$ é base de $K_n[t]^{*}.$ (Sugestão: use o exercício 12.)
@@ -196,7 +302,34 @@ Mostre que $\det B = \det(A_1)\det(A_2)\ldots \det(A_n).$
 \[L_i(t) = \prod\limits_{j \neq i} \frac{t-t_j}{t_i - t_j}, i = 1, \ldots, n+1,\] formam uma base dual de $\mathcal{B}.$
 \task[\pers{c}] Mostre que para quaisquer $a_1,\ldots , a_{n+1} \in K$ existe um único polinômio $p(t)$ de grau menor o igual que $n$ tal que $p(t_i) = a_i,$ para $i=1, \ldots, n+1.$ (O resultado do item (c) é a conhecida \emph{Fórmula de Interpolação de Lagrange})
 }
-\solucao{}
+\solucao{
+\dividiritens{
+    \task[\pers{a}] Como $K_n[t]$ é um $K$-espaço vetorial de dimensão finita, temos que $\dim K_n[t]^{*} = \dim K_n[t] = n+ 1.$ Logo, para provar que $\mathcal{B}$ é base, basta mostrar que $\mathcal{B}$ é LI. 
+    
+    Sejam $\alpha_1, \ldots, \alpha_{n+1} \in K$ tais que
+    \[
+    \sum\limits_{i = 1}^{n+1} \alpha_i \tau_i = \alpha_1 \tau_1 + \ldots + \alpha_{n+1} \tau_{n+1} = 0
+    \]
+    Vamos mostrar que $\alpha_i = 0 \ \forall i \in \{1, \ldots, n+1 \}.$ Avaliemos $ \sum\limits_{i = 1}^{n+1} \alpha_i \tau_i $ em $1,t, \ldots, t^n:$
+    \[   \left\{ \begin{array}{l}      \sum\limits_{i = 1}^{n+1} \alpha_i \textcolor{red}{\tau_i(1)} = \alpha_1 \textcolor{red}{\tau_1(1)} + \ldots + \alpha_{n+1} \textcolor{red}{\tau_{n+1}(1)} = 0 \\
+            \sum\limits_{i = 1}^{n+1} \alpha_i \textcolor{Green}{\tau_i(t)} = \alpha_1 \textcolor{Green}{\tau_1(t)} + \ldots + \alpha_{n+1} \textcolor{Green}{\tau_{n+1}(t)} = 0 \\
+            \vdots \\  \sum\limits_{i = 1}^{n+1} \alpha_i \textcolor{Blue}{\tau_i(t^n)} = \alpha_1 \textcolor{Blue}{\tau_1(t^n)} + \ldots + \alpha_{n+1} \textcolor{Blue}{\tau_{n+1}(t^n)} = 0 \\
+    \end{array} \right. \Rightarrow    \left\{ \begin{array}{l} 
+      \alpha_1 \textcolor{red}{1} + \ldots + \alpha_{n+1} \textcolor{red}{1} = 0 \\
+      \alpha_1 \textcolor{Green}{t_1} + \ldots + \alpha_{n+1} \textcolor{Green}{t_{n+1}} = 0  \\
+      \vdots \\ 
+            \alpha_1 \textcolor{Blue}{t_1^n} + \ldots + \alpha_{n+1} \textcolor{Blue}{t_{n+1}^n} = 0  \\ \end{array} \right.
+    \]
+    
+    Logo, $(\alpha_1, \alpha_2, \ldots, \alpha_{n+1})$ é solução do sistema homogêneo
+    \[
+    \left( \begin{array}{cccc} \textcolor{red}{1} & \textcolor{red}{1} & \textcolor{red}{\ldots} & \textcolor{red}{1} \\ \textcolor{Green}{t_1} & \textcolor{Green}{t_2} & \textcolor{Green}{\ldots} & \textcolor{Green}{t_{n+1}} \\ \vdots & \vdots & \ddots & \vdots \\ \textcolor{Blue}{t_1^n} & \textcolor{Blue}{t_2^n} & \textcolor{Blue}{\ldots} & \textcolor{Blue}{t_{n+1}^n} \end{array}\right)\left( \begin{array}{c} x_1 \\ x_2 \\ \vdots \\ x_{n+1} \end{array}\right) =  \left( \begin{array}{c} 0\\ 0 \\ \vdots \\ 0 \end{array}\right)
+    \]
+    
+   Como $t_1, t_2, \ldots, t_{n+1}$ são diferentes, observe que a matriz obtida é uma matriz de Vandermonde. Assim, pela questão 12, temos que \[\det \left( \begin{array}{cccc} 1 & 1 & \ldots & 1 \\ t_1 & t_2 & \ldots & t_{n+1} \\ \vdots & \vdots & \ddots & \vdots \\ t_1^n & t_2^n & \ldots & t_{n+1}^n \end{array}\right) = \prod\limits_{1 \le i < j \le n+1} (t_j - t_i) \neq 0,  \] o que resulta que a única solução possível para este sistema é a trivial. Consequentemente, temos $t_1 = t_2 = \ldots = t_{n+1} =0.$ Daí, $\mathcal{B}$ é LI, e portanto uma base para $K_n[t]^{*}.$
+    }
+
+}
 
 \exercicio{26} Seja $n > 1$ um inteiro e $I \subseteq \mathbb{R}$ um intervalo aberto. Seja $\mathcal{C}^{(n-1)}(I, \mathbb{R})$ o conjunto das funções de classe $n - 1,$ i.e. deriváveis $n - 1$ vezes com derivada $n - 1$ contínua. Dadas $f_1,\ldots, f_n \in \mathcal{C}^{(n−1)}(I, \mathbb{R}),$ o \emph{Wronskiano} de $f_1,\ldots, f_n $ é a função
 \[
