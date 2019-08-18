@@ -93,7 +93,9 @@ tal que $\overline{T}((x, y, z) + W) = T(x, y, z) + W,$ em que $W = \mbox{ker } 
 
 \exercicio{9} Sejam $V$ e $U$ $K$-espaços vetoriais. Seja $W$ um subespaço de $V$ e $\pi \colon V \to V/W$ a projeção canônica. Mostre que a função $\mathcal{L}(V/W, U) \to \mathcal{L}(V, U),$ dada por $T \to T \circ \pi,$ é injetora.
 
-\solucao{}
+\solucao{
+%Temos a função\[\fullfunction{\varphi}{\mathcal{L}(V/W, U)}{ \mathcal{L}(V, U)}{T}{T \circ \pi}\]Para mostrar que $\varphi$ é injetora, precisamos verificar que, para $S, T \in \mathcal{L}(V/W, U),$ se $\varphi(S) = \varphi(T),$ então $S = T.$Verifiquemos primeiramente que $\varphi$ é uma transformação linear:\[(\varphi(S) - \varphi(T))(v) = \varphi(S - T)(v) = ((S - T) \circ \pi)(v) = (S-T)(\pi(v)) = S\]
+}
 
 \exercicio{10} Seja $V$ um $K$-espaço vetorial e seja $W$ um subespaço de $V.$ Mostre que $(V/W)^{*} \cong W^{0}$ e que $V^{*}/W^{0} \cong W^{*}.$
 
@@ -192,7 +194,30 @@ Assim, segue o resultado.
 \[
 \det \left[ \begin{array}{cccc} a & -b & -c & -d \\ b & a & -d & c \\ c & d & a & -b \\ d & -c & b & a \end{array} \right] = (a^2 + b^2 + c^2 + d^2)^2
 \]
-\solucao{}
+\solucao{
+Primeiramente, vamos mostrar que, para $A, B \in \mathcal{M}_n(\mathbb{C}),$ temos que
+\[
+\det \begin{bmatrix} A & -B \\ B & A \end{bmatrix} = \abs{\det(A + Bi)}^2
+\]
+De fato:
+\[\det \left(\begin{array}{cc} A & -B\\B & A\end{array}\right)=\det\left(\begin{array}{cc} A-iB & -B\\B+iA & A\end{array}\right)= \det\left(\begin{array}{cc} A - iB & -B\\i(A - iB) & A\end{array}\right)= \]\[\det\left(\begin{array}{cc} A - iB & -B\\i  (A - iB) -i (A - iB) & A +i B\end{array}\right)= \det \left(\begin{array}{cc}  A - iB & -B\\0 &  A + iB\end{array}\right)=\abs{\det(A + Bi)}^2\]
+Portanto, escrevendo
+\[
+A = \begin{bmatrix} a & -b \\ b & a \end{bmatrix} \quad \mbox{ e } \quad B = \begin{bmatrix} c & d \\ d & -c \end{bmatrix},
+\]
+segue que 
+\[
+\det \left[ \begin{array}{cccc} a & -b & -c & -d \\ b & a & -d & c \\ c & d & a & -b \\ d & -c & b & a \end{array} \right] = \det \begin{bmatrix} A & -B \\ B & A \end{bmatrix} = \abs{\det(A + Bi)}^2.\]
+Como 
+\[
+A + Bi =  \begin{bmatrix} a & -b \\ b & a \end{bmatrix} + \begin{bmatrix} c & d \\ d & -c \end{bmatrix}i =  \begin{bmatrix} a + ci & -b + di \\ b+di & a - ci \end{bmatrix},
+\]
+temos que
+\[
+\abs{\det(A + Bi)}^2 = \abs{\det \begin{bmatrix} a + ci & -b + di \\ b+di & a - ci \end{bmatrix}}^2 = \abs{(a+ci)(a-ci) - (di - b)(di+b)}^2  = \]\[\abs{a^2 + c^2 - (- b^2 - d^2)}^2 = \abs{a^2 + c^2 + b^2 + d^2}^2 = (a^2 + b^2 + c^2 + d^2)^2
+\]
+}
+
 
 \exercicio{14} Sejam $A, B \in \mathcal{M}_n(K).$ Mostre que se $A$ é inversível então existem no máximo $n$ escalares $c$
 tais que $cA + B$ não é inversível. 
@@ -209,9 +234,85 @@ tais que $cA + B$ não é inversível.
 \task[\pers{c}] Se $DB = BD,$ calcule $\det \left[ \begin{array}{cc} A & B \\ C & D \end{array} \right].$
 }
 
-\solucao{}
+\solucao{Pelo Teorema de Binet, sabemos que o determinante de um produto de duas matrizes quadradas é o produto de seus determinantes, ou seja, se $X, Y \in \mathcal{M}_n(K),$ então
+    \[
+    \det (X) \det(Y) = \det(XY)
+    \]
+    Além disso, lembramos que, para $U, V, X, Y$ $n \times n,$ temos
+    \[
+    \det \begin{bmatrix} U & 0 \\ X & Y \end{bmatrix} = \det U \det Y
+    \]
+    e
+     \[
+    \det \begin{bmatrix} U & V \\ 0 & Y \end{bmatrix} = \det U \det Y
+    \]
+    Feitas essas observações, estamos aptos a resolver a questão.
+\dividiritens{
+    \task[\pers{a}] Para obter o resultado desejado, a ideia será multiplicar a matriz em questão por uma matriz conveniente cujo determinante é $1.$ Dessa forma, utilizando as observações acima, sendo $I_n$ a notação para a matriz identidade $n \times n,$ e lembrando que $D$ é invertível, temos que
+\[ \left( \begin{array}{cc} A & B \\ C & D \end{array} \right)  \left( \begin{array}{cc} I_n & 0 \\ -D^{-1}C & I_n \end{array} \right) = \left( \begin{array}{cc} A - BD^{-1}C & B \\ 0 & D \end{array} \right)
+    \]
+Calculando os determinantes, vem
+\[
+\det \left( \left[ \begin{array}{cc} A & B \\ C & D \end{array} \right] \left[ \begin{array}{cc} I_n & 0 \\ -D^{-1}C & I_n \end{array} \right] \right) = \det \left( \begin{array}{cc} A - BD^{-1}C & B \\ 0 & D \end{array} \right) \Rightarrow
+\]
+\[
+\det \left( \left[ \begin{array}{cc} A & B \\ C & D \end{array} \right] \right) \cdot \textcolor{Blue}{ \det \left(\left[ \begin{array}{cc} I_n & 0 \\ -D^{-1}C & I_n \end{array} \right] \right) } = \textcolor{Verde}{ \det \left( \begin{array}{cc} A - BD^{-1}C & B \\ 0 & D \end{array} \right)} \Rightarrow
+\]
+\[
+\det \left( \left[ \begin{array}{cc} A & B \\ C & D \end{array} \right] \right) \cdot \textcolor{Blue}{ \det I_n  \cdot \det I_n} = \textcolor{Verde}{ \det \left(A - BD^{-1}C \right) \det (D)} \Rightarrow
+\]
+\[
+\det \left( \left[ \begin{array}{cc} A & B \\ C & D \end{array} \right] \right) \cdot \det (I_n I_n) =  \det \left((A - BD^{-1}C)D \right) \Rightarrow \]\[\det \left( \left[ \begin{array}{cc} A & B \\ C & D \end{array} \right] \right) \cdot \det (I_n) =  \det (AD - BD^{-1}CD) \Rightarrow 
+\]
+\[
+\boxed{\det \left[ \begin{array}{cc} A & B \\ C & D \end{array} \right] =  \det \left(AD - BD^{-1}CD \right)}
+\]
+    \task[\pers{b}] Utilizando as observações acima, sendo $I_n$ a notação para a matriz identidade $n \times n,$ e usando o fato de que $CD = DC,$ temos que
+    \[
+   \left( \begin{array}{cc} A & B \\ C & D \end{array} \right)  \left( \begin{array}{cc} D & 0 \\ -C & I_n \end{array} \right) = \left( \begin{array}{cc} AD - BC & B \\ \textcolor{red}{CD - DC} & D \end{array} \right) = \left( \begin{array}{cc} AD - BC & B \\ \textcolor{red}{0} & D \end{array} \right) 
+    \]
+    Como $D$ é invertível, temos $\det D \neq 0.$ Portanto, segue que 
+    \[
+       \det \left(\left[ \begin{array}{cc} A & B \\ C & D \end{array} \right]  \left[ \begin{array}{cc} D & 0 \\ -C & I_n \end{array} \right] \right) = \det \left( \begin{array}{cc} AD - BC & B \\ 0 & D \end{array} \right) \Rightarrow \]
+       \[\det \left(\left[ \begin{array}{cc} A & B \\ C & D \end{array} \right]\right)  \cdot \textcolor{Blue}{\det \left( \left[ \begin{array}{cc} D & 0 \\ -C & I_n \end{array} \right] \right)} = \textcolor{Verde}{ \det \left( \begin{array}{cc} AD - BC & B \\ 0 & D \end{array} \right)} \Rightarrow \]
+       \[\det \left(\left[ \begin{array}{cc} A & B \\ C & D \end{array} \right]\right)  \cdot \textcolor{Blue}{\det(D) \det(I_n)} = \textcolor{Verde}{ \det (AD - BC) \det(D)}\Rightarrow \]
+       \[   \det \left[ \begin{array}{cc} A & B \\ C & D \end{array} \right]= \det (AD - BC) \det(D)\cdot \frac{1}{\det(D)} \Rightarrow  \]
+       \[  \boxed{\det \left[ \begin{array}{cc} A & B \\ C & D \end{array} \right] = \det (AD - BC)  } \]
+           \task[\pers{c}] Para resolver este item, vamos utilizar as propriedades das matrizes transpostas. Lembrando que, se $X, Y \in \mathcal{M}_n(K),$ então
+           \begin{itemize}
+           \item $(X^t)^t = X;$
+               \item $(X + Y)^t = X^t + Y^t;$
+               \item $(XY)^t = Y^tX^t;$
+               \item $\det(X^t) = \det(X).$
+           \end{itemize}
+           de posse dessas propriedades, observe que
+           \[
+            \left[ \begin{array}{cc} A & B \\ C & D \end{array} \right]^t =   \left[ \begin{array}{cc} A^t & C^t \\ B^t & D^t \end{array} \right]
+           \]
+           Daí, utilizando a notação $I_n$ para a matriz identidade $n \times n,$ e usando o fato de que $DB = BD,$
+               \[
+   \left( \begin{array}{cc} A^t & C^t \\ B^t & D^t \end{array} \right)  \left( \begin{array}{cc} D^t & 0 \\ -B^t & I_n \end{array} \right) = \left( \begin{array}{cc} A^tD^t - B^tC^t & C^t \\ B^tD^t - D^tB^t & D^t \end{array} \right) = \left( \begin{array}{cc} (DA)^t - (CB)^t & C^t \\ (DB)^t - (BD)^t & D^t \end{array} \right) = \]\[\left( \begin{array}{cc} (DA - CB)^t & C^t \\ \textcolor{red}{(DB - BD)^t} & D^t \end{array} \right) = \left( \begin{array}{cc} (DA - CB)^t & C^t \\ \textcolor{red}{0} & D^t \end{array} \right) 
+    \]
+    Novamente, sendo $D$ invertível, então $D^t$ também é invertível. Logo, temos
+                   \[
+   \det\left( \left[\begin{array}{cc} A^t & C^t \\ B^t & D^t \end{array} \right]  \left[ \begin{array}{cc} D^t & 0 \\ -B^t & I_n \end{array} \right] \right) = \det \left( \begin{array}{cc} (DA - CB)^t & C^t \\ 0 & D^t \end{array} \right) \Rightarrow
+    \]
+    \[
+       \det\left( \left[\begin{array}{cc} A^t & C^t \\ B^t & D^t \end{array} \right] \right) \textcolor{Blue}{\det \left( \left[ \begin{array}{cc} D^t & 0 \\ -B^t & I_n \end{array} \right] \right)} = \textcolor{Verde}{\det \left( \begin{array}{cc} (DA - CB)^t & C^t \\ 0 & D^t \end{array} \right)} \Rightarrow
+    \]
+        \[
+       \det\left( \left[\begin{array}{cc} A^t & C^t \\ B^t & D^t \end{array} \right] \right) \textcolor{Blue}{\det (D^t) \det(I_n)} = \textcolor{Verde}{\det \left((DA - CB)^t \right) \det\left(D^t \right)} \Rightarrow
+    \]
+            \[
+       \det \left[\begin{array}{cc} A^t & C^t \\ B^t & D^t \end{array} \right] = \det \left((DA - CB)^t \right) \det\left(D^t \right)\cdot \frac{1}{\det\left(D^t \right)} \Rightarrow
+    \]
+                \[
+       \det \left[\begin{array}{cc} A^t & C^t \\ B^t & D^t \end{array} \right] = \det \left((DA - CB)^t \right) \Rightarrow \boxed{  \det \left[\begin{array}{cc} A^t & C^t \\ B^t & D^t \end{array} \right] = \det \left(DA - CB \right)}
+    \]
+    }
+    }
 
-\exercicio{16} Seja $A \in \mathcal{M}_{m\ times n}(K).$ Prove que
+\exercicio{16} Seja $A \in \mathcal{M}_{m \times n}(K).$ Prove que
 \[
 \det(I_m + AA^t) = \det(I_n + A^tA)
 \]
@@ -355,6 +456,65 @@ por $f_1 \wedge f_2 \wedge \ldots \wedge f_r (v_1, v_2, \ldots, v_r) = \det f_i(
         \{f_J = f_{j_1} \wedge f_{j_2} \wedge \ldots \wedge f_{j_r} \}, \mbox{ para todo } J = \{j_1 < j_2 < \ldots j_r \} \subset \{1,2, \ldots, n \} \}
         \]
         é uma base de $\mathcal{A}_r(V).$
-                \task[\pers{d}] ) Sejam $B$ de uma base de $V$ e $B^{*} =  \{ f_1, f_2, \ldots,  f_n\}$ sua base dual. Descreva a base de $\mathcal{A}_r(V)$ que obtemos usando o item anterior. (A forma linear $f_1 \wedge f_2 \wedge \ldots \wedge f_r$ é chamada de \emph{produto exterior} dos funcionais $f_1, f_2, \ldots, f_r.$)
+                \task[\pers{d}]  Sejam $B$ de uma base de $V$ e $B^{*} =  \{ f_1, f_2, \ldots,  f_n\}$ sua base dual. Descreva a base de $\mathcal{A}_r(V)$ que obtemos usando o item anterior. (A forma linear $f_1 \wedge f_2 \wedge \ldots \wedge f_r$ é chamada de \emph{produto exterior} dos funcionais $f_1, f_2, \ldots, f_r.$)
     }
+    
+    \solucao{}
+
+
+\textbf{\textcolor{Red}{Questões Suplementares}}
+
+
+\exercicio{28} Considere a matriz
+\[
+A = \left(\begin{array}{ccccc} \frac{1}{x_1 + y_1} & \frac{1}{x_1 + y_2} & \frac{1}{x_1 + y_3} & \ldots & \frac{1}{x_1 + y_n} \\
+\frac{1}{x_2 + y_1} & \frac{1}{x_2 + y_2} & \frac{1}{x_2 + y_3} & \ldots & \frac{1}{x_2 + y_n} \\
+\frac{1}{x_3 + y_1} & \frac{1}{x_3 + y_2} & \frac{1}{x_3 + y_3} & \ldots & \frac{1}{x_3 + y_n} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+\frac{1}{x_n + y_1} & \frac{1}{x_n + y_2} & \frac{1}{x_n + y_3} & \ldots & \frac{1}{x_n + y_n} \\
+\end{array} \right),
+\]
+onde $x_i + y_j \neq 0$ para $1 \le i,j \le n.$ Mostre que o determinante dessa matriz, conhecido por \emph{determinante de Cauchy}, é dado por
+\[
+\det A = \frac{\prod\limits_{i > j}^n (x_i - x_j)(y_i - y_j)}{\prod\limits_{i,j = 1}^n (x_i + y_j)}
+\]
+%https://books.google.com.br/books?id=CSDbVU1Eg3UC&pg=PA59&lpg=PA59&dq=%3Ddet(AD+-+BD%5E%7B-1%7DCD)&source=bl&ots=lBFjYGdw_d&sig=ACfU3U1E0lDFdZ5q_sA832oS704PaHrcTQ&hl=pt-BR&sa=X&ved=2ahUKEwi5wdrOpovkAhWNLLkGHQd9AwQQ6AEwCnoECAgQAQ#v=onepage&q&f=false -ex26 pg 61
+\solucao{}
+
+\exercicio{29} O determinante da \emph{matriz circulante} $n \times n$ é dado por
+\[
+\det \begin{bmatrix} a_1 & a_2 & a_3 & \ldots & a_n \\
+a_n & a_1 & a_2 & \ldots & a_{n-1} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+a_3 & a_4 & a_5 & \ldots & a_2 \\
+a_2 & a_3 & a_4 & \ldots & a_1
+\end{bmatrix} = (-1)^{n-1} \prod\limits_{j = 0}^{n-1} \left( \sum\limits_{k = 1}^n \zeta^{jk} a_k \right),
+\]
+onde $\zeta = e^{\frac{2 \pi i}{n}}.$ Encontre o determinante da matriz circulante $n \times n$ dada por
+\[
+A = \begin{bmatrix} 1 & 4 & 9 & \ldots & n^2  \\
+n^2 & 1 & 4 & \ldots & (n-1)^2 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+9 & 16 & 25 & \ldots & 4 \\
+4& 9 & 16 & \ldots & 1
+\end{bmatrix}.
+\]
+%https://books.google.com.br/books?id=CSDbVU1Eg3UC&pg=PA59&lpg=PA59&dq=%3Ddet(AD+-+BD%5E%7B-1%7DCD)&source=bl&ots=lBFjYGdw_d&sig=ACfU3U1E0lDFdZ5q_sA832oS704PaHrcTQ&hl=pt-BR&sa=X&ved=2ahUKEwi5wdrOpovkAhWNLLkGHQd9AwQQ6AEwCnoECAgQAQ#v=onepage&q&f=false - ex29 - pg63
+
+%Problems and Solutions in Introductory and Advanced Matrix Calculus Por W.-H. Steeb, Willi-Hans Steeb
+
+%https://books.google.com.br/books?id=CSDbVU1Eg3UC&pg=PA59&lpg=PA59&dq=%3Ddet(AD+-+BD%5E%7B-1%7DCD)&source=bl&ots=lBFjYGdw_d&sig=ACfU3U1E0lDFdZ5q_sA832oS704PaHrcTQ&hl=pt-BR&sa=X&ved=2ahUKEwi5wdrOpovkAhWNLLkGHQd9AwQQ6AEwCnoECAgQAQ#v=onepage&q&f=false problema 8 - pg50 Csansky algorithm eingevector and eigenvalue
+
+\solucao{}
+
+\exercicio{30} Sejam $A, B \in \mathcal{M}_n(K)$ duas matrizes invertíveis, tais que
+\[
+A^{-1} + B^{-1} = (A + B)^{-1}
+\]
+\dividiritens{
+    \task[\pers{a}] Se $K = \mathbb{R},$ mostre que $\det A = \det B.$
+    \task[\pers{b}] Se $K = \mathbb{C},$ mostre que pode ocorrer $\det A \neq \det B,$ mas é válido que $\abs{det A} = \abs{\det B}.$
+    }
+    %https://math.stackexchange.com/questions/3062983/let-a-b-be-n-times-n-with-n-ge-2-nonsingular-matrices-with-real-entries-s
+    \solucao{}
 \end{document} 
