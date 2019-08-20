@@ -36,12 +36,85 @@
 \section{\textcolor{Floresta}{Lista 1}}
 
 
-\exercicio{1} Sejam $V$ um $K$-espaço vetorial e $W$ um subespaço de $V.$ Seja $S = \{v_i\}_{i\in I} \subset V$ tal que $S = \{v_i + W\}_{i\in I}$ é linearmente independente no espaço quociente $V/W.$ Mostre que se $A$ é um conjunto linearmente independente de $W$ então $S \cup A$ é um conjunto linearmente independente de $V.$
-\solucao{}
+\exercicio{1} Sejam $V$ um $K$-espaço vetorial e $W$ um subespaço de $V.$ Seja $S = \{v_i\}_{i\in I} \subset V$ tal que $\overline{S} = \{v_i + W\}_{i\in I}$ é linearmente independente no espaço quociente $V/W.$ Mostre que se $A$ é um conjunto linearmente independente de $W$ então $S \cup A$ é um conjunto linearmente independente de $V.$
+\solucao{Se $\overline{S} = \{\overline{v_i} = v_i + W\}_{i\in I}$ é LI em $V/W,$ isso significa que, para todo $M \subseteq I$ finito, temos que, para $\alpha_m \in K,$ com $m \in M,$ ocorre
+\[
+\sum\limits_{m \in M} \alpha_m \overline{v_m} = 0 \Rightarrow \alpha_m = 0 \ \forall \ m \in M
+\]
+
+Seja $A = \{ w_j \}_{j \in J}.$ Por hipótese, sabemos também que $A$ é um conjunto linearmente independente, ou seja, para todo $N \subseteq I$ finito, temos que, para $\alpha_n \in K,$ com $n \in N,$ ocorre
+\[
+\sum\limits_{n \in N} \alpha_n w_n = 0 \Rightarrow \alpha_n = 0, \ \forall \ n \in N
+\]
+
+Para mostrar que $S \cup A = \{v_i\}_{i\in I} \cup \{ w_j \}_{j \in J} = \{ u_p \}_{p \in I \cup J}$ é um conjunto linearmente independente de $V,$ precisamos mostrar que, para todo $L \subset I \cup J$ finito, temos que, para $\alpha_\ell \in L,$ com $\ell \in L,$ ocorre
+\[
+\sum\limits_{\ell \in L} \alpha_\ell u_\ell = 0 \Rightarrow \alpha_\ell = 0, \ \forall \ \ell \in L
+\]
+
+Para fazer isso, precisamos antes verificar se existem vetores que são comuns aos dois subconjuntos, ou seja, calcular $S \cap A.$ Observe que
+\[
+s \in S \Rightarrow \overline{s} \in \overline{S} 
+\]
+Como $\overline{S}$ é um conjunto linearmente independente em $W,$ temos que $\overline{s} \neq \overline{0}.$ Portanto, segue que $s - 0 \notin W \Rightarrow s \notin W.$
+Mas como $A \subseteq W,$ então isso quer dizer que $s \notin A.$ Portanto, concluímos que $S \cap A = \emptyset.$ Isso quer dizer que todos os $v_i$'s são diferentes dos $w_j$'s, e mais ainda, que $I \cup J$ é uma união disjunta.
+
+Logo, considerando novamente $S \cup A = \{v_i\}_{i\in I} \cup \{ w_j \}_{j \in J}$, para todo $L \subseteq I \cup J$ finito, existem $I^{\prime} \subseteq I$ e $J^{\prime} \subseteq J$ tais que $I^{\prime} \cup J^{\prime} = L.$ Desse modo, temos que
+\[
+\sum\limits_{\ell \in L} \alpha_\ell u_\ell = 0 \Rightarrow
+\]
+\[
+\sum\limits_{i \in I^{\prime}} \alpha_i v_i + \sum\limits_{j \in J^{\prime}} \alpha_j w_j = 0 \quad \mbox{em } V \Rightarrow 
+\]\[
+\overline{\sum\limits_{i \in I^{\prime}} \alpha_i v_i + \sum\limits_{j \in J^{\prime}} \alpha_j w_j} = \overline{0} \quad \mbox{em } V/W \Rightarrow 
+\]
+\[
+\sum\limits_{i \in I^{\prime}} \alpha_i \overline{v_i} + \underbrace{\sum\limits_{j \in J^{\prime}} \alpha_j \overline{w_j}}_{= 0, \mbox{ pois } w_j \in W}  = \overline{0} \Rightarrow \sum\limits_{i \in I^{\prime}} \alpha_i \overline{v_i} = \overline{0} \Rightarrow \alpha_i = 0 \ \forall \ i \in I^{\prime},
+\]
+pois $\{v_i\}_{i \in I^{\prime}} \subseteq \overline{S}$ é um conjunto linearmente independente.
+
+Assim, usando agora o fato de que $\{w_j\}_{j \in J^{\prime}} \subseteq A$ é um conjunto linearmente independente em $W,$ temos que
+\[
+\textcolor{red}{\sum\limits_{i \in I^{\prime}} \alpha_i v_i} + \sum\limits_{j \in J^{\prime}} \alpha_j w_j = 0 \Rightarrow \textcolor{red}{0} + \sum\limits_{j \in J^{\prime}} \alpha_j w_j = 0 \Rightarrow  \sum\limits_{j \in J^{\prime}} \alpha_j w_j = 0 \Rightarrow \alpha_j = 0 \ \forall \ j \in  J^{\prime}
+\]
+Concluímos portanto que
+\[
+\sum\limits_{\ell \in L} \alpha_\ell u_\ell = 0 \Rightarrow \alpha_\ell = 0 \ \forall \ \ell \in L
+\]
+Daí, $S \cup A$ é um conjunto linearmente independente em $V.$
+}
 
 \exercicio{2} Sejam $V$ um $K$-espaço vetorial e $W$ um subespaço de $V.$ Seja $S = \{v_i\}_{i \in I} \subset V$ tal que $S = \{v_i + W\}_{i \in I}$ gera o espaço quociente $V/W.$ Mostre que se $A$ é um conjunto gerador de
 $W$ então $S \cup A$ é um conjunto gerador de $V$.
-\solucao{}
+\solucao{
+Se $\overline{S} = \{\overline{v_i} = v_i + W\}_{i\in I}$ gera em $V/W,$ isso significa que, para todo $\overline{v} \in V/W,$ existem $M \subseteq I$ finito e $\alpha_m \in K,$ com $m \in M,$ tais que
+\[
+\overline{v} = \sum\limits_{m \in M} \alpha_m \overline{v_m}
+\]
+
+Seja $A = \{ w_j \}_{j \in J}.$ Por hipótese, sabemos também que $A$ gera $W$, ou seja, para todo $w \in W,$ existem $N \subseteq J$ finito e $\alpha_n \in K,$ com $n \in N,$ tais que
+\[
+w = \sum\limits_{n \in N} \alpha_n w_n
+\]
+
+Precisamos mostrar que $S \cup A = \{v_i\}_{i\in I} \cup \{ w_j \}_{j \in J} = \{ u_p \}_{p \in I \cup J}$ é um conjunto gerador para $V,$ ou seja, que para todo $v \in V,$ existem $L \subset I \cup J$ finito e $\alpha_\ell \in K,$ com $\ell \in L,$ tais que
+\[
+v = \sum\limits_{\ell \in L} \alpha_\ell u_\ell
+\]
+Note que, como $\overline{S}$ é um conjunto gerador de $V/W,$ temos como já foi explicitado acima que, para $\overline{v} \in V/W,$
+\[
+\overline{v} = \sum\limits_{m \in M} \alpha_m \overline{v_m} \Rightarrow \overline{v} - \sum\limits_{m \in M} \alpha_m \overline{v_m} = \overline{0} \Rightarrow v - \sum\limits_{m \in M} \alpha_m v_m \in W
+\]
+Como $A = \{ w_j \}_{j \in J}$ é conjunto gerador para $W,$ temos que existem $N \subseteq J$ finito e $\alpha_n \in K,$ com $n \in N,$ tais que
+\[
+v - \sum\limits_{m \in M} \alpha_m v_m  = \sum\limits_{n \in N} \alpha_n w_n
+\]
+Assim, tomando $L = N \cup M$:
+\[
+v  = \sum\limits_{m \in M} \alpha_m v_m + \sum\limits_{n \in N} \alpha_n w_n \Rightarrow v = \sum\limits_{\ell \in L} \alpha_\ell u_\ell
+\]
+Portanto, $S \cup A$ é um conjunto gerador para $V.$
+}
 
 \exercicio{3} Seja $V$ um $K$-espaço vetorial e sejam $U$ e $W$ subespaços de $V.$ Prove:
 \dividiritens{
@@ -68,7 +141,40 @@ $W$ então $S \cup A$ é um conjunto gerador de $V$.
 }
 
 
-\solucao{}
+\solucao{
+\dividiritens{
+    \task[\pers{a}] Considere $K$ um corpo, e seja
+    \[
+    V = \bigoplus_{i=1}^\infty Ke_i
+    \]
+Considere 
+\[
+    W = \bigoplus_{i=1}^\infty Ke_{2i}
+\]
+Observe que $W \subseteq V,$ e além disso, $W \cong V.$ Temos também que 
+\[
+V = W \oplus \left(  \bigoplus_{i=1}^\infty Ke_{2i+1} \right)
+\]
+Portanto, tomando
+\[
+W = \bigoplus_{i=1}^\infty Ke_{2i}, \ U = \bigoplus_{i=1}^\infty Ke_{2i+1}, \ W^{\prime} = V, \ \mbox{e} \ U^{\prime} = \{ 0 \},
+\]
+temos que
+\[
+\left( \bigoplus_{i=1}^\infty Ke_{2i} \right) \oplus \left(  \bigoplus_{i=1}^\infty Ke_{2i+1} \right) \cong V \cong V \oplus \{ 0 \} \Rightarrow W \oplus U= W^{\prime} \oplus U^{\prime}
+\]
+e
+\[
+\bigoplus_{i=1}^\infty Ke_{2i} \cong \bigoplus_{i=1}^\infty Ke_i \Rightarrow W \cong W \prime,
+\]
+mas
+\[
+\bigoplus_{i=1}^\infty Ke_{2i+1} \ncong \{ 0 \} \Rightarrow U \ncong U^{\prime}
+\]
+        \task[\pers{b}] 
+    }
+\textbf{Observação:} Cabe salientar que ambos os itens dessa questão são válidos quando $V$ é um espaço vetorial de dimensão finita.
+}
 
 \exercicio{6} Seja $V$ um espaço vetorial e seja $W$ um subespaço de $V.$ Suponha que $V = V_1 \oplus \ldots \oplus V_n$ e $S = S_1 \oplus \ldots \oplus S_n,$ com $S_i \subseteq V_i$ subespaços de $V$ para todo $i = 1, \ldots, n.$ Mostre que
 \[
@@ -222,7 +328,76 @@ temos que
 \exercicio{14} Sejam $A, B \in \mathcal{M}_n(K).$ Mostre que se $A$ é inversível então existem no máximo $n$ escalares $c$
 tais que $cA + B$ não é inversível. 
 
-\solucao{}
+\solucao{
+Se $cA + B$ é inversível, isso quer dizer que 
+\[
+(cA + B)A^{-1} = cI + BA^{-1}
+\]
+é inversível.\footnote{De fato, $cA + B$ é inversível se e somente se $cI + BA^{-1}$ é inversível.} 
+
+Considere portanto a função
+\[
+\fullfunction{p}{K}{K}{c}{p(c) = \det(cI + BA^{-1})}
+\]
+Veja que essa função na verdade é um polinômio de grau $n.$ De fato, chamando
+\[
+A^{-1} = \begin{pmatrix}
+a_{11} & a_{12} & a_{13} & \ldots & a_{1n} \\
+a_{21} & a_{22} & a_{23} & \ldots & a_{2n} \\
+a_{31} & a_{32} & a_{33} & \ldots & a_{3n} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+a_{n1} & a_{n2} & a_{n3} & \ldots & a_{nn} \\
+\end{pmatrix} \quad \mbox{e} \quad B = \begin{pmatrix}
+b_{11} & b_{12} & b_{13} & \ldots & b_{1n} \\
+b_{21} & b_{22} & b_{23} & \ldots & b_{2n} \\
+b_{31} & b_{32} & b_{33} & \ldots & b_{3n} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+b_{n1} & b_{n2} & b_{n3} & \ldots & b_{nn} \\
+\end{pmatrix},
+\]
+temos que
+\[
+cI + BA^{-1} =
+\begin{pmatrix}
+c & 0 & 0 & \ldots & 0 \\
+0 & c & 0 & \ldots & 0 \\
+0 & 0 & c & \ldots & 0 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0 & 0 & \ldots & c \\
+\end{pmatrix} +  \begin{pmatrix}
+\sum\limits_{k = 1}^n b_{1k}a_{k1} & \sum\limits_{k = 1}^n b_{1k}a_{k2}  &\sum\limits_{k = 1}^n b_{1k}a_{k3}  & \ldots &\sum\limits_{k = 1}^n b_{1k}a_{kn}  \\
+\sum\limits_{k = 1}^n b_{2k}a_{k1} & \sum\limits_{k = 1}^n b_{2k}a_{k2}  &\sum\limits_{k = 1}^n b_{2k}a_{k3}  & \ldots &\sum\limits_{k = 1}^n b_{2k}a_{kn}  \\
+\sum\limits_{k = 1}^n b_{3k}a_{k1} & \sum\limits_{k = 1}^n b_{3k}a_{k2}  &\sum\limits_{k = 1}^n b_{3k}a_{k3}  & \ldots &\sum\limits_{k = 1}^n b_{3k}a_{kn} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+\sum\limits_{k = 1}^n b_{nk}a_{k1} & \sum\limits_{k = 1}^n b_{nk}a_{k2}  &\sum\limits_{k = 1}^n b_{nk}a_{k3}  & \ldots &\sum\limits_{k = 1}^n b_{nk}a_{kn} \\
+\end{pmatrix} = \]\[ \begin{pmatrix}
+c + \sum\limits_{k = 1}^n b_{1k}a_{k1} & \sum\limits_{k = 1}^n b_{1k}a_{k2}  &\sum\limits_{k = 1}^n b_{1k}a_{k3}  & \ldots &\sum\limits_{k = 1}^n b_{1k}a_{kn}  \\
+\sum\limits_{k = 1}^n b_{2k}a_{k1} & c + \sum\limits_{k = 1}^n b_{2k}a_{k2}  &\sum\limits_{k = 1}^n b_{2k}a_{k3}  & \ldots &\sum\limits_{k = 1}^n b_{2k}a_{kn}  \\
+\sum\limits_{k = 1}^n b_{3k}a_{k1} & \sum\limits_{k = 1}^n b_{3k}a_{k2}  &c + \sum\limits_{k = 1}^n b_{3k}a_{k3}  & \ldots &\sum\limits_{k = 1}^n b_{3k}a_{kn} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+\sum\limits_{k = 1}^n b_{nk}a_{k1} & \sum\limits_{k = 1}^n b_{nk}a_{k2}  &\sum\limits_{k = 1}^n b_{nk}a_{k3}  & \ldots &c + \sum\limits_{k = 1}^n b_{nk}a_{kn} \\
+\end{pmatrix}
+\]
+Assim, temos que
+\[
+\det(cI + BA^{-1}) = \det \begin{pmatrix}
+c + \sum\limits_{k = 1}^n b_{1k}a_{k1} & \sum\limits_{k = 1}^n b_{1k}a_{k2}  &\sum\limits_{k = 1}^n b_{1k}a_{k3}  & \ldots &\sum\limits_{k = 1}^n b_{1k}a_{kn}  \\
+\sum\limits_{k = 1}^n b_{2k}a_{k1} & c + \sum\limits_{k = 1}^n b_{2k}a_{k2}  &\sum\limits_{k = 1}^n b_{2k}a_{k3}  & \ldots &\sum\limits_{k = 1}^n b_{2k}a_{kn}  \\
+\sum\limits_{k = 1}^n b_{3k}a_{k1} & \sum\limits_{k = 1}^n b_{3k}a_{k2}  &c + \sum\limits_{k = 1}^n b_{3k}a_{k3}  & \ldots &\sum\limits_{k = 1}^n b_{3k}a_{kn} \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+\sum\limits_{k = 1}^n b_{nk}a_{k1} & \sum\limits_{k = 1}^n b_{nk}a_{k2}  &\sum\limits_{k = 1}^n b_{nk}a_{k3}  & \ldots &c + \sum\limits_{k = 1}^n b_{nk}a_{kn} \\
+\end{pmatrix} = 
+\]
+\[
+\sum\limits_{\sigma \in S_n} \sgn(\sigma) \alpha_{1\sigma(1)}\alpha_{2\sigma(2)} \ldots \alpha_{n \sigma(n)} = \alpha_{11}\alpha_{22} \ldots \alpha_{nn} + \sum\limits_{\substack{\sigma \in S_n \\ \sigma \neq 1}} \sgn(\sigma) \alpha_{1\sigma(1)}\alpha_{2\sigma(2)} \ldots \alpha_{n \sigma(n)} =
+\]
+\[
+\left( c + \sum\limits_{k = 1}^n b_{1k}a_{k1} \right)\left( c + \sum\limits_{k = 1}^n b_{2k}a_{k2} \right)\ldots\left( c + \sum\limits_{k = 1}^n b_{nk}a_{kn} \right) + \sum\limits_{\substack{\sigma \in S_n \\ \sigma \neq 1}} \sgn(\sigma) \alpha_{1\sigma(1)}\alpha_{2\sigma(2)} \ldots \alpha_{n \sigma(n)} = \]\[c^n + \left(  \sum\limits_{m = 1}^n  \left(\sum\limits_{k = 1}^n b_{mk}a_{km}\right) \right)c^{n-1} + \ldots +  \left(  \prod\limits_{m = 1}^n  \left(\sum\limits_{k = 1}^n b_{mk}a_{km}\right)\right) + \sum\limits_{\substack{\sigma \in S_n \\ \sigma \neq 1}} \sgn(\sigma) \prod\limits_{r = 1}^n \alpha_{r\sigma(r)}
+\]
+Logo, $p$ é um polinômio de grau $n$ com coeficientes no corpo $K.$ 
+
+Observe que $cA + B$ não será inversível quando $\det(cI + BA^{-1}) = 0,$ ou seja, quando $c$ for uma raiz de $p.$ Como o grau de $p$ é $n,$ segue que este possui no máximo $n$ raízes em $K,$ e daí temos que existem no máximo $c$ escalares tais que $cA + B$ não é inversível.
+}
 
 \exercicio{15} Sejam $A, B, C, D\in \mathcal{M}_n(K)$ com $D$ inversível.
 
@@ -316,14 +491,28 @@ Calculando os determinantes, vem
 \[
 \det(I_m + AA^t) = \det(I_n + A^tA)
 \]
-\solucao{}
+\solucao{
+Se $A$ é uma matriz:
+\[
+\begin{pmatrix}I_m&0\\A^T&I_n\end{pmatrix}\begin{pmatrix}I_m+AA^T&A\\0&I_n\end{pmatrix}\begin{pmatrix}I_m&0\\-A^T&I_n\end{pmatrix}=\begin{pmatrix}I_m&A\\0&I_n+A^TA\end{pmatrix}.
+\]
+Desse modo,
+\[\det\left(  \begin{pmatrix}I_m&0\\A^T&I_n\end{pmatrix}\begin{pmatrix}I_m+AA^T&A\\0&I_n\end{pmatrix}\begin{pmatrix}I_m&0\\-A^T&I_n\end{pmatrix} \right) = \det\begin{pmatrix}I_m&A\\0&I_n+A^TA\end{pmatrix} \Rightarrow\]\[ \textcolor{Verde}{\det \begin{pmatrix}I_m&0\\A^T&I_n\end{pmatrix}}  \textcolor{Blue}{\det \begin{pmatrix}I_m+AA^T&A\\0&I_n\end{pmatrix}} \textcolor{Laranja}{\det \begin{pmatrix}I_m&0\\-A^T&I_n\end{pmatrix}}  = \textcolor{Rhodamine}{\det\begin{pmatrix}I_m&A\\0&I_n+A^TA\end{pmatrix} } \Rightarrow \]\[\textcolor{Verde}{\det(I_m) \det(I_n)}  \textcolor{Blue}{\det \left(I_m+AA^T\right) \det(I_n)} \textcolor{Laranja}{\det(I_m) \det(I_n)}  = \textcolor{Rhodamine}{\det(I_m) \det(I_n+A^TA)} \Rightarrow \]\[ \boxed{\det \left(I_m+AA^T\right) = \det(I_n+A^TA)}\]
+}
 
 \exercicio{17} Seja $\sigma \in S_n$ e defina 
 \[
 \fullfunction{T_\sigma}{K^n}{K^n}{e_i}{T_\sigma(e_i) = e_{\sigma(i)}},
 \]
 para $i = \{ 1, 2, \ldots, n \}$ e $\{e_1, e_2, \ldots, e_n\}$ é a base canônica de $K^n.$ Calcule $\det(T_\sigma).$
-\solucao{}
+\solucao{
+Observe que $T_\sigma$ está permutando as colunas da matriz cujas colunas são os elementos da base canônica. Assim, para cada coluna $i,$ vamos associar o vetor $e_{\sigma(i)}.$ Então, 
+
+
+Portanto, $\det(T_{\sigma}) = \sgn(\sigma).$
+
+
+}
 
 \exercicio{18} Seja $C \in \mathcal{M}_n(K)$ a matriz
 \[
@@ -375,13 +564,44 @@ Note que a segunda e a terceira coluna são iguais. Como o determinante é $3$-l
 }
 
 \exercicio{21} Sabendo que os números inteiros $23028, 31882, 86469, 6327$ e $61902$ são todos múltiplos de $19,$ mostre que o número inteiro \[\det  \left[ \begin{array}{ccccc} 2 & 3 &0  & 2 & 8\\ 3 & 1 & 8 & 8 & 2 \\ 8 & 6 & 4 & 6 & 9 \\ 0 & 6 & 3 & 2 & 7 \\ 6 & 1 & 9 & 0 & 2 \end{array} \right]\] é múltiplo de 19.
-
-\solucao{}
+%https://books.google.com.br/books?id=inwjR-k1dlkC&pg=PA242&lpg=PA242&dq=23028,+31882,+86469&source=bl&ots=9peJhWmo1w&sig=ACfU3U0pxcrdGJBTCNMNptIQAfjTI03V0A&hl=pt-BR&sa=X&ved=2ahUKEwia2ZCapI3kAhXWK7kGHSZxCDsQ6AEwAHoECAkQAQ#v=onepage&q=23028%2C%2031882%2C%2086469&f=false  The Linear Algebra a Beginning Graduate Student Ought to Know Por Jonathan S. Gola
+\solucao{
+Utilizaremos as propriedades dos determinantes. Multiplicando a primeira coluna por $10^4,$ a segunda por $10^3,$ a terceira por $10^2,$ e a quarta por $10,$ chamando
+\[A =  \left[ \begin{array}{ccccc} 2 & 3 &0  & 2 & 8\\ 3 & 1 & 8 & 8 & 2 \\ 8 & 6 & 4 & 6 & 9 \\ 0 & 6 & 3 & 2 & 7 \\ 6 & 1 & 9 & 0 & 2 \end{array} \right],\]
+temos que
+\[
+\det \left[ \begin{array}{ccccc} 20000 & 3000 &0  & 20 & 8\\ 30000 & 1000 & 800 & 80 & 2 \\ 80000 & 6000 & 400 & 60 & 9 \\ 0 & 6000 & 300 & 20 & 7 \\ 60000 & 1000 & 900 & 0 & 2 \end{array} \right] =
+\det 
+\left[ \begin{array}{ccccc} 2 \cdot \textcolor{Blue}{10^4} & 3\cdot \textcolor{Verde}{10^3} &0 \cdot \textcolor{Red}{10^2}  & 2\cdot \textcolor{Laranja}{10} & 8\\ 3\cdot \textcolor{Blue}{10^4} & 1\cdot \textcolor{Verde}{10^3}  & 8\cdot \textcolor{Red}{10^2} & 8\cdot \textcolor{Laranja}{10} & 2 \\ 8\cdot \textcolor{Blue}{10^4} & 6\cdot \textcolor{Verde}{10^3}  & 4\cdot \textcolor{Red}{10^2} & 6\cdot \textcolor{Laranja}{10} & 9 \\ 0\cdot \textcolor{Blue}{10^4} & 6\cdot \textcolor{Verde}{10^3}  & 3\cdot \textcolor{Red}{10^2} & 2\cdot \textcolor{Laranja}{10} & 7 \\ 6\cdot \textcolor{Blue}{10^4} & 1\cdot \textcolor{Verde}{10^3}  & 9 \cdot \textcolor{Red}{10^2} & 0 \cdot \textcolor{Laranja}{10}& 2 \end{array} \right] =\]\[ \textcolor{Blue}{10^4} \cdot \textcolor{Verde}{10^3} \cdot  \textcolor{Red}{10^2} \cdot \textcolor{Laranja}{10} \det A = 10^{10} \det A
+\]
+Agora, somando as quatro primeiras colunas à quinta coluna, isso não altera o valor do determinante, e como todos os elementos são múltiplos de $19,$ temos
+\[
+\det \left[ \begin{array}{ccccc} 20000 & 3000 &0  & 20 & 23028 \\ 30000 & 1000 & 800 & 80 & 31882 \\ 80000 & 6000 & 400 & 60 & 86469 \\ 0 & 6000 & 300 & 20 & 6327 \\ 60000 & 1000 & 900 & 0 & 61902 \end{array} \right] = 10^{10} \det A \Rightarrow \]\[\det \left[ \begin{array}{ccccc} 20000 & 3000 &0  & 20 & 23028 \\ 30000 & 1000 & 800 & 80 & 31882 \\ 80000 & 6000 & 400 & 60 & 86469 \\ 0 & 6000 & 300 & 20 & 6327 \\ 60000 & 1000 & 900 & 0 & 61902 \end{array} \right] = 10^{10} \det A \Rightarrow
+\]
+\[\det \left[ \begin{array}{ccccc} 20000 & 3000 &0  & 20 & \textcolor{Purple}{19} \cdot 1212 \\ 30000 & 1000 & 800 & 80 & \textcolor{Purple}{19} \cdot 1678 \\ 80000 & 6000 & 400 & 60 & \textcolor{Purple}{19} \cdot 4551 \\ 0 & 6000 & 300 & 20 & \textcolor{Purple}{19} \cdot 333 \\ 60000 & 1000 & 900 & 0 & \textcolor{Purple}{19} \cdot 3258 \end{array} \right] = 10^{10} \det A \Rightarrow
+\]
+\[\textcolor{Purple}{19} \det \left[ \begin{array}{ccccc} 20000 & 3000 &0  & 20 & 1212 \\ 30000 & 1000 & 800 & 80 & 1678 \\ 80000 & 6000 & 400 & 60 & 4551 \\ 0 & 6000 & 300 & 20 & 333 \\ 60000 & 1000 & 900 & 0 & 3258 \end{array} \right] = 10^{10} \det A 
+\]
+Desse modo, temos que $19 \mid 10^{10} \det A,$ mas como $\mdc(10^{10}, 19) = 1,$ ou seja, $19$ e $10^{10}$ são primos entre si, temos que $19 \mid \det A.$ Portanto, o determinante de $A$ é um múltiplo de $19.$
+}
 
 
 \exercicio{22} Seja $K$ corpo e $a,b,c \in K.$ Usando a matriz $ \left[ \begin{array}{ccc} b & c & 0\\ a & 0 & c \\ 0 & a & b \end{array} \right],$ calcule 
 \[\det \left[ \begin{array}{ccc} b^2 + c^2 & ab & ac\\ab & a^2 + c^2 & bc \\ ac & bc & a^2 + b^2 \end{array} \right]\]
-\solucao{}
+\solucao{
+Chamando
+\[
+A =  \left[ \begin{array}{ccc} b & c & 0\\ a & 0 & c \\ 0 & a & b \end{array} \right] \quad \mbox{e} \quad B = \left[ \begin{array}{ccc} b^2 + c^2 & ab & ac\\ab & a^2 + c^2 & bc \\ ac & bc & a^2 + b^2 \end{array} \right],
+\]
+observe que
+\[
+AA^t = \left[ \begin{array}{ccc} b & c & 0\\ a & 0 & c \\ 0 & a & b \end{array} \right]  \cdot \left[ \begin{array}{ccc} b & a & 0\\ c & 0 & a \\ 0 & c & b \end{array} \right] = \left[ \begin{array}{ccc} b^2 + c^2 & ab & ac\\ab & a^2 + c^2 & bc \\ ac & bc & a^2 + b^2 \end{array} \right] = B.
+\]
+Logo, temos que
+\[
+\det(B) = \det(AA^t) \Rightarrow \det(B) = \det(A)\det(A^t) \Rightarrow \]\[ \det(B) = \det(A)\det(A) \Rightarrow \boxed{ \det(B) = (\det(A))^2}
+\]
+}
 
 
 \exercicio{23} Seja $K$ um corpo e $n$ um inteiro positivo. Dadas matrizes $A, B \in \mathcal{M}_n(K)$ mostre que
