@@ -946,6 +946,108 @@ Sejam $\lambda_1, \ldots, \lambda_n \in \Spec(T),$ com $\lambda_i \neq \lambda_j
 \chapter{Formas Canônicas}
 
 \section{Autovalores e Autovetores}
+ \begin{definicao}
+Seja \(V\) um espaço vetorial sobre um corpo \(K\) e seja \(T\in\mathcal{L}(V)\). Um vetor 
+\(v\in V\) é um \emph{vetor próprio} ou \emph{autovetor} de \(T\) se existe \(\lambda\in K\) tal que \(T(v)=\lambda v\). O escalar \(\lambda\) é um \emph{valor próprio} ou \emph{autovalor} do operador \(T\). Dizemos que \(v\) é um autovetor associado com o autovalor \(\lambda\).
+\end{definicao}
+\begin{exemplo}
+Seja \(V=\mathbb{C}^1(\mathbb{R})\) e considere o operador linear \(T\in\mathcal{L}(V)\) tal que \(T(v)=v^\prime\) para cada \(v\in V\). Considere \(v=e^{\lambda x}\) com \(\lambda\in K\). Então \(T(v)=\lambda e^{\lambda x}=\lambda v\). Ou seja \(v\) é um autovetor associado com o autovalor \(\lambda\).
+\end{exemplo}
+\begin{definicao}
+Seja \(V\) um espaço vetorial sobre um corpo \(K\) e seja \(T\in\mathcal{L}(V)\). O \emph{spectrum} do operador \(T\) é o conjunto
+\[\text{Spec}(T)\coloneqq\{\lambda\in K\,\colon \lambda \text{ é autovalor de } T\}.\]
+Para cada \(\lambda\in\text{Spec}(T)\), denotamos o conjunto dos autovetores associador a \(\lambda\) como \(V_T(\lambda)\).
+\end{definicao}
+ No contexto da definição anterior, considere
+ \(\lambda\in\text{Spec}(T)\). Então
+ \begin{align*}
+    v\in V_T(\lambda)&\iff T(v)=\lambda v\\&\iff (T-\lambda I)(v)=0\\&\iff v\in\text{Ker}(T-\lambda I).
+ \end{align*}
+\textcolor{red}{ALGUMA COISA QUE EU PERDI}
+
+
+Ainda no mesmo contexto, vamos assumir agora que \(\text{dim}(V)=n<\infty\). Então temos 
+que \[\lambda\in\text{Spec}(T)\implies\text{Ker}(T-\lambda I)\not =\{0\}\implies\text{det}(T-\lambda I)=0.\]
+Reciprocamente, se \(\text{det}(T-\lambda I)=0\) então \(V_T(\lambda)=\text{Ker}(T-\lambda I)\not=\{0\}\).
+\begin{definicao}
+Seja \(V\) um espaço vetorial sobre um corpo \(K\) e seja \(T\in\mathcal{L}(V)\). O \emph{ polinômio característico} de \(T\) é a função \(p_T(\lambda)\colon K\to K\) dada por
+\[p_T(\lambda)\coloneqq\text{det}(T-\lambda I), \text{ para cada }\lambda\in K.\]
+\end{definicao}
+Note que \(\lambda\in\text{Spec}(T)\) se e só se \(\lambda\) é raiz de \(p_T(\lambda)\). Além disso, note que se  \(B\) e \(B^\prime\) são bases \(V\), então \(p_T(\lambda)=p_{[T]_B}(\lambda)\). De fato, se \(P\) é a matriz de mudança da base \(B\) para a base \(B^\prime\), então
+\begin{align*}
+    [\lambda I - T]_{B^\prime}&=P^{-1}[\lambda I - T]_{B}P
+\end{align*}
+Isso implica que \[\text{det}([\lambda I- T]_{B^\prime})=\text{det}(P^{-1})\text{det}([\lambda I - T]_B)\text{det}(P).\]
+Ou seja, \(\text{det}([\lambda I- T]_{B^\prime})=\text{det}([\lambda I - T]_B)\).
+\begin{exemplo}
+Seja \(T\in\mathcal{L}(\mathbb{R}^2)\) tal que \[[T]_{\text{can}}=\begin{pmatrix}
+0 & -1\\1 & 0
+\end{pmatrix}.\]
+Isto é, \(T((x,y))=(-y,x)\) para cada \((x,y)\in\mathbb{R}^2\). Então 
+\begin{align*}
+p_T(\lambda)&=\text{det}\Bigg(\begin{pmatrix}
+-\lambda & -1\\1 & -\lambda
+\end{pmatrix}\Bigg)\\&=\lambda^2+1.
+\end{align*}
+Dessa forma, \(\text{Spec}(T)=\varnothing\) pois \(p_T(\lambda)\) não possui raízes em \(K=\mathbb{R}\).
+\end{exemplo}
+\begin{exemplo}
+Seja \(T\in\mathcal{L}(\mathbb{R}^3)\) tal que\[[T]_{\text{can}}=\begin{pmatrix}
+3 & 1 & -1\\2 & 2 & -1\\ 2 & 2 & 0
+\end{pmatrix}.\]
+Então \begin{align*}
+p_T(\lambda)&=\text{det}\Big(\begin{pmatrix}
+3-\lambda & 1 & -1\\2 & 2-\lambda & -1\\ 2 & 2 & -\lambda
+\end{pmatrix}\Big)\\&=(\lambda-1)^2(\lambda-2).
+\end{align*}
+Isso implica que \(\text{Spec}(T)=\{1,2\}\). Além disso, temos que
+\[V_T(1)=\text{Ker}(T-I)=\text{Ker}(\begin{pmatrix}
+2 & 1 & -1\\2 & 1 & -1\\ 2 & 2 & -1
+\end{pmatrix})=\langle (1,0,2)\rangle.\]
+e ainda
+\[V_T(2)=\text{Ker}(T-2 I)=\text{Ker}(\begin{pmatrix}
+1 & 1 & -1\\2 & 0 & -1\\ 2 & 2 & -2
+\end{pmatrix})=\langle (1,1,2)\rangle\]
+\end{exemplo}
+\begin{exemplo}
+Seja \(T\in\mathcal{L}(\mathbb{R}^3)\) tal que
+\[[T]_{\text{can}}=\begin{pmatrix}
+1 & 2 & -1\\-2 & -3 & -1\\ 2 & 2 & -2
+\end{pmatrix}.\]
+Neste caso temos que \begin{align*}
+p_T(\lambda)&=\text{det}(\begin{pmatrix}
+1-\lambda & 2 & -1\\-2 & -3-\lambda & -1\\ 2 & 2 & -2-\lambda
+\end{pmatrix})\\&=(\lambda+1)^2(\lambda+2).    \end{align*}
+Isso implica que \(\text{Spec}(T)=\{-1,-2\}\) e ainda \[V_T(-1)=\langle\{ (1,0,2),(0,1,2)\}\rangle\] e
+\[V_T(-2)=\langle (1,-1,1)\rangle\].
+Uma vez que os autovetores acima são L.I, eles formam uma base \(B\) de \(\mathbb{R}^3\) e 
+\[[T]_B=\begin{pmatrix}
+-1 & 0 & 0\\0 & -1 & 0\\ 0 & 0 & -2
+\end{pmatrix}\]
+é uma matriz diagonal.
+\end{exemplo}
+\begin{teorema}
+Seja \(V\) um espaço vetorial sobre um corpo \(K\) tal que \(\text{dim}(V)=n<\infty\) e seja \(T\in\mathcal{L}(V)\). São equivalentes:
+\begin{enumerate}
+    \item \(T\) é diagonalizável.
+    \item \(p_T(t)=(t-\lambda_1)^{n_1}\ldots(t-\lambda_k)^{n_k}\) e \(\text{dim}(V_T(\lambda_i))=n_i\) para cada \(i\in [k]\).
+    \item\(\text{dim}((V_T(\lambda_1))+\ldots+\text{dim}(V_T(\lambda_k))=\text{dim}(V)=n.\)
+\end{enumerate}
+\end{teorema}
+\begin{lema}
+Seja \(\{\lambda_i\}_{i\in [k]}\subseteq\text{Spec}(T).\)
+\begin{enumerate}
+    \item Se \(v_i \in V_T(\lambda_i)\) para cada \(i\in [k]\) e \(v_1+\ldots+v_k=0\), então \(v_1=\ldots=v_k=0\).
+    \item Se \(B_i\subseteq V_T(\lambda_i)\) é L.I para cada \(i\in [k]\), então \(\bigcup_{i\in [k]}B_i\) é L.I.
+\end{enumerate}
+\end{lema}
+\begin{proof}[Demonstração do Lema]
+\begin{enumerate}\hfill
+    \item Considere \(\lambda_1(v_1+\ldots+v_k)\). Aplicando \(T\)..
+    \item
+\end{enumerate}
+
+\end{proof}
 
 \begin{proof}
 Temos o seguinte:
@@ -957,7 +1059,7 @@ Temos o seguinte:
 \section{Polinômio Minimal}
 
 \begin{definicao}
-Seja $V$ um espaço sobre $K$, $\dim V=n<\infty$, $T\in\mathcal{L}(V)$. Definamos por recursão $T^0=I$ e $T^{k+1}=T^k\circ T$. Se $p(t)\in K[t]$, $p(t)=a_0+a_1t+\cdot+a_mt^m$, então está bem definido o operador $p(T)=a_0\cdot I+a_1\cdot I+\dots+a_m\cdot T_m\in\mathcal{L}(V)$.
+Seja $V$ um espaço sobre $K$, $\dim V=n<\infty$, $T\in\mathcal{L}(V)$. Definamos por recursão $T^0=I$ e $T^{k+1}=T^k\circ T$. Se $p(t)\in K[t]$, $p(t)=a_0+a_1t+\cdot+a_mt^m$, então está bem definido o operador $p(T)=a_0\cdot I+a_1\cdot I+\dots+a_m\cdot T^m\in\mathcal{L}(V)$.
 \end{definicao}
 
 \noindent
