@@ -18,7 +18,7 @@
 
 \chapter{Espaços vetoriais}
 
-Durante este capítulo, sempre adotaremos $K$ como sendo um copo qualquer.
+Durante este capítulo, sempre adotaremos $K$ como sendo um corpo qualquer.
 
 \section{Base e Dimensão}
 
@@ -31,7 +31,7 @@ Seja $V \neq 0$ um espaço vetorial sobre um corpo $K$. Um subconjunto $B\subset
 \end{definicao}
 Lembramos aqui que $B$ é linearmente independente se todo subconjunto finito de $B$ é linearmente independente, ou seja
 \[
-\sum\limits_{\substack{J \subseteq I \\ \abs{J} \le \aleph_0}} \alpha_j v_j = 0, \ \alpha_j \in K, v_j \in B \Rightarrow \alpha_j = 0 \ \forall j \in J 
+\sum\limits_{\substack{J \subseteq I \\ \abs{J} < \aleph_0}} \alpha_j v_j = 0, \ \alpha_j \in K, v_j \in B \Rightarrow \alpha_j = 0 \ \forall j \in J 
 \]
 \begin{teorema}
 Seja $V$ um espaço vetorial e sejam $I\subseteq V$ linearmente independente e $S\subseteq V$ gerador de $V$ tais que $I\subseteq S$. Então existe uma base $B$ de $V$ tal que \[I\subseteq B\subseteq S.\]
@@ -928,6 +928,134 @@ Para cada $j\in n$, então vale:
 \begin{proof}
 Provaremos a primeira afirmação pois a segunda é análoga.
 \end{proof}
+\textcolor{red}{AULA DE 19 DE AGOSTO (COLOCAREI ASSIM QUE CONSEGUIR)}
+Blá blá blá
+
+\begin{lema}
+Sejam $\lambda_1, \ldots, \lambda_n \in \Spec(T),$ com $\lambda_i \neq \lambda_j.$
+\begin{enumerate}
+    \item Se $v_1 + \ldots + v_r = 0,$ com $v_i \in V_T(\lambda_i),$ então $v_1 = \ldots = v_r = 0.$
+    \item Se $B_i \subseteq V_T(\lambda_i)$ são subconjuntos LI, então
+    \[
+    B = \bigcup\limits_{i = 1}^r B_i
+    \]
+    é LI.
+\end{enumerate}
+\end{lema}
+
+\chapter{Formas Canônicas}
+
+\section{Autovalores e Autovetores}
+
+\begin{proof}
+Temos o seguinte:
+\begin{itemize}
+\item (i)$\Rightarrow$(ii) Sejam $(v_{i,j})_{j\in n_i}$ autovetores associados a $\lambda_i$ tais que $\lambda$ 
+\end{itemize}
+\end{proof}
+
+\section{Polinômio Minimal}
+
+\begin{definicao}
+Seja $V$ um espaço sobre $K$, $\dim V=n<\infty$, $T\in\mathcal{L}(V)$. Definamos por recursão $T^0=I$ e $T^{k+1}=T^k\circ T$. Se $p(t)\in K[t]$, $p(t)=a_0+a_1t+\cdot+a_mt^m$, então está bem definido o operador $p(T)=a_0\cdot I+a_1\cdot I+\dots+a_m\cdot T_m\in\mathcal{L}(V)$.
+\end{definicao}
+
+\noindent
+Lembremo-nos de que, se $\dim(U)=m$ e $\dim(V)=n$, então $\dim\mathcal{L}(U,V)=mn$. Assim, se $V$ é um espaço vetorial tal que $\dim(V)=n<\infty$, então $\dim\mathcal{L}(V)=n^2$, de modo que existe $m\leq n^2+1$ tal que os operadores $I,T,T^2,\dots,T^m$ sejam linearmente dependentes. Seja $m$ um número minimal tal que $T^m\in\langle I,T,\dots,T^{m-1}\rangle$. Então $T^m=a_0\cdot I+a_1\cdot T+\dots a_{m-1}T^{m-1}$, com $a_i\in K$. Seja $m_T(t)=t^m-a_{m-1}t^{m-1}-\dots-a_1t-a_0$, então $m_T(t)=0$, e $m_T(t)$ é um polinômio de menor grau tal que $m_T(t)=0$.
+
+\begin{definicao}
+Um polinômio mônico de grau mínimo tal que $m_T(t)\in K[t]$ tal que $m_T(t)=0$ chama-se um \textbf{polinômio minimal} do operador $T$. Chamemos um polinômio $f(t)\in K[t]$ de um \textbf{polinômio anulador} de $T$ se $f(T)=0$.
+\end{definicao}
+
+\begin{lema}
+Seja $f(t)\in K[t]$ tal que $f(T)=0$. Então $m(t)\mid f(t)$.
+\end{lema}
+\begin{proof}
+Dividimos $f(t)$ por $m(t)$ (com resto):
+\[
+f(t)=m_T(t)\cdot q(t)+r(t),\quad\quad\deg(r(t))<\deg(m_T(t))\text{ ou }r(t)=0.
+\]
+Como $f(T)=0$ e $m_T(t)=0$, então $r(T)=0$, aí $r(t)=0$.
+\end{proof}
+
+\begin{corolario}
+O polinômio $m_T(t)$ é único.
+\end{corolario}
+
+\noindent
+Se $V$ é um espaço vetorial e $T\in\mathcal{L}(V)$, então $V$ tem uma estrutura de $K[t]$ módulo à esquerda: Se $f(t)\in K[t]$, para $v\in V$ definimos:
+\[
+f(t)\cdot v=f(T)(v).
+\]
+Além disso, se considerarmos:
+\[
+\begin{array}{rcl}
+\varphi:K[t]&\rightarrow&\mathrm{End}(V)\\f(t)&\mapsto&f(T),
+\end{array}
+\]
+então $\varphi$ é um homomorfismo de $K$-álgebras e portanto $\mathrm{Ker}(\varphi)$ é um ideal de $K[t]$.
+
+\begin{teorema}
+Os polinômios $p_T(t)$ e $m_T(t)$ têm as mesmas raízes em $K$ (a menos de multiplicidade). Em outras palavras, $m_T(\lambda)=0\Leftrightarrow\lambda\in\mathrm{Spec}(T)$.
+\end{teorema}
+\begin{proof}
+Se $m_T(\lambda)=0$, então $m_T(t)=(t-\lambda)q(t)$. Por minimalidade de $m_T(t)$, $q(T)\neq 0$, então existe $w\in V$ tal que $q(T)(w)\neq 0$, aí seja $v=q(T)(w)$, então $v\neq 0$ e:
+\[
+\begin{array}{rcl}
+(T-\lambda I)(v)&=&(T-\lambda I)q(T)(w)\\&=&m_T(t)(w)=0,
+\end{array}
+\]
+aí $T(v)=\lambda v$, aí $\lambda\in\mathrm{Spec}(T)$.
+
+\medskip
+\noindent
+Por outro lado, se $\lambda\in\mathrm{Spec}(T)$, seja $v\in V$ tal que $v\neq 0$ e $T(v)=\lambda v$, então $T(T(v))=\lambda^2 v,\dots,T^m(v)=\lambda^m v,\dots$, aí para $f(t)\in K[t]$ temos $f(T)(v)=f(\lambda)\cdot v$, aí $0=m_T(T)(v)=m_T(\lambda)\cdot v$, aí $m_T(\lambda)=0$.
+\end{proof}
+
+\begin{corolario}
+Se $T$ é diagonalizável e $\mathrm{Spec}(T)=\{\lambda_i\}_{i\in r}$, então $m_T(t)=\prod_{i\in r}(t-\lambda_i)$.
+\end{corolario}
+
+\noindent
+Se $\mathrm{Spec}(T)=\{\lambda_i\}_{i\in r}$, então:
+\[
+V=\sum_{i\in r}V_T(\lambda_i).
+\]
+
+\begin{proof}
+Já sabemos que $m_T(t)=\left(\prod_{i\in r}(t-\lambda_i)^{k_i}\right)$ em que $q(t)$ não tem raízes em $K$. Basta provar que $(T-\lambda_0 I)\dots(T-\lambda_{r-1} I)=0$. Seja $v\in V$, $v=v_0+\dots+v_{r-1}$, com $v_i\in V_T(\lambda_i)$, então temos $(T-\lambda_i I)(v_i)=0$, portanto $()(v_i)=0$, e logo $()(v)=0$. Então o polinômio $f(t)=(t-\lambda_0)\dots$ é um polinômio anulador para $T$, aí $m_T(t)\mid f(t)$, aí $m_T(t)=f(t)$.
+\end{proof}
+
+\section{Subespaços Invariantes}
+
+\begin{definicao}
+Seja $T\in\mathcal{L}(V)$. Um subespaço $W\subseteq V$ chama-se \textbf{$T$-invariante} se $T[W]\subseteq W$.
+\end{definicao}
+
+\begin{observacao}
+Um subespaço é $T$-invariante se e só se é um $K[t]$-submódulo.
+\end{observacao}
+
+\noindent
+Seja $\dim(V)=n$ e $T\in\mathcal{L}(V)$, $W\subseteq V$ um subespaço $T$-invariante. Escolhemos uma base $B_1=\{v_i\}_{i\in m}$ de $W$ e completemo-la até uma base $B=\{v_i\}_{i\in n}$ do espaço $V$. Qual é a matriz $[T]_B$?
+
+\begin{lema}
+Seja $\dim(V)=n$, $T\in\mathcal{L}(V)$ e $W\subseteq V$ um subsepaço $T$-invariante. Então:
+\[
+p_T(t)=p_{T_1}(t)\cdot p_{T_2}(t)
+\]
+em que $T_1\in\mathcal{L}(W)$ e $T_2\in\mathcal{L}(W)$ com $T_1(w)=T(w)$ e $T_2(v+W)=T(v)+W$.
+\end{lema}
+\begin{proof}
+Escolhamos $B_1$ e $B$ como bases de $W$ e $V$ tais que $B_1\subseteq B$, então:
+\[
+p_T(t)=\det[tI-T]_B=
+\]
+\end{proof}
+
+\begin{observacao}
+O mesmo \textcolor{red}{não} ocorre para polinômios minimais. De fato, seja $T=I_V$ e seja $W$ um subespaço $T$-invariante, então $T_1=I_W$ e $T_2=I_{V/W}$ e aí $m_T(t)=m_{T_1}(t)=m_{T_2}(t)=t-1$.
+\end{observacao}
 
 \printindex
 
