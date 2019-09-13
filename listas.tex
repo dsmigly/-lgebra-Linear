@@ -1,32 +1,12 @@
 \documentclass[11pt,a4paper]{article}
 \usepackage{estilosexercicios}
-\usepackage{hyperref}
-
-%\usepackage[bottom=2cm,top=3cm,left=3cm,right=2cm]{geometry}
-%\usepackage[utf8]{inputenc}
-%Environments para esta lista
-% ---------------------------------------------------
-\definecolor{Floresta}{rgb}{0.13,0.54,0.13}
-\newcommand{\exercicio}[1]{\subsection{Exercício #1} \textcolor{blue}{\bf(#1)}}
-\newcommand{\dividiritens}[1]{\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1) #1 \end{tasks}}
-
-\newcommand{\dividiritensdiv}[2]{\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](#1) #2 \end{tasks}}
-
-\newcommand{\pers}[1]{\textcolor{Floresta}{$\negrito{(#1)} $}}
-
-\newcommand{\solucao}[1]{
-\textbf{\\ \\ \textcolor{red}{Solução:}} #1}
-\newcommand{\figura}[1]{\input Arquivos_de_figs_Exercicios/#1} %Adicionar figuras do latex
-
-\newcommand{\m}[2]{\mathcal{M}_{#1}(#2)} %Desculpe, cansei de escrever isso toda hora 
 
 % ---------------------------------------------------
 \title{Álgebra Linear}
 \author{MAT5730}
-\date{2° semestre de 2019}
+\date{2 semestre de 2019}
 
 \begin{document}
-\definecolor{Floresta}{rgb}{0.13,0.54,0.13}
 \maketitle
 \tableofcontents
 \newpage
@@ -40,10 +20,299 @@
 
 \section{\textcolor{Floresta}{Lista 0}}
 
+\exercicio{1} Seja
+\[
+\mathbb{Q}(\sqrt{2}) = \{ a + b \sqrt{2} \in \mathbb{R} : a,b \in \mathbb{Q} \}.
+\]
+\dividiritens{
+\task[\pers{a}] Prove que $\mathbb{Q}(\sqrt{2})$ é um corpo.
+\task[\pers{b}] Prove que $\mathbb{Q}(\sqrt{2})$ é um $\mathbb{Q}$-espaço vetorial e exiba uma base desse espaço vetorial sobre $\mathbb{Q}.$
+\task[\pers{c}] Mostre que se $L$ e $K$ são corpos tais que $K \subset L,$ então $L$ é um $K$-espaço vetorial.
+}
+\exercicio{2} Seja $V$ um $K$-espaço vetorial e seja $\{u, v, w\} \subset V$ um conjunto linearmente independente.
+Determine condições sobre $K$ para que o conjunto $\{u + v, u + w, v + w\}$ também seja linearmente independente.
 
-\exercicio{3}
+\exercicio{3} Seja \(S\) um subconjunto de um espaço vetorial \(V\)
+sobre um corpo \(K\). Recorde que o subespaço de \(V\) gerado por \(S\)
+é definido por
+\[\langle S\rangle\coloneqq\{\lambda_1v_1+\ldots+\lambda_nv_n\,\colon
+  n\in\Naturals, \lambda_i\in K, v_i\in S\},\]
+isto é, \(\langle S\rangle\) é o conjunto de todas as
+combinações lineares de vetores em \(S\).
+
+\dividiritens{
+    \task[\pers{a}] Mostre que \(\langle S\rangle\) é um subespaço de \(V\).
+   \task[\pers{b}] Seja \(W\) a interseção de todos os subespaços de \(V\) que
+   contém \(S\). Mostre que \(W=\langle S\rangle\).
+}
+
+\solucao{
+  \dividiritens{
+    \task[\pers{a}]
+     Primeiramente note que para qualquer conjunto \(S^\prime\subseteq S\) finito e \(\alpha\colon S^\prime\to\{0\}\) temos que
+\(\sum_{x\in S^\prime}\alpha_x x=0\) e logo \(0\in\langle S\rangle\). Além disso, se \(\lambda\in K\)
+e \(x\in\langle S\rangle\) temos que \(x=\sum_{x\in S^\prime}\alpha_xx\) para \(S^\prime\subseteq S\) finito e \(\alpha\colon B^\prime\to\Reals\). Então
+\[\lambda x =\sum_{x\in S^\prime}(\lambda\alpha_x)x\in \langle S\rangle.\]
+
+Por fim,  sejam \(x,y\in \langle S\rangle\). Então \(x=\sum_{I_x}\alpha_v v\)
+e \(y=\sum_{I_y}\beta_v v\) para conjuntos \(I_x, I_y\) finitos e funções
+\(\alpha\colon I_x\to\Reals\) e \(\beta\colon I_y\to\Reals\). Defina a função
+\(\bar{\alpha}\colon I_x\cup I_y\to\Reals\) dada por \[\bar{\alpha}_v\coloneqq\begin{cases}\alpha_v\,\text{ se } v\in I_x;\\
+0, \text{ caso contrário.}\end{cases}\] Similarmente, considere a função \(\bar{\beta}\colon I_x\cup I_y\to \Reals\) dada por \[\bar{\beta}_v\coloneqq\begin{cases}\beta_v\,\text{ se } v\in I_y;\\
+0, \text{ caso contrário.}\end{cases}\]Então temos que 
+\[x+y=\sum_{v\in I_x}\alpha_v v +\sum_{v\in I_y}\beta_v v=\sum_{v\in I_x\cup I_y}(\bar{\alpha}_v + \bar{\beta}_v) v.\] 
+Como \(I_x\cup I_y\) é finito e \(\bar{\alpha}_v+\bar{\beta}_v\in\Reals\) para cada \(v\in I_x\cup I_y\) segue que \(x+y\in \langle S\rangle\).
+Concluímos assim que \(0\in\langle S\rangle\), que \(\lambda s\in\langle S\rangle\) para cada \(\lambda\in K\) e cada \(s\in \langle S\rangle\) e que \(x+y\in\langle S\rangle\) sempre que \(x,y\in \langle S\rangle\).
+Isto é, \(\langle S\rangle\) é um subespaço. 
+
+     \task[\pers{b}] Considere o seguinte conjunto \[W\coloneqq\bigcap\{U\subseteq V\,\colon U \text{ é subespaço e } S\subseteq U\}.\]
+Seja \(U\) um subespaço de \(V\) que contém \(S\). Pela definição de subespaço, obtemos que \(U\) contém todas as combinações lineares de elementos de \(S\). Logo, \(\langle S\rangle\subseteq U\). Concluímos assim que \(\langle S\rangle\) está contido em cada subespaço de \(V\) que contém \(S\) e portanto \(\langle S\rangle\subseteq W\).
+
+ Por outro lado, se \(s\in W\) então \(s\) pertence a cada subespaço de \(V\) que contém \(S\). Pelo item a, temos que
+\(\langle S\rangle\) é um subespaço de \(V\) e claramente contém \(S\). Portanto \(s\in\langle S\rangle\).
+
+}}
+
+\exercicio{4} Mostre que um subconjunto $B$ de um espaço vetorial é linearmente independente se, e somente se, todo subconjunto finito de $B$ é linearmente independente.
+ 
+
+\exercicio{5} Sejam \(W_1\) e \(W_2\) subespaços de um espaço vetorial \(V\).
+\dividiritens{ \task[\pers{a}] Dê um exemplo mostrando que \(W_1\cup W_2\) pode
+  não ser um subespaço de \(V\).
+  \task[\pers{b}] Prove que \(W_1\cup W_2\) é um subespaço se, e somente se
+  \(W_1\subseteq W_2\) ou \(W_2\subseteq W_1\).
+ \task[\pers{c}] Mostre que \(W_1+W_2\) é o subespaço gerado por \(W_1\cup W_2\).}
+
+\solucao{
+  \dividiritens{
+    \task[\pers{a}]  Por exemplo, se \(V=\mathbb{R}^2\), \(W_1=\langle(1,0)\rangle\) e 
+ \(W_2=\langle(0,1)\rangle\) então \(W_1\cup W_2 \) não é um 
+ subespaço de \(V\).
+    \task[\pers{b}] Primeiro, suponha sem perda de generalidade que
+    \(W_1\subseteq W_2\). Neste caso, temos que \mbox{\(W_1\cup W_2=W_2\),} que é um
+    subespaço por hipótese. A outra implicação é a contrapositiva da Proposição
+    \ref{unotsubsp} das notas de aula. 
+    \task[\pers{c}]  Primeiramente vamos mostrar que \(W_1+W_2\subseteq\langle W_1\cup W_2\rangle\). Se \(w_1+w_2\in W_1+W_2\), então claramente
+  \[w_1+w_2=1w_1+1w_2 \text{ com } w_1\in W_1\text{ e }w_2\in W_2.\] 
+  Por outro lado,
+  seja \(w\in\langle W_1\cup W_2\rangle\). Então podemos escrever \[w=\sum_{v\in I_1\cup I_2}\alpha_vv=\sum_{v\in I_1}\alpha_vv+\sum_{v\in I_2}\alpha_vv,\]
+  onde \(I_1\subseteq W_1\) e \(I_2\subseteq W_2\), e \(\alpha\colon I_1\cup I_2\to\mathbb{R}\).  Como \(W_1\) e \(W_2\) são subespaços temos que \(\sum_{v\in I_1}\alpha_v v\in W_1\)
+  e \(\sum_{v\in I_2}\alpha_vv\in W_2\) e portanto \(w\in W_1 + W_2\).
+
+}}
+
+\exercicio{6} Considere o $\mathbb{R}$-espaço vetorial $\mathcal{M}_2(\mathbb{R})$ das matrizes de $2 \times 2$ sobre $\mathbb{R}$ e os seguintes subconjuntos de $\mathcal{M}_2(\mathbb{R}):$
+\[
+W_1 = \left\{ \begin{bmatrix} x & -x \\ y & z \end{bmatrix} : x,y,z \in \mathbb{R} \right\} \quad \mbox{e} \quad W_2 = \left\{ \begin{bmatrix} a & b \\ -a & c \end{bmatrix} : a,b,c \in \mathbb{R} \right\}
+\]
+\dividiritens{
+\task[\pers{a}] Mostre que $W_1$ e $W_2$ são subespaços de $\mathcal{M}_2(\mathbb{R}).$
+\task[\pers{b}] Encontre as dimensões de $W_1, W_2, W_1 + W_2$ e $W_1 \cap W_2.$
+}
+
+\exercicio{7} Seja \(\mathcal{F}=\{S_i\,\colon i \in I\}\) uma
+família não vazia de subespaços distintos de um \(K\)-espaço vetorial \(V\).
+Mostre que são equivalentes:
+\dividiritens{ \task[\pers{i}]
+  Para cada \(i\in I\), temos que \(S_i\cap \Big(\sum\limits_{i\neq j} S_j\Big)=\{0\}\).
+  \task[\pers{ii}]
+  O vetor nulo não pode ser escrito como uma soma
+  de vetores não nulos, cada um pertencendo a um subespaço distinto
+  de \(\mathcal{F}\).
+  \task[\pers{iii}]
+  Todo vetor não nulo de \(\sum_{i\in I}S_i\) tem,
+  a menos da ordem, uma decomposição única como soma de vetores não nulos
+  \(v=s_1+\ldots +s_n\), com os vetores \(s_1,\ldots , s_n\)
+  pertencendo a subespaços distintos de \(\mathcal{F}\).
+}
+\textbf{Observação:} Segue deste exercício que \(V=\sum\limits_{i\in I}S_i\) é uma
+soma direta se, e somente se, uma das condições (i)-(iii) é satisfeita.
+
+\solucao{
+  \dividiritens{\task[\pers{a}] \textbf{(i)$\implies$(ii)}: Assuma que existe uma família de elementos
+              não nulos \(v_i\in S_i\) tais que \mbox{\(\sum\limits_{i\in I}v_i=0\).} Seja
+              \(i_0\in I\) e note que \(v_{i_0}=-\sum\limits_{i\in I\setminus\{i_0\}}v_i\). Como \(S_i\) é um
+              subespaço para cada \(i\in I\) concluímos que
+              \(v_{i_0}\in\sum\limits_{i\in I\setminus\{i_0\}}S_i\). Como temos que
+              \(v_{i_0}\in S_{i_0}\) por construção, concluímos que \(0\neq
+              v_{i_0}\in S_{i_0}\cap \Big(\sum\limits_{i\neq i_0}S_i\Big)\) e portanto  a afirmação (i) é falsa.
+            \task[\pers{b}] \textbf{(ii) $\implies$ (i)}: Assuma que existe
+            \(i_0\in I\) tal que existe
+            \(0\neq v_{i_0}\in S_{i_0}\cap\Big(\sum\limits_{i\neq  i_0}S_i\Big).\)
+            Neste caso, temos que existe uma família \(\{-v_i\}_{i\in
+              I\setminus\{i_0\}}\) com \(v_i\in S_i\) para cada \(i\in
+            I\setminus\{i_0\}\) e \(\sum\limits_{i\in I\setminus\{i_0\}}v_i=v_{i_0}\). Dessa forma, temos que a família \(\{v_{i_0}\}\cup\{v_i\}_{i\in
+              I\setminus\{i_0\}}\) é uma família não nula com \(v_i\in S_i\)
+            para cada \(i\in I\) e \(\sum\limits_{i\in I}v_i=0\). Isto é, a afirmação
+            (ii) é falsa.
+              \task[\pers{c}]\textbf{(iii) $\implies$ (i)}: Seja \(0\not=s\in\sum\limits_{i\in I}S_i\) e seja
+            \(\{s_i\}_{i\in I}\) a única decomposição
+            de \(S\). Assuma que existe
+            \(0\not =v\in S_{i_0}\cap(\sum\limits_{j\in I\setminus\{i_0\}}S_j)\) para
+            algum \(i_0\in I\).
+            Neste caso segue que
+    \[s=\sum\limits_{i\in I}s_i=(s_{i_0}+v)+\sum\limits_{j\in I\setminus\{i_0\}}s_i -v.\]
+    Isto é, \(s\) tem duas decomposições, o que
+    é uma contradição.
+           \task[\pers{d}]\textbf{(i) $\implies$ (iii)}: Seja \(0\neq
+           s\in\sum\limits_{i\in I}S_i\) e assuma que existem duas famílias
+           \(\{s_i\}_{i\in I}\) e \(\{v_i\}_{i\in I}\) distintas tais
+           que \[\sum\limits_{i\in I} s_i=\sum\limits_{i\in I}v_i=s.\].
+           Seja \(i_0\in I\) tal que \(s_{i_0}\neq
+           v_{i_0}\). Então \begin{align*}0\not=v_{i_0}-s_{i_0}&=
+      \sum\limits_{i\in I\setminus\{i_0\}}s_i-\sum\limits_{i\in I\setminus\{i_0\}}v_i
+                              \\&=\sum\limits_{i\in I\setminus\{i_0\}}s_i-v_i.
+                            \end{align*}
+Assim concluímos que \(0\neq v_{i_0}-s_{i_0}\in S_{i_0}\cap                                                             \Big(\sum\limits_{i\neq
+                                                               i_0} S_i\Big)\).
+                                                             Isto é, a afirmação (i) é falsa.
+          
+                                                             \task[\pers{e}]\textbf{(ii) $\implies$ (iii)}: Seja
+                                                      \(0\neq s\in V\) e
+          assuma que existem duas famílias distintas \(\{v_i\}_{i\in I}\) e
+          \(\{s_i\}_{i\in I}\) tais que \[\sum\limits_{i\in I} v_i=\sum\limits_{i\in
+              I}s_i=s.\] Neste caso, obtemos que \begin{align*}
+                                                   0=s-s&=\sum\limits_{i\in I}s_i-\sum\limits_{i\in I}v_i\\&=\sum\limits_{i \in I}s_i-v_i.
+                                                 \end{align*}
+                                                 Assim escrevemos o vetor nulo
+                                                 como uma soma não nula de
+                                                 vetores, cada um pertencendo a
+                                                 um subespaço \(S_i\). Isso
+                                                 implica que a afirmação (ii) é falsa.
+                                                 \task[\pers{f}]\textbf{(iii)$\implies$ (ii)}:
+                       Seja \(0\neq v\in V\), seja \(\{v_i\}_{i\in I}\) a única
+                       família tal que \(v_i\in S_i\) para cada \(i\in I\)e
+                       \(\sum\limits_{i\in I}v_i=v\). Assuma que existe uma
+           família \(\{s_i\}_{i\in I}\) não nula de vetores onde \(s_i\in S_i\)
+           para cada \(i\in I\) e \(\sum\limits_{i\in I}s_i=0\). Então temos
+           que \[v=v+0=\sum\limits_{i\in I}v_i+s_i=\sum\limits_{i\in I}v_i-s_i=v-0=v,\]
+           o que nos da uma contradição.
+          
+         }}
+
+\exercicio{8} Seja  \(V\) um \(K\)-espaço vetorial e seja \(S\) um subconjunto
+linearmente independente de \(V\). Mostre que, se \(v\in V\) não for combinação
+linear dos elementos de \(S\), então \(S\cup\{v\}\) é linearmente independente.
+
+\solucao{Assuma que \(v\) é combinação linear dos elementos de \(S\). Neste caso
+existe \(S^\prime\subseteq S\) finito e uma função \(\alpha\colon S^\prime\to\Reals\) tal que 
+\(\sum\limits_{s\in S^\prime}\alpha_s s=v\). Defina \(\bar{\alpha}\colon S^\prime\cup\{v\}\to\Reals\) tal que
+\(\bar{\alpha}_s=\alpha_s\) para cada \(s\in S^\prime\) e \(\bar{\alpha}_v=-1\). Então segue que \(\sum\limits_{s\in S^\prime\cup\{v\}}\bar{\alpha}_ss=0.\) Isto é, \(S\cup\{v\}\) é Linearmente dependente.
+}
+
+\exercicio{9} Seja \(V\) um \(K\)-espaço vetorial de dimensão finita e sejam
+\(U\) e \(W\) subespaços de \(V\) tais que \(V=U+W\). Mostre que \(V=U\oplus
+W\), se e somente se, \(\dim (V)=\dim (U)+\dim (W).\)
+\solucao{ Utilizando o fato de
+  que \[\text{dim}(V)=\text{dim}(W)+\text{dim}(U)-\text{dim}(U\cap W)\]
+  e o Exercício 7,
+  vemos que as seguintes afirmações são equivalentes:
+  \begin{enumerate}
+  \item \(V=U\oplus W\);
+  \item \(\dim(V)=\dim(U)+\dim(W)\);
+  \item \(V=U+W\) e \(\dim(U\cap W)=0\);
+  \end{enumerate}
+}
+\exercicio{10} Seja \(V\) um \(K\)-espaço vetorial e seja \(W\) um subespaço de
+\(V\). Mostre que \(W\) possui complemento em \(V\), isto é, que existe um
+subespaço \(U\) de \(V\) tal que \(V=U\oplus W\).
+
+\solucao{  Seja \(B_1\) uma base de \(W\). Como \(B_1\) é L.I temos pelo Teorema 1
+  das notas de aula que existe uma base \(B\) de \(V\) tal que \(B_1\subseteq B\). Considere
+  o conjunto \(B_2\coloneqq B\setminus B_1\) e o subespaço \(U\coloneqq\langle B_2\rangle\). Pelo exercício 3 temos
+  que \(U\) é um subespaço e ainda temos do exercício 5 que \mbox{\(V= W+U\)}.
+  Resta mostrar que \(U\cap W=\{0\}\). Assuma que existe \(0\not= v\in U|cap
+  W\). Neste caso temos que existem conjuntos finitos \(B_1^\prime\subseteq
+  B_1\) e \(B_2^\prime\) e funções \(\alpha\colon B_1^\prime\to\Reals\) e
+  \(\beta\colon B_2\prime\to\Reals\) tais que
+  \[v=\sum\limits_{b\in B_1^\prime}\alpha_bb=\sum\limits_{b\in B_2^\prime}\beta_bb.\]
+  Seja \(i_0\in B_1^\prime\) tal que \(\alpha_{i_0}\neq 0 \), então
+  \[b_{i_0}=\frac{1}{\alpha_{i_0}}\Big(\sum_{b\in B_2^\prime}\beta_bw-\sum_{i\in
+      B_1^\prime\setminus\{i_0\}}\Big),\]
+que, pelo exercício 8 implica que \(B_1\cup B_2\) não é L.I. Contradição.
+}
+
+\exercicio{11} Seja $V \neq \{0\}$ um espaço vetorial sobre um corpo infinito $K.$ Mostre que $V$ não é uma união de um número finito de subespaços próprios. E se $K$ for finito?\\
+\textbf{Sugestão:} Suponha que $V = W_1 \cup W_2 \cup \ldots \cup W_n$ e que $W_1 \nsubseteq W_2 \cup \ldots \cup W_n.$ Sejam $w \in W_1 \setminus(W2 \cup \ldots \cup W_n)$ e $v \notin W_1.$ Seja $A = \{aw + v : a \in K\}$ e mostre que cada $W_i$ contém no máximo um elemento de $A.$)
 
 
+
+\exercicio{12} (Lei modular) Seja \(V\) um espaço vetorial. Sejam \(S,U,T\) subespaços de
+\(V\). Mostre que se \(U\subseteq S\), então:
+\[S\cap(T+U)=(S\cap T)+(S\cap U).\]
+\solucao{
+  Primeiro, note que como \(U\subseteq S\) temos que \(S\cap U=U\) e portanto é
+  suficiente mostrar que \[S\cap(T+U)=(S\cap T)+ U.\]
+  Como \( U\subseteq U+T\) e \(U\subseteq S\) temos que
+  \begin{equation}\label{0.12.1}U\subseteq (U+T)\cap S.\end{equation} Além disso, como \(T\subseteq U+T\)
+  temos que \begin{equation}\label{0.12.2}T\cap S\subseteq (U+T)\cap
+    S.\end{equation}
+  Assim, juntando as Equações \ref{0.12.1} e \ref{0.12.2} obtemos que \(U+(T\cap
+  S)\subseteq (U+T)\cap S.\) Por outro lado, considere \(y\in (U+T)\cap S\).
+  Isto é, \(y=u+t=s\) para alguns \(u\in U\), \(t\in T\), e \(s\in S\). Como
+  \(U\subseteq S\) e \(S\) é subespaço, obtemos que \(t=s-u\in S\) e concluímos
+  que \(t\in T\cap S\). Dessa forma segue que \(y=u+t\in U+(T\cap S).\)  
+}
+
+\exercicio{13} Para quais espaços vetoriais \(V\) a lei distributiva
+\[S\cap(T+U)=(S\cap T)+(S\cap U)\]
+é verdadeira para todos os subespaços \(S,T,U\) de \(V\)?
+\solucao{
+Vamos iniciar notando que se \(\dim (V)\leq 1\) o resultado vale trivialmente.
+Se \(\dim (V)\geq 2\), tomamos dois vetores \(v_t\) e \(v_u\) linearmente
+independentes e consideramos \(T\coloneqq\langle v_t\rangle\),
+\(U\coloneqq\langle v_u\rangle\) e \(S\coloneqq\langle v_u+v_t\rangle\). Dessa
+forma temos \(S\subseteq U+T\) e portanto \(S\cap (U+T)=S\), mas por outro lado
+\((S\cap T)=(S\cap U)= 0.\)
+}
+
+\exercicio{14} Sejam \(U\) e \(V\) \(K\)-espaços vetoriais e seja \(T\colon U\to
+V\) uma transformação linear.
+\dividiritens{
+    \task[\pers{a}] Prove que \(T\) é injetora se, e somente se, \(T\) leva todo
+    subconjunto linearmente independente de \(U\) em um conjunto linearmente
+    independente de \(V\).
+   \task[\pers{b}] Prove que se o subconjunto \(\{T(u_1),\ldots , T(u_n)\}\) de \(V\) for
+   linearmente independente, então \(\{u_1,\ldots , u_n\}\) é um subconjunto
+   linearmente independente de \(U\).
+}
+   
+\solucao{}
+
+\exercicio{15} Sejam $U$ e $V$ $K$-espaços vetoriais de dimensão finita tais que $\dim U = \dim V$ e seja $T \colon U \to V$ uma transformação linear. Mostre que as seguintes afirmações são equivalentes:
+
+\dividiritens{
+\task[\pers{i}] $T$ é um isomorfismo;
+\task[\pers{ii}] $T$ é sobrejetora;
+\task[\pers{iii}] $T$ é injetora.
+}
+\solucao{}
+\exercicio{16} Sejam $U$ e $V$ $K$-espaços e seja $T \colon U \to V$ um isomorfismo. Mostre que $T^{-1} \colon V \to U$ também é linear e, portanto, é um isomorfismo.
+\solucao{}
+\exercicio{17} Seja $V$ um $K$-espaço vetorial e seja $T$ um operador linear de $V$ tal que $T^2 = T$ (um operador
+com essa propriedade é chamado de \emph{projeção}). Mostre que \[V = \Ker T \oplus \mbox{Im} T\]
+\solucao{}
+\exercicio{18} Seja $V$ um $K$-espaço vetorial de dimensão finita e seja $T$ um operador linear de $V.$ Mostre que as seguintes afirmações são equivalentes:
+\dividiritens{
+\task[\pers{i}] $\Ker^2 T = \Ker T;$
+\task[\pers{ii}] $\mbox{Im}^2 T = \mbox{Im } T;$
+\task[\pers{iii}] $V = \Ker T \oplus \mbox{Im } T.$
+}
+
+\solucao{%https://www.ime.usp.br/~leila/2011p1.pdf 
+}
+\exercicio{19} Seja $V$ um $K$-espaço vetorial de dimensão finita e seja $T \colon V \to V$ uma transformação linear tal que $\mbox{posto} T^2 = \mbox{posto} T.$ Prove que $\Ker T \cap \mbox{Im } T = \{0\}.$
+\solucao{}
+\exercicio{20} Seja $V$ um $K$-espaço vetorial e sejam $S, T \in \mathcal{L}(V).$ Mostre que
+\[
+T(\Ker(S \circ T)) = \Ker S \cap \mbox{Im } T
+\]
+\solucao{}
+\exercicio{21} Sejam $V$ e $W$ dois espaços vetoriais sobre o corpo $K$ e sejam $S$ e $T$ duas transformações lineares de $V$ em $W,$ ambas de posto finito. Mostre que $S + T$ tem posto finito e que
+\[
+\abs{\mbox{posto } S - \mbox{posto } T} \le \mbox{posto }(T + S) \le \mbox{posto } S + \mbox{posto } T
+\]
+\solucao{}
 \newpage
 \section{\textcolor{Floresta}{Lista 1}}
 
@@ -59,7 +328,7 @@ Seja $A = \{ w_j \}_{j \in J}.$ Por hipótese, sabemos também que $A$ é um con
 \sum\limits_{n \in N} \alpha_n w_n = 0 \Rightarrow \alpha_n = 0, \ \forall \ n \in N
 \]
 
-Para mostrar que $S \cup A = \{v_i\}_{i\in I} \cup \{ w_j \}_{j \in J} = \{ u_p \}_{p \in I \cup J}$ é um conjunto linearmente independente de $V,$ precisamos mostrar que, para todo $L \subset I \cup J$ finito, temos que, para $\alpha_\ell \in L,$ com $\ell \in L,$ ocorre
+Para mostrar que $S \cup A = \{v_i\}_{i\in I} \cup \{ w_j \}_{j \in J} = \{ u_p \}_{p \in I \cup J}$ é um conjunto linearmente independente de $V,$ precisamos mostrar que, para todo $L \subset I \cup J$ finito, temos que, para $\alpha_\ell \in K,$ com $\ell \in L,$ ocorre
 \[
 \sum\limits_{\ell \in L} \alpha_\ell u_\ell = 0 \Rightarrow \alpha_\ell = 0, \ \forall \ \ell \in L
 \]
@@ -140,9 +409,103 @@ Portanto, $S \cup A$ é um conjunto gerador para $V.$
         \]
 }
 
-\solucao{}
+\solucao{
+\dividiritens{
+    \task[\pers{a}] A intenção será encontrar uma transformação linear adequada para poder aplicar o Primeiro Teorema do Isomorfismo e concluir o resultado desejado. Considere a aplicação
+    \[
+\fullfunction{T}{U}{\frac{U + W}{W}}{u}{T(u) = \overline{u} = u + W}
+    \]
+    
+    Observe que $T$ é uma transformação linear. De fato, segue trivialmente que:
+    \begin{itemize}
+        \item[$\clubsuit$] $\forall u, v \in V,$ temos que
+        \[
+        T(u + v) = \overline{u + v} = (u+v) + W = \textcolor{Green}{u + W} + \textcolor{Blue}{v + W} = \textcolor{Green}{\overline{u}} + \textcolor{Blue}{\overline{v}} = T(u) + T(v)  \]
+        
+        \item[$\textcolor{Red}{\varheart}$] $\forall u \in W, \forall \alpha \in K,$ temos que
+        \[
+        T(\alpha u) = \overline{\alpha u} = \alpha u + W = \alpha(\textcolor{Laranja}{u + W}) = \alpha(\textcolor{Laranja}{\overline{u}}) = \alpha T(u)
+        \]
+    \end{itemize}
+    
+    Sendo $T$ uma transformação linear, temos do Primeiro Teorema do Isomorfismo que
+    \[
+    \frac{V/U}{\Ker T} \cong \mbox{Im } T
+    \]
+    Calculemos $\Ker T$ e $\mbox{Im } T:$
+    \begin{itemize}
+        \item[$\spadesuit$] $\mbox{Im } T = \frac{U + W}{W}.$ Mostremos que $T$ é sobrejetora:
+        
+        Para $a \in \frac{U + W}{W},$ dado por $a = \overline{u + w},$ onde $u \in U$ e $w \in W,$ temos que
+        \[
+        a = \overline{u+ w} = (u+w) + W = (u+W) + \textcolor{DarkOrchid}{(w+W)} = (u + W) + \textcolor{DarkOrchid}{(0 + W)} = \]\[(u + 0) + W = u + W = \overline{u} = T(u)\]
+        
+        Logo, para todo $a  \in \frac{U + W}{W},$ existe um $u \in U$ tal que $T(u) = a.$ Logo, $T$ é sobrejetora, e portanto $\mbox{Im } T = \frac{U + W}{W}.$
+        \item[$\textcolor{Red}{\vardiamond}$] $\Ker T = U \cap W.$ Claramente, sabemos que, como $\Ker T = \{ u \in U : T(u) = \overline{0} \},$ temos que $\Ker T \subset U.$ Mas também temos que, para $a \in \Ker T,$ segue que $a \in U,$ e
+        \[
+        T(a) = \overline{0} = 0 + W \Rightarrow a - 0 \in W \Rightarrow a \in W
+        \]
+        Portanto, segue que $a \in U \cap W.$ Daí, $\Ker T = U \cap W.$
+    \end{itemize}
+    Finalmente, obtemos do Primeiro Teorema do Isomorfismo que
+    \[
+    \frac{U}{\textcolor{Mahogany}{\Ker T}} \cong \textcolor{NavyBlue}{\mbox{Im } T} \Rightarrow \frac{U}{\textcolor{Mahogany}{U \cap W}} \cong \textcolor{NavyBlue}{\frac{U + W}{W}}.
+    \]
+    
+    \task[\pers{b}] Utilizando a mesma estratégia do item (a), considere a aplicação
+    \[
+    \fullfunction{T}{\frac{V}{U}}{\frac{V}{W}}{v + U}{T(v + U) = v + W}
+    \]
+    }
+    Vejamos que $T$ está bem-definida, ou seja, representantes de uma mesma classe de equivalência no domínio correspondem a representantes de uma mesma classe de equivalência na imagem. Temos, para $\overline{v_1} = v_1 + U, \overline{v_2} = v_2 + U \in \frac{V}{U},$ que
+    
+    \[
+    \overline{v_1} = \overline{v_2} \Rightarrow v_1 - v_2 \in U \subset W \Rightarrow v_1 - v_2 \in W \Rightarrow v_1 + W = v_2 + W.
+    \]
+    
+    Note que utilizamos fortemente o fato de que $U \subset W$ para mostrar que $T$ está bem-definida. Além disso, $T$ é uma transformação linear. De fato:
+    \begin{itemize}
+        \item[$\clubsuit$] $\forall v_1 + U, v_2 + U \in \frac{V}{U},$ temos que
+        \[  T((v_1 + U) + (v_2 + U)) = T((v_1 + v_2) + U) = (v_1 + v_2) + W = \]\[\textcolor{Green}{(v_1 + W)} + \textcolor{Blue}{(v_2 + W)} = \textcolor{Green}{T(v_1 + U)} + \textcolor{Blue}{T(v_2 + U)} \]
+        
+        \item[$\textcolor{Red}{\varheart}$] $\forall v + U \in \frac{V}{U}, \forall \alpha \in K,$ temos que
+        \[
+        T(\alpha v + U) =  \alpha v + W  = \alpha \textcolor{Laranja}{(v + W)} =   \alpha \textcolor{Laranja}{T(v + U)}
+        \]
+    \end{itemize}
+    
+    Sendo $T$ uma transformação linear, temos do Primeiro Teorema do Isomorfismo que
+    \[
+    \frac{U}{\Ker T} \cong \mbox{Im } T
+    \]
+    Calculemos $\Ker T$ e $\mbox{Im } T:$
+    \begin{itemize}
+        \item[$\spadesuit$] $\mbox{Im } T = \frac{V}{W}.$ Claramente $T$ é sobrejetora:
+        
+        Para $v + W \in \frac{V}{W},$ temos que
+        \[
+        v + W = T(v + U)\]
+        
+        Logo, para todo $v + W  \in \frac{V}{W},$ existe um $v + U \in \frac{V}{U}$ tal que $T(v + U) = v + W.$ Logo, $T$ é sobrejetora, e portanto $\mbox{Im } T = \frac{V}{W}.$
+        \item[$\textcolor{Red}{\vardiamond}$] $\Ker T = \frac{W}{U}.$ Observe que
+        \[
+        v + U \in \Ker T \Leftrightarrow T(v + U) = v + W = 0 + W \Leftrightarrow v \in W \Leftrightarrow v + U \in \frac{W}{U}.
+        \]
+        Logo, $\Ker T = \frac{W}{U}.$
+    \end{itemize}
+    Finalmente, obtemos do Primeiro Teorema do Isomorfismo que
+    \[
+    \frac{V/U}{\textcolor{Mahogany}{\Ker T}} \cong \textcolor{NavyBlue}{\mbox{Im } T} \Rightarrow \frac{V/U}{\textcolor{Mahogany}{W/U}} \cong \textcolor{NavyBlue}{\frac{V}{W}}.
+    \]
+    
+    
+    
 
-\exercicio{4} Seja $V$ um $K$-espaço vetorial e sejam $U$ e $W$ subespaços de $V$ tais que $\dim (V/U) = m$ e $\dim (V/W) = n.$ Prove que $\dim (V/(U \cap W)) \le m + n.$
+
+
+}
+
+\exercicio{4} Seja $V$ um $K$-espaço vetorial e sejam $U$ e $W$ subespaços de $V$ tais que12 $\dim (V/U) = m$ e $\dim (V/W) = n.$ Prove que $\dim (V/(U \cap W)) \le m + n.$
 
 \solucao{Das informações fornecidas no enunciado, sabemos que:
 \[
@@ -196,6 +559,7 @@ Observe que $W \subseteq V,$ e além disso, $W \cong V.$ Temos também que
 \[
 V = W \oplus \left(  \bigoplus_{i=1}^\infty Ke_{2i+1} \right)
 \]
+}
 Portanto, tomando
 \[
 W = \bigoplus_{i=1}^\infty Ke_{2i}, \ U = \bigoplus_{i=1}^\infty Ke_{2i+1}, \ W^{\prime} = V, \ \mbox{e} \ U^{\prime} = \{ 0 \},
@@ -212,7 +576,19 @@ mas
 \[
 \bigoplus_{i=1}^\infty Ke_{2i+1} \ncong \{ 0 \} \Rightarrow U \ncong U^{\prime}
 \]
-        \task[\pers{b}] 
+
+\dividiritens{
+        \task[\pers{b}] Considere $K^\mathbb{N} = \{ (a_0, a_1, a_2, \ldots ) | a_i \in K \},$ e sejam:
+        \[
+        V_i = \{ (0, a_1, 0, a_3, \ldots ) | a_{2i+1} \in K \} \quad \mbox{e} \quad V_p = \{ (a_0,0, a_2, 0, \ldots ) | a_{2i} \in K \}.
+        \]
+        Tome $V = K^\mathbb{N},$ $V^{\prime} = V_i,$ $U = V_p$ e $U^{\prime} = \{ 0 \}.$ 
+        Temos então que $V \cong V^{\prime},$ pois $K^\mathbb{N} \cong V_i,$ e também \[V = V_i \oplus V_p = W \oplus U \quad \mbox{e} \quad V^{\prime} = V_i \oplus \{ 0 \} = W \oplus U^{\prime},\] mas \[V_p \ncong \{ 0 \} \Rightarrow U \ncong U^{\prime}.\] Portanto, temos que
+        \[
+        \left.\begin{array}{l}
+        V \cong V^{\prime} \\ V = W \oplus U \\ V^{\prime} = W \oplus U^{\prime}\\
+        \end{array} \right \} \nRightarrow U \cong U^{\prime}
+        \]
     }
 \textbf{Observação:} Cabe salientar que ambos os itens dessa questão são válidos quando $V$ é um espaço vetorial de dimensão finita.
 }
@@ -354,7 +730,10 @@ Em outras palavras, $\overline{T}$ está bem definida se $W$ for um subespaço $
         \item[$\textcolor{red}{\vardiamond}$] Para todos $u + W, v + W \in V/W,$ lembrando que $T$ é linear, temos que
      \[        \overline{T}((u+W) + (v + W)) = \overline{T}((u+v)+ W) = \textcolor{RawSienna}{T(u+v)} + W = \textcolor{RawSienna}{T(u)+T(v)}+ W = \]\[\textcolor{red}{(T(u) + W)} + \textcolor{Laranja}{(T(v) + W)} = \textcolor{red}{\overline{T}(u+W)} + \textcolor{Laranja}{\overline{T}(v+W)}      \]
         Logo, $\overline{T}(\overline{u}+\overline{v}) = \overline{T}(\overline{u})+ \overline{T}(\overline{v}).$
-        
+        \end{itemize}
+        }
+        \newpage
+        \begin{itemize}
        \item[$\clubsuit$] Para todo $v + W \in V/W,$ e para todo $\alpha \in K,$ temos que
        \[         \overline{T}(\alpha(v+W)) = \overline{T}( (\alpha v)+W) = \textcolor{RawSienna}{T(\alpha v)} + W = \textcolor{RawSienna}{\alpha T(v)} + W =  \]\[ \alpha \textcolor{Laranja}{(T(v) +W)} = \alpha \textcolor{Laranja}{\overline{T}(v + W)}       \]
         Portanto, $\overline{T}(\alpha \overline{v}) = \alpha \overline{T}(\overline{v}).$
@@ -386,7 +765,6 @@ Em outras palavras, $\overline{T}$ está bem definida se $W$ for um subespaço $
      \]
     \end{itemize}
 
-}
     }
 
 \exercicio{8} Seja $T \in \mathcal{L}(\mathbb{R}^3)$ o operador linear definido por $T(x, y, z) = (x, x, x).$ Seja $T \colon \mathbb{R}^3/W \to \mathbb{R}^3/W$
@@ -497,7 +875,80 @@ Pelo Primeiro Teorema do Isomorfismo,
 \[
 \det \left[ \begin{array}{cc} 0 & C \\ A & B \end{array} \right] = (-1)^n \det(A) \det(C).
 \]
-\solucao{}
+\solucao{Considere
+\[
+\fullfunction{F_1}{\mathcal{M}_n(K)}{K}{X}{F_1(X) = \det \begin{bmatrix} 0 & X \\ A & B \end{bmatrix}}
+\]
+Observe que $F_1$ é $n$-linear e alternada nas linhas de $X.$ Logo, existe um $\lambda_1 \in K$ tal que
+\[
+F_1(X) = \lambda_1 \det(X).
+\]
+Em particular,
+\[
+\lambda_1 = \lambda_1 \cdot \textcolor{RubineRed}{1} = \lambda_1 \textcolor{RubineRed}{\det (I_n)} = F_1(I_n) = \det \begin{bmatrix} 0 & I_n \\ A & B \end{bmatrix} \Rightarrow \boxed{\lambda_1 =\det \begin{bmatrix} 0 & I_n \\ A & B \end{bmatrix}}
+\]
+Considere agora
+\[
+\fullfunction{F_2}{\mathcal{M}_n(K)}{K}{Y}{F_2(Y) = \det \begin{bmatrix} 0 & I_n \\ Y & B \end{bmatrix}}
+\]
+Temos que $F_2$ é $n$-linear e alternada nas colunas de $Y.$ Logo, existe um $\lambda_2 \in K$ tal que 
+\[
+F_2(Y) = \lambda_2 \det(Y).
+\]
+Além disso,
+\[
+\lambda_2 = \lambda_2 \cdot \textcolor{RubineRed}{1} = \lambda_2 \textcolor{RubineRed}{\det (I_n)} = F_2(I_n) = \det \begin{bmatrix} 0 & I_n \\ I_n & B \end{bmatrix} = (-1)^n \Rightarrow \boxed{\lambda_2 = (-1)^n}
+\]
+
+Logo,
+\[
+\lambda_1 = \det \begin{bmatrix} 0 & I_n \\ A & B \end{bmatrix} = F_2(A) = \textcolor{OliveGreen}{\lambda_2} \det(A) = \textcolor{OliveGreen}{(-1)^n}\det(A)
+\]
+Consequentemente,
+\[
+ \det \begin{bmatrix} 0 & C \\ A & B \end{bmatrix} = F_1(C) = \textcolor{RawSienna}{\lambda_1} \det(C) = \textcolor{RawSienna}{(-1)^n \det(A)} \det(C)
+\]
+Portanto, concluímos que 
+\[
+\det \left[ \begin{array}{cc} 0 & C \\ A & B \end{array} \right] = (-1)^n \det(A) \det(C).
+\]
+\textbf{Observação:} Mas porquê $\det \begin{bmatrix} 0 & I_n \\ I_n & B \end{bmatrix} = (-1)^n?$ Vamos explicitar essa matriz:
+\[M = \begin{bmatrix} 0 & \textcolor{Green}{I_n} \\ \textcolor{Red}{I_n} & B \end{bmatrix} =
+ \left[\begin{array}{ccccc|ccccc} 0 & 0 & 0 & \ldots & 0 & \textcolor{Green}{1} & \textcolor{Green}{0} & \textcolor{Green}{0} & \textcolor{Green}{\ldots} & \textcolor{Green}{0} \\ 
+ 0 & 0 & 0 & \ldots & 0 & \textcolor{Green}{0} & \textcolor{Green}{1} & \textcolor{Green}{0} & \textcolor{Green}{\ldots} & \textcolor{Green}{0} \\ 
+ 0 & 0 & 0 & \ldots & 0 & \textcolor{Green}{0} & \textcolor{Green}{0} & \textcolor{Green}{1} & \textcolor{Green}{\ldots} & \textcolor{Green}{0} \\
+ \vdots & \vdots & \vdots & \ddots & \vdots & \textcolor{Green}{\vdots}& \textcolor{Green}{\vdots} & \textcolor{Green}{\vdots} & \textcolor{Green}{\ddots} & \textcolor{Green}{\vdots} \\ 
+  0 & 0 & 0 & \ldots & 0 & \textcolor{Green}{0} & \textcolor{Green}{0} & \textcolor{Green}{0} & \textcolor{Green}{\ldots} & \textcolor{Green}{1} \\ \hline
+  
+  \textcolor{Red}{1} & \textcolor{Red}{0} & \textcolor{Red}{0} & \textcolor{Red}{\ldots} & \textcolor{Red}{0} & b_{11} & b_{12} & b_{13} & \ldots & b_{1n} \\
+\textcolor{Red}{0} & \textcolor{Red}{1} & \textcolor{Red}{0} & \textcolor{Red}{\ldots} & \textcolor{Red}{0} & b_{21} & b_{22} & b_{23} & \ldots & b_{2n} \\ 
+\textcolor{Red}{0} & \textcolor{Red}{0} & \textcolor{Red}{1} & \textcolor{Red}{\ldots} & \textcolor{Red}{0} & b_{31} & b_{32} & b_{33} & \ldots & b_{3n} \\ 
+\textcolor{Red}{\vdots} &\textcolor{Red}{\vdots} & \textcolor{Red}{\vdots} & \textcolor{Red}{\ddots} & \textcolor{Red}{\vdots} & \vdots & \vdots & \vdots & \ddots & \vdots \\ 
+\textcolor{Red}{0} & \textcolor{Red}{0} & \textcolor{Red}{0} & \textcolor{Red}{\ldots} & \textcolor{Red}{1} & b_{n1} & b_{n2} & b_{n3} & \ldots & b_{nn} \\ 
+ \end{array}\right]\]
+Por definição, temos que \[\det M = \sum\limits_{\sigma \in S_{2n}} \sgn(\sigma) m_{1\sigma(1)} m_{2 \sigma(2)} \ldots m_{2n \sigma(2n)}.\]
+Mas observe que $m_{1 \sigma(1)} \neq 0$ apenas quando $\sigma(1) = n + 1.$ Também temos que  $m_{2 \sigma(2)} \neq 0$ apenas quando $\sigma(2) = n + 2.$ Analogamente, concluímos que, para todo $k \le n,$
+\[
+m_{k \sigma(k)} = \begin{cases}
+1, & \mbox{se } \sigma(k) = n + k;\\
+0, & \mbox{caso contrário.}
+\end{cases},
+\]
+já que $m_{k \sigma(k)}$ estará na área em \textcolor{Green}{verde} na matriz. Portanto, os somandos serão não nulos somente para as permutações que satisfazem $\sigma(k) = n + k,$ para $k \le n.$ Então, temos  que para $n < \ell \le 2n,$ $\sigma(\ell) = p,$ onde $p \in \{1, 2, \ldots, n \}$
+Agora, veja que $m_{\ell \sigma(\ell)}$ se encontrará na área em \textcolor{Red}{vermelho} na matriz, e portanto
+\[
+m_{\ell \sigma(\ell)} = \begin{cases}
+1, & \mbox{se } \sigma(\ell) = \ell - n;\\
+0, & \mbox{caso contrário.}
+\end{cases}
+\]
+Logo, a única permutação para a qual $m_{g \sigma(g)} \neq 0 \ \forall g \in \{1, 2, \ldots, 2n \}$ será a permutação
+\[
+\rho = (1 \ \ n+1) (2 \ \ n+2) \ldots (n \ \ 2n),
+\]
+que é composta por uma quantidade ímpar de transposições, se $n $ é ímpar, ou por uma quantidade par de transposições, se $n$ é par. Logo, $\sgn(\rho) = (-1)^n.$ Portanto, concluímos que
+ \[\det M = \sum\limits_{\sigma \in S_{2n}} \sgn(\sigma) m_{1\sigma(1)} m_{2 \sigma(2)} \ldots m_{2n \sigma(2n)} = \textcolor{Magenta}{\sgn(\rho)} m_{1 \textcolor{Magenta}{\rho(1)}} m_{2 \textcolor{Magenta}{\rho(2)}} \ldots m_{2n \textcolor{Magenta}{\rho(2n)}} =\]\[ \textcolor{Magenta}{(-1)^n} m_{1 \textcolor{Magenta}{(n+1)}} m_{2 \textcolor{Magenta}{(n+2)}} \ldots m_{2n \textcolor{Magenta}{(n)}} = (-1)^n \]
+}
 
 \exercicio{12} Calcule o determinante da matriz de Vandermonde, isto é, prove que
 \[
@@ -550,8 +1001,45 @@ Assim, segue o resultado.
 \[
 \det \left[ \begin{array}{cccc} a & -b & -c & -d \\ b & a & -d & c \\ c & d & a & -b \\ d & -c & b & a \end{array} \right] = (a^2 + b^2 + c^2 + d^2)^2
 \]
-\solucao{
-Primeiramente, vamos mostrar que, para $A, B \in \mathcal{M}_n(\mathbb{C}),$ temos que
+\solucao{ 
+Considere
+\[
+A = \begin{bmatrix} a & -b \\ b & a \end{bmatrix} \quad \mbox{ e } \quad B = \begin{bmatrix} c & d \\ d & -c \end{bmatrix},
+\]
+e seja
+\[
+C  = \det \begin{bmatrix} A & -B \\ B & A \end{bmatrix}
+\]
+Observe que a matriz $CC^t$ é diagonal, já que as colunas são ortogonais. Como $\det(C) = \det(C^t),$ temos que
+\[
+\det(C^2) = \det(C) \textcolor{Red}{\det(C)} = \det(C) \textcolor{Red}{\det(C^t)} = \det(CC^t)
+\]
+De fato, temos que
+\[
+CC^t = \left(\begin{matrix}
+a^2+b^2+c^2+d^2 & 0 & 0 & 0 \\
+0 & a^2+b^2+c^2+d^2 & 0 & 0 \\
+0 & 0 & a^2+b^2+c^2+d^2 & 0 \\
+0 & 0 & 0 & a^2+b^2+c^2+d^2
+\end{matrix}\right)
+\]
+Daí, 
+\[
+\det(CC^t) = (a^2+b^2+c^2+d^2)^4
+\]
+Portanto, 
+\[
+(\det(C))^2 = \det(CC^t) = (a^2+b^2+c^2+d^2)^4 \Rightarrow \det(C) = \pm (a^2+b^2+c^2+d^2)^2.
+\]
+Mas observe que o coeficiente de $a^4$ no determinante de $C$ deve ser $1,$ o que impossibilita a opção $\det(C) = - (a^2+b^2+c^2+d^2)^2,$ já que nesse caso o coeficiente de $a^4$ seria $-1$. Logo, segue que 
+\[
+\det(C) = (a^2+b^2+c^2+d^2)^2
+\]
+}
+
+
+
+\textbf{\textcolor{Red}{Outra solução:}} (assumindo $K = \mathbb{C}$) Primeiramente, vamos mostrar que, para $A, B \in \mathcal{M}_n(\mathbb{C}),$ temos que
 \[
 \det \begin{bmatrix} A & -B \\ B & A \end{bmatrix} = \abs{\det(A + Bi)}^2
 \]
@@ -572,7 +1060,6 @@ temos que
 \[
 \abs{\det(A + Bi)}^2 = \abs{\det \begin{bmatrix} a + ci & -b + di \\ b+di & a - ci \end{bmatrix}}^2 = \abs{(a+ci)(a-ci) - (di - b)(di+b)}^2  = \]\[\abs{a^2 + c^2 - (- b^2 - d^2)}^2 = \abs{a^2 + c^2 + b^2 + d^2}^2 = (a^2 + b^2 + c^2 + d^2)^2
 \]
-}
 
 
 \exercicio{14} Sejam $A, B \in \mathcal{M}_n(K).$ Mostre que se $A$ é inversível então existem no máximo $n$ escalares $c$
@@ -676,6 +1163,8 @@ Observe que $cA + B$ não será inversível quando $\det(cI + BA^{-1}) = 0,$ ou 
     \task[\pers{a}] Para obter o resultado desejado, a ideia será multiplicar a matriz em questão por uma matriz conveniente cujo determinante é $1.$ Dessa forma, utilizando as observações acima, sendo $I_n$ a notação para a matriz identidade $n \times n,$ e lembrando que $D$ é invertível, temos que
 \[ \left( \begin{array}{cc} A & B \\ C & D \end{array} \right)  \left( \begin{array}{cc} I_n & 0 \\ -D^{-1}C & I_n \end{array} \right) = \left( \begin{array}{cc} A - BD^{-1}C & B \\ 0 & D \end{array} \right)
     \]
+    }
+
 Calculando os determinantes, vem
 \[
 \det \left( \left[ \begin{array}{cc} A & B \\ C & D \end{array} \right] \left[ \begin{array}{cc} I_n & 0 \\ -D^{-1}C & I_n \end{array} \right] \right) = \det \left( \begin{array}{cc} A - BD^{-1}C & B \\ 0 & D \end{array} \right) \Rightarrow
@@ -692,6 +1181,7 @@ Calculando os determinantes, vem
 \[
 \boxed{\det \left[ \begin{array}{cc} A & B \\ C & D \end{array} \right] =  \det \left(AD - BD^{-1}CD \right)}
 \]
+    \dividiritens{
     \task[\pers{b}] Utilizando as observações acima, sendo $I_n$ a notação para a matriz identidade $n \times n,$ e usando o fato de que $CD = DC,$ temos que
     \[
    \left( \begin{array}{cc} A & B \\ C & D \end{array} \right)  \left( \begin{array}{cc} D & 0 \\ -C & I_n \end{array} \right) = \left( \begin{array}{cc} AD - BC & B \\ \textcolor{red}{CD - DC} & D \end{array} \right) = \left( \begin{array}{cc} AD - BC & B \\ \textcolor{red}{0} & D \end{array} \right) 
@@ -710,7 +1200,8 @@ Calculando os determinantes, vem
                \item $(XY)^t = Y^tX^t;$
                \item $\det(X^t) = \det(X).$
            \end{itemize}
-           de posse dessas propriedades, observe que
+           }
+           De posse dessas propriedades, observe que
            \[
             \left[ \begin{array}{cc} A & B \\ C & D \end{array} \right]^t =   \left[ \begin{array}{cc} A^t & C^t \\ B^t & D^t \end{array} \right]
            \]
@@ -735,14 +1226,13 @@ Calculando os determinantes, vem
        \det \left[\begin{array}{cc} A^t & C^t \\ B^t & D^t \end{array} \right] = \det \left((DA - CB)^t \right) \Rightarrow \boxed{  \det \left[\begin{array}{cc} A^t & C^t \\ B^t & D^t \end{array} \right] = \det \left(DA - CB \right)}
     \]
     }
-    }
 
 \exercicio{16} Seja $A \in \mathcal{M}_{m \times n}(K).$ Prove que
 \[
 \det(I_m + AA^t) = \det(I_n + A^tA)
 \]
 
-Observação: Tal identidade é conhecida como \emph{identidade de Weinstein-Aronszajn}.
+Observação: Tal identidade é um caso particular da conhecida como \emph{identidade de Weinstein-Aronszajn}.
 \solucao{
 Se $A$ é uma matriz:
 \[
@@ -751,6 +1241,21 @@ Se $A$ é uma matriz:
 Desse modo,
 \[\det\left(  \begin{pmatrix}I_m&0\\A^T&I_n\end{pmatrix}\begin{pmatrix}I_m+AA^T&A\\0&I_n\end{pmatrix}\begin{pmatrix}I_m&0\\-A^T&I_n\end{pmatrix} \right) = \det\begin{pmatrix}I_m&A\\0&I_n+A^TA\end{pmatrix} \Rightarrow\]\[ \textcolor{Verde}{\det \begin{pmatrix}I_m&0\\A^T&I_n\end{pmatrix}}  \textcolor{Blue}{\det \begin{pmatrix}I_m+AA^T&A\\0&I_n\end{pmatrix}} \textcolor{Laranja}{\det \begin{pmatrix}I_m&0\\-A^T&I_n\end{pmatrix}}  = \textcolor{Rhodamine}{\det\begin{pmatrix}I_m&A\\0&I_n+A^TA\end{pmatrix} } \Rightarrow \]\[\textcolor{Verde}{\det(I_m) \det(I_n)}  \textcolor{Blue}{\det \left(I_m+AA^T\right) \det(I_n)} \textcolor{Laranja}{\det(I_m) \det(I_n)}  = \textcolor{Rhodamine}{\det(I_m) \det(I_n+A^TA)} \Rightarrow \]\[ \boxed{\det \left(I_m+AA^T\right) = \det(I_n+A^TA)}\]
 }
+\textbf{\textcolor{Red}{Outra solução:}} Vamos utilizar uma versão estendida do item a do exercício 15: Sendo $A \in \mathcal{M}_{n}(K)$ $B \in \mathcal{M}_{m \times n}(K),$ $C \in \mathcal{M}_{n \times m}(K)$ e $D \in \mathcal{M}_{n},$ com $D$ invertível, temos que
+\[\det \left[ \begin{array}{cc} A & B \\ C & D \end{array} \right] = \det(D) \det(A - BD^{-1}C)\]
+Daí, tomando $A = I_m,$ $B = A,$ $C = -A^t$ e $D = I_n,$ temos que
+
+\[\det \left[ \begin{array}{cc} \textcolor{JungleGreen}{I_m} & \textcolor{Magenta}{A} \\ \textcolor{MidnightBlue}{-A^t} & \textcolor{Bittersweet}{I_n} \end{array} \right] = 
+\det(\textcolor{Bittersweet}{I_n}) \det(\textcolor{JungleGreen}{I_m} -  \textcolor{Magenta}{A}\textcolor{Bittersweet}{I_n}^{-1}\textcolor{MidnightBlue}{(-A^t)}) = \underbrace{\det(I_n)}_{= 1}\det(I_m + AA^t) = \det(I_m + AA^t)\]
+
+Por outro lado, observando que
+\[
+\det \begin{bmatrix} A & B \\ C & D \end{bmatrix} = \det \begin{bmatrix} D & C \\ B & A \end{bmatrix}, 
+\]
+temos
+\[\det \left[ \begin{array}{cc} \textcolor{Bittersweet}{I_n}  & \textcolor{MidnightBlue}{-A^t} \\ \textcolor{Magenta}{A}  & \textcolor{JungleGreen}{I_m} \end{array} \right] = \det(\textcolor{JungleGreen}{I_m}) \det(\textcolor{Bittersweet}{I_n} - \textcolor{MidnightBlue}{(-A^t)}\textcolor{JungleGreen}{I_m}^{-1}\textcolor{Magenta}{A}) = \underbrace{\det(I_m)}_{= 1}\det(I_n + A^tA) = \det(I_n + A^tA)\]
+
+Portanto, concluímos que $\det(I_m + AA^t) =\det(I_n + A^tA).$
 
 \exercicio{17} Seja $\sigma \in S_n$ e defina 
 \[
@@ -758,8 +1263,14 @@ Desse modo,
 \]
 para $i = \{ 1, 2, \ldots, n \}$ e $\{e_1, e_2, \ldots, e_n\}$ é a base canônica de $K^n.$ Calcule $\det(T_\sigma).$
 \solucao{
-Observe que $T_\sigma$ está permutando as colunas da matriz cujas colunas são os elementos da base canônica. Assim, para cada coluna $i,$ vamos associar o vetor $e_{\sigma(i)}.$ Então, 
-
+Observe que $T_\sigma$ está permutando as colunas da matriz cujas colunas são os elementos da base canônica. Assim, para cada coluna $i,$ vamos associar o vetor $e_{\sigma(i)}.$ Então, sendo $A$ a matriz de $T_{\sigma}$ na base canônica, temos que $a_{\ell k} = 1$ se e somente se $k = \sigma (\ell)$. Da definição de determinante, sabemos que
+\[
+\det A = \sum\limits_{\tau \in S_n} \sgn(\tau) a_{1 \tau(1)} a_{2 \tau(2)} \ldots a_{n \tau(n)}
+\]
+Mas observe que os somandos acima serão todos não nulos apenas se $\tau = \sigma.$ Então,
+\[
+\det A = \sum\limits_{\tau \in S_n} \sgn(\tau) a_{1 \tau(1)} a_{2 \tau(2)} \ldots a_{n \tau(n)} = \sgn(\sigma) a_{1 \sigma(1)} a_{2 \sigma(2)} \ldots a_{n \sigma(n)} = \sgn(\sigma) 1 \cdot  1 \cdot \ldots \cdot 1 = \sgn(\sigma).
+\]
 
 Portanto, $\det(T_{\sigma}) = \sgn(\sigma).$
 
@@ -923,7 +1434,7 @@ A + B & B \\ 0& A-B
 }
 
 \exercicio{24} Seja $K$ um corpo e $V$ um espaço vetorial de dimensão finita $n.$ Sejam $B = (e_1,\ldots ,e_n)$ e $C = (d_1, \ldots , d_n)$ duas bases de $V.$ Sejam $\varphi$ a única forma $n$-linear tal que $\varphi(e_1, \ldots ,e_n) = 1$ e $\psi$ a única forma $n$-linear tal que $\psi(d_1, \ldots, d_n) = 1.$ Qual o valor de $\psi(e_1, \ldots ,e_n)$ e de $\varphi(d_1, \ldots, d_n)?$ Use isso para dar uma relação entre $\psi$ e $\varphi.$
-\solucao{}
+%\solucao{Sabemos que, se $\varphi \colon V^n \to K$ é uma forma $n$-linear, então\[F_{\varphi} = \sum\limits_{\sigma \in S_n} \sgn(\sigma)(\sigma \varphi) \]é uma forma $n$-linear alternada. Além disso, se $F_{\varphi}$ é uma forma $n$-linear alternada e $\{e_1, \ldots, e_n \}$ é uma base de $V,$ então esta é completamente determinada pelo valor $F_{\varphi}(e_1, \ldots, e_n),$ ou seja, para $v_1, \ldots v_n \in V,$ com $v_i = \sum\limits_{j = 1}^n \alpha_{ij} e_{j},$ $i = 1, \ldots, n$ e $\alpha_{ij} \in K,$ \[F_{\varphi}(v_1, \ldots, v_n) = \sum\limits_{\sigma \in S_n} \alpha_{1 \sigma(1)} \ldots \alpha_{n \sigma(n)} F_{\varphi}(e_1, \ldots, e_n)\]Observe que\[F_{\varphi}(e_1, \ldots, e_n) = \sum\limits_{\sigma \in S_n} \sgn(\sigma)(\sigma \varphi)(e_1, \ldots, e_n) = \sum\limits_{\sigma \in S_n} \sgn(\sigma)\varphi(e_{\sigma(1)}, \ldots, e_{\sigma(n)})\]Vamos calcular $\varphi(d_1, \ldots, d_n).$ Temos que $d_i = \sum\limits_{j = 1}^n \alpha_{ij} e_j,$ com $i = 1, \ldots, n$ e $\alpha_{ij} \in K.$ Então\[F_{\varphi}(d_1, \ldots, d_n) = \sum\limits_{\sigma \in S_n} \alpha_{1 \sigma(1)} \ldots \alpha_{n \sigma(n)} \textcolor{Brown}{F_{\varphi}(e_1, \ldots, e_n)} =\]\[ \sum\limits_{\sigma \in S_n} \alpha_{1 \sigma(1)} \ldots \alpha_{n \sigma(n)} \textcolor{Brown}{ \sum\limits_{\sigma \in S_n} \sgn(\sigma)\varphi(e_{\sigma(1)}, \ldots, e_{\sigma(n)})}=\]\[\sum\limits_{\sigma \in S_n} \sgn(\sigma) \alpha_{1 \sigma(1)} \ldots \alpha_{n \sigma(n)} \varphi(e_{\sigma(1)}, \ldots, e_{\sigma(n)})\]}
 
 \exercicio{25} Seja $K$ um corpo, $n$ um inteiro positivo e $K_n[t]$ o conjunto de polinômios de grau menor ou igual que $n$ com coeficientes em $K.$ Sejam $t_1,  \ldots, t_{n+1} \in K$ dois a dois distintos. Considere para $i = 1, \ldots, n+1$ as funções de avaliação
 \[\fullfunction{\tau_i}{K_n[t]}{K}{p(t)}{\tau_i(p(t)) = p(t_i)}\]
@@ -1067,71 +1578,575 @@ A^{-1} + B^{-1} = (A + B)^{-1}
     \task[\pers{b}] Encontre todos os valores de $n$ para os quais o maior determinante possível para $\det(A_n)$ é um número primo.
     %https://math.stackexchange.com/questions/1291083/matrix-with-prime-entries-and-largest-possible-determinant
     }
-\newpage
-\section{\textcolor{Floresta}{Lista 2 (Provável)}}
 
+\newpage
+\section{\textcolor{Floresta}{Lista 2}}
 
 \exercicio{1} Seja $V$ um espaço vetorial sobre um corpo $K$ e $T \in \mathcal{L}(V).$ Sejam $\lambda \in K$ um autovalor de $T$ e $f(t) \in K[t].$ Mostre que $f(\lambda)$ é um autovalor de $f(T).$
+\solucao{
 
- \solucao{}
+Considere $f(t) = \alpha^n t^n + \alpha^{n-1} t^{n-1} + \ldots + \alpha_0.$ Sendo $\lambda$ um autovalor de $T,$ sabemos que existem um $v \neq 0$ tal que $T(v) = \lambda v.$ Lembrando que $T^n(v) = \lambda^n v,$ temos que
+\[
+\begin{array}{rcl}
+(f(T))(v) &=& (\alpha^n T^n + \alpha^{n-1} T^{n-1} + \ldots + \alpha_1T + \alpha_0)(v)\\&=&
+\alpha^n \textcolor{Blue}{T^n(v)} + \alpha^{n-1} \textcolor{Green}{T^{n-1}(v)}+ \ldots + \alpha_1 \textcolor{Red}{T(v)} + \alpha_0 \textcolor{Violet}{I(v)}\\&=&
+\alpha^n \textcolor{Blue}{\lambda^n v} + \alpha^{n-1} \textcolor{Green}{\lambda^{n-1} v}+ \ldots + \alpha_1 \textcolor{Red}{\lambda v} + \alpha_0 \textcolor{Violet}{\lambda^0 v}\\&=&
+\alpha^n \lambda^n v + \alpha^{n-1} \lambda^{n-1} v+ \ldots + \alpha_1 \lambda v + \alpha_0 \lambda^0 v\\&=& 
+(\alpha^n \lambda^n  + \alpha^{n-1} \lambda^{n-1} + \ldots + \alpha_1 \lambda + \alpha_0)v = f(\lambda) v
+\end{array}
+\]
+Portanto, concluímos que $(f(T))(v) = f(\lambda) v.$ Como $v \neq 0,$ temos que $f(\lambda)$ é autovalor de $f(T).$
+
+}
  
- \exercicio{2} Seja $V$ um $K$-espaço de dimensão finita $n$ e seja $T \colon V \to V$ um operador linear. Mostre que se $T$ tem $n$ autovalores distintos então $T$ é diagonalizável.
-  \solucao{}
+\exercicio{2} Seja $V$ um $K$-espaço de dimensão finita $n$ e seja $T \colon V \to V$ um operador linear. Mostre que se $T$ tem $n$ autovalores distintos então $T$ é diagonalizável.
+\solucao{
+
+Sejam $\lambda_1,\dots,\lambda_n$ autovalores distintos. Para cada $i$ existe um $v_i\neq 0$ tal que $T(v_i)=\lambda_i v_i$.
+
+\medskip
+\noindent
+Se:
+\[
+\alpha_1v_1+\dots\alpha_nv_n=0,
+\]
+então para todo polinômio $p\in K[t]$ temos:
+\[
+p(T)(\alpha_1v_1+\dots\alpha_nv_n)=p(T)(0),
+\]
+aí:
+\[
+\alpha_1p(T)(v_1)+\dots\alpha_np(T)(v_n)=0,
+\]
+aí, pelo exercício 1 temos:
+\[
+\alpha_1p(\lambda_1)v_1+\dots\alpha_np(\lambda_n)v_n=0.
+\]
+Seria muito bom podermos encontrar um polinômio $p$ tal que:
+\[
+p(\lambda_1)=1,\quad p(\lambda_2)=0,\quad \dots,\quad p(\lambda_n)=0.
+\]
+Sabemos que o polinômio:
+\[
+q(t)=(x-\lambda_2)\dots(x-\lambda_n)
+\]
+satisfaz:
+\[
+q(\lambda_2)=0,\quad \dots,\quad q(\lambda_n)=0.
+\]
+O valor de $q(\lambda_1)$ pode não ser $1$, mas sabemos que $q(\lambda_1)\neq 0$, aí basta considerarmos:
+\[
+p(t)=\frac{q(t)}{q(\lambda_1)}.
+\]
+Aplicando este $p$ na equação:
+\[
+\alpha_1p(\lambda_1)v_1+\dots\alpha_np(\lambda_n)v_n=0,
+\]
+então obtemos:
+\[
+\alpha_1v_1=0,
+\]
+mas $v_1\neq 0$, assim $\alpha_1=0$. Analogamente $\alpha_2=\dots=\alpha_n$. Logo a sequência $(v_1,\dots,v_n)$ é linearmente independente, mas $\dim V=n$, aí o conjunto $\{v_1,\dots,v_n\}$ forma uma base de $V$. Logo $T$ é diagonalizável.
+
+}
  
- \exercicio{3} Sejam $V$ um $K$-espaço de dimensão finita, $T \in\mathcal{L}(V)$ e $\lambda \in K$ um autovalor de $T.$ Chamamos de \emph{multiplicidade algébrica} de $\lambda$ ao maior inteiro $m$ tal que $(t - \lambda)^m$ divida o polinômio característico $p_T(t)$ de $T.$ A dimensão do autoespaço $V_T(\lambda)$ é a \emph{multiplicidade geométrica} de $\lambda.$
- 
- \dividiritens{
-     \task[\pers{a}] Mostre que a multiplicidade geométrica de $\lambda$ é sempre menor ou igual à multiplicidade algébrica de $\lambda$.
+\exercicio{3} Sejam $V$ um $K$-espaço de dimensão finita, $T \in\mathcal{L}(V)$ e $\lambda \in K$ um autovalor de $T.$ Chamamos de \emph{multiplicidade algébrica} de $\lambda$ ao maior inteiro $m$ tal que $(t - \lambda)^m$ divida o polinômio característico $p_T(t)$ de $T.$ A dimensão do autoespaço $V_T(\lambda)$ é a \emph{multiplicidade geométrica} de $\lambda.$
+\dividiritens{
+\task[\pers{a}] Mostre que a multiplicidade geométrica de $\lambda$ é sempre menor ou igual à multiplicidade algébrica de $\lambda$.
+\task[\pers{b}] Mostre que $T$ é diagonalizável se, e somente se, $p_T(t)$ é produto de fatores lineares e, para cada autovalor $\lambda$ de $T$, as multiplicidades algébrica e geométrica de $\lambda$ coincidem.
+}
+\solucao{
+\dividiritens{
+\task[\pers{a}]  Seja $m$ a multiplicidade geométrica de $\lambda$. Então $V_T(\lambda)$ tem uma base $\{e_1,\dots,e_m\}$. Podemos completar para a base $B=\{e_1,\dots,e_m,e_{m+1},\dots,e_n\}$ de $V$. Assim temos:
+\[
+[T]_B=
+\begin{pmatrix}
+\lambda I_m&X\\0&Y
+\end{pmatrix},
+\]
+Calculando o polinômio característico de $T,$ temos
+\[
+p_T(t)= \det(tI - [T]_B) = \det \left( \begin{pmatrix}
+ t I_m&0\\0&tI
+\end{pmatrix}  - \begin{pmatrix}
+\lambda I_m&X\\0&Y
+\end{pmatrix} \right) =
+\]
+\[
+\det\begin{pmatrix}
+(t-\lambda)I_m&X\\0&tI-Y
+\end{pmatrix}=(t-\lambda)^m\det(tI-Y),
+\]
+então $(t-\lambda)^m\mid p_T(t)$, e portanto $m$ é menor ou igual à multiplicidade algébrica de $\lambda$.
+
+\task[\pers{b}]  $(\Rightarrow)$ Se $T$ é diagonalizável, então, sendo $\lambda_1,\dots,\lambda_k$ os autovalores distintos, existe uma base:
+\[
+B=\{v_{1,1},\dots,v_{1,m_1},\dots,v_{k,1},\dots,v_{k,m_k}\}
+\]
+de autovetores tais que $T(v_{l,j})=\lambda_lv_{l,j}$ para todo $l=1,\dots,k$ e $j=1,\dots,m_l$, e portanto:}
+\[
+p_T(t)=(t-\lambda_1)^{m_1}\dots(t-\lambda_k)^{m_k},
+\]
+aí para $i=1,\dots,k$, para $v$ tal que $T(v)=\lambda_iv$, sendo:
+\[
+v=\sum_{l=1}^k\sum_{j=1}^{m_l}\alpha_{l,j}v_{l,j},
+\]
+então temos:
+\[
+T(\textcolor{Green}{v}) = T\left(\textcolor{Green}{\sum_{l=1}^k\sum_{j=1}^{m_l}\alpha_{l,j}v_{l,j}}\right)=\lambda_i \left(\sum_{l=1}^k\sum_{j=1}^{m_l}\alpha_{l,j}v_{l,j}\right) \Rightarrow \]\[
+\sum_{l=1}^k\sum_{j=1}^{m_l}\alpha_{l,j}T\left(v_{l,j}\right)=\sum_{l=1}^k\sum_{j=1}^{m_l}\alpha_{l,j}\lambda_iv_{l,j} \Rightarrow\]\[
+\sum_{l=1}^k\sum_{j=1}^{m_l}\alpha_{l,j}\lambda_lv_{l,j}=\sum_{l=1}^k\sum_{j=1}^{m_l}\alpha_{l,j}\lambda_iv_{l,j} \Rightarrow
+\] \[
+\sum_{l=1}^k\sum_{j=1}^{m_l}\alpha_{l,j}\left(\lambda_l-\lambda_i\right)v_{l,j}=0,
+\]
+e portanto para $l\neq i$ temos $\lambda_l\neq\lambda_i$, temos $\alpha_{l,j}(\lambda_l-\lambda_i)=0$, o que acarreta $\alpha_{l,j}=0$. Daí:
+\[
+v=\sum_{j=1}^{m_i}\alpha_{i,j}v_{i,j}.
+\]
+Com isso podemos concluir que o conjunto:
+\[
+\{v_{i,1},\dots,v_{i,m_i}\}
+\]
+é uma base de $V_T(\lambda_i)$, ou seja, $m_i=\dim V_T(\lambda_i)$.
+
+\bigskip
+\noindent
+$(\Leftarrow)$ Por outro lado, se:
+\[
+p_T(t)=(t-\lambda_1)^{m_1}\dots(t-\lambda_k)^{m_k}
+\]
+e $m_i=\dim V_T(\lambda_i)$, então seja:
+\[
+\{v_{i,1},\dots,v_{i,m_i}\}
+\]
+uma base de $V_T(\lambda_i)$. Como $m_1+\dots+m_k=n$, basta mostrarmos que o conjunto
+\[
+B=\{v_{1,1},\dots,v_{1,m_1},\dots,v_{k,1},\dots,v_{k,m_k}\}
+\]
+é linearmente independente. De fato, para quaisquer escalares $\alpha_{1,1},\dots,\alpha_{1,m_1},\dots,\alpha_{k,1},\dots,\alpha_{k,m_k}\in K,$ se
+\[
+\sum_{l=1}^k\sum_{j=1}^{m_l}\alpha_{l,j}v_{l,j}=0,
+\]
+então, para todo $i=1,\dots,k$, seguindo a ideia do exercício 2, podemos considerar o polinômio
+\[
+q(t)=\prod_{l\neq i}(x-\lambda_l) = (x - \lambda_1)(x - \lambda_2) \ldots (x - \lambda_{i-1}) (x - \lambda_{i+1}) \ldots (x - \lambda_k)
+\]
+e depois:
+\[
+p(t)=\frac{q(t)}{q(\lambda_i)},
+\]
+assim, aplicando $p(T)$, obtemos:
+\[
+p(T)\left(\sum_{l=1}^k\sum_{j=1}^{m_l}\alpha_{l,j}v_{l,j}\right)=0 \Rightarrow
+\sum_{l=1}^k\sum_{j=1}^{m_l}\alpha_{l,j}p(T)\left(v_{l,j}\right)=0 \Rightarrow\]\[
+\sum_{l=1}^k\sum_{j=1}^{m_l}\alpha_{l,j}p(\lambda_l)\left(v_{l,j}\right)=0,
+\]
+aí, como $p(\lambda_i)=1$ e $p(\lambda_l)=0$ para $l\neq i$, então:
+\[
+\sum_{j=1}^{m_l}\alpha_{i,j}\left(v_{i,j}\right)=0,
+\]
+mas o conjunto:
+\[
+\{v_{i,1},\dots,v_{i,m_i}\}
+\]
+é linearmente independente, assim:
+\[
+\alpha_{i,1}=\dots=\alpha_{i,m_i}=0;
+\]
+logo temos:
+\[
+\alpha_{1,1}=\dots=\alpha_{1,m_1}=\dots=\alpha_{k,1}=\dots=\alpha_{k,m_k}=0.
+\]
+Assim, $B$ é linearmente independente.
+}
+   
+\exercicio{4}  Seja
+\[
+A = \begin{bmatrix} 1 & 2 \\ 4 & 3 \end{bmatrix}
+\]
+Calcule $A^{2019}.$
+    
+\solucao{Calculemos o polinômio característico de $A:$
+\[
+p_A(\lambda) = \det(A - \lambda I) = \det \left(  \begin{bmatrix} 1 & 2 \\ 4 & 3 \end{bmatrix} - \begin{bmatrix} \lambda & 0 \\ 0 & \lambda \end{bmatrix} \right) = 
+\]\[
+\det \left(  \begin{bmatrix} 1-\lambda & 2 \\ 4 & 3-\lambda \end{bmatrix}  \right) = \lambda^2 - 4\lambda -5
+\]
+Pelo Teorema de Cayley-Hamilton, temos que $p_A(A) = 0.$ Daí:
+\[
+\textcolor{RawSienna}{p_A(A)} = 0 \Rightarrow \textcolor{RawSienna}{A^2 - 4A - 5} = 0 \Rightarrow A^2 = 4A + 5I.
+\]
+Portanto, podemos utilizar essa identidade para obter $A^{n}$ em função de $A.$ Por exemplo:
+\[
+A^3 = \textcolor{Laranja}{A^2} \cdot A = \textcolor{Laranja}{(4A + 5I)} \cdot A = 4\textcolor{Emerald}{A^2} + 5A = 4\textcolor{Emerald}{(4A + 5I)} + 5A = 21A + 20I
+\]
+\[
+A^4 = \textcolor{Laranja}{A^3} \cdot A = \textcolor{Laranja}{(21A + 20I)} \cdot A = 21\textcolor{Emerald}{A^2} + 20A = 21\textcolor{Emerald}{(4A + 5I)} + 20A = 104A + 105I
+\]
+\[
+A^5 = \textcolor{Laranja}{A^4} \cdot A = \textcolor{Laranja}{(104A + 105I)} \cdot A = 104\textcolor{Emerald}{A^2} + 105A = 104\textcolor{Emerald}{(4A + 5I)} + 105A = 521A + 520I
+\]
+%\[A^6 = \textcolor{Laranja}{A^5} \cdot A = \textcolor{Laranja}{(521A + 520)} \cdot A = 521\textcolor{Emerald}{A^2} + 520A = 521\textcolor{Emerald}{(4A + 5)} + 520A = 521A + 520\]
+
+Em geral, pode-se verificar por indução que
+\[
+A^n = \left(\frac{5^n + 5(-1)^n}{6} + 1 \right)A + \frac{5^n + 5(-1)^n}{6}
+\]
+Logo, temos que
+\[
+A^{2019} = \left(\frac{5^{2019} - 5}{6} + 1 \right)A + \frac{5^{2019} - 5}{6}
+\]
+
+\textbf{\textcolor{Red}{Outra solução:}} Observe que a matriz $A$ é diagonalizável, e portanto podemos obter $P$ invertível e $D$ diagonal tal que $A = PDP^{-1}.$ Daí, teremos que $A^n = PD^{n}P^{-1}.$ Realizando os cálculos, obtemos 
+\[
+P = \begin{bmatrix}
+-1 & \frac{1}{2} \\ 1 & 1 
+\end{bmatrix} \quad \mbox{e} \quad D = \begin{bmatrix}
+-1 &0 \\ 0 & 5 
+\end{bmatrix},
+\]
+e portanto,
+\[
+A^n = \begin{bmatrix}
+-1 & \frac{1}{2} \\ 1 & 1 
+\end{bmatrix}  \begin{bmatrix}
+(-1)^n &0 \\ 0 & 5^n 
+\end{bmatrix} \begin{bmatrix}
+-\frac{2}{3} & \frac{1}{3} \\ \frac{2}{3} &  \frac{2}{3} 
+\end{bmatrix}
+\]
+Logo,
+\[
+A^{2019} = \begin{bmatrix}
+-1 & \frac{1}{2} \\ 1 & 1 
+\end{bmatrix}  \begin{bmatrix}
+-1 &0 \\ 0 & 5^{2019} 
+\end{bmatrix} \begin{bmatrix}
+-\frac{2}{3} & \frac{1}{3} \\ \frac{2}{3} &  \frac{2}{3} 
+\end{bmatrix}
+\]
+}
+   
+\exercicio{5}  Seja $V$ um espaço vetorial de dimensão finita e seja $T \colon V \to V$ um operador linear inversível. Prove que:
+\dividiritens{
+\task[\pers{a}] Se $\lambda$ é um valor próprio de $T,$ então $\lambda \neq 0.$
+\task[\pers{b}] $\lambda$ é um valor próprio de $T$ se, e somente se, $\lambda^{-1}$ é um valor próprio de $T^{-1}$ (onde $T^{-1}$ é o operador inverso de $T$).   
+\task[\pers{c}]  Se $\lambda$ é um valor próprio de $T,$ mostre que a multiplicidade algébrica de $\lambda$ é igual à multiplicidade algébrica de $\frac{1}{\lambda}.$
+}
+
+\solucao{
+\dividiritens{
+\task[\pers{a}] Se $\lambda$ é um autovalor de $T,$ então sabemos que existe $ \neq 0$ tal que $Tv = \lambda v.$ Como $T$ é inversível, temos que
+\[
+T^{-1}(T(v)) = T^{-1}(\lambda v)\Rightarrow v = \lambda T^{-1}(v)
+\]
+Sendo $v \neq 0,$ temos que $\lambda T^{-1}(v) \neq 0,$ o que implica $\lambda \neq 0.$
      
-         \task[\pers{b}] Mostre que $T$ é diagonalizável se, e somente se, $p_T(t)$ é produto de fatores lineares e, para cada autovalor $\lambda$ de $T$, as multiplicidades algébrica e geométrica de $\lambda$ coincidem.
- }
-   \solucao{}
-   
-    \exercicio{4}  Seja
-    \[
-    \begin{bmatrix} 1 & 2 \\ 4 & 3 \end{bmatrix}
-    \]
-    Calcule $A^{2019}.$
-    
-      \solucao{}
-   
-    \exercicio{5}  Seja $V$ um espaço vetorial de dimensão finita e seja $T \colon V \to V$ um operador linear inversível. Prove que:
-     \dividiritens{
-     \task[\pers{a}] Se $\lambda$ é um valor próprio de $T,$ então $\lambda \neq 0.$
-     \task[\pers{b}] $\lambda$ é um valor próprio de $T$ se, e somente se, $\lambda^{-1}$ é um valor próprio de $T^{-1}$ (onde $T^{-1}$ é o operador inverso de $T$).   
-          \task[\pers{c}]  Se $\lambda$ é um valor próprio de $T,$ mostre que a multiplicidade algébrica de $\lambda$ é igual à multiplicidade algébrica de $\frac{1}{\lambda}.$
-     }
-    
-      \solucao{}
-   
-    \exercicio{6} Seja $V$ um espaço vetorial de dimensão $n$ e seja $T \in \mathcal{L}(V)$ de posto $1.$ Prove que ou $T$ é diagonalizável ou $T$ é nilpotente. 
-    
-     \solucao{}
-   
-    \exercicio{7} Seja $A = (a_{ij}) \in \mathcal{M}_n(K)$ a matriz em que $a_{ij} = a \neq 0$ para todo $1 \le i, j \le n.$ A matriz $A$ é diagonalizável? Qual é o seu polinômio minimal?
-    
-     \solucao{}
-   
-    \exercicio{8} Seja $A \in \mathcal{M}_{n \times 1}(K).$ A matriz $AA^t$ é diagonalizável?
-    
-        \solucao{}
-   
-    \exercicio{9} Sejam $A, B \in \mathcal{M}_n(K).$ Prove que se $I - AB$ é inversível, então $I - BA$ é inversível e que \[
-    (I - BA)^{-1} = I + B(I-AB)^{-1}A.
-    \]
-    
-        \solucao{}
-   
-    \exercicio{10}  Sejam $A, B \in \mathcal{M}_n(K).$ Prove que $AB$ e $BA$ têm os mesmos autovalores em $K.$ Elas têm o
-mesmo polinômio característico? E o minimal?
+\task[\pers{b}]
+\begin{itemize}
+\item[$(\Rightarrow)$] Se $\lambda$ é autovalor de $T,$ existe $v \neq 0$ tal que $Tv = \lambda v.$ Temos então que
+\[
+T^{-1}(T(v)) = T^{-1}(\lambda v)\Rightarrow v = \lambda T^{-1}(v) \Rightarrow \lambda^{-1} v = \lambda^{-1} ( \lambda T^{-1}(v)) \Rightarrow T^{-1}(v) = \lambda^{-1} v
+\]
+Portanto, como $v \neq 0$ é tal que $T^{-1}(v) \lambda^{-1} v,$ temos que $\lambda^{-1}$ é autovalor de $T^{-1}.$
+\item[$(\Leftarrow)$] A recíproca é análoga.
+\end{itemize}
 
-       \solucao{}
+\task[\pers{c}] Se $\lambda$ é autovalor de $T$ então, sendo $B$ uma base e $A=[T]_B$, então seja:
+\[
+p_T(t)=(t-\lambda)^mq(t),\quad q(\lambda)\neq 0,
+\]
+então:
+\[
+\begin{array}{rcl}
+\det(tI-A)&=&(t-\lambda)^mq(t)
+\\\det\left(\frac{1}{t}I-A\right)&=&\left(\frac{1}{t}-\lambda\right)^mq\left(\frac{1}{t}\right)
+\\\frac{1}{t^n}\det\left(I-tA\right)&=&\left(\frac{1}{t}-\lambda\right)^mq\left(\frac{1}{t}\right)
+\\\det\left(A^{-1}-tI\right)\det(A)&=&t^n\left(\frac{1}{t}-\lambda\right)^mq\left(\frac{1}{t}\right)
+\\\det\left(tI-A^{-1}\right)&=&\frac{(-1)^{n-m}t^{n-m}\left(t-\frac{1}{\lambda}\right)^mq(\frac{1}{t})}{\lambda^m\det(A)}
+\end{array}
+\]
+aí sendo:
+\[
+r(t)=t^{n-m}q\left(\frac{1}{t}\right),
+\]
+então $r$ é um polinômio e aí:
+\[
+\det\left(tI-A^{-1}\right)=\frac{(-1)^{n-m}\left(t-\frac{1}{\lambda}\right)^mr(t)}{\lambda^m\det(A)}
+\]
+e também:
+\[
+r\left(\frac{1}{\lambda}\right)=\left(\frac{1}{\lambda}\right)^{n-m}q\left(\frac{1}{\frac{1}{\lambda}}\right)=\left(\frac{1}{\lambda}\right)^{n-m}q(\lambda)\neq 0.
+\]
+}
+}
    
-    \exercicio{11} Seja $A \in \mathcal{M}_n(K)$ uma matriz diagonalizável. Mostre que $A^r$ é diagonalizável para todo inteiro $r \ge 1.$ Exiba uma matriz \emph{não diagonalizável} tal que $A^2$ é diagonalizável.
+\exercicio{6} Seja $V$ um espaço vetorial de dimensão $n$ e seja $T \in \mathcal{L}(V)$ de posto $1.$ Prove que ou $T$ é diagonalizável ou $T$ é nilpotente. 
     
-       \solucao{}
+\solucao{Como $T$ tem posto $1$, então existe uma base $\{e_1\}$ de $T[V]$. Assim podemos completar uma base $B=\{e_1,\dots,e_n\}$ de $V$, e aí para cada $i$ existe $c_i$ tal que $T(e_i)=c_ie_1$. Temos dois casos a considerar:
+\begin{itemize}
+    \item Se $c_1=0$, então para todo $i$ temos:
+\[
+T(T(e_i))=T(c_ie_1)=c_iT(e_1)=c_ic_1e_1=0;
+\]
+logo $T^2=0$, aí $T$ é nilpotente.
+
+\item  Se $c_1\neq 0$, então consideremos a matriz:
+\[
+A=[T]_B=\begin{pmatrix}
+c_1&c_2&&c_n\\0&0&&0\\&&\ddots&\\0&0&&0
+\end{pmatrix}.
+\]
+É fácil ver que $A$ tem posto $1$, aí $A$ tem nulidade $n-1$, e consequentemente a multiplicidade geométrica de $0$ é $n-1$. Também temos:
+\[
+p_A(x)=\begin{pmatrix}
+x-c_1&-c_2&&-c_n\\0&x&&0\\&&\ddots&\\0&0&&x
+\end{pmatrix}=x^{n-1}(x-c_1).
+\]
+\end{itemize}
+Portanto os autovalores são $0$ e $c_1$ com multiplicidades algébricas respectvamente $n-1$ e $1$. Assim $T$ é diagonalizável.
+
+}
+%https://math.stackexchange.com/questions/1295305/a-linear-operator-of-rank-1
+
+\exercicio{7} Seja $A = (a_{ij}) \in \mathcal{M}_n(K)$ a matriz em que $a_{ij} = a \neq 0$ para todo $1 \le i, j \le n.$ A matriz $A$ é diagonalizável? Qual é o seu polinômio minimal?
+    
+\solucao{
+\dividiritens{
+\task[\pers{a}] Se $n\geq 2$, então a matriz é diagonalizável se e só se $na\neq 0$. De fato, sendo:
+\[
+A=\begin{pmatrix}
+a&a&&a\\a&a&&a\\&&\ddots&\\a&a&&a
+\end{pmatrix}
+\]
+com $a\neq 0$, então é fácil ver que $A$ tem posto $1$, aí a multiplicidade geométrica de $0$ é $n-1$. Além disso:
+\[
+\begin{array}{rcl}
+p_A(x)&=&\det\begin{pmatrix}
+x-a&-a&&-a\\-a&x-a&&-a\\&&\ddots&\\-a&-a&&x-a
+\end{pmatrix}\\&=&
+\det\begin{pmatrix}
+x-na&-a&&-a\\x-na&x-a&&-a\\&&\ddots&\\x-na&-a&&x-a
+\end{pmatrix}\\&=&
+(x-na)\det\begin{pmatrix}
+1&-a&&-a\\1&x-a&&-a\\&&\ddots&\\1&-a&&x-a
+\end{pmatrix}\\&=&
+(x-na)\det\begin{pmatrix}
+1&-a&&-a\\0&x&&\\&&\ddots&\\0&0&&x
+\end{pmatrix}\\&=&
+(x-na)x^{n-1}.
+\end{array}
+\]
+Assim:
+\begin{itemize}
+\item Se $na\neq 0$, então a multiplicidade algébrica de $0$ é $n-1$, aí $A$ é diagonalizável.
+\item Se $na=0$, então a multiplicidade algébrica de $0$ é $n$, aí $A$ não é diagonalizável.
+\end{itemize}
+\task[\pers{b}] Se $n\geq 2$, então o polinômio minimal de $A$ é $x^2-nax$. De fato, $A$ não é múltiplo de identidade, aí o polinômio minimal deve ter grau pelo menos $2$. Porém temos o seguinte:
+\[
+A^2=\begin{pmatrix}
+a&&a\\&\ddots&\\a&&a
+\end{pmatrix}\begin{pmatrix}
+a&&a\\&\ddots&\\a&&a
+\end{pmatrix}=\begin{pmatrix}
+na^2&&na^2\\&\ddots&\\na^2&&na^2
+\end{pmatrix}=naA,
+\]
+assim $A^2-naA=0$. Assim o polinômio minimal de $A$ é $x^2-nax$.
+}
+}
    
-    \exercicio{12} Seja $D \in \mathcal{M}_n(K)$ uma matriz diagonal com polinômio característico
+\exercicio{8} Seja $A \in \mathcal{M}_{n \times 1}(K).$ A matriz $AA^t$ é diagonalizável?
+    
+\solucao{
+
+Seja:
+\[
+A=\begin{pmatrix}
+a_1\\\vdots\\a_n
+\end{pmatrix}.
+\]
+Se $n\geq 2$ e $A\neq 0$, então mostraremos que $AA^t$ é diagonalizável se e só se $a_1^2+\dots+a_n^2\neq 0$. De fato:
+\[
+AA^t=\begin{pmatrix}
+a_1^2&a_1a_2&&a_1a_n\\a_2a_1&a_2^2&&a_2a_n\\&&\ddots&\\a_na_1&a_na_2&&a_na_n
+\end{pmatrix}.
+\]
+É fácil ver que $AA^t$ tem posto $1$, aí $A$ tem nulidade $n-1$, aí a multiplicidade geométrica de $0$ é $n-1$. Além disso, se tivermos $a_i\neq 0$ para todo $i$, então:
+\[
+\begin{array}{rcl}
+p_{AA^t}(x)&=&
+\det\begin{pmatrix}
+x-a_1^2&-a_1a_2&&-a_1a_n\\-a_2a_1&x-a_2^2&&-a_2a_n\\&&\ddots&\\-a_na_1&-a_na_2&&x-a_n^2
+\end{pmatrix}\\&=&
+a_1\dots a_n\det\begin{pmatrix}
+\frac{x}{a_1}-a_1&-a_2&&-a_n\\-a_1&\frac{x}{a_2}-a_2&&-a_n\\&&\ddots&\\-a_1&-a_2&&\frac{x}{a_n}-a_n
+\end{pmatrix}\\&=&
+a_1\dots a_n\det\begin{pmatrix}
+\frac{x}{a_1}-a_1&-a_2&&-a_n\\-\frac{x}{a_1}&\frac{x}{a_2}&&0\\&&\ddots&\\-\frac{x}{a_1}&0&&\frac{x}{a_n}
+\end{pmatrix}\\&=&
+\det\begin{pmatrix}
+x-a_1^2&-a_2^2&&-a_n^2\\-x&x&&0\\&&\ddots&\\-x&0&&x
+\end{pmatrix}\\&=&
+\det\begin{pmatrix}
+x-(a_1^2+a_2^2+\dots+a_n^2)&-a_2^2&&-a_n^2\\0&x&&0\\&&\ddots&\\0&0&&x
+\end{pmatrix}\\&=&
+\left(x-\left(a_1^2+a_2^2+\dots+a_n^2\right)\right)x^{n-1}.
+\end{array}
+\]
+Agora, no caso em que $a_i=0$ para algum $i$, então seja $B$ a matriz obtida de $A$ retirando-se todas as entradas nulas, suponhamos que sejam $k$ entradas, então é fácil ver que:
+\[
+p_{AA^t}(x)=p_{BB^t}(x)x^k=\left(x-\sum_{a_i\neq 0}a_i^2\right)x^{n-k-1}x^k=\left(x-\sum_{i=1}^na_i^2\right)x^{n-1}.
+\]
+De qualquer modo temos:
+\[
+p_{AA^t}(x)=\left(x-\left(a_1^2+a_2^2+\dots+a_n^2\right)\right)x^{n-1}.
+\]
+Assim, temos o seguinte:
+\begin{itemize}
+\item Se $a_1^2+\dots+a_n^2\neq 0$, então a multiplicidade algébrica de $0$ é $n-1$, aí $AA^t$ é diagonalizável.
+\item Se $a_1^2+\dots+a_n^2=0$, então a multiplicidade algébrica de $0$ é $n$, aí $AA^t$ não é diagonalizável.
+\end{itemize}
+
+Um contraexemplo é o seguinte: considere $A \in \mathcal{M}_2(\mathbb{C}),$ dada por
+\[
+A = \begin{pmatrix}1 \\i
+\end{pmatrix}
+\]
+Então
+\[
+AA^t = \begin{pmatrix}
+1 & i \\ i & -1
+\end{pmatrix},
+\]
+mas essa matriz não é diagonalizável.
+}
+   
+\exercicio{9} Sejam $A, B \in \mathcal{M}_n(K).$ Prove que se $I - AB$ é inversível, então $I - BA$ é inversível e que
+\[
+(I - BA)^{-1} = I + B(I-AB)^{-1}A.
+\]
+    
+\solucao{Suponha que  $I - AB$ é inversível. Vamos mostrar que $B(I-AB)^{-1}A+I$ é o inverso de $I - BA$. De fato,
+\begin{equation*} 
+\begin{split}
+(I-BA)(B(I-AB)^{-1}A+I) & = B(I-AB)^{-1}A+I-BAB(I-AB)^{-1}A-BA	 \\
+ & = B((I-AB)^{-1}-AB(I-AB)^{-1})A+I-BA \\
+ & = B((I-AB)(I-AB)^{-1})A+I-BA \\
+ & = BA+I-BA	 \\
+  & = I
+\end{split}
+\end{equation*}
+Analogamente, mostra-se que $(B(I-AB)^{-1}A+I)(I-BA) = I.$ Logo, $I - BA$ é inversível.}
+   
+\exercicio{10}  Sejam $A, B \in \mathcal{M}_n(K).$ Prove que $AB$ e $BA$ têm os mesmos autovalores em $K.$ Elas têm o
+mesmo polinômio característico? E o minimal?
+\solucao{
+\dividiritens{
+\task[\pers{a}] Mostraremos que $AB$ e $BA$ têm os mesmos autovalores. O item (b) fornecerá uma outra demonstração disso. De fato, se $\lambda$ é autovalor de $AB$, então existe um $v\neq 0$ tal que $ABv=\lambda v$, aí $BABv=B(\lambda v)=\lambda Bv$, assim: (i) se $Bv\neq 0$, então $\lambda$ é um autovalor de $BA$; (ii) se $Bv=0$, então $\lambda v=ABv=0$, aí $\lambda=0$ e $\det(AB)=0$, aí $\det(A)\det(B)=0$, aí $\det(B)\det(A)=0$, aí $\det(BA)=0$, aí existe $u\neq 0$ tal que $BAu=0=\lambda u$, aí $\lambda$ é autovalor de $BA$; de qualquer modo $\lambda$ é autovalor de $BA$. A recíproca é análoga.
+\task[\pers{b}] Mostraremos que $AB$ e $BA$ têm o mesmo polinômio característico. De fato, existem matrizes inversíveis $P$ e $Q$ tais que:
+\[
+A=P\begin{pmatrix}
+I_k&0\\0&0
+\end{pmatrix}Q,
+\]
+aí seja:
+\[
+B=Q^{-1}\begin{pmatrix}
+X&Y\\Z&W
+\end{pmatrix}P^{-1},
+\]
+então temos:
+\[
+AB=P\begin{pmatrix}
+X&Y\\0&0
+\end{pmatrix}P^{-1}\quad\text{e}\quad
+BA=Q^{-1}\begin{pmatrix}
+X&0\\Z&0
+\end{pmatrix}Q,
+\]
+assim:
+\[
+p_{AB}(x)=p_X(x)x^{n-k}\quad\text{e}\quad p_{BA}(x)=p_X(x)x^{n-k}.
+\]
+\task[\pers{c}] Nem sempre $AB$ e $BA$ têm o mesmo polinômio minimal. De fato, seja:
+\[
+A=\begin{pmatrix}
+1&0\\0&0
+\end{pmatrix}\quad\text{e}\quad B=\begin{pmatrix}
+0&1\\0&0
+\end{pmatrix}.
+\]
+Então:
+\[
+AB=\begin{pmatrix}
+1&0\\0&0
+\end{pmatrix}\quad\text{e}\quad BA=\begin{pmatrix}
+0&0\\0&0
+\end{pmatrix}.
+\]
+Assim $AB\neq 0$ e $BA=0$, e $m_{AB}(t) = t^2$, mas $m_{BA}(t) = t.$
+
+\task[\pers{d}] \textbf{(Bônus)} Se $A$ é inversível, então $AB$ e $BA$ têm o mesmo polinômio minimal. De fato temos $A(BA)^n=(AB)^nA$ para todo $n$, aí:
+\[
+\begin{array}{rcl}
+m_{AB}(BA)&=&A^{-1}Am_{AB}(BA)\\&=&A^{-1}m_{AB}(AB)A\\&=&0,
+\end{array}
+\]
+de modo que $m_{BA}(x)\mid m_{AB}(x)$, e também:
+\[
+\begin{array}{rcl}
+m_{BA}(AB)&=&m_{BA}(AB)AA^{-1}\\&=&Am_{BA}(BA)A^{-1}\\&=&0,
+\end{array}
+\]
+de modo que $m_{AB}(x)\mid m_{BA}(x)$, assim concluímos que $m_{AB}(x)=m_{BA}(x)$. Analogamente, se $B$ é inversível, então $AB$ e $BA$ têm o mesmo polinômio minimal.
+}
+\textbf{\textcolor{Red}{Outra solução:}} Se uma das matrizes é inversível, digamos $A$ por exemplo, então $AB$ e $BA$ são semelhantes. Então \[BA = A^{-1}(AB)A.\]
+Neste caso, $AB$ e $BA$ possuirão o mesmo polinômio característico e o mesmo polinômio minimal.
+
+Caso contrário, considere as matrizes
+\[
+C = \begin{bmatrix}
+tI & A \\ B & I
+\end{bmatrix} \quad \mbox{e} \quad \begin{bmatrix}
+I & A \\ B & tI
+\end{bmatrix}
+\]
+Temos que
+\[
+CD =  \begin{bmatrix}
+tI-AB & tA \\ 0 & tI
+\end{bmatrix}   \quad \mbox{e} \quad DC = \begin{bmatrix}
+tI & A \\ 0 & -BA + tI
+\end{bmatrix} 
+\]
+Então veja que
+\[
+\det(CD) = \det(DC) \Rightarrow t^n \textcolor{Green}{\det(tI - AB)} = t^n \textcolor{Blue}{\det(tI-BA)} \Rightarrow t^n \textcolor{Green}{p_{AB}(t)} = t^n \textcolor{Blue}{p_{BA}(t)} \Rightarrow \boxed{p_{AB}(t) = p_{BA}(t)}.
+\]
+}
+
+\exercicio{11} Seja $A \in \mathcal{M}_n(K)$ uma matriz diagonalizável. Mostre que $A^r$ é diagonalizável para todo inteiro $r \ge 1.$ Exiba uma matriz \emph{não diagonalizável} tal que $A^2$ é diagonalizável.
+\solucao{
+\dividiritens{
+\task[\pers{a}] Se $A$ é diagonalizável, então $K^n$ tem uma base $\{v_1,\dots,v_n\}$ tal que para todo $i$ exista $\lambda_i$ tal que $Av_i=\lambda_iv_i$, aí $A^r(v_i)=\lambda_i^rv_i$; logo $A^r$ é diagonalizável.
+\task[\pers{b}] Seja:
+\[
+A=\begin{pmatrix}
+0&1\\0&0
+\end{pmatrix}.
+\]
+Então $A$ tem posto $1$, aí tem nulidade $1$, aí a multiplicidade geométrica de $0$ é $1$, mas:
+\[
+p_A(x)=\det\begin{pmatrix}
+x&-1\\0&x
+\end{pmatrix}=x^2,
+\]
+aí a multiplicidade algébrica de $0$ é $2$, aí $A$ não é diagonalizável. Porém, é fácil ver que $A^2=0$, de modo que $A^2$ é diagonalizável.
+}
+}
+
+\exercicio{12} Seja $D \in \mathcal{M}_n(K)$ uma matriz diagonal com polinômio característico
 \[p_D(t) = (t - c_1)^{d_1} \cdots (t - c_k)^{d_k},
 \]
 em que $c_1, \ldots , c_k$ são distintos. Seja
@@ -1139,152 +2154,1863 @@ em que $c_1, \ldots , c_k$ são distintos. Seja
 Prove que 
 \[\dim W = d_1^2 + \ldots + d_k^2.\]
 
-    \solucao{}
+\solucao{
+Como $D$ é diagonal e $p_D(x) = (x - c_1)^{d_1} \cdots (x - c_k)^{d_k}$, sendo a matriz representada assim:
+\[
+D=\begin{pmatrix}
+d_1&&&\\&d_2&&\\&&\ddots&\\&&&d_n
+\end{pmatrix},
+\]
+então devemos ter:
+\[
+\{1,\dots,n\}=X_1\cup\dots\cup X_k,
+\]
+em que:
+\[
+X_i=\{r\in\{1,\dots,n\}:d_r=c_i\}.
+\]
+Para todo $A\in W$, então na entrada $(r,s)$ devemos ter $(DA)_{r,s}=(AD)_{r,s}$, aí $d_ra_{r,s}=a_{r,s}d_s$, aí $(d_r-d_s)a_{r,s}=0$, aí $d_r=d_s$ ou $a_{r,s}=0$. Assim, para $i,j$ com $i\neq j$, então para $r\in X_i$ e $s\in X_j$ devemos ter $d_r=c_i\neq c_j=d_s$, aí $a_{r,s}=0$. Assim, sendo $E_{r,s}$ a matriz que vale $1$ na entrada $(r,s)$ e $0$ nas outras, então é fácil ver que $A$ deve ser combinação linear do conjunto:
+\[
+M=\bigcup_{i=1}^k\{E_{r,s}:r,s\in X_i\},
+\]
+que tem $d_1^2+\dots+d_n^2$ elementos e é linearmente independente. Por outro lado, é fácil ver que qualquer combinação linear de $M$ está em $W$. Assim a conclusão segue.
+}
+
+\exercicio{13} Seja $D \in \mathcal{L}(P_n(\mathbb{R}))$ o operador derivação. Encontre o polinômio minimal de $D.$ 
+\solucao{
+É fácil ver que $D^{n+1}=0$. Além disso, para todo:
+\[
+p(t)=a_nt^n+\dots+a_0,
+\]
+então:
+\[
+\begin{array}{rcl}
+p(D)(x^n)&=&(a_nD^n+a_{n-1}D^{n-1}+a_{n-2}D^{n-2}+\dots+a_0I)(x^n)\\
+&=&a_nD^n(x^n)+a_{n-1}D^{n-1}(x^n)+a_{n-2}D^{n-2}(x^n)+\dots+a_0I(x^n)\\
+&=&a_n\frac{n!}{0!}+a_{n-1}\frac{n!}{1!}x+a_{n-2}\frac{n!}{2!}x^2+\dots+a_0\frac{n!}{n!}x^n,
+\end{array}
+\]
+assim se $p(t)\neq 0$, então $p(D)(x^n)\neq 0$, aí $p(D)\neq 0$. Logo o polinômio minimal deve ter grau $\geq n+1$, aí deve ser igual a $x^{n+1}$.
+}
+
+\exercicio{14} Determine o polinômio minimal de cada uma das seguintes matrizes: 
+\dividiritensdiv{5}{     
+\task[\pers{a}]
+$\begin{pmatrix}
+2 & -1 \\ 1 & 0
+\end{pmatrix}$
+\task[\pers{b}]
+$\begin{pmatrix}
+2 & 1 \\ 0 & 1
+\end{pmatrix}$
+\task[\pers{c}]
+$\begin{pmatrix}
+1& 0 & 1 \\ 0 & 1 & 0 \\ 1 & 0 & 1
+\end{pmatrix}$
+\task[\pers{d}]
+$\begin{pmatrix}
+1& 1 & 1 \\ 0 & 1 & 1 \\ 0 & 0 & 1
+\end{pmatrix}$
+\task[\pers{e}]
+$\begin{pmatrix}
+a& b & c \\ 0 & a & b \\ 0 & 0 & a
+\end{pmatrix}$
+}
+
+\solucao{
+\dividiritens{     
+\task[\pers{a}]
+\[
+A=\begin{pmatrix}
+2 & -1 \\ 1 & 0
+\end{pmatrix}
+\]
+Temos o seguinte:
+\[
+p_A(x)=\det\begin{pmatrix}
+x-2 & 1 \\ -1 & x
+\end{pmatrix}=x(x-2)-1(-1)=x^2-2x+1=(x-1)^2.
+\]
+Assim $m_A(x)\mid(x-1)^2$, porém $A-I\neq 0$, aí $m_A(x)=(x-1)^2$.
+\task[\pers{b}]
+\[
+A=\begin{pmatrix}
+2 & 1 \\ 0 & 1
+\end{pmatrix}
+\]
+Temos o seguinte:
+\[
+p_A(x)=\det\begin{pmatrix}
+x-2 & -1 \\ 0 & x-1
+\end{pmatrix}=(x-2)(x-1).
+\]
+Assim é fácil ver que $m_A(x)=(x-2)(x-1)$.
+\task[\pers{c}]
+\[
+A=\begin{pmatrix}
+1& 0 & 1 \\ 0 & 1 & 0 \\ 1 & 0 & 1
+\end{pmatrix}
+\]
+Temos o seguinte:
+\[
+p_A(x)=\det\begin{pmatrix}
+x-1& 0 & -1 \\ 0 & x-1 & 0 \\ -1 & 0 & x-1
+\end{pmatrix}=x(x-1)(x-2).
+\]
+Assim é fácil ver que $m_A(x)=x(x-1)(x-2)$.
+\task[\pers{d}]
+\[
+A=\begin{pmatrix}
+1& 1 & 1 \\ 0 & 1 & 1 \\ 0 & 0 & 1
+\end{pmatrix}
+\]
+Temos o seguinte:
+\[
+p_A(x)=\det\begin{pmatrix}
+x-1& -1 & -1 \\ 0 & x-1 & -1 \\ 0 & 0 & x-1
+\end{pmatrix}=(x-1)^3.
+\]
+Assim $m_A(x)\mid(x-1)^3$. Porém:
+\[
+(A-I)^2=\begin{pmatrix}
+0 & 0 & 1 \\ 0 & 0 & 0 \\ 0 & 0 & 0
+\end{pmatrix},
+\]
+que não é nulo, assim $m_A(x)=(x-1)^3$.
+\task[\pers{e}]
+\[
+A=\begin{pmatrix}
+a & b & c \\ 0 & a & b \\ 0 & 0 & a
+\end{pmatrix}
+\]
+Temos o seguinte:
+\[
+p_A(x)=\det\begin{pmatrix}
+x-a & -b & -c \\ 0 & x-a & -b \\ 0 & 0 & -a
+\end{pmatrix}=(x-a)^3.
+\]
+Assim $m_A(x)\mid(x-a)^3$. Porém:
+\[
+(A-aI)^2=\begin{pmatrix}
+0 & 0 & b^2 \\ 0 & 0 & 0 \\ 0 & 0 & 0
+\end{pmatrix},
+\]
+assim:
+\begin{itemize}
+\item Se $b=0$ e $c=0$, então $m_A(x)=x-a$.
+\item Se $b=0$ e $c\neq 0$, então $m_A(x)=(x-a)^2$.
+\item Se $b\neq 0$ e $c\neq 0$, então $m_A(x)=(x-a)^3$.
+\end{itemize}
+}
+}
+
+\exercicio{15} Seja $C \in \mathcal{M}_n(K)$ a matriz
+\[
+\begin{bmatrix}
+0& 0 & 0 & \ldots & 0 & -c_0 \\ 
+1& 0 & 0 & \ldots & 0 & -c_1 \\ 
+0& 1 & 0 & \ldots & 0 & -c_2 \\ 
+\vdots& \vdots & \vdots & \ddots & \vdots & \vdots \\ 
+0& 0 & 0 & \ldots & 0 & -c_{n-2} \\ 
+0& 0 & 0 & \ldots & 1 & -c_{n-1} \\ 
+\end{bmatrix}
+\]
+Prove que o polinômio característico de $C$ é 
+\[
+p_C(t) = t^n + c_{n-1}t^{n-1} + \ldots + c_1t + c_0.
+\]
+Mostre que este é também o polinômio minimal de $C.$ A matriz $C$ é chamada de \textbf{matriz companheira} do polinômio $c_0 + c_1t + \ldots + c_{n-1}t^{n-1} + t^n.$
+\solucao{
+\dividiritens{
+\task[\pers{a}] Fazendo o desenvolvimento de Laplace sobre a linha superior e ``repetindo'' o processo, temos o seguinte:
+\[
+\begin{array}{rcl}
+p_C(x)&=&\det\begin{pmatrix}
+x& 0 & 0 & \ldots & 0 & c_0 \\ 
+-1& x & 0 & \ldots & 0 & c_1 \\ 
+0& -1 & x & \ldots & 0 & c_2 \\ 
+\vdots& \vdots & \vdots & \ddots & \vdots & \vdots \\ 
+0& 0 & 0 & \ldots & x & c_{n-2} \\ 
+0& 0 & 0 & \ldots & -1 & x+c_{n-1} \\ 
+\end{pmatrix}\\&=&
+x\det\begin{pmatrix}
+x & 0 & \ldots & 0 & c_1 \\ 
+-1 & x & \ldots & 0 & c_2 \\ 
+\vdots & \vdots & \ddots & \vdots & \vdots \\ 
+0 & 0 & \ldots & x & c_{n-2} \\ 
+0 & 0 & \ldots & -1 & x+c_{n-1} \\ 
+\end{pmatrix}+(-1)^{n+1}c_0\det\begin{pmatrix}
+-1& x & 0 & \ldots & 0  \\ 
+0& -1 & x & \ldots & 0  \\ 
+\vdots& \vdots & \vdots & \ddots & \vdots  \\ 
+0& 0 & 0 & \ldots & x  \\ 
+0& 0 & 0 & \ldots & -1  \\ 
+\end{pmatrix}\\&=&
+x\det\begin{pmatrix}
+x & 0 & \ldots & 0 & c_1 \\ 
+-1 & x & \ldots & 0 & c_2 \\ 
+\vdots & \vdots & \ddots & \vdots & \vdots \\ 
+0 & 0 & \ldots & x & c_{n-2} \\ 
+0 & 0 & \ldots & -1 & x+c_{n-1} \\ 
+\end{pmatrix}+(-1)^{n+1}c_0(-1)^{n-1}\\&=&
+x\det\begin{pmatrix}
+x & 0 & \ldots & 0 & c_1 \\ 
+-1 & x & \ldots & 0 & c_2 \\ 
+\vdots & \vdots & \ddots & \vdots & \vdots \\ 
+0 & 0 & \ldots & x & c_{n-2} \\ 
+0 & 0 & \ldots & -1 & x+c_{n-1} \\ 
+\end{pmatrix}+c_0\\&=&
+x\left(x\det\begin{pmatrix}
+x & \ldots & 0 & c_2 \\ 
+\vdots & \ddots & \vdots & \vdots \\ 
+0 & \ldots & x & c_{n-2} \\ 
+0 & \ldots & -1 & x+c_{n-1} \\ 
+\end{pmatrix}+c_1\right)+c_0\\&=&
+\dots\\&=&
+x^n + c_{n-1}x^{n-1} + \ldots + c_1x + c_0
+\end{array}
+\]
+\task[\pers{b}] Consideremos a base canônica $\{e_0,\dots,e_{n-1}\}$ de $K^n$. Então temos:
+\[
+\begin{array}{lcl}
+C(e_0)&=&e_1\\
+C(e_1)&=&e_2\\
+&\vdots&\\
+C(e_{n-2})&=&e_{n-1}\\
+C(e_{n-1})&=&-c_{n-1}e_{n-1}-c_{n-2}e_{c-2}-\dots-c_0e_0.
+\end{array}
+\]
+Para $p(x)=a_{n-1}x^{n-1}+\dots+a_0$ temos:
+\[
+\begin{array}{rcl}
+p(C)(e_0)&=&(a_{n-1}C^{n-1}+\dots+a_0)(e_0)\\
+&=&a_{n-1}C^{n-1}(e_0)+\dots+a_0e_0\\
+&=&a_{n-1}e_{n-1}+\dots+a_0e_0,
+\end{array}
+\]
+aí se $p(x)\neq 0$ então $p(C)(e_0)\neq 0$, aí $p(C)\neq 0$. Logo o polinômio minimal deve ter grau $\geq n$, aí ele deve ser igual ao polinômio característico.
+}
+}
    
-    \exercicio{13} Seja $D \in \mathcal{L}(P_n(\mathbb{R}))$ o operador derivação. Encontre o polinômio minimal de $D.$ 
-    
-    \solucao{}
-   
-    \exercicio{14} Determine o polinômio minimal de cada uma das seguintes matrizes: 
-        \dividiritensdiv{5}{     
-        \task[\pers{a}]
-        $\begin{pmatrix}
-        2 & -1 \\ 1 & 0
-        \end{pmatrix}$
-        \task[\pers{b}] 
-               $ \begin{pmatrix}
-        2 & 1 \\ 0 & 1
-        \end{pmatrix}$
-                \task[\pers{c}] 
-                $\begin{pmatrix}
-        1& 0 & 1 \\ 0 & 1 & 0 \\ 1 & 0 & 1
-        \end{pmatrix}$
-        
-                    \task[\pers{d}] 
-              $  \begin{pmatrix}
-        1& 1 & 1 \\ 0 & 1 & 1 \\ 0 & 0 & 1
-        \end{pmatrix}$
-        
-                      \task[\pers{e}] 
-                $\begin{pmatrix}
-        a& b & c \\ 0 & a & b \\ 0 & 0 & a
-        \end{pmatrix}$
-     }
-     
-      \solucao{}
-   
-    \exercicio{15} Seja $C \in \mathcal{M}_n(K)$ a matriz
-    \[             \begin{bmatrix}
-        0& 0 & 0 & \ldots & 0 & -c_0 \\ 
-        1& 0 & 0 & \ldots & 0 & -c_1 \\ 
-        0& 1 & 0 & \ldots & 0 & -c_2 \\ 
-        \vdots& \vdots & \vdots & \ddots & \vdots & \vdots \\ 
-        0& 0 & 0 & \ldots & 0 & -c_{n-2} \\ 
-        0& 0 & 0 & \ldots & 1 & -c_{n-1} \\ 
-        \end{bmatrix}
-    \]
-    Prove que o polinômio característico de $C$ é 
-    \[
-    p_C(t) = t^n + c_{n-1}t^{n-1} + \ldots + c_1t + c_0. \]
-    
-    Mostre que este é também o polinômio minimal de $C.$ A matriz $C$ é chamada de \textbf{matriz companheira} do polinômio $c_0 + c_1t + \ldots + c_{n−1}t^{n−1} + t^n.$
-       \solucao{}
-   
-    \exercicio{16} \textit{Verdadeiro ou falso?}\footnote{Só de perguntar isso tem uma grande chance de ser falso XD} Se $A \in \mathcal{M}_n(K)$ é uma matriz triangular superior e $A$ é diagonalizável, então $A$ já é uma matriz diagonal.
-   \solucao{}
-   
-    \exercicio{17} Sejam $K$ um corpo, $n$ um inteiro positivo e $A \in \mathcal{M}_n(K)$ uma matriz de posto $r \le n.$ Mostre que o polinômio minimal de $A$ tem grau menor ou igual a $r + 1.$ 
-    
-   \solucao{}
-   
-    \exercicio{18} Seja $K$ um corpo de característica diferente de $2$ e $T \colon \m{n}{K} \to  \m{n}{K}$ o operador linear
+\exercicio{16} \textit{Verdadeiro ou falso?}\footnote{Só de perguntar isso tem uma grande chance de ser falso XD} Se $A \in \mathcal{M}_n(K)$ é uma matriz triangular superior e $A$ é diagonalizável, então $A$ já é uma matriz diagonal.
+
+\solucao{Falso. De fato, considere a matriz:
+\[
+A=\begin{pmatrix}
+1&1\\0&0
+\end{pmatrix}.
+\]
+É fácil ver que $A$ tem posto $1$, portanto nulidade $1$ e aí a multiplicidade algébrica de $0$ é $1$. Além disso:
+\[
+p_A(x)=\det\begin{pmatrix}
+x-1&-1\\0&x
+\end{pmatrix}=(x-1)x,
+\]
+de modo que a multiplicidade algébrica de $0$ é $1$. Assim $A$ é triangular superior e diagonalizável, mas não é diagonal.
+}
+
+\bigskip
+\noindent
+\textbf{\textcolor{Red}{Comentário:}}
+
+\medskip
+\noindent
+Apesar da resposta ao exercício, ainda podemos concluir que, se $A=(a_{xy})$ é uma matriz triangular superior, então $A$ é diagonalizável se e só se, para $r<s$ tais que $a_{rr}=a_{ss}$, tivermos $a_{rs}=0$.
+
+\medskip
+\noindent
+De fato, sejam $c_1,\dots,c_k$ os valores distintos que aparecem na diagonal. Então devemos ter:
+\[
+\{1,\dots,n\}=X_1\cup\dots\cup X_k,
+\]
+em que:
+\[
+X_i=\{r\in\{1,\dots,n\}:d_r=c_i\}.
+\]
+Para $i$, seja $d_i=\abs{X_i}$. Então o polinômio característico de $A$ é:
+\[
+p_A(x)=(x-c_1)^{d_i}\dots(x-c_k)^{d_k},
+\]
+de modo que para cada $i$ então a multiplicidade algébrica de $c_i$ é $d_i$. Para cada $i$, então é fácil ver que a matriz $A-c_iI$, ao ser escalonada, terá nulidade $d_i$ se e só se para $r,s\in X_i$ tais que $r<s$ tivermos $a_{r,s}=0$. Nisso a conclusão segue.
+
+\exercicio{17} Sejam $K$ um corpo, $n$ um inteiro positivo e $A \in \mathcal{M}_n(K)$ uma matriz de posto $r \le n.$ Mostre que o polinômio minimal de $A$ tem grau menor ou igual a $r + 1.$ 
+
+\solucao{
+Se $A\in\mathcal{M}_n(K)$ tem posto $r\leq n$, então consideremos a imagem da transformação $x\mapsto Ax$, então ela tem uma base $\{b_1,\dots,b_r\}$, aí completemos uma base $B=\{b_1,\dots,b_r,b_{r+1},\dots,b_n\}$ de $K^n$, aí, sendo $C=[A]_B$, existe uma matriz inversível $P$ tal que $C=PAP^{-1}$, e também temos:
+\[
+C=\begin{pmatrix}
+X&Y\\0&0
+\end{pmatrix}.
+\]
+É fácil provar por indução que para todo $n\geq 0$ temos:
+\[
+C^{n+1}=\begin{pmatrix}
+X^{n+1}&X^nY\\0&0
+\end{pmatrix}.
+\]
+Assim, sendo $p(x)=a_rx^r+\dots+a_0$ o polinômio característico da matriz $X$, então, pelo teorema de Cayley-Hamilton, temos $p(X)=0$, aí:
+\[
+\begin{array}{rcl}
+p(C)C&=&\sum\limits_{k=0}^ra_kC^{k+1}\\
+&=&\sum\limits_{k=0}^ra_k\begin{pmatrix}
+X^{k+1}&X^kY\\0&0
+\end{pmatrix}\\
+&=&\begin{pmatrix}
+\sum\limits_{k=0}^ra_kX^{k+1}&\sum\limits_{k=0}^ra_kX^kY\\0&0
+\end{pmatrix}\\
+&=&\begin{pmatrix}
+p(X)X&p(X)Y\\0&0
+\end{pmatrix}\\
+&=&\begin{pmatrix}
+0&0\\0&0
+\end{pmatrix},
+\end{array}
+\]
+assim $p(C)C=0$, aí $p(A)A=0$, logo, como $p(x)x$ é um polinômio de grau $r+1$, então o polinômio minimal de $A$ tem grau  menor ou igual a $r+1$.
+}
+
+\exercicio{18} Seja $K$ um corpo de característica diferente de $2$ e $T \colon \m{n}{K} \to  \m{n}{K}$ o operador linear
 definido por $T(A) = A^t$. Mostre que $T$ é diagonalizável, determine os autovalores de $T,$ as dimensões dos autoespaços e uma base de $\m{n}{K}$ formada por autovetores de $T.$
-   \solucao{}
-   
-    \exercicio{19} Mostre que uma matriz $A \in \m{n}{K}$ é inversível se, e somente se, o termo constante de seu polinômio minimal é diferente de zero.
-    
-   \solucao{}
-   
-    \exercicio{20}  Seja $A \in \m{n}{K}$ uma matriz inversível. 
-        \dividiritensdiv{1}{     
-        \task[\pers{a}] Mostre que existe um polinômio $p(t) \in K[t]$ tal que $A^{-1} = p(A).$
-                \task[\pers{b}] Seja
-                \[
-                A = \begin{pmatrix}
-                2 & 1 & 4 \\ 3 & 0 & 1 \\ 2 & 0 & 1
-                \end{pmatrix}
-                \]
-            Encontre $p(t)$ tal que $p(A) = A^{-1}.$
-                }
+\solucao{
+Seja $V_+$ o conjunto das matrizes simétricas e seja $V_-$ o conjunto das matrizes antissimétricas. Seja $E_{i,j}$ a matriz que vale $1$ na entrada $(i,j)$ e $0$ nas demais. Então é fácil ver que o conjunto:
+\[
+B_+=\{E_{i,i}:1\leq i\leq n\}\cup\{E_{i,j}+E_{j,i}:1\leq i<j\leq n\}
+\]
+tem $\frac{n^2+n}{2}$ elementos e é uma base de $V_+$, e, como a característica do corpo é diferente de $2$, então é fácil ver que o conjunto:
+\[
+B_-=\{E_{i,j}-E_{j,i}:1\leq i<j\leq n\}
+\]
+tem $\frac{n^2-n}{2}$ elementos e é uma base de $V_-$. Além disso, para cada $A\in V_+\cap V_-$, então $A=A^t=-A$, aí $2A=0$, aí $A=0$. Logo $V_+$ e $V_-$ são independentes. Assim $B_+\cup B_-$ é uma base de $n^2$ elementos do espaço $V_++V_-$. Porém a dimensão de $\m{n}{K}$ é $n^2$, assim $\m{n}{K}=V_++V_-$. Com isso temos as respostas para todas as questões do exercício. Mais especificamente, $T$ é diagonalizável, os autovalores são $1$ e $-1$, a dimensão dos autoespaços $V_T(1)$ e $V_T(-1)$ são respectivamente $\frac{n^2+n}{2}$ e $\frac{n^2-n}{2}$, e $B_+\cup B_-$ é uma base de autovetores de $T$.
+}
 
-  \solucao{}
+\exercicio{19} Mostre que uma matriz $A \in \m{n}{K}$ é inversível se, e somente se, o termo constante de seu polinômio minimal é diferente de zero.
+\solucao{Temos o seguinte:
+\[
+\begin{array}{rcl}
+A\text{ não é inversível}
+&\Leftrightarrow&-A\text{ não é inversível}\\
+&\Leftrightarrow&\det(-A)=0\\
+&\Leftrightarrow&\det(0I-A)=0\\
+&\Leftrightarrow&p_A(0)=0\\
+&\Leftrightarrow&m_A(0)=0.
+\end{array}
+\]
+}
    
-    \exercicio{21}  Determine todas as matrizes $A \in \m{2}{\mathbb{R}}$ nilpotentes e calcule  $\det(A + I)$ e $\det(A − I).$
-    
-  \solucao{}
-   
-    \exercicio{22} Sejam $V$ um espaço vetorial sobre $\mathbb{R}$ e $\{e_1,e_2,e_3\}$ uma base de $V.$ Seja $T \colon V \to V$ o operador linear definido por
-\[T(e_1) = e_2 − e_1, T(e_2) = e_3 − e_1, T(e_3) = e_3 − e_2.\]
-    \dividiritensdiv{1}{     
-        \task[\pers{a}] Mostre que $T$ não é diagonalizável.
-            \task[\pers{b}] Calcule $T^{212}$ (Dica: utilize o Teorema de Cayley-Hamilton)
-        }
-        
-    
-  \solucao{}
-   
-    \exercicio{23} Seja $T \in \mathcal{L}(V)$ um operador diagonalizável e seja $W$ um subespaço de $V$ $T$-invariante. Prove que a restrição de $T$ a $W,$ $T \upharpoonleft_W \in \mathcal{L}(W)$ é diagonalizável.
-    
-  \solucao{}
-   
-    \exercicio{24} Seja $T \in \mathcal{L}(V)$ um operador linear tal que todo subespaço de $V$ é $T$-invariante. Mostre que $T$ é um múltiplo do operador identidade.
+\exercicio{20}  Seja $A \in \m{n}{K}$ uma matriz inversível. 
+\dividiritensdiv{1}{     
+\task[\pers{a}] Mostre que existe um polinômio $p(t) \in K[t]$ tal que $A^{-1} = p(A).$
+\task[\pers{b}] Seja
+\[
+A = \begin{pmatrix}
+2 & 1 & 4 \\ 3 & 0 & 1 \\ 2 & 0 & 1
+\end{pmatrix}
+\]
+Encontre $p(t)$ tal que $p(A) = A^{-1}.$
+}
+\solucao{
+\dividiritensdiv{1}{     
+\task[\pers{a}] Sabemos que a soma dos autovalores de uma matriz corresponde à seu traço, e o produto dos autovalores corresponde ao determinante. Pelo Teorema de Cayley-Hamilton, também é conhecido que $p_A(A) = 0.$ Assim, seja o polinômio caracerístico dado por:
+\[
+p_A(t) = t^n + a_{n-1}t^{n-1} + a_{n-2}t^{n-2} + \ldots + a_{1}t + a_0.
+\]
+Sendo $A$ invertível, então $a_0=p_A(0)=\det(-A)=(-1)^n\det(A)\neq 0$ e também:
+\[
+A^n + a_{n-1}A^{n-1} + \ldots + a_0I = 0,
+\]
+portanto temos:
+\[
+A\cdot\textcolor{PineGreen}{\frac{-1}{a_0}\left(A^{n-1} + a_{n-1}A^{n-2} + \cdots a_1\right)} = I.
+\]
+Logo, considerando o polinômio $p(t)\in K[t]$ dado por
+\[
+p(t) = \frac{-1}{a_0}\left(t^{n-1} + a_{n-1}t^{n-2} + a_{n-2}t^{n-3} + \ldots + a_{1}\right),
+\]
+então:
+\[
+A\cdot\textcolor{PineGreen}{p(A)} = I,
+\]
+de modo que:
+\[
+p(A) = A^{-1}.
+\]
+\task[\pers{b}] Encontremos primeiramente o polinômio característico de $A:$
+\[
+\begin{array}{rcl}
+p_A(x) &=& \det(xI-A) \\
+&=&  \det\begin{pmatrix}
+x-2 & -1 & -4 \\ -3 & x & -1 \\ -2 & 0 & x-1
+\end{pmatrix} \\
+&=& x^3 - 3x^2-9x +1,
+\end{array}
+\]
+ou seja,
+\[
+p_A(x) =  x^3 - 3x^2-9x + 1.
+\]
+Pelo item anterior, o polinômio $p(t)$ procurado é
+\[
+p(t) = \frac{-1}{1}(t^2 - 3t - 9) \Rightarrow p(t) = \boxed{p(t) = -t^2 + 3t + 9}
+\]
+De fato, temos que
+\[
+\begin{array}{rcl}
+p(A) &=& - \textcolor{Magenta}{A}^2 + 3\textcolor{Magenta}{A} + 9 \\
+&=& - \textcolor{Magenta}{      \begin{pmatrix}2 & 1 & 4 \\ 3 & 0 & 1 \\ 2 & 0 & 1
+\end{pmatrix} }^2 + 3\textcolor{Magenta}{      \begin{pmatrix}
+2 & 1 & 4 \\ 3 & 0 & 1 \\ 2 & 0 & 1
+\end{pmatrix} } + 9 \textcolor{Magenta}{      \begin{pmatrix}
+1 &0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1
+\end{pmatrix} } \\
+&=& - \begin{pmatrix}
+15 & 2 & 13 \\ 8 & 3 & 13 \\ 6 & 2 & 9
+\end{pmatrix} +    \begin{pmatrix}
+6 & 3 & 12 \\ 9 & 0 & 3\\ 6 & 0 & 3
+\end{pmatrix}  +   \begin{pmatrix}
+9 &0 & 0 \\ 0 & 9 & 0 \\ 0 & 0 & 9
+\end{pmatrix} \\
+&=& \begin{pmatrix}
+0 &1 & -1 \\ 1 & 6 & -10 \\ 0 & -2 &3 
+\end{pmatrix},
+\end{array}
+\]
+e basta verificar que a matriz é inversa de $A$.
+}
+}
 
-\solucao{}
-   
-    \exercicio{25} Seja $T \in \mathcal{L}(V)$ um operador linear e seja $W$ um subespaço de $V.$ Prove que $W$ é $T$-invariante se, e somente se, $W^0$ é $T^t$-invariante.
-    
-\solucao{}
-   
-    \exercicio{26} Seja $V$ um espaço vetorial de dimensão finita sobre um corpo algebricamente fechado e seja $T \in \mathcal{L}(V).$ Prove que $T$ é diagonalizável se, e somente se, para todo subespaço $T$-invariante $W$ de $V$ existe um subespaço $T$-invariante $U$ tal que 
-    \[
-    V = W \oplus U
-    \]
-    
+\exercicio{21}  Determine todas as matrizes $A \in \m{2}{\mathbb{R}}$ nilpotentes e calcule  $\det(A + I)$ e $\det(A - I).$
+\solucao{
+Se $A$ é nilpotente, então existe $k\geq 1$ tal que $A^k=0$, aí o polinômio minimal deve ser da forma $m_A(x)=x^l$ com $l\leq k$, mas, pelo teorema de Cayley-Hamilton, o grau de $m_A(x)$ deve ser $\leq 2$, aí $l\leq 2$, aí $A^2=0$. Agora, sendo:
+\[
+A=\begin{pmatrix}
+\alpha&\beta\\\gamma&\delta
+\end{pmatrix},
+\]
+então:
+\[
+A^2=\begin{pmatrix}
+\alpha^2+\beta\gamma&\beta(\alpha+\delta)\\\gamma(\alpha+\delta)&\beta\gamma+\delta^2
+\end{pmatrix},
+\]
+assim é fácil ver que $A^2=0$ se e somente se $\alpha+\delta=0$ e $\alpha^2+\beta\gamma=0$. Assim, as matrizes nilpotentes em $\m{2}{\mathbb{R}}$ são as matrizes da forma:
+\[
+A=\begin{pmatrix}\alpha & \beta \\ \gamma & -\alpha\end{pmatrix},\quad \alpha \in\mathbb{R},\quad \beta \gamma=-\alpha^2. 
+\]
+Calculemos $\det(A + I)$ e $\det(A - I):$
+\begin{itemize}
+\item Temos \[\det(A + I) = \det\left( \begin{pmatrix}\alpha & \beta \\ \gamma & -\alpha\end{pmatrix} + \begin{pmatrix}1&0\\ 0& 1\end{pmatrix} \right) =  \det\left( \begin{pmatrix}\alpha+1 & \beta \\ \gamma & -\alpha+1\end{pmatrix} \right) = \]\[ \textcolor{Green}{(\alpha + 1)(1 - \alpha)} - \textcolor{Blue}{\beta \gamma} = \textcolor{Green}{1 - \alpha^2} - \textcolor{Blue}{(-\alpha^2)} =1 - \alpha^2 + \alpha^2 = 1 \Rightarrow \boxed{\det(A + I) = 1}\]
+\item  Temos\[\det(A - I) = \det\left( \begin{pmatrix}\alpha & \beta \\ \gamma & -\alpha\end{pmatrix} - \begin{pmatrix}1&0\\ 0& 1\end{pmatrix} \right) =  \det\left( \begin{pmatrix}\alpha-1 & \beta \\ \gamma & -\alpha-1\end{pmatrix} \right) = \]\[ \textcolor{Green}{(\alpha - 1)(-1 - \alpha)} - \textcolor{Blue}{\beta \gamma} = \textcolor{Green}{1 - \alpha^2} - \textcolor{Blue}{(-\alpha^2)} =1 - \alpha^2 + \alpha^2 = 1 \Rightarrow \boxed{\det(A - I) = 1}\]
+\end{itemize}
+}
+
+\exercicio{22} Sejam $V$ um espaço vetorial sobre $\mathbb{R}$ e $\{e_1,e_2,e_3\}$ uma base de $V.$ Seja $T \colon V \to V$ o operador linear definido por
+\[T(e_1) = e_2 - e_1, T(e_2) = e_3 - e_1, T(e_3) = e_3 - e_2.\]
+\dividiritensdiv{1}{
+\task[\pers{a}] Mostre que $T$ não é diagonalizável.
+\task[\pers{b}] Calcule $T^{212}$ (Dica: utilize o Teorema de Cayley-Hamilton)
+}
+\solucao{
+\dividiritensdiv{1}{
+\task[\pers{a}] Em relação à base canônica, temos:
+\[
+T=\begin{pmatrix}
+-1&-1&0\\1&0&-1\\&1&1
+\end{pmatrix}.
+\]
+Assim temos:
+\[
+p_T(x)=\det\begin{pmatrix}
+x+1&1&0\\-1&x&+1\\0&-1&x-1
+\end{pmatrix}=x(x^2+1).
+\]
+Assim é fácil ver que $T$ não é diagonalizável sobre $\mathbb{R}$, pois o polinômio característico não se decompõe em fatores lineares.
+\task[\pers{b}] Pelo teorema de Cayley-Hamilton, temos $T(T^2+1)=0$, assim $T^3=-T$, desse modo para todo $n\geq 1$ temos $T^{n+2}=-T^n$. Temos:
+\[
+T^2=\begin{pmatrix}
+0&1&1\\-1&-2&-1\\1&1&0
+\end{pmatrix},
+\]
+de modo que $T^{212}=-T^{210}=T^{208}=\dots=T^4=-T^2$, assim:
+\[
+T^{212}=\begin{pmatrix}
+0&-1&-1\\1&2&1\\-1&-1&0
+\end{pmatrix},
+\]
+}
+}
+
+\bigskip
+\noindent
+\textbf{\textcolor{Red}{Aviso:}}
+
+\medskip
+\noindent
+De agora em diante, utilizaremos o fato de que um operador $T$ sobre um espaço $V$ de dimensão finita é diagonalizável se e somente se o polinômio minimal é produto de fatores lineares distintos.
+
+\exercicio{23} Seja $T \in \mathcal{L}(V)$ um operador diagonalizável e seja $W$ um subespaço de $V$ $T$-invariante. Prove que a restrição de $T$ a $W,$ $T\upharpoonright_W \in \mathcal{L}(W)$ é diagonalizável.
+
+\solucao{
+É fácil ver que um operador é diagonalizável se e somente se todo elemento $v\in V$ for uma soma de autovetores. Se $T$ é um operador diagonalizável e $W$ for um subespaço $T$-invariante, então basta mostrar que se $v_1,\dots,v_n$ são autovetores associados a autovalores distintos $c_1,\dots,c_n$ e $v_1+\dots+v_n\in W$, então $v_1\in W$ e $\dots$ e $v_n\in W$. Faremos isto por indução em $n$. Se $n=1$, então é fácil. Se é válida para $n-1$, então para $v_1,\dots,v_{n-1},v_n$ autovetores associados a autovalores distintos $c_1,\dots,c_{n-1},c_n$, se:
+\[
+w=v_1+\dots+v_{n-1}+v_n\in W,
+\]
+então temos:
+\[
+T(w)=T(v_1)+\dots+T(v_{n-1})+T(v_n),
+\]
+aí:
+\[
+T(w)=c_1v_1+\dots+c_{n-1}v_{n-1}+c_nv_n,
+\]
+assim:
+\[
+T(w)-c_nw=(c_1-c_n)v_1+\dots+(c_{n-1}-c_n)v_{n-1},
+\]
+mas $T(w)-c_nw\in W$ e os $(c_1-c_n)v_1,\dots,(c_{n-1}-c_n)v_{n-1}$ são autovetores associados a autovalores distintos $c_1,\dots,c_{n-1}$, aí pela hipótese de indução temos $(c_1-c_n)v_1\in W,\dots,(c_{n-1}-c_n)v_{n-1}\in W$, mas $c_1-c_n\neq 0,\dots,c_{n-1}-c_n\neq 0$, aí $v_1\in W,\dots,v_{n-1}\in W$, aí $v_n=w-(v_1+\dots+v_{n-1})\in W$. Assim todo elemento $w\in W$ é soma de autovetores de $T\upharpoonright_W$. Logo $T\upharpoonright_W$ é diagonalizável.
+}
+
+\bigskip
+\noindent
+\textbf{\textcolor{Red}{Solução alternativa:}} \textbf{(Válida somente para espaços de dimensão finita)}
+
+\medskip
+\noindent
+Seja $B'=\{e_1,\dots,e_m\}$ uma base de $W$ e completemos uma base $B=\{e_1,\dots,e_m,e_{m+1},\dots,e_n\}$ de $V$. Então o operador $T$ está representado por uma matriz da forma:
+\[
+T=\begin{pmatrix}
+X&?\\0&Y
+\end{pmatrix}.
+\]
+É fácil provar por indução que, para todo $n$ então $T^n$ é uma matriz da forma:
+\[
+\begin{pmatrix}
+X^n&?\\0&Y^n
+\end{pmatrix},
+\]
+assim para todo polinômio $p(x)$ temos:
+\[
+p(T)=\begin{pmatrix}
+p(X)&?\\0&p(Y)
+\end{pmatrix},
+\]
+em particular temos:
+\[
+0=m_T(T)=\begin{pmatrix}
+m_T(X)&?\\0&m_T(Y)
+\end{pmatrix},
+\]
+logo temos $m_T(X)=0$, aí $m_X(x)\mid m_T(x)$. Assim, se $T$ é diagonalizável, então $m_T(x)$ é um produto de fatores lineares distintos, aí $m_X(x)$ é um produto de fatores lineares disintos, mas $X$ representa a transformação $T\upharpoonright_W$, aí $T\upharpoonright_W$ é diagonalizável.
+
+\exercicio{24} Seja $T \in \mathcal{L}(V)$ um operador linear tal que todo subespaço de $V$ é $T$-invariante. Mostre que $T$ é um múltiplo do operador identidade.
+\solucao{
+Seja $B$ uma base de $V$.
+
+\medskip
+\noindent
+Para $b\in B$ então $Kb$ é $T$-invariante, aí existe um único $\lambda_b\in K$ tal que $T(b)=\lambda_bb$.
+
+\medskip
+\noindent
+Para $b,c\in B$ tais que $b\neq c$, então $K(b+c)$ é $T$-invariante, aí existe um $\lambda\in K$ tal que $T(b+c)=\lambda(b+c)$, aí $T(b)+T(c)=\lambda b+\lambda c$, aí $\lambda_bb+\lambda_cc=\lambda b+\lambda c$, aí $\lambda_b=\lambda$ e $\lambda_c=\lambda$, aí $\lambda_b=\lambda_c$.
+
+\medskip
+\noindent
+Logo existe um $\lambda\in K$ tal que $\forall b\in B:\lambda_b=\lambda$, aí para todo $b\in B$ temos $T(b)=\lambda b$; logo $T=\lambda I$.
+}
+
+\exercicio{25} Seja $T \in \mathcal{L}(V)$ um operador linear e seja $W$ um subespaço de $V.$ Prove que $W$ é $T$-invariante se, e somente se, $W^0$ é $T^t$-invariante.
+
+\solucao{
+Primeiramente, lembremos que
+\[
+W^0 = \{ f \in V^{*} \mid \forall w \in W:f(w) = 0\}
+\]
+\dividiritens{
+\task[\pers{a}] Se $W$ é $T$-invariante, então temos que $T(W) \subseteq W.$ Dado $f \in W^0,$ veja que
+\[
+T^t(f) = f \circ T
+\]
+e temos também para $w \in W:$
+\[
+(f \circ T)(w) = f(T(w)) \in f(T(W)) \subseteq f(W) = 0,
+\]
+aí:
+\[
+(f \circ T)(w) = 0;
+\]
+logo:
+\[
+T^t(W^0) \subseteq W^0.
+\]
+Logo, $W^0$ é $T^t$-invariante.
+
+\task[\pers{b}] Se $W^0$ é $T^t$-invariante, então 
+\[
+T^t(W^0) \subseteq W^0 = \{ f \in \mathcal{L}(V) \mid f(W) = 0\}.
+\]
+Seja $w\in W$. Para $f \in W^0,$ temos $T^t(f) \in W^0$, aí $f \circ T \in W^0$, aí $(f \circ T)(w) = 0.$ Ou seja, $\forall f\in W^0:f(T(w))=0.$ Suponhamos por absurdo que $T(w) \notin W.$ Consideremos $(v_i)_{i\in J}$ uma base para $W$ e completemo-la para uma base $(v_i)_{i\in I}$ de $V.$ Seja:
+\[
+T(w) = \sum\limits_{j\in K} \alpha_j v_j,
+\]
+em que $K$ seja um subconjunto finito de $I$. Tome $k \in K\setminus J$ tal que $\alpha_k \neq 0$, que existe, pois $T(w) \notin W.$ Considere $\varphi_k \colon V \to K$ tal que:
+\[
+\varphi(v_i) = \begin{cases} 1, & \mbox{se } i = k \\
+0, & \mbox{se } i \neq k.\end{cases}
+\]
+Note que $\varphi_k \in W^0$. Mas teremos o seguinte:
+\[
+\varphi_k(T(w)) = \varphi_k \left( \sum\limits_{j\in K} \alpha_j v_j \right) =  \sum\limits_{j\in K} \alpha_j \varphi_k(v_j) = \alpha_k \neq 0.
+\]
+}
+}
+
+\exercicio{26} Seja $V$ um espaço vetorial de dimensão finita sobre um corpo algebricamente fechado e seja $T \in \mathcal{L}(V).$ Prove que $T$ é diagonalizável se, e somente se, para todo subespaço $T$-invariante $W$ de $V$ existe um subespaço $T$-invariante $U$ tal que 
+\[
+V = W \oplus U
+\]
+
 \textbf{Observação:} Um operador linear $T$ é dito \emph{semi-simples} quando todo subespaço $T$-invariante de $V$ tem um complemento que é também $T$-invariante.
+\solucao{
+\dividiritens{
+\task[\pers{a}] Se $T$ é diagonalizável, então seja $B$ uma base de autovetores, aí, para subespaço $W$ que seja $T$-invariante, seja $C$ uma base de $W$. Então existe uma base $E$ de $V$ tal que $C\subseteq E\subseteq B\cup C$, aí para $e\in E\setminus C$ então $e\in B$, aí $e$ é autovetor. Assim seja $U$ o subespaço gerado por $E\setminus C$, então para $e\in E\setminus C$ então $e\in B$, aí existe $\lambda\in K$ tal que $T(e)=\lambda e$, aí $T(e)\in U$; logo $U$ é $T$-invariante, e além disso é fácil ver que $V=W\oplus U$.
+\task[\pers{b}] Se todo subespaço $T$-invariante tiver complemento vetorial $T$-invariante então sejam $\lambda_1,\dots,\lambda_k$ os autovalores distintos, e seja:
+\[
+W=V_T(\lambda_1)+\dots+V_T(\lambda_k),
+\]
+então $W$ é $T$-invariante, aí existe $U$ subespaço $T$-invariante tal que $V=W\oplus U$, aí existe uma base $B$ tal que:
+\[
+[T]_B=\begin{pmatrix}
+X&0\\0&Y
+\end{pmatrix},
+\]
+aí $p_T(x)=p_X(x)p_Y(x)$, mas:
+\[
+p_T(x)=(x-\lambda_1)^{r_1}\dots(x-\lambda_k)^{r_k},
+\]
+aí:
+\[
+p_Y(x)=(x-\lambda_1)^{s_1}\dots(x-\lambda_k)^{s_k}
+\]
+com $s_i\leq r_i$ para todo $i$, aí se existe $i$ tal que $s_i>0$ então $p_Y(\lambda_i)=0$, aí existe $u\neq 0$ tal que $u\in U$ e $T(u)=\lambda_i u$, aí $u\in W$, contradição; logo $\forall i:s_i=0$, aí $p_Y(x)=1$, aí $U=0$, aí $W=V$, aí $T$ é diagonalizável.
+}
+}
+
+\exercicio{27} Seja $V$ um espaço vetorial de dimensão finita sobre $\mathbb{C}$ e seja $T \in \mathcal{L}(V).$ Prove que as seguintes afirmações são equivalentes:
+\dividiritensdiv{1}{
+\task[\pers{a}] $T$ é diagonalizável e $T^{2n} = T^n.$
+\task[\pers{b}] $T^{n+1} = T.$
+}
+\solucao{
+\dividiritens{
+\task[\pers{a}] Se $T$ é diagonalizável e $T^{2n}=T^n$, então existe uma base $B$ tal que $T$ seja representada pela matriz:
+\[
+T=
+\begin{pmatrix}
+c_1&&&\\&c_2&&\\&&\ddots&\\&&&c_k
+\end{pmatrix}.
+\]
+Como $T^{2n}=T^n$, então para todo $i$ temos $c_i^{2n}=c_i^n$, aí $c_i^{n+1}=c_i$; logo $T^{n+1}=T$.
+\task[\pers{b}] Se $T^{n+1}=T$, então, sendo $m_T(x)$ o polinômio minimal de $T$, temos:
+\[
+m_T(x)\mid x^{n+1}-x=x(x^n-1)=x\prod_{k=0}^{n-1}\left(x-\mathrm{cis}\left(\frac{2k\pi}{n}\right)\right),
+\]
+assim $m_T(x)$ é produto de fatores lineares distintos, aí $T$ é diagonalizável.
+}
+}
+
+\exercicio{28} Seja $A \in \m{n}{K}$ e o operador
+\[
+\fullfunction{T_A}{\m{n}{K}}{\m{n}{K}}{M}{T_A(M) = AM - MA}
+\]
+Prove que se $A$ é diagonalizável então $T_A$ é diagonalizável.
+\solucao{
+Se $A$ é diagonalizável, então existe uma matriz inversível $P$ e uma matriz diagonal $D$ tal que $A=PDP^{-1}$. Consideremos primeiro o operador $T_D$. Seja:
+\[
+D=\begin{pmatrix}
+d_1&&&\\&d_2&&\\&&\ddots&\\&&&d_n
+\end{pmatrix},
+\]
+então para $(i,j)$, a entrada $(i,j)$ da matriz $DM-MD$ é $(d_i-d_j)m_{i,j}$; assim o operador $T_D$ consiste em multiplicar cada entrada $(i,j)$ de uma matriz $M$ por $(d_i-d_j)$. Assim, para todo polinômio $p(x)$, então $p(T_D)(M)$ consiste em multiplicarmos cada entrada $(i,j)$ da matriz $M$ por $p(d_i-d_j)$. Consideremos o conjunto:
+\[
+E=\{d_i-d_j\mid i,j=1\dots,n\},
+\]
+então $E$ é finito, aí considerando o polinômio:
+\[
+p(x)=\prod_{e\in E}(x-e),
+\]
+então $p(x)$ é produto de fatores lineares distintos e $p(T_D)=0$, mas para toda matriz $M$ temos:
+\[
+\begin{array}{rcl}
+T_A(M)&=&AM-MA\\
+&=&PDP^{-1}M-MPDP^{-1}\\
+&=&P(DP^{-1}MP-P^{-1}MPD)P^{-1}\\
+&=&PT_D(P^{-1}MP)P^{-1},
+\end{array}
+\]
+aí é fácil provar por indução que para todo $r\geq 0$ temos:
+\[
+T_A^r(M)=PT_D^r(P^{-1}MP)P^{-1},
+\]
+assim particular temos:
+\[
+p(T_A)(M)=Pp(T_D)(P^{-1}MP)P^{-1}=0;
+\]
+logo $p(T_A)=0$, aí o polinômio minimal de $T_A$ é produto de fatores lineares distintos, aí $T_A$ é diagonalizável.
+}
+
+\exercicio{29} Seja $V$ um $K$-espaço de dimensão finita e sejam $E_1, E_2, \ldots E_k \in \mathcal{L}(V)$ tais que $E_1 + E2 + \ldots + E_k = I.$
+\dividiritensdiv{1}{     
+\task[\pers{a}] Prove que se $E_iE_j = 0,$ para $i \neq j,$ então $E_i^2 = E_i$ para todo $i = 1, 2, \ldots, k.$
+\task[\pers{b}] Prove que se $E_i^2 = E_i$ para todo $i = 1, 2, \ldots, k$ e a característica de $K$ é zero, então $E_iE_j= 0,$ sempre que $i \neq j.$
+}
+   
+\solucao{
+\dividiritens{
+\task[\pers{a}] Se $E_iE_j=0$ para $i\neq j$, então para todo $i$ temos:
+\[
+\begin{array}{rcl}
+E_i&=&E_iI\\
+&=&E_i(E_1+\dots+E_n)\\
+&=&E_iE_1+\dots+E_iE_n\\
+&=&E_iE_i,
+\end{array}
+\]
+ou seja, $E_i^2=E_i$.
+\task[\pers{b}] Se $E_i^2 = E_i$ para todo $i = 1, 2, \ldots, k$ e a característica de $K$ é zero, então seja $P_i=\mathrm{Im}(E_i)$ e $K_i=\mathrm{Ker}(E_i)$, então é fácil ver que $V=P_i\oplus K_i$, aí existe base $B_i$ de $V$ tal que:
+\[
+[E_i]_{B_i}=\begin{pmatrix}
+I&0\\0&0
+\end{pmatrix},
+\]
+de modo que $\mathrm{tr}(E_i)=\dim(P_i)\cdot 1_K$. Além disso, $\mathrm{tr}(I)=\dim(V)\cdot 1_K$. Como:
+\[
+I=E_1+\dots+E_k,
+\]
+então:
+\[
+V=P_1+\dots+P_k
+\]
+e também:
+\[
+\mathrm{tr}(I)=\mathrm{tr}(E_1)+\dots+\mathrm{tr}(E_k),
+\]
+aí:
+\[
+\dim(V)\cdot 1_K=\dim(P_1)\cdot 1_K+\dots+\dim(P_k)\cdot 1_K,
+\]
+mas a característica de $K$ é zero, aí:
+\[
+\dim(V)=\dim(P_1)+\dots+\dim(P_k).
+\]
+Portanto, para $k$, temos o seguinte:
+\[
+\begin{array}{rcl}
+\dim(V)&=&\dim(\sum_iP_i)\\
+&=&\dim(P_k)+\dim(\sum_{i\neq k}P_i)-\dim(P_k\cap\sum_{i\neq k}P_i)\\
+&\leq&\dim(P_k)+\sum_{i\neq k}\dim(P_i)-\dim(P_k\cap\sum_{i\neq k}P_i)\\
+&=&\sum_i\dim(P_i)-\dim(P_k\cap\sum_{i\neq k}P_i)\\
+&=&\dim(V)-\dim(P_k\cap\sum_{i\neq k}P_i),
+\end{array}
+\]
+aí:
+\[
+\dim(P_k\cap\sum_{i\neq k}P_i)\leq 0,
+\]
+aí:
+\[
+P_k\cap\sum_{i\neq k}P_i=0;
+\]
+logo:
+\[
+V=P_1\oplus\dots\oplus P_k.
+\]
+Assim, para $i\neq j$, então para $v$ temos:
+\[
+E_j(v)=E_1E_j(v)+\dots+E_kE_j(v),
+\]
+aí:
+\[
+0=\sum_{l\neq j}E_iE_j(v),
+\]
+mas:
+\[
+\forall l\neq j:E_iE_j(v)\in P_l,
+\]
+aí:
+\[
+\forall l\neq j:E_lE_j(v)=0,
+\]
+aí:
+\[
+E_iE_j(v)=0;
+\]
+logo:
+\[
+E_iE_j=0.
+\]
+}
+}
+   
+\exercicio{30} Seja $A \in \m{n}{K}$ e seja 
+\[p_A(t) = t^n + a_{n-1}t^{n-1} + \ldots + a_1t + a_0\] o polinômio característico de $A.$ Mostre que $a_{n-1} = - \mbox{tr}(A),$ o traço de $A,$ e $a_0 = (-1)^n \det(A).$
+    
+\solucao{
+Temos o seguinte:
+\[
+p_A(x)=\sum_{\sigma\in S_n}\sgn(\sigma)\prod_{i=1}^n\left(x\delta_{i,\sigma(i)}-a_{i,\sigma(i)}\right)
+\]
+Para $\sigma\in S_n$, se $\sigma\neq I$, então existe $j$ tal que $\sigma(j)\neq j$, aí sendo $k=\sigma(j)$ temos $j\neq k$ e $\sigma(j)\neq j$ e $\sigma(k)\neq k$, assim temos:
+\[
+\sgn(\sigma)\prod_{i=1}^n\left(x\delta_{i,\sigma(i)}-a_{i,\sigma(i)}\right)=\sgn(\sigma)a_{j,\sigma(j)}a_{k,\sigma(k)}\prod_{i\neq j,k}\left(x\delta_{i,\sigma(i)}-a_{i,\sigma(i)}\right),
+\]
+que tem grau no máximo $n-2$. Assim, o coeficiente de grau $n-1$ do polinômio:
+\[
+\sum_{\sigma\in S_n}\sgn(\sigma)\prod_{i=1}^n\left(x\delta_{i,\sigma(i)}-a_{i,\sigma(i)}\right)
+\]
+é igual ao coeficiente de grau $n-1$ do polinômio:
+\[
+\sgn(I)\prod_{i=1}^n\left(x\delta_{i,I(i)}-a_{i,I(i)}\right)=\prod_{i=1}^n\left(x-a_{i,i}\right),
+\]
+que é igual a $-(a_1+\dots+a_n)$, que é $-\mathrm{tr}(A)$. Além disso, é fácil ver que:
+\[
+a_0=p_A(0)=\det(0I-A)=\det(-A)=(-1)^n\det(A).
+\]
+}
+
+\bigskip
+\noindent
+\textbf{\textcolor{Red}{Questões Suplementares}}
+\exercicio{31} [Algoritmo de Faddeev-LeVerrier] Nesse exercício, vamos apresentar um algoritmo para o cálculo direto dos coeficientes do polinômio característico de uma matriz $A \in \mathcal{M}_n(K),$ conhecido como Algoritmo de Faddeev-LeVerrier.\footnote{A título de curiosidade, Urbain Le Verrier (1811-1877) foi quem descobriu Netuno, ao prever sua existência matematicamente.}
+%https://en.wikipedia.org/wiki/Faddeev%E2%80%93LeVerrier_algorithm
+\solucao{}
+\exercicio{32} Seja $K = \frac{\mathbb{Z}_2[x]}{\langle x^3 + x + 1 \rangle}.$ Dada a matriz
+
+encontre uma matriz inversível $P$ e uma matriz diagonal $D$ em $\mathbb{M}_3(K)$ tais que $PAP^{-1} = D.$
 
 \solucao{}
+
+\exercicio{33} Seja $A \in \mathcal{M}_3(\mathbb{K}).$ Prove que
+\[
+P_A(x)=\frac{1}{6}[\tr^3(A)+2\tr(A^3)-3\tr(A)\tr(A^2)]-\frac{1}{2}[\tr^2(A)-\tr(A^2)]x+\tr(A)x^2-x^3,
+\]
+onde $P_A(x)$ denota o polinômio característico de $A.$
+%https://math.stackexchange.com/questions/2592041/how-to-derive-this-formula-involving-the-characteristic-polynomial-of-a-square-m
+%https://math.stackexchange.com/questions/2592041/how-to-derive-this-formula-involving-the-characteristic-polynomial-of-a-square-m
+\solucao{}
+
+\exercicio{34} Seja $A \in \mathcal{M}_3(\mathbb{C})$ uma matriz não inversível tal que $\tr(A^2) = \tr(A^3).$ Prove que se $\tr(A)$ é um número natural maior do que $1,$ então $\tr(A^3) \in \mathbb{Q}.$
+\solucao{}
+
+\exercicio{35} Considere a matriz 
+\[
+A = \begin{bmatrix}
+1 & 1 & 1 & \ldots & 1 \\
+1 & 1 & 1 & \ldots & 1 \\
+1 & 1 & 1 & \ldots & 1 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+1 & 1 & 1 & \ldots & 1 \\
+\end{bmatrix} \in \mathcal{M}_n(\mathbb{R}).
+\]
+\dividiritens{
+\task[\pers{a}] Prove que $A$ é semelhante à matriz
+\[
+N = \begin{bmatrix}
+n & 0 & 0 & \ldots & 0 \\
+0 & 0 & 0 & \ldots & 0 \\
+0 & 0 & 0 & \ldots & 0 \\
+\vdots & \vdots & \vdots & \ddots & \vdots \\
+0 & 0 & 0 & \ldots & 0 \\
+\end{bmatrix} 
+\]
+\task[\pers{b}] Encontre uma matriz $P \in \mathcal{M}_n(\mathbb{R})$ tal que $PAP^{-1} = N$ e satisfaz as seguintes condições: a soma dos elementos de $P$ é $n$, $\tr(P) = 1$ e $\det(P) = -(n^{n-1}).$
+}
+
+\solucao{}
+\newpage
+\section{\textcolor{Floresta}{Lista 3}}
+
+\noindent
+\textbf{\textcolor{Red}{Aviso:}}
+
+\medskip
+\noindent
+De agora em diante, utilizaremos o fato de que um operador $T$ sobre um espaço $V$ de dimensão finita é triangularizável se e somente se o polinômio minimal é produto de fatores lineares.
+
+\exercicio{1} Seja
+\[
+A = \begin{bmatrix} 6 & -3 & -2 \\
+4 & -1 & -2 \\
+10 & -5 & -3 
+\end{bmatrix} \in \mathcal{M}_3(\mathbb{R}).
+\]
+Seja $T \in \mathcal{L}(\mathbb{R}^3)$ tal que $[T]_{can} = A.$ Encontre a decomposição primária de $T.$
+\solucao{
+Para encontrar a decomposição primária de $T,$ precisamos encontrar seu polinômio característico, escrevê-lo na forma $p(t) = p_1^{n_1} \cdot p_2^{n_2} \cdot \ldots \cdot p_k^{n_k},$ com $p_1,\dots,p_k$ irredutíveis mônicos distintos. %e teremos $V = \bigoplus\limits_{i=1}^k p_i^{n_i}.$
+
+\dividiritens{
+\task[\pers{a}] Encontrando o polinômio característico de $A:$
+\[
+\begin{array}{rcl}
+p(\lambda) &=& \det\left(A - \lambda I  \right) \\
+&=& \det\left( \begin{bmatrix} \lambda & 0 & 0 \\
+0 & \lambda& 0 \\
+0 &0 & \lambda 
+\end{bmatrix} - \begin{bmatrix} 6 & -3 & -2 \\
+4 & -1 & -2 \\
+10 & -5 & -3 
+\end{bmatrix} \right) \\
+&=& \det\left( \begin{bmatrix} \lambda-6 & 3 & 2 \\
+-4 & \lambda+1 & 2 \\
+-10 & 5 & \lambda+3 
+\end{bmatrix}  \right) \\
+&=& \lambda^3 - 2\lambda^2  + \lambda - 2 \\
+&=& (\lambda-2)(\lambda^2 + 1)
+\end{array}
+\]
+
+\task[\pers{b}] Decompondo $V = \mathbb{R}^3$ em soma direta:
+Como $p(\lambda) = (\lambda-2)(\lambda^2 + 1),$ podemos escrever
+\[
+\mathbb{R}^{3} = V_1 \oplus V_2,
+\]
+onde $V_1 = \Ker(A - 2I)$ e $V_2=\Ker(A^2 + I).$
+
+\task[\pers{c}] Encontrando geradores para $V_1$ e $V_2:$
+Temos que
+\[
+\begin{bmatrix}
+4 & -3 & -2 \\ 4 & -3 & -2 \\ 10 & -5 & -5
+\end{bmatrix} \begin{bmatrix}
+x_1 \\ x_2 \\ x_3
+\end{bmatrix} = \begin{bmatrix}
+0 \\ 0 \\ 0
+\end{bmatrix} \Rightarrow \begin{cases} 4x_1 - 3x_2 - 2x_3 = 0 \\ 10x_1 - 5x_2 - 5x_3 = 0 \end{cases} \Rightarrow x_1 = \frac{x_3}{2}, x_2 = 0.
+\]
+Logo, se $v \in V_1 = \Ker(A - 2I),$ temos:
+$v = \left(\frac{x_3}{2}, 0, x_3\right) = \left(\frac{1}{2}, 0, 1\right).$
+
+\medskip
+\noindent
+Podemos tomar $v_1 = \left(\frac{1}{2}, 0, 1\right),$ e temos que $V_1 = \langle v_1 \rangle,$ o que mostra que $V_1$ tem dimensão $2.$
+
+\medskip
+\noindent
+E também temos que:
+\[
+\begin{bmatrix}
+5 & -5 & 0 \\ 0 & 0 & 0 \\ 10 & -10 & 0
+\end{bmatrix} \begin{bmatrix}
+x_1 \\ x_2 \\ x_3
+\end{bmatrix} = \begin{bmatrix}
+0 \\ 0 \\ 0
+\end{bmatrix} \Rightarrow \begin{cases} 5x_1 - 5x_2 = 0 \\ 10x_1 - 10x_2 = 0 \end{cases} \Rightarrow x_1 = x_2
+\]
+Logo, se $v \in V_1 = \Ker(A^2 + I),$ temos:
+\[
+v = (x_2,x_2,x_3) = x_2(1,1,0) + x_3(0,0,1).
+\]
+Daí, podemos escolher os vetores
+\[
+v_2 = (1,1,0) \quad \mbox{e} \quad v_3 = (0,0,1). 
+\]
+E então $V_2 = \langle v_2, v_3 \rangle.$ Além disso, $V_2$ tem dimensão $2.$ 
+
+\task[\pers{d}] Compor uma base com os geradores de $V_1$ e $V_2$ e escrever a matriz de $T$ nessa base:
+
+Podemos considerar a base
+\[
+B = \{ v_1, v_2, v_3 \} = \{ (\frac{1}{2}, 0, 1), (1,1,0), (0,0,1) \}
+\]
+Calculemos $T$ nessa base:
+\[
+\begin{bmatrix}
+6 & -3 & -2 \\ 4 & -1 & -2 \\ 10 & -5 & -3 
+\end{bmatrix} \begin{bmatrix}
+\frac{1}{2} \\ 0 \\ 1
+\end{bmatrix} = \begin{bmatrix}
+1 \\ 0 \\ 2
+\end{bmatrix} = 2v_1 + 0v_2  + 0v_3
+\]
+\[
+\begin{bmatrix}
+6 & -3 & -2 \\ 4 & -1 & -2 \\ 10 & -5 & -3 
+\end{bmatrix} \begin{bmatrix}
+1 \\ 1 \\ 0
+\end{bmatrix} = \begin{bmatrix}
+3 \\ 3 \\ 5
+\end{bmatrix} = 0v_1 + 3v_2 + 5v_3
+\]
+\[
+\begin{bmatrix}
+6 & -3 & -2 \\ 4 & -1 & -2 \\ 10 & -5 & -3 
+\end{bmatrix} \begin{bmatrix}
+0 \\ 0 \\ 1
+\end{bmatrix} = \begin{bmatrix}
+-2 \\ -2 \\ -3
+\end{bmatrix} = 0v_1 - 2v_2 - 3v_3
+\]
+Logo, temos a representação de $T$ na base $B$ como uma matriz diagonal em blocos como se vê abaixo:
+\[
+[T]_B = \left[\begin{array}{c|cc}
+2 & 0 & 0 \\ \hline
+0 & 3 & -2 \\
+0 & 5 & -3
+\end{array}\right]
+\]
+O bloco $(2)$ corresponde à restrição de $T$ ao subespaço invariante $V_1 = \Ker(T - 2I),$ enquanto o bloco
+\[
+\begin{pmatrix}
+3 & -2 \\
+5 & -3
+\end{pmatrix}
+\]
+é produzido pela restrição de $T$ ao subespaço invariante $V_2 = \Ker(T^2 + I).$
+}
+}
+
+\exercicio{2} Seja $V$ um espaço vetorial de dimensão finita sobre o corpo $K.$ Seja $\mathcal{F}$ uma família de operadores triangularizáveis que comutam. Prove que:
+\dividiritens{     
+\task[\pers{a}] Existe um autovetor comum a todos os operadores de $\mathcal{F},$ isto é, existe $v \in V$ não nulo
+tal que, para cada $T \in \mathcal{F}, T(v) = \lambda_Tv,$ para algum $\lambda_T \in K.$
+(\emph{Sugestão:} Use indução na dimensão de $V.$)
+\task[\pers{b}] Mostre que a família 
+\[
+\mathcal{G} = \{T^t \in \mathcal{L}(V^*) | T \in \mathcal{F} \} 
+\] é uma família de operadores lineares que comutam.
+\task[\pers{c}] Use o item (a) para obter $f \in V^*$ autovetor comum à família $\mathcal{G}.$ Prove que $\ker f$ é
+invariante sob $T,$ para todo $T \in \mathcal{F}.$
+\task[\pers{d}] Use indução na dimensão de $V$ (e o item (c)) para provar que existe uma base $B$ de $V$ tal que $[T]_B$ é triangular, para todo $T \in \mathcal{F}.$
+}
+ 
+\solucao{
+\dividiritens{
+\task[\pers{a}] Suponhamos a afirmação para espaços vetoriais de dimensão menor que $n$. Seja $V$ um espaço com $\dim(V)=n$. Seja $\mathcal{F}$ conjunto de operadores triangularizáveis que comutam. Se todo elemento de $\mathcal{F}$ é múltiplo da identidade, então acaba. Senão, então existe $T\in\mathcal{F}$ que não é múltiplo da identidade, então, como $T$ é triangularizável, então existe um autovalor $c$, aí, sendo $W=\Ker(T-cI)$, então $W\neq 0$ e $\dim(W)<n$, aí, como os elementos de $\mathcal{F}$ se comutam, então $W$ é invariante para todo elemento de $\mathcal{F}$. Para $U\in\mathcal{F}$, então $m_U$ é produto de fatores lineares, aí, como $m_{U\upharpoonright W}\mid m_U$, então $m_{U\upharpoonright W}$ é produto de fatores lineares, aí $U\upharpoonright W$ é triangularizável. Como $\dim(W)<n$, então existe um $v\in W$ não nulo tal que para cada $U\in\mathcal{F}$ exista um $\lambda\in K$ tal que $(U\upharpoonright W)(v)=\lambda v$, aí $U(v)=\lambda v$; aí acaba.
+
+\task[\pers{b}] Para $T,U\in\mathcal{F}$ temos $T\circ U=U\circ T$, aí para $f\in V^*$ temos:
+\[
+\begin{array}{rcl}
+T^t(U^t(f))&=&T^t(f\circ U)\\
+&=&(f\circ U)\circ T\\
+&=&f\circ(U\circ T)\\
+&=&f\circ(T\circ U)\\
+&=&(f\circ T)\circ U\\
+&=&U^t(f\circ T)\\
+&=&U^t(T^t(f));
+\end{array}
+\]
+logo $T^tU^t=U^tT^t$. Além disso, para todo $T\in\mathcal{F}$, então é fácil ver que $T^t$ é triangularizável.
+
+\task[\pers{c}] Pelo item (a), então existe $f\in V^*$ não nulo tal que para todo $T\in\mathcal{F}$ exista $\lambda\in K$ tal que $T^t(f)=\lambda f$, aí $f\circ T=\lambda f$, aí para $v\in\Ker(f)$ então $f(v)=0$, aí $\lambda f(v)=0$, aí $f(T(v))=0$, aí $T(v)\in\Ker(f)$; aí $\Ker(f)$ é $T$-invariante.
+
+\task[\pers{d}] Suponhamos a afirmação válida para espaços com dimensão menor que $n$. Seja $V$ tal que $\dim(V)=n$. Pegue um $f\in V^*$ não nulo tal que $\Ker(f)$ seja invariante para todo elemento de $\mathcal{F}$, aí seja $W=\Ker(f)$, então temos $n=\dim(V)=\dim(\Ker(f))+\dim(\mathrm{Im}(f))=\dim(W)+1$, aí $\dim(W)=n-1$. Para $T\in\mathcal{F}$, então $m_T$ é produto de fatores lineares, mas $m_{T\upharpoonright W}\mid m_T$, aí $m_{T\upharpoonright W}$ é produto de fatores lineares, aí $T\upharpoonright W$ é triangularizável. Assim pela hipótese de indução existe base $B$ de $\Ker(f)$ tal que para todo $T\in\mathcal{F}$ então $[T\upharpoonright W]_B$ seja triangular, aí pegando um $e_n$ tal que $e_n\notin W$, então $C=B\cup\{e_n\}$ é uma base e aí para todo $T\in\mathcal{F}$ existe um $\lambda\in K$ tal que:
+\[
+[T]_C=\begin{pmatrix}
+[T\upharpoonright W]_B&*\\0&\lambda
+\end{pmatrix},
+\]
+aí $[T]_C$ é triangular.
+}
+}
+
+\exercicio{3} Sejam $V$ um $K$-espaço vetorial de dimensão finita e $T \in \mathcal{L}(V)$ um operador linear que comuta com todo operador diagonalizável de $\mathcal{L}(V).$ Prove que $T$ é um múltiplo escalar do operador identidade.
+
+\solucao{
+Seja $A\in M_n(K)$ uma matriz que comute com toda matriz diagonalizável.
+
+\medskip
+\noindent
+Para todo $i$, considerando a matriz:
+\[
+B_i=\begin{pmatrix}
+0&&0&&0\\&\ddots&&\ddots&\\0&&1&&0\\&\ddots&&\ddots&\\0&&0&&0
+\end{pmatrix}
+\]
+que vale $1$ na entrada $(i,i)$ e $0$ nas outras, então $B_i$ é diagonal, aí $B_iA=AB_i$, mas:
+\[
+B_iA=\begin{pmatrix}
+0&&0&&0\\&\ddots&&\ddots&\\a_{i,1}&&a_{i,i}&&a_{i,n}\\&\ddots&&\ddots&\\0&&0&&0
+\end{pmatrix}
+\]
+e
+\[
+AB_i=\begin{pmatrix}
+0&&a_{1,i}&&0\\&\ddots&&\ddots&\\0&&a_{i,i}&&0\\&\ddots&&\ddots&\\0&&a_{n,i}&&0
+\end{pmatrix},
+\]
+assim para todo $j\neq i$ temos $a_{i,j}=0$ e $a_{j,i}=0$. Portanto $A$ é uma matriz diagonal:
+\[
+A=\begin{pmatrix}
+a_1&&0\\&\ddots&\\0&&a_n
+\end{pmatrix},
+\]
+aí para $i,j$ tais que $i<j$, consideremos a matriz:
+\[
+C_{i,j}=\begin{pmatrix}
+0&&0&&0&&0\\&\ddots&&\ddots&&\ddots&\\0&&1&&1&&0\\&\ddots&&\ddots&&\ddots&\\0&&0&&0&&0\\&\ddots&&\ddots&&\ddots&\\0&&0&&0&&0
+\end{pmatrix},
+\]
+que vale $1$ nas entradas $(i,i)$ e $(i,j)$ e vale $0$ nas outras, então $C_{i,j}$ é diagonalizável, aí $C_{i,j}A=AC_{i,j}$, mas:
+\[
+C_{i,j}A=\begin{pmatrix}
+0&&0&&0&&0\\&\ddots&&\ddots&&\ddots&\\0&&a_{i}&&a_{j}&&0\\&\ddots&&\ddots&&\ddots&\\0&&0&&0&&0\\&\ddots&&\ddots&&\ddots&\\0&&0&&0&&0
+\end{pmatrix}
+\]
+e
+\[
+AC_{i,j}=\begin{pmatrix}
+0&&0&&0&&0\\&\ddots&&\ddots&&\ddots&\\0&&a_{i}&&a_{i}&&0\\&\ddots&&\ddots&&\ddots&\\0&&0&&0&&0\\&\ddots&&\ddots&&\ddots&\\0&&0&&0&&0
+\end{pmatrix},
+\]
+aí $a_i=a_j$. Logo $A$ é múltiplo da identidade.
+}
+  
+\exercicio{4} Seja $A \in \mathcal{M}_3(\mathbb{R})$ uma matriz não nula tal que $A^3 = -A.$ Mostre que $A$ é semelhante à matriz
+\[
+\begin{bmatrix}
+0 & 0 & 0 \\
+0 & 0 & -1 \\
+0 & 1 & 0
+\end{bmatrix}
+\]
+\solucao{
+Considerando o polinômio $f(x)=x^3+x$, então $f(A)=0$. Aí, como a decomposição em fatores irredutíveis é $f(x)=x(x^2+1)$, então seja $V_1=\Ker(A)$ e $V_2=\Ker(A^2+I)$, então pela decomposição primária temos $\mathcal{M}_3(\mathbb{R})=V_1\oplus V_2$ e os subespaços $V_1$ e $V_2$ são $A$-invariantes. Assim sejam $A_1=A\upharpoonright V_1$ e $A_2=\upharpoonright V_2$. Como $A\neq 0$, então $V_1\neq V$, aí $\dim(V_1)\leq 2$, aí $\dim(V_2)\geq 1$. Além disso, temos $A_2^2+I=0$, aí $A_2^2=-I$, aí $\det(A_2)^2=(-1)^{\dim(V_2)}$, aí $\dim(V_2)$ deve ser par, aí $\dim(V_2)=2$, aí $\dim(V_1)=1$. Logo, pegue um $u\in V_1$ não nulo qualquer, então $\{u\}$ é base de $V_1$. Pegue $e\in V_2$ não nulo, então mostraremos que $\{e,A_2(e)\}$ é base de $V_2$. De fato, para $a,b\in\mathbb{R}$, se $ae+bA_2(e)=0$, então $A_2(ae+bA_2(e))=0$, aí $-be+A_2(e)=0$, aí:
+\[
+0=a0-b0=a(ae+bA_2(e))-b(-be+A_2(e))=(a^2+b^2)e,
+\]
+aí $a^2+b^2=0$, aí $a=b=0$. Assim temos uma base $B$ tal que:
+\[
+[A]_B=\begin{pmatrix}
+0&0&0\\0&0&-1\\0&1&0
+\end{pmatrix}.
+\]
+}
+  
+\exercicio{5} Sejam $V$ um $K$-espaço vetorial de dimensão $n$ e $T \in \mathcal{L}(V)$ com polinômio minimal
+\[m_T(t) = p_1(t)^{m_1} \cdot \ldots \cdot p_k(t)^{m_k}, \]
+onde $p_i(t)$ são distintos e irredutíveis em $K[t].$ Seja $V = V_1 \oplus \ldots \oplus V_k$ a decomposição primária de $V,$ isto é, $V_i = \Ker(p_i(T)^{m_i}).$ Seja $W$ um subespaço $T$-invariante de $V.$ Mostre que
+\[W = (W \cap V_1) \oplus \ldots \oplus (W \cap V_k).\]
+\solucao{
+Seja:
+\[
+f_i(t)=\frac{m_T(t)}{p_i(t)^{m_i}}.
+\]
+Então $f_1,\dots,f_k$ são primos entre si, aí existem $g_1,\dots,g_k$ tais que:
+\[
+f_1g_1+\dots+f_kg_k=1.
+\]
+Assim, para $w\in W$, então:
+\[
+w=f_1(T)g_1(T)(w)+\dots+f_k(T)g_k(T)(w),
+\]
+e também:
+\[
+p_i(T)^{m_i}f_i(T)g_i(T)(w)=m_T(T)g_i(T)(w)=0,
+\]
+aí:
+\[
+f_i(T)g_i(T)(w)\in V_i,
+\]
+mas $W$ é $T$-invariante, aí:
+\[
+f_i(T)g_i(T)(w)\in W,
+\]
+aí:
+\[
+f_i(T)g_i(T)(w)\in W\cap V_i.
+\]
+Portanto:
+\[W = (W \cap V_1) + \ldots + (W \cap V_k),\]
+e é fácil ver que esta soma é direta.
+}
+  
+\exercicio{6} Sejam $V$ um $K$-espaço vetorial de dimensão $n$ e $T \in \mathcal{L}(V)$ com polinômio característico
+  \[
+p_T(t) = (t - \lambda_1)^{n_1} (t -\lambda_2)^{n_2} \cdot \ldots \cdot  (t - \lambda_k)^{n_k}\]
+e polinômio minimal
+\[m_T(t) = (t - \lambda_1)^{m_1} (t -\lambda_2)^{m_2} \cdot \ldots \cdot  (t - \lambda_k)^{m_k}, \]
+com $\lambda_i$ distintos.
+\dividiritensdiv{1}{     
+\task[\pers{a}] Prove que, para cada $i = 1, 2, \ldots , k,$ temos que 
+\[\dim \Ker(T - \lambda_iI)^{m_i} = n_i.\]
+\task[\pers{b}] Seja
+\[
+W_i = \{ v \in V : (T- \lambda_iI)^t(v) = 0, \mbox{ para algum inteiro } r \ge 0 \}.
+\]
+Prove que $W_i = \Ker(T-\lambda_iI)^{m_i},$ para todo $i = 1, \ldots, k.$
+}
+
+\solucao{
+\dividiritens{
+\task[\pers{a}]
+Sendo $V_i=\Ker(T-\lambda_iI)^{m_i}$, então pela decomposição primária temos $V=V_1\oplus\dots\oplus V_k$ e cada $V_i$ é $T$-invariante. Além disso, sendo $V'_i=\Ker(T-\lambda_iI)^{n_i}$, então pela decomposição primária temos $V=V'_1\oplus\dots\oplus V'_k$ e cada $V'_i$ é $T$-invariante. Mas também temos $V_i\subseteq V'_i$ para cada $i$. Logo é fácil ver que $V_i=V'_i$ para todo $i$. Para cada $i$ seja $T_i=T\upharpoonright V_i$. Então $p_T=p_{T_1}\dots p_{T_k}$. Além disso, para cada $i$ temos $m_{T_i}(t)=(t-\lambda_i)^{m_i}$. Assim $\lambda_i$ é o único autovalor de $T_i$ em $V_i$, mas $p_{T_i}$ é produto de fatores lineares, assim $p_{T_i}(t)=(t-\lambda_i)^{r_i}$ para algum $r_i$. Assim $p_T(t)=(t-\lambda_1)^{r_1}\dots(t-\lambda_k)^{r_k}$, aí, pela fatoração única de polinômios, para todo $i$ temos $r_i=n_i$, aí $p_{T_i}=(t-\lambda_i)^{n_i}$, aí $\dim(V_i)=n_i$, aí $\dim(\Ker(T-\lambda_iI)^{m_i})=n_i$.
+\task[\pers{b}]
+É fácil ver que para todo $i$ temos $V_i\subseteq W_i$. Agora, para cada $i$, então para $v\in W_i$ então existe $r$ tal que $(T-\lambda_iI)(v)=0$, mas seja $v=v_1+\dots+v_k$ com $v_i\in V_i$, então $0=\sum_{j}(T-\lambda_iI)^r(v_j)$ e para todo $j$ temos $(T-\lambda_iI)(v_j)\in V_j$, aí para todo $j\neq i$ temos $(T-\lambda_iI)^r(v_j)=0$, mas $(T-\lambda_jI)^{m_j}(v_j)=0$, mas $(t-\lambda_i)^r$ e $(t-\lambda_j)^{m_j}$ são primos entre si, aí por Bézout temos $v_j=0$; logo $v=v_i$, aí $v\in V_i$. Logo, $V_i=W_i$, ou seja, $W_i=\Ker(T-\lambda_iI)^{m_i}$.
+}
+}
+  
+\exercicio{7} Seja $N$ um operador linear nilpotente em um espaço vetorial de dimensão finita $n$. Prove
+que o polinômio característico de $N$ é $p_N(t) = t^n.$
+
+\solucao{Seja $N$ um operador linear nilpotente. Então existe um $r\geq 1$ tal que $N^r=0$.
+
+\medskip
+\noindent
+Primeiro mostraremos que, se $W$ é um subespaço tal que $W\neq V$, então existe um $\alpha\in V$ tal que $\alpha\notin W$ e $N(\alpha)\in W$. De fato, pegue um $\beta\in V$ tal que $\beta\notin W$, aí seja $s$ o menor tal que $N^s(\beta)\in W$, então $s\geq 1$ e também $s\leq r$, assim $N^{s-1}(\beta)\notin W$ e $N(N^{s-1}(\beta))\in W$.
+
+\medskip
+\noindent
+Agora, apliquemos repetidamente o discurso do parágrafo anterior para chegarmos numa base ordenada $(a_1,\dots,a_n)$. Seja $W_0=0$. Se $W_0\neq V$, então pegue um $\alpha_1\in V$ tal que $\alpha_1\notin W_0$ e $N(\alpha_1)\in W_0$, e aí seja $W_1$ o subespaço gerado por $\alpha_1$. Se $W_1\neq V$, então pegue um $\alpha_2\in V$ tal que $\alpha_2\notin W_1$ e $N(\alpha_2)\in W_1$, e aí seja $W_2$ o subespaço gerado por $\alpha_1,\alpha_2$. Continue dessa maneira até obtermos $n$ vetores $\alpha_1,\dots,\alpha_n$. É fácil ver que, sendo $B=(\alpha_1,\dots,\alpha_n)$ a base ordenada obtida, então $[N]_B$ é uma matriz estritamente triangular, assim seu polinômio característico é $t^n$.
+}
+
+\bigskip
+\noindent
+\textcolor{red}{Solução Alternativa 1:} Faremos a resolução por indução em $V$. Suponhamos o exercício válido para $\dim(V)<n$. Seja $V$ espaço vetorial tal que $\dim(V)=n$ e seja $N$ um operador nilpotente. Então existe $r$ tal que $N^r=0$. Se $V=0$, é fácil. Senão, então tome um $v\neq 0$ qualquer. Seja $W$ o subespaço gerado por $\{v,N(v),N^2(v),\dots\}$. É fácil ver que $W$ é $N$-invariante, aí consideremos o espaço quociente $V/W$. Como $v\neq 0$, então $W\neq 0$, aí $\dim(V/W)=\dim(v)-\dim(W)<n$. Seja $k$ o menor tal que $\{v,N(v),N^2(v),\dots,N^k(v)\}$ seja linearmente dependente, então $B_1=\{v,N(v),N^2(v),\dots,N^{k-1}(v)\}$ é uma base de $W$. Seja $B$ uma base de $V$ tal que $B_1\subseteq B$ e seja $B_2=B\setminus B_1$. Então $\overline{B}_2=\{\overline{b}:b\in B_2\}$ é uma base de $V/W$ e, sendo $N'=N\upharpoonright W$ e sendo $\overline{N}\in L(V/W)$ o operador induzido, então temos:
+\[
+[N]_B=
+\begin{pmatrix}
+[N']_{B_1}&*\\0&[\overline{N}]_{\overline{B_2}}
+\end{pmatrix},
+\]
+aí é fácil ver que $p_N=p_{N'}p_{\overline{N}}$. Além disso, é fácil ver que:
+\[
+[N]^r_B=
+\begin{pmatrix}
+[N']^r_{B_1}&*\\0&[\overline{N}]^r_{\overline{B_2}}
+\end{pmatrix},
+\]
+de modo que $(N')^r=0$ e $(\overline{N})^r=0$, aí por hipótese de indução temos $p_{\overline{N}}(t)=t^{\dim(V/W)}$. Além disso, $N'$ é a matriz companheira de um polinômio, aí $p_{N'}=m_{N'}$, mas $m_{N'}(t)\mid t^r$, aí $p_{N'}(t)=t^l$ para algum $l$, aí $p_{N}(t)=t^{l+\dim(V/W)}$, mas o grau de $p_{N}$ deve ser $n$, aí $p_{N}(t)=t^n$.
+
+\bigskip
+\noindent
+\textcolor{red}{Solução Alternativa 2:} Seja $K$ um corpo algebricamente fechado. Nesse caso, sendo $N$ a matriz que representa este operador nilpotente, temos que $N^r = 0$ para algum $r\geq 1.$ Então, sendo $\lambda$ um autovalor de $N,$ para $v \neq 0,$ temos
+\[
+N(v) = \lambda v \Rightarrow \textcolor{Magenta}{N^r(v)} = \lambda^r v  \Rightarrow \textcolor{Magenta}{0} = \lambda^r v \Rightarrow \lambda^r = 0 \Rightarrow \lambda = 0
+\]
+Portanto, todos os autovalores de $N$ são nulos, e o polinômio característico de $N$ será
+\[
+p_N(t) = (t - \lambda_1) \ldots (t  - \lambda_n) = t^n
+\]
+
+Se $K$ não for algebricamente fechado, podemos fazer uma extensão $L$ de $K$ de modo que $L$ seja algebricamente fechado, e considerar $N$ e seu respectivo polinômio característico nesse corpo.
    
-    \exercicio{27} Seja $V$ um espaço vetorial de dimensão finita sobre $\mathbb{C}$ e seja $T \in \mathcal{L}(V).$ Prove que as seguintes afirmações são equivalentes:
-    \dividiritensdiv{1}{     
-        \task[\pers{a}] $T$ é diagonalizável e $T^{2n} = T^n.$
-        \task[\pers{b}] $T^{n+1} = T.$
-        }
-        \solucao{}
-   
-    \exercicio{28} Seja $A \in \m{n}{K}$ e o operador
+\exercicio{8} Seja $V$ um $K$-espaço de dimensão finita e sejam $T, N \in L(V)$ tais que $N$ é nilpotente e
+$TN = NT$. Prove que
+\dividiritens{
+\task[\pers{a}] $T$ é inversível se, e somente se, $T + N$ é inversível.
+\task[\pers{b}] $\det(T) = \det(T + N)$ e $p_T(t) = p_{T+N}(t)$.
+}
+\solucao{
+\dividiritens{
+\task[\pers{a}] $(\Rightarrow)$ Como $N$ é nilpotente, sabemos que existe $m > 0$ tal que $N^m = 0.$ Assumindo que $N \neq 0$ (pois do contrário não há o que demonstrar), então $m > 1.$ 
+
+Se $T$ é inversível, podemos escrever
+\[
+T + N = T(I + T^{-1}N)
+\]
+
+Note também que 
+\[
+TN = NT \Rightarrow T^{-1}N = NT^{-1}.
+\]
+e consequentemente
+\[
+(-T^{-1}N)^m = (-1)^mT^{-m}N^m = 0.
+\]
+
+Lembrando da identidade polinomial
+\[
+x^m - 1 = (x - 1) \displaystyle \sum\limits_0^{m - 1} x^{m - 1 - i},
+\]
+que podemos reescrever como
+\[
+1 - x^m = (1 - x)  \displaystyle \sum_0^{m - 1} x^{m - 1 - i},
+\]
+podemos aplicá-la tomando $x = -T^{-1}N,$ obtendo
+\[
+1 - \textcolor{Green}{x}^m = (1 - \textcolor{Green}{x})  \displaystyle \sum_0^{m - 1} \textcolor{Green}{x}^{m - 1 - i} \Rightarrow 1 - \textcolor{Green}{(-T^{-1}N)}^m = (1 - \textcolor{Green}{(-T^{-1}N)})  \displaystyle \sum_0^{m - 1} \textcolor{Green}{(-T^{-1}N)}^{m - 1 - i} \Rightarrow  \]\[I - (-T^{-1}N)^m = (I + T^{-1}N) \displaystyle \sum_0^{m - 1} (-T^{-1}N)^{m - 1- i}.
+\]
+Mas por outro lado, temos que
+\[
+I - \textcolor{Mahogany}{(-T^{-1}N)^m} =  I - \textcolor{Mahogany}{0} = I,
+\]
+donde segue que
+\[
+ \textcolor{Blue}{I - (-T^{-1}N)^m} = (I + T^{-1}N) \displaystyle \sum_0^{m - 1} (-T^{-1}N)^{m - 1- i} \Rightarrow  \textcolor{Blue}{I} = (I + T^{-1}N) \displaystyle \sum_0^{m - 1} (-T^{-1}N)^{m - 1- i}.
+\]
+
+Logo, isso mostra que $(I + T^{-1}N)$ possui uma inversa (respectivamente, $\sum\limits_0^{m - 1} (-T^{-1}N)^{m - 1- i}.)$
+
+Daí, concluímos que ambos $T$ e $I + T^{-1}N$ são inversíveis; logo seu produto também o é. Mas
+\[
+T(I + T^{-1}N) = T + N.
+\]
+
+Portanto, segue que $T + N$ é inversível. \\
+
+$(\Leftarrow)$ Se $T+N$ é inversível, como $-N$ é nilpotente e $(T+N)(-N)=(-N)(T+N)$, então basta aplica $(\Rightarrow)$ para $T+N$ e $-N$ em vez de $T$ e $N$ e concluir que $(T+N)-N$ é inversível, aí $T$ é inversível.
+%https://math.mit.edu/~gs/linearalgebra/ila0205.pdf - pg 93
+\task[\pers{b}] Se $\det(T) = 0,$ então $\det(T) $
+
+Utilizando que
+\[
+T + N= T(I + T^{-1}N),
+\]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
+%https://math.stackexchange.com/questions/2757872/let-t-n-v-to-v-n-is-nilpotent-t-is-invertible-and-nt-tn-prove-nt
+}
+
+\exercicio{9} Seja
+\[
+A = \begin{bmatrix}
+3 & 1 & -1 \\
+2 & 2 & -1 \\
+2 & 2 & 0
+\end{bmatrix} \in \mathcal{M}_3(\mathbb{R}).
+\]
+Seja $T \in \mathcal{L}(\mathbb{R}^3)$ tal que $[T]_{can} = A.$ Escreva $T = D + N,$ com $D$ diagonalizável, $N$ nilpotente e $DN = ND.$
+\solucao{Vamos encontrar a decomposição de Jordan-Chevalley de $A.$ Para isso, calculemos primeiramente o polinômio característico de $A:$
+\[
+\begin{array}{rcl}
+p_A(\lambda) &=& \det(\lambda I - A)\\
+&=&\det\left(\begin{bmatrix}
+\lambda & 0 & 0 \\
+0 & \lambda & 0 \\
+0 & 0 & \lambda
+\end{bmatrix}-\begin{bmatrix}
+3 & 1 & -1 \\
+2 & 2 & -1 \\
+2 & 2 & 0
+\end{bmatrix}\right)\\
+&=&\det\left(\begin{bmatrix}
+\lambda-3 & -1 & 1 \\
+-2 & \lambda-2 & 1 \\
+-2 & -2 & \lambda
+\end{bmatrix}\right)\\
+&=&\lambda^3 - 5\lambda^2+8\lambda -4\\
+&=&(\lambda - 2)^2(\lambda-1).
+\end{array}
+\]
+Logo, os autovalores são $\lambda_1 = 2$ e $\lambda_2 = 1.$ Consideremos então para cada autovalor $\lambda_i,$ com $i = 1, 2, \ldots, k,$ os polinômios da forma $W_i(t) = \prod\limits_{\substack{j =1 \\  j \neq i}}^k (t - \lambda_j)^{\alpha_j}.$ Temos então
+\[
+W_1(t) = (t - 1) \quad \mbox{e} \quad W_2(t) = (t - 2)^2
+\]
+Vamos encontrar agora polinômios $Q_1(t)$ e $Q_2(t)$ tais que $Q_1(t)W_1(t) + Q_2(t)W_2(t) = 1.$
+
+\medskip
+\noindent
+Para este caso, observe que $(t-2)^2 = t^2 - 4t + 4 = (t-1)(t-3) + 1,$ o que pode ser obtido dividindo-se $W_2$ por $W_1.$ Daí, \[\textcolor{Blue}{(3-t)}(t-1) + \textcolor{Green}{1} \cdot (t-2)^2  = 1 \Rightarrow  \textcolor{Blue}{Q_1(t) = (3-t)} \quad \mbox{e} \quad \textcolor{Green}{Q_2(t) = 1}\]
+Calculemos o polinômio $D(t) = \sum\limits_{i=1}^k \lambda_iQ_i(t)W_i(t)$. Temos para nosso caso:
+\[
+\begin{array}{rcl}
+D(t) &=& \sum\limits_{i=1}^2 \lambda_iQ_i(t)W_i(t) \\
+&=& \lambda_1 Q_1(t) W_1(t) + \lambda_2 Q_2(t) W_2(t) \\
+&=& 2(3-t)(t-1) + 1 \cdot (t-2)^2 \cdot 1 \\
+&=& -t^2 + 4t - 2
+\end{array}
+\]
+Portanto, temos que
+\[
+D = D(A) = -A^2 + 4A - 2I = \begin{bmatrix}
+-9 & -3 & 4 \\
+-8 & -4 & 4 \\
+-10 & -6 & 4
+\end{bmatrix} + \begin{bmatrix}
+12 & 4 & -4 \\
+8 & 8 & -4 \\
+8 & 8 & 0
+\end{bmatrix} - \begin{bmatrix}
+2 & 0 & 0 \\
+0 & 2 & 0 \\
+0 & 0 & 2
+\end{bmatrix} =  \begin{bmatrix}
+1 & 1 & 0 \\
+0 & 2 & 0 \\
+-2 & 2 & 2
+\end{bmatrix}
+\]
+Daí,
+\[
+N = A - D =  \begin{bmatrix}
+3 & 1 & -1 \\
+2 & 2 & -1 \\
+2 & 2 & 0
+\end{bmatrix}  - \begin{bmatrix}
+1 & 1 & 0 \\
+0 & 2 & 0 \\
+-2 & 2 & 2
+\end{bmatrix} = \begin{bmatrix}
+2 & 0 & -1 \\
+2 & 0 & -1 \\
+4 & 0 & -2\end{bmatrix}
+\]
+De fato, pode-se verificar que $N^2 = 0,$ e que $D$ é diagonalizável. Além disso,
+\[
+DN =  \begin{bmatrix}
+1 & 1 & 0 \\
+0 & 2 & 0 \\
+-2 & 2 & 2
+\end{bmatrix} \begin{bmatrix}
+2 & 0 & -1 \\
+2 & 0 & -1 \\
+4 & 0 & -2\end{bmatrix} = \begin{bmatrix}
+4 & 0 & -2 \\
+4 & 0 & -2 \\
+8 & 0 & -4\end{bmatrix} = \begin{bmatrix}
+2 & 0 & -1 \\
+2 & 0 & -1 \\
+4 & 0 & -2\end{bmatrix} \begin{bmatrix}
+1 & 1 & 0 \\
+0 & 2 & 0 \\
+-2 & 2 & 2
+\end{bmatrix} = ND
+\]
+Portanto, $A = D + N.$
+
+\bigskip
+\noindent
+\textbf{Observação:} Em resumo, o processo para se encontrar a decomposição de Jordan-Chevalley de uma matriz $A$ é o seguinte:
+\begin{itemize}
+\item[$\clubsuit$] Encontre o polinômio característico de $A$ e seus respectivos autovalores $\lambda_1, \lambda_2, \ldots \lambda_k;$
+\item[$\textcolor{Red}{\varheart}$] Para cada autovalor $\lambda_i,$ escreva um polinômio da forma
+\[
+W_i(t) = \prod\limits_{\substack{j=1 \\ j \neq i}}^k (t - \lambda_j)^{\alpha_j} = (t - \lambda_1)^{\alpha_1} \cdot \ldots \cdot  (t - \lambda_{i-1})^{\alpha_{i-1}} \cdot  (t - \lambda_{i+1})^{\alpha_{i+1}} \cdot \ldots \cdot  (t - \lambda_k)^{\alpha_k}
+\]
+\item[$\spadesuit$] Encontre polinômios $Q_1(t), Q_2(t), \ldots, Q_r(t)$ tais que
+\[
+Q_1(t)W_1(t) + Q_2(t)W_2(t) + \ldots + Q_k(t)W_k(t) = 1
+\]
+\item[$\textcolor{Red}{\varheart}$] Determine o polinômio
+\[
+D(t) = \sum\limits_{i = 1}^k \lambda_i Q_i(t)W_i(t),
+\]
+e encontre $D = D(A).$
+\item[$\maltese$] Calcule $N = A - D.$
+\end{itemize}
+}
+
+\exercicio{10} Sejam $A \in \mathcal{M}_n(K)$ e $T_A \colon \mathcal{M}_n(K) \to \mathcal{M}_n(K)$ o operador definido por $T_A(M) = AM - MA.$
+\dividiritensdiv{1}{     
+\task[\pers{a}] Prove que se $A$ é nilpotente, então $T_A$ é nilpotente. Vale a recíproca?
+\task[\pers{b}] Prove que se $K$ é algebricamente fechado e se $T_A$ é diagonalizável, então $A$ é diagonalizável.
+(\emph{Sugestão}: Para cada matriz $M \in \mathcal{M}_n(K)$ seja $\tilde{M} \in \mathcal{L}(K^n)$ o operador tal que $[\tilde{M}]_{can} = M.$ Seja $v \in K^n$ um autovetor de $\tilde{A}.$ Considere a transformação linear $\varphi \colon \mathcal{M}_n(K) \to K^n$ definida por $\varphi(M) = \tilde{M}(v).$ Prove que $\varphi$ é sobrejetora.)
+}
+
+\solucao{
+\dividiritensdiv{1}{
+\task[\pers{a}] Se $A$ é nilpotente, então existe um $r > 0$ tal que $A^r = 0.$ Observe que
+\[
+\begin{array}{rcl}
+T_A^2(M) &=& T_A(\textcolor{Laranja}{T_A(M)}) \\
+&=& T_A(\textcolor{Laranja}{AM - MA}) \\
+&=& A(\textcolor{Laranja}{AM - MA}) - ((\textcolor{Laranja}{AM - MA}))A \\
+&=& A^2M - 2AMA + MA^2
+\end{array}
+\]
+Também temos que
+\[
+\begin{array}{rcl}
+T_A^3(M) &=& T_A(\textcolor{RawSienna}{TA^2(M)}) \\
+&=& T_A(\textcolor{RawSienna}{A^2M - 2AMA + MA^2}) \\
+&=& A(\textcolor{RawSienna}{A^2M - 2AMA + MA^2}) - (\textcolor{RawSienna}{A^2M - 2AMA + MA^2})A \\
+&=& A^3M - 3A^2MA + 3AMA^2 - MA^3
+\end{array}
+\]
+% \[ T_A^4(M) = T_A(\textcolor{RawSienna}{TA^3(M)}) = T_A(\textcolor{RawSienna}{A^3M - 3A^2MA + 3AMA^2 - MA^3}) = A(\textcolor{RawSienna}{A^3M - 3A^2MA + 3AMA^2 - MA^3}) - (\textcolor{RawSienna}{A^3M - 3A^2MA + 3AMA^2 - MA^3})A = A^4M - 4A^3MA + 6A^2MA^2 - 4AMA^3  +MA^4 \]
+Em geral, procedendo analogamente, temos que
+\[
+T_A^k(M) = \sum\limits_{i = 0}^k (-1)^i \binom{k}{i} A^{k-i}MA^k
+\]
+Logo, a menor potência de $A$ que aparecerá em $T_A^k(M)$ será $\left\lfloor \frac{k}{2} \right \rfloor.$
+
+\medskip
+\noindent
+Portanto, para $k \ge 2r,$ a menor potência de $A$ que aparecerá em $T_A^k(M)$ será no mínimo $\left\lfloor \frac{2r}{2} \right \rfloor = r.$ Portanto, teremos $T_A^k(M) = 0$ para todo $M,$ e portanto o operador $T_A$ será nilpotente.
+
+Observe que a recíproca não é verdadeira. Tome por exemplo $A = I_n.$ Então nesse caso, temos que
+\[
+T_{I_n}(M) = I_n M - M I_n = 0.
+\]
+Logo, $T_{I_n} = 0,$ que obviamente é nilpotente, mas $A = I_n$ não é nilpotente.
+
+\task[\pers{b}]
+}
+
+\textbf{Observação:}  $T_A$ na verdade é um operador de derivação em $\mathcal{M}_n(K).$ Veja que $\forall M, N \in \mathcal{M}_n(K),$ temos que
+\begin{itemize}
+\item 
+\[
+\begin{array}{rcl}
+T_A(M + N) &=& A(M+N) - (M + N)A \\
+&=& AM - MA + AN - NA \\
+&=& T_A(M) + T_A(N);
+\end{array}
+\]
+\item 
+\[
+\begin{array}{rcl}
+T_A(MN) &=& AMN - MNA \\
+&=& AMN \textcolor{Emerald}{ - MAN + MAN} - MNA \\
+&=& (AMN - MAN) + (MAN - MNA) \\
+&=& T_A(M)N + MT_A(N).
+\end{array}
+\]
+\end{itemize}
+}
+
+\exercicio{11} Encontre duas matrizes nilpotentes de ordem $4$ que tenham o mesmo polinômio minimal, mas que não sejam semelhantes.
+\solucao{
+Sejam
+\[A=\begin{pmatrix}
+0 &0 &0 &0\\
+0& 0 & 0& 0\\
+0& 0& 0 & 1 \\
+0&0 & 0& 0 
+\end{pmatrix}, \ \ B=\begin{pmatrix}0 & 1&0 &0 \\
+0& 0 & 0&0 \\
+0& 0& 0 & 1 \\
+0&0 &0 & 0 \end{pmatrix}.\]
+Observe que $A^2 = B^2 = 0,$ e $A$ e $B$ possuem o mesmo polinômio minimal, mas $A$ e $B$ não são semelhantes. De fato, para matriz $P\in M_4(K)$, sendo:
+\[
+P=\begin{pmatrix}
+p_{11}&p_{12}&p_{13}&p_{14}\\
+p_{21}&p_{22}&p_{23}&p_{24}\\
+p_{31}&p_{32}&p_{33}&p_{34}\\
+p_{41}&p_{42}&p_{43}&p_{44}
+\end{pmatrix},
+\]
+}
+então:
+\[
+PA=\begin{pmatrix}
+p_{11}&p_{12}&p_{13}&p_{14}\\
+p_{21}&p_{22}&p_{23}&p_{24}\\
+p_{31}&p_{32}&p_{33}&p_{34}\\
+p_{41}&p_{42}&p_{43}&p_{44}
+\end{pmatrix}\begin{pmatrix}
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0\\
+0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 
+\end{pmatrix}=\begin{pmatrix}
+0&0&0&p_{13}\\
+0&0&0&p_{23}\\
+0&0&0&p_{33}\\
+0&0&0&p_{43}
+\end{pmatrix}
+\]
+e
+\[
+BP=\begin{pmatrix}
+0 & 1 & 0 & 0\\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 \end{pmatrix}\begin{pmatrix}
+p_{1,1}&p_{1,2}&p_{1,3}&p_{1,4}\\
+p_{2,1}&p_{2,2}&p_{2,3}&p_{2,4}\\
+p_{3,1}&p_{3,2}&p_{3,3}&p_{3,4}\\
+p_{4,1}&p_{4,2}&p_{4,3}&p_{4,4}
+\end{pmatrix}=\begin{pmatrix}
+p_{21}&p_{22}&p_{23}&p_{24}\\
+0&0&0&0\\
+p_{41}&p_{42}&p_{43}&p_{44}\\
+0&0&0&0
+\end{pmatrix},
+\]
+assim, se $PA=BP$, então:
+\[
+p_{21}=p_{22}=p_{23}=p_{41}=p_{42}=p_{43}=0,\quad p_{13}=p_{24},\quad p_{33}=p_{44},
+\]
+logo $P$ deve ser da forma:
+\[
+P=\begin{pmatrix}
+p_{11}&p_{12}&a&p_{14}\\
+0&0&0&a\\
+p_{31}&p_{32}&b&p_{34}\\
+0&0&0&b
+\end{pmatrix},
+\]
+aí fica fácil ver que $P$ não é inversível. Portanto, não existe matriz inversível $P$ tal que $PAP^{-1}=B$, ou seja, $A$ e $B$ não são semelhantes.
+
+\bigskip
+\noindent
+
+\textbf{Observação:} Para ver que $A$ e $B$ não são semelhantes, também podemos olhar sua forma normal de Jordan e observar que elas possuem decomposições em blocos distintas.\\ \\
+\textcolor{Red}{Questões Suplementares}
+
+\exercicio{12} O teorema de Fine-Herstein estabelece que a quantidade de matrizes nilpotentes em $\mathbb{M}_n(\mathbb{F}_q)$ é $q^{n^2 -n}.$ Prove-o. %https://math.stackexchange.com/questions/1298453/the-number-of-3-times-3-nilpotent-matrices-over-mathbbf-q-using-the-orbit
+\solucao{}
+
+\exercicio{13} Encontre uma matriz nilpotente $A \in \mathcal{M}_3(\mathbb{R})$ de ordem $3$ que possui todas as entradas não-nulas.
+\solucao{
+        \[A = \begin{bmatrix}
+         1 & 1 & 3\\
+         5 & 2 & 6  \\
+         -2 & -1 & -3 \\
+         \end{bmatrix} \]
+}
+
+\exercicio{14}
+Sejam $A, B \in \mathcal{M}_n(\mathbb{C})$ duas matrizes tais que
+\[
+A^2B + AB^2 = 2ABA
+\]
+\dividiritens{
+\task[\pers{a}] Para
+\[
+A = \begin{pmatrix}
+9 & 18 \\ -1 & 0
+\end{pmatrix} \quad \mbox{e} \quad B = \begin{pmatrix}
+0 & -9 \\ 2 & 9
+\end{pmatrix}
+\]
+encontre $k \in \mathbb{N}$ tal que $(AB - BA)^k = 0.$
+\task[\pers{b}] Prove que existe um inteiro $k$ tal que $(AB - BA)^k = 0.$
+%http://www.imc-math.org.uk/imc2009/imc2009-day2-solutions.pdf
+}
+\solucao{
+%Utilizando o operador do exercício 10.
+}
+\newpage
+\section{\textcolor{Floresta}{Lista 4}}
+
+   \exercicio{1} Sejam $V$ um $K$-espaço vetorial de dimensão finita e $T \in \mathcal{L}(V).$
+  
+  \dividiritens{  
+  \task[\pers{a}] Prove que se existe um vetor cíclico para $T$ então todo subespaço próprio $T$-invariante de $V$ também tem um vetor cíclico. 
+  
+  \task[\pers{b}] Vale a recíproca do item (a)? (Isto é, se todo subespaço próprio $T$-invariante $W$ de $V$tem um vetor cíclico para $T_W,$ é verdade que existe um vetor cíclico para $T$?)
+  
+  }
+
+\solucao{V}
+
+   \exercicio{2} Sejam $V$ um $K$-espaço vetorial de dimensão finita e $T \in \mathcal{L}(V).$ Prove que se $T^2$ tem um vetor
+cíclico, então $T$ tem um vetor cíclico. Vale a recíproca?
+  
+\solucao{}
+    \exercicio{3} Sejam $V$ um $K$-espaço vetorial de dimensão $n$ e $T \in \mathcal{L}(V)$ um operador diagonalizável.
+\dividiritens{
+\task[\pers{a}] Mostre que existe um vetor cíclico para $T$ se, e somente se, $T$ tem $n$ autovalores distintos.
+\task[\pers{b}] Mostre que se $T$ tem $n$ autovalores distintos e se $\{v_1, \ldots , v_n\}$ é uma base de autovetores de $T,$ então $v = v_1 + v_2 + \ldots + v_n$ é um vetor cíclico para $T.$  
+ } 
+ \solucao{}
+    \exercicio{4} Prove que duas matrizes de ordem $3$ são semelhantes se, e somente se, elas têm o mesmo polinômio característico e o mesmo polinômio minimal.
+ \solucao{}
+    \exercicio{5} Prove que toda matriz $A \in \mathcal{M}_n(K)$ é semelhante à sua transposta $A^t.$
+ \solucao{}
+    \exercicio{6} Sejam $V$ um $K$-espaço vetorial de dimensão $n$ e $T \in \mathcal{L}(V).$
+\dividiritens{
+\task[\pers{a}] Prove que $\mbox{Im } T$ tem um complementar $T$-invariante se, e somente se, $\mbox{Im } T \cap \Ker T = 0.$
+\task[\pers{b}] Se $\mbox{Im } T \cap \Ker T = 0,$ prove que $\Ker T$ é o único complementar de $\mbox{Im } T$ que é $T$-invariante.
+}
+ \solucao{}
+    \exercicio{7} 
+Seja $A \in \mathcal{M}_n(\mathbb{R})$ a matriz
+\[
+A = \begin{bmatrix}
+1 & 3 & 3 \\
+3 & 1 & 3 \\
+-3 & -3 & -5
+\end{bmatrix}
+\]
+Encontre uma matriz inversível $P$ tal que $P^{-1}AP$ esteja na forma racional.
+ \solucao{}
+    \exercicio{8} Seja $A \in \mathcal{M}_n(\mathbb{R})$ a matriz
+\[
+A = \begin{bmatrix}
+3 & -4 & -4 \\
+-1 & 3 & 2 \\
+-3 & -3 & -5
+\end{bmatrix}
+\]
+Encontre vetores $\{v_1, \ldots , v_r \}$ que satisfazem as condições do Teorema da Decomposição Cíclica.
+
+ \solucao{}
+    \exercicio{9} Sejam $N_1$ e $N_2$ matrizes de ordem $6$ nilpotentes. Suponha que elas têm o mesmo polinômio
+minimal e o mesmo posto. Prove que elas são semelhantes. Mostre que o mesmo resultado não é verdadeiro para matrizes de ordem $7.$
+ \solucao{}
+    \exercicio{10} Seja $A \in \mathcal{M}_n(\mathbb{R}),$ tal que $A^2 + I = 0.$ Prove que $n = 2k$ e que $A$ é semelhante à matriz
     \[
-    \fullfunction{T_A}{\m{n}{K}}{\m{n}{K}}{M}{T_A(M) = AM - MA}
+    A = \begin{bmatrix}
+    0 & -I \\
+    I & 0
+    \end{bmatrix},
     \]
-Prove que se $A$ é diagonalizável então $T_A$ é diagonalizável. 
-
+    onde $I \in \mathcal{M}_k(\mathbb{R})$ é a matriz identidade.
+ \solucao{}
+    \exercicio{11} Sejam $V$ um $K$-espaço vetorial de dimensão finita e $T \in \mathcal{L}(V).$ Prove que $T$ tem um vetor cíclico se, e somente se a seguinte afirmação é verdadeira: “Todo operador linear que comuta com $T$ é um polinômio em $T.$"
+     \solucao{}
+    \exercicio{12} Sejam $V$ um $K$-espaço vetorial de dimensão finita e $T \in \mathcal{L}(V).$ Prove que todo vetor não
+nulo $v \in V $é um vetor cíclico para $T$ se, e somente se, o polinômio característico de $T$ é irredutível em $K[t].$
         \solucao{}
-   
-    \exercicio{29} Seja $V$ um $K$-espaço de dimensão finita e sejam $E_1, E_2, \ldots E_k \in \mathcal{L}(V)$ tais que $E_1 + E2 + \ldots + E_k = I.$
-    \dividiritensdiv{1}{     
-        \task[\pers{a}] Prove que se $E_iE_j = 0,$ para $i \neq j,$ então $E_i^2 = E_i$ para todo $i = 1, 2, \ldots, k.$
-   \task[\pers{b}]Prove que se  $E_i^2 = E_i$ para todo $i = 1, 2, \ldots, k$ e a característica de $K$ é zero, então $E_iE_j= 0,$ sempre que $i \neq j.$
-   }
-   
-       \solucao{}
-   
-    \exercicio{30} Seja $A \in \m{n}{K}$ e seja 
-    \[p_A(t) = t^n + a_{n−1}t^{n−1} + \ldots + a_1t + a_0\] o polinômio característico de $A.$ Mostre que $a_{n−1} = − \mbox{tr}(A),$ o traço de $A,$ e $a_0 = (−1)^n \det(A).$
-    
-  \solucao{}
-   
-   
-  \textbf{\textcolor{Red}{Questões Suplementares}}
+    \exercicio{13} Sejam $V$ um $K$-espaço vetorial de dimensão finita e $T \in \mathcal{L}(V).$ Suponha que o polinômio
+minimal de $T$ é igual ao polinômio característico de $T$ e é uma potência de um polinômio irredutível. Prove que nenhum subespaço não trivial de $V$ invariante sob $T$ tem um complementar que também é invariante sob $T.$  
+            \solucao{}
+    \exercicio{14} Determine a forma racional $R$ da matriz
+    \[
+    \begin{bmatrix}
+    1 & 2 & 0 & 4\\
+    4 & 1 & 2 & 0 \\
+    0 & 4 & 1 & 2 \\
+    2 & 0 & 4 & 1
+    \end{bmatrix} \in \mathcal{M}_4(\mathbb{R})
+    \]
+e encontre uma matriz inversível $P$ tal que $P^{−1}AP = R.$
+            \solucao{}
+    \exercicio{15} Seja $T \in \mathcal{L}(K^6)$ com polinômio minimal $m_T(x) = (x^2 − 2)(x^2 + 1).$ Ache as possibilidades para a forma racional de $T$ para $K = \mathbb{Q}, K = \mathbb{R}$ e $K = \mathbb{C}.$   
+            \solucao{}
+    \exercicio{16} Seja $T \in \mathcal{L}(\mathbb{R}^4)$ um operador linear tal que $t^2 + 3$ é um divisor do polinômio minimal de $T$
+e $1$ é o único autovalor de $T.$ Quais são as possíveis a formas racionais de $T?$               \solucao{}
+    \exercicio{17} Classifique, a menos de semelhança, as matrizes reais de ordem $6$ com polinômio minimal
+\[(t − 1)^2(t + 1)(t − 2). \]
+                 \solucao{}
+    \exercicio{18} Determine quais das matrizes seguintes são semelhantes:
+\[
+A  =\begin{bmatrix}
+-1 & 4 & 0 & 0\\
+-1 & 3 & 0 & 0 \\
+13 & -16 & 2 & -1 \\
+-9 & -13 & 1 & 0
+\end{bmatrix}, \quad B  =\begin{bmatrix}
+3 & -8 & -6 & 0\\
+-1 &5 & 3 & 0 \\
+2 & -8 & -5& 0 \\
+0 & 0 & 0 & 1
+\end{bmatrix} \quad \mbox{e} \quad C  =\begin{bmatrix}
+3 & 1 & 0& 0\\
+-4 &-1 & 0 & 0 \\
+0 & 0 & 3& 1 \\
+0 & 0 & -4 & -1
+\end{bmatrix}.
+\]
+                 \solucao{}
+    \exercicio{19}  Mostre que as matrizes complexas
+\[
+A  =\begin{bmatrix}
+0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1 \\
+1 & 0 & 0 & 0
+\end{bmatrix}, \quad \mbox{e} \quad B  =\begin{bmatrix}
+1 & 0 & 0& 0\\
+0 &-1 &0 & 0 \\
+0 &0 & i& 0 \\
+0 & 0 & 0 & -i
+\end{bmatrix}
+\]
+são semelhantes.
+                 \solucao{}
+    \exercicio{20} Classifique, a menos de semelhança, todas as matrizes de ordem $6$ nilpotentes.
+                 \solucao{}
+    \exercicio{21} Encontre a forma de Jordan real $J$ da matriz    
+ \[
+ A = \begin{bmatrix}
+1 & 1 & 1 & 1 & 0 & 0\\
+-2 & -1 & 0 & -1 & 0 & 0\\
+0 & 0 & -1 & -1 & 0 & 1\\
+0 & 0 &  2 & 1 & 1 & 0\\
+0 &0 & 0 & 0 & 1 & 2\\
+0& 0 & 0 & 0 & -1 & -1\\
+\end{bmatrix}
+ \]
+e a matriz $P$ tal que $P^{
+−1}AP = J.$
+                 \solucao{}
+    \exercicio{22} Seja
+\[
+A  =\begin{bmatrix}
+0 & 1 & 0& 0\\
+0 &0 &1 & 0 \\
+0 &0 &0& 1 \\
+0 & 0 & -1&0
+\end{bmatrix}.
+\]
+Determine a forma de Jordan $J$ de $A$ e encontre uma matriz inversível $P$ tal que $P^{-1}AP = J.$
+                 \solucao{}
+    \exercicio{23} Seja $V$ um espaço vetorial de dimensão $n$, com $n \ge 2$ e seja $T$ um operador linear em $V$ de posto $2.$ Determine todas as possíveis formas de Jordan de $T.$
+                 \solucao{}
+    \exercicio{24} Seja $T \colon \mathcal{P}_n(\mathbb{R}) \to \mathcal{P}_n(\mathbb{R}) $ o operador linear definido por 
+    \[T(p(t)) = p(t + 1).\]
+\dividiritens{
+\task[\pers{a}] Determine a forma de Jordan de $T.$
+\task[\pers{b}] Se $n = 4,$ encontre uma base $B$ de $\mathcal{P}_n(\mathbb{R})$ tal que $[T]_B$ esteja na forma de Jordan.
+}
+                 \solucao{}
+    \exercicio{25} Determine o número de matrizes não semelhantes $A$ em $\mathcal{M}_6(\mathbb{R})$ satisfazendo
+\[
+(A - 2I)^3 = 0.
+\]
+\solucao{}
+\exercicio{26} Seja $T \colon \mathbb{R}^6 \to \mathbb{R}^6$ um operador linear com polinômio característico 
+\[
+p_T(t) = (t-a)^3(t-b)^3,
+\]
+polinômio minimal
+\[
+m_T(t) = (t-a)^2(t-b)
+\]
+e $a \neq b.$ Determine a forma racional e a forma de Jordan de $T.$
+\solucao{}
+\exercicio{27} Classifique, a menos de semelhança, todas as matrizes reais de ordem $7$ com polinômio
+característico 
+\[p_T(t) = (t − 1)^4(t − 2)^2(t − 1).\]
+\solucao{}
+\exercicio{28} Determine a forma racional e a forma de Jordan da matriz real
+\[
+A  =\begin{bmatrix}
+1 & 0 & 0& 0 & 0\\
+-3 & 0 & 0& -1 & -1\\
+-3 & -1 & 0& 0 & 0\\
+-1 & -1 & 3& 3& 3\\
+-2 & -2 & 0& -2& 3\\
+\end{bmatrix}.
+\]
+\solucao{}
+\exercicio{29} Seja $V$ um espaço vetorial de dimensão finita $n$ sobre o corpo K e seja $T \in \mathcal{L}(V).$ Seja $f \in K[t]$ um polinômio mônico, irredutível e de grau $d \ge 1.$
+\dividiritens{
+\task[\pers{a}] Suponha que $d \mid n.$ Prove que existe $T \in \mathcal{L}(V)$ tal que o polinômio minimal de $T$ é $f.$
+\task[\pers{b}]  Se $T \in \mathcal{L}(V)$ é tal que seu polinômio minimal tem grau $d$ e é irredutível em $K[t],$ é
+verdade que $d \mid n?$ Justifique.
+}
+\solucao{}
+\exercicio{30} Dê a forma de Jordan de um operador linear $T \colon \mathbb{R}^7 \to \mathbb{R}^7$ com polinômio característico $p_T(t) = (t − 1)^2(t − 2)^4(t − 3)$ e tal que $\dim(\Ker(T − 2I)) = 2, \dim(\Ker(T − I)) = 1$ e $\Ker(T − 2I)^3 \neq \Ker(T − 2I)^2.$
+\solucao{}
 
+\textcolor{Red}{Questões Suplementares}
 
 \exercicio{31} 
+\solucao{}
+\newpage
+\section{\textcolor{Floresta}{Lista 5}}
+\exercicio{1} 
+\solucao{}
 \end{document} 
+%https://en.wikipedia.org/wiki/Berlekamp%E2%80%93Massey_algorithm
+%https://math.stackexchange.com/questions/1186477/given-minimal-characteristic-polynomial-how-to-derive-linear-recurrence

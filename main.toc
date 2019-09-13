@@ -1,0 +1,21 @@
+\babel@toc {portuguese}{}
+\contentsline {section}{\nameref {sec:intro}}{5}{chapter*.2}% 
+\contentsline {chapter}{\numberline {1}Espa\IeC {\c c}os vetoriais}{7}{chapter.1}% 
+\contentsline {section}{\numberline {1.1}Base e Dimens\IeC {\~a}o}{7}{section.1.1}% 
+\contentsline {section}{\numberline {1.2}Subespa\IeC {\c c}os}{9}{section.1.2}% 
+\contentsline {section}{\numberline {1.3}Coordenadas}{11}{section.1.3}% 
+\contentsline {chapter}{\numberline {2}Transforma\IeC {\c c}\IeC {\~o}es Lineares}{13}{chapter.2}% 
+\contentsline {section}{\numberline {2.1}Defini\IeC {\c c}\IeC {\~o}es}{13}{section.2.1}% 
+\contentsline {section}{\numberline {2.2}Espa\IeC {\c c}o Dual}{14}{section.2.2}% 
+\contentsline {section}{\numberline {2.3}Espa\IeC {\c c}o Bidual}{14}{section.2.3}% 
+\contentsline {section}{\numberline {2.4}Anuladores}{15}{section.2.4}% 
+\contentsline {section}{\numberline {2.5}Transpostas}{15}{section.2.5}% 
+\contentsline {section}{\numberline {2.6}Espa\IeC {\c c}os Quocientes}{16}{section.2.6}% 
+\contentsline {chapter}{\numberline {3}Determinantes}{19}{chapter.3}% 
+\contentsline {section}{\numberline {3.1}Formas Multilineares}{19}{section.3.1}% 
+\contentsline {section}{\numberline {3.2}Determinantes}{21}{section.3.2}% 
+\contentsline {chapter}{\numberline {4}Formas Can\IeC {\^o}nicas}{25}{chapter.4}% 
+\contentsline {section}{\numberline {4.1}Autovalores e Autovetores}{25}{section.4.1}% 
+\contentsline {section}{\numberline {4.2}Polin\IeC {\^o}mio Minimal}{29}{section.4.2}% 
+\contentsline {section}{\numberline {4.3}Subespa\IeC {\c c}os Invariantes}{30}{section.4.3}% 
+\contentsfinish 

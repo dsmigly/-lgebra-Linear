@@ -1,0 +1,123 @@
+
+%------------------- General ---------------------%
+
+\usepackage[portuguese]{babel} 
+\usepackage{inputenc} 
+\usepackage[T1]{fontenc} 
+\usepackage{hyperref}
+\usepackage{verbatim}
+
+% ------------- Cross-Reference ----------%
+
+\usepackage{xr}
+
+% ------------------ Math -------------------------%
+
+\usepackage{mathtools}
+\usepackage{amsmath} 
+\usepackage{amsthm}  
+\usepackage{amssymb}
+\usepackage{bbm}
+\usepackage{amsfonts}
+%----------------- Aesthetic ------------------%
+
+\usepackage{enumitem}
+\usepackage[a4paper,top=2.54cm,bottom=2.0cm,left=2.0cm,right=2.54cm]{geometry} 
+
+%----------------- Colors ---------------------%
+
+\usepackage[dvipsnames,usenames]{xcolor}
+
+%% -------- https://www.colorspire.com/rgb-color-wheel/ -------------%%
+\definecolor{Floresta}{rgb}{0.13,0.54,0.13}
+\definecolor{Rosadif}{rgb}{0.6196,0.1254,0.6980} %9E20B2
+\definecolor{Rosa}{rgb}{0.8705, 0.0862, 0.5058} %DE1681
+\definecolor{Verdeest}{rgb}{0.0549, 0.7529, 0.1450} %14C025
+\definecolor{Verde}{rgb}{0.1254,0.70196,0.1254} %20B320
+\definecolor{OrangeRed}{rgb}{0.9294,0.0509,0.3529} %ED135A
+\definecolor{Laranja}{rgb}{1,0.4352941176, 0}  %FF6F00
+\definecolor{Amarelo}{rgb}{0.9215, 0.8196, 0.18}   %EBD12E
+
+% ---------------- Naipes ----------------------%
+
+
+\DeclareSymbolFont{extraup}{U}{zavm}{m}{n}
+\DeclareMathSymbol{\varheart}{\mathalpha}{extraup}{86}
+\DeclareMathSymbol{\vardiamond}{\mathalpha}{extraup}{87}
+\newcommand{\heart}{\ensuremath\heartsuit}
+\newcommand{\diamonde}{\ensuremath\diamondsuit}
+
+
+% ---------------- Git Info --------------------%
+
+\usepackage[mark,raisemark=0.97\paperheight]{gitinfo2}
+\renewcommand{\gitMark}{\gitAbbrevHash{} \textbullet{} \gitAuthorName{} \textbullet{} \gitAuthorIsoDate}
+
+%---------------- Notation ---------------------%
+
+
+
+\newcommand{\Conv}{{\rm Conv}}  %envória convexa
+\newcommand{\mdc}{{\rm mdc}}
+\newcommand{\sgn}{{\rm sgn}}
+\newcommand{\sen}{{\rm sen}}
+\newcommand{\tg}{{\rm tg}}
+\newcommand{\mmc}{{\rm mmc}}
+%\newcommand{\mdc}{{\rm mdc}}
+\newcommand{\cotg}{{\rm cotg}}
+\newcommand{\cossec}{{\rm cossec}}
+\newcommand{\Spec}{{\rm Spec}}
+\newcommand{\arctg}{{\rm arctg}}
+\newcommand{\arcsen}{{\rm arcsen}}
+\newcommand{\dropsign}[1]{\smash{\llap{\raisebox{-.5\normalbaselineskip}{$#1$\hspace{2\arraycolsep}}}}}%divisão polinomial
+
+
+\newcommand{\negrito}[1]{\mbox{\boldmath{#1}}} 
+
+
+
+
+%Espaço dos operadores lineares de #1 (tem várias coisas que podem ser #1)
+% Exemplo: \Lin{V,W}
+\newcommand{\Lin}[1]{\mathcal{L}(#1)}
+
+% Núcleo de uma Transformação linear
+% Exemplo: \Ker(T)
+\DeclareMathOperator{\Ker}{Ker}
+
+% Imagem de uma Transformação linear
+% Exemplo: \Im(T)
+%\DeclareMathOperator{\Im}{Im}
+
+% Restrição da função #1 ao conjunto #2
+% Exemplo: \rest{T}{W}
+\newcommand{\rest}[2]{#1_{\upharpoonright #2}}
+
+% Conjunto dos números reais
+% Exemplo: \Reals
+\newcommand{\Reals}{\mathbb{R}}
+
+% Conjunto dos números Inteiros
+% Exemplo: \Integers
+\newcommand{\Integers}{\mathbb{Z}}
+
+% Conjunto dos números Racionais
+% Exemplo: \Rationals
+\newcommand{\Rationals}{\mathbb{Q}}
+
+% Conjunto dos números Naturais
+% Exemplo: \Naturals
+\newcommand{\Naturals}{\mathbb{N}}
+
+% Conjunto dos números Complexos
+% Exemplo: \Complex
+\newcommand{\Complex}{\mathbb{C}}
+
+% Conjunto das Matrizes de dimensão #1 com coeficientes em #2
+% Exemplo: \m{nxm}{K}
+\newcommand{\m}[2]{\mathcal{M}_{#1}(#2)}
+
+% Produto interno de #1 com #2
+% Exemplo: \iprod{x}{y}
+\newcommand{\iprod}[2]{\langle #1,#2 \rangle}
+

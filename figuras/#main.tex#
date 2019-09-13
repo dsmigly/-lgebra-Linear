@@ -1,64 +1,20 @@
-%%% ------- Readme -------%%%
+\PassOptionsToPackage{dvipsnames}{xcolor}
 
-
-
-%%-----------------------%%%
 \documentclass[11pt,twoside,a4paper]{book}
-\usepackage{estilos} 
-\externaldocument{listas}
+
+\usepackage{estilos} %Relacionado ao arquivo estilos.sty com os packages usados
 \makeindex
 \title{Álgebra Linear \\  Douglas Smigly}
 \author{MAT5730}
 \date{2º semestre de 2019}
+
 \begin{document}
+
 \maketitle
-\newpage
+
 \tableofcontents
+
 \newpage
-\chapter*{Informações da Disciplina}
-\label{sec:intro}
-\addcontentsline{toc}{section}{\nameref{sec:intro}}
-\question{Informações Básicas}\label{new-question}
-
-Essas são as notas de aula de Álgebra Linear(MAT5730), as aulas acontecem na sala B-134 às terças 10h e às quintas 8h.
-
-
-\question{Informações do Professor}
-
-O professor é o Ivan Shestakov, sua sala é a 290-A e o seu e-mail é shestak@ime.usp.br
-
-\question{Bibliografia}
-\nocite{*}
-\bibliographystyle{plain}
-\bibliography{samples}
-\question{Avaliação}
-
-A nota final da disciplina será a média aritimética de P1, P2, e P3. Todos os
-alunos poderão fazer a prova sub para substituir a menor das suas notas (Sub
-aberta). As datas das provas são as seguintes:
-
-\begin{table}[h!]
-  \begin{center}
-    
-    \label{tab:table1}
-    \begin{tabular}{l|r} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
-      \textbf{Prova} & \textbf{Data}\\
-      \hline
-      P1 & 10-09\\
-      P2 & 15-10\\
-      P3 & 12-11\\
-      SUB & 19-11
-    \end{tabular}
-  \end{center}
-\end{table}
-
-\question{Outras Informações}
-\begin{enumerate}[label=(\roman*)]
-\item Teremos listas, que não contarão para a nota
-\item As listas serão publicadas em 
-\item Não haverá monitoria
-\end{enumerate}
-\newpage 
 
 \chapter{Espaços vetoriais}
 
@@ -66,74 +22,60 @@ Durante este capítulo, sempre adotaremos $K$ como sendo um corpo qualquer.
 
 \section{Base e Dimensão}
 
-\begin{definicao}\label{lidef}\index{Espaço Vetorial!Base}
-Seja $V \neq 0$ um espaço vetorial sobre um corpo $K$. Uma \emph{base} de \(V\) é um conjunto $B\subseteq V$ tal que:
-\begin{enumerate}[label=(\roman*)]
-\item $B$ é linearmente independente (LI).
+\begin{definicao}\index{Espaço Vetorial!Base}
+Seja $V \neq 0$ um espaço vetorial sobre um corpo $K$. Um subconjunto $B\subseteq V$ chama-se uma \textbf{base} de $V$ se:
+\begin{itemize}
+\item $B$ é linearmente independente.
 \item $B$ gera $V$.
-\end{enumerate}
+\end{itemize}
 \end{definicao}
-Lembramos aqui que $B$ é linearmente independente se todo subconjunto finito
-$I\subseteq B$ é linearmente independente. Isto é, se \(\alpha\colon I\to\Reals\) e
+Lembramos aqui que $B$ é linearmente independente se todo subconjunto finito de $B$ é linearmente independente, ou seja
 \[
-\sum_{b\in I} \alpha_bb = 0,
- \text{ então } \alpha_j = 0 \ \text{ para cada 
-} j \in J.\] 
-Além disso, dizemos que \(B\) gera \(V\) se para cada \(v\in V\) existem exatamente
-um subconjunto finito \(I_v\subseteq B\) e uma função \(\alpha\colon
-I_v\to\Reals\) tais que \[v=\sum_{b\in I_v}\alpha_bb.\]  
-\begin{teorema}\label{existbase}
+\sum\limits_{\substack{J \subseteq I \\ \abs{J} < \aleph_0}} \alpha_j v_j = 0, \ \alpha_j \in K, v_j \in B \Rightarrow \alpha_j = 0 \ \forall j \in J 
+\]
+\begin{teorema}
 Seja $V$ um espaço vetorial e sejam $I\subseteq V$ linearmente independente e $S\subseteq V$ gerador de $V$ tais que $I\subseteq S$. Então existe uma base $B$ de $V$ tal que \[I\subseteq B\subseteq S.\]
 \end{teorema}
 \begin{proof}
-Consideremos o   conjunto:
+Consideremos o conjunto:
 \[
-\mathcal{M}\coloneqq\{M\subseteq S\mid M\text{ é linearmente independente e }I\subseteq M\}
+\mathcal{M}=\{M\subseteq S\mid M\text{ é linearmente independente e }I\subseteq M\}
 \]
 Então $\langle \mathcal{M},\subseteq \rangle$ é um conjunto parcialmente ordenado indutivo (ou seja, todo subconjunto totalmente ordenado possui uma cota superior). De fato, $I\in\mathcal{M}$, o que nos mostra que $\mathcal{M} \neq \emptyset,$ e para subconjunto totalmente ordenado não vazio $\mathcal{C}\subseteq\mathcal{M}$ então $\bigcup\limits_{M \in \mathcal{C}} M \in\mathcal{M}.$ 
 
 Logo, pelo Lema de Zorn, $\mathcal{M}$ possui um elemento maximal $B$. Vamos provar que esse elemento maximal é de fato uma base para $V.$
-\begin{enumerate}[label=(\roman*)]
+\begin{itemize}
     \item \textbf{$B$ é linearmente independente:} segue da definição de $\mathcal{M}.$
-    \item \textbf{$B$ gera $V$:} Suponha por absurdo que $B$ não gera $V$. Então existe $v\in S$ que não é combinação linear de elementos de $B$, aí $B\cup\{v\}$ é linearmente independente e $I\subseteq B\cup\{v\}\subseteq S$. Então $B\cup\mathcal{v}\in\mathcal{M}$, uma contradição, pois $B$ já é um elemento maximal de $\mathcal{M}$ e obviamente $B \subseteq B \cup \{ v \}$. Logo $B$ gera $V$. Portanto, $B$ é uma base de $V$ e $I\subseteq B\subseteq S$.\qedhere
-    \end{enumerate}
+    \item \textbf{$B$ gera $V$:} Suponha por absurdo que $B$ não gera $V$. Então existe $v\in S$ que não é combinação linear de elementos de $B$, aí $B\cup\{v\}$ é linearmente independente e $I\subseteq B\cup\{v\}\subseteq S$. Então $B\cup\mathcal{v}\in\mathcal{M}$, uma contradição, pois $B$ já é um elemento maximal de $\mathcal{M}$ e obviamente $B \subseteq B \cup \{ v \}$. Logo $B$ gera $V$. Portanto, $B$ é uma base de $V$ e $I\subseteq B\subseteq S$.
+    \end{itemize}
 \end{proof}
 
 O resultado acima mostra que todo espaço vetorial tem base, bastando para isso tomar $I = \{ v \}$ e $S = V.$
 \begin{corolario}
-  Seja \(V\) um espaço vetorial sobre um corpo \(K\),
-  seja \(I\subseteq V\) um
-  conjunto linearmente independente e seja \(S\subseteq V\)
-  um conjunto gerador de \(V\). Então
-\begin{enumerate}[label=(\roman*)]
-\item O espaço $V$ tem uma base;
-\item Existe uma base \(B\) de \(V\) tal que \(I\subseteq B\); 
-\item Existe uma base \(B\) de \(V\) tal que \(B\subseteq S\).
-\end{enumerate}
+Temos o seguinte:
+\begin{itemize}
+\item Todo espaço vetorial $V$ tem uma base.
+\item Para todo $I\subseteq V$ linearmente independente, existe uma base $B$ de $V$ que contém $I$.
+\item Para todo $S\subseteq V$ gerador de $V$, existe uma base $B$ de $V$ tal que $B\subseteq S$.
+\end{itemize}
 \end{corolario}
 
 
-\begin{lema} Seja \(V\) um espaço vetorial sobre um corpo \(K\).
-Sejam $\{v_i\}_{i \in \mathbb{N}_{\le n}}\subseteq V$ linearmente independente e
-$\{u_j\}_{j\in \mathbb{N}_{\le m}}\subseteq V$ um conjunto gerador de $V$. Então $n\leq m$.
+\begin{lema}
+Sejam $\{v_i\}_{i \in \mathbb{N}_{\le n}}$ linearmente independente e $\{u_j\}_{j\in \mathbb{N}_{\le m}}$ um conjunto gerador de $V$. Então $n\leq m$.
 \end{lema}
 
-\begin{sublema} Seja \(V\) um espaço vetorial sobre um corpo \(K\).
-Um conjunto $\{v_i\}_{i \in \mathbb{N}_{\le n}}\subseteq V$ é linearmente dependente se e somente se existem $i\in  \mathbb{N}_{\le n}$ e um $\alpha: i\rightarrow K$ tais que \[v_i=\sum\limits_{j <i}\alpha_jv_j.\]
+\begin{sublema}
+Um conjunto $\{v_i\}_{i \in \mathbb{N}_{\le n}}$ é linearmente dependente se e somente se existem $i\in  \mathbb{N}_{\le n}$ e um $\alpha: i\rightarrow K$ tais que \[v_i=\sum\limits_{j <i}\alpha_jv_j\]
+\begin{proof}
+Se $\{v_i\}_{i\in n}$ é linearmente dependente, então existe $\alpha:n\rightarrow K$ tal que $\exists i\in n:\alpha_n$ e $\sum_{i\in n}\alpha_iv_i=0$. Seja $i$ o maior elemento de $n$ tal que $\alpha_i\neq 0$. Então 
+\[
+\alpha_1 v_1 + \ldots + \alpha_i v_i = 0 \Rightarrow \alpha_1v_1 + \ldots + \alpha_{i-1} v_{i-1} = - \alpha_i v_i \Rightarrow
+\]
+\[v_i= - \sum\limits_{j\in i}\frac{\alpha_j}{\alpha_i}v_j\]
+\end{proof}
 \end{sublema}
-\begin{proof}[Demonstração do Sublema]
-Se $\{v_i\}_{i\in n}$ é linearmente dependente, então existe
-$\alpha:n\rightarrow K$ não identicamente nula  tal que  $\sum_{i\in
-  n}\alpha_iv_i=0$. Seja $i$ o maior elemento de $n$ tal que $\alpha_i\neq 0$.
-Então segue que
-\begin{align*}
-&\alpha_1 v_1 + \ldots + \alpha_i v_i = 0 \\ \iff &  \alpha_1v_1 + \ldots + \alpha_{i-1} v_{i-1} = - \alpha_i v_i \\ \iff &
-v_i= - \sum\limits_{j\in i}\frac{\alpha_j}{\alpha_i}v_j.\qedhere
-\end{align*}
-\end{proof}
-\begin{proof}[Demonstração do Lema]
-\textcolor{red}{N TENDI}
-\end{proof}
+
 Vamos relembrar o que fizemos até aqui com um exemplo:
 \begin{exemplo}
 Considere $V = \mathbb{R}^4$ um $\mathbb{R}$-espaço vetorial. Sejam os vetores:
@@ -170,8 +112,7 @@ v_5 = \frac{5}{2}v_1 + \frac{1}{2} v_2 - \frac{1}{2}v_3 - \frac{3}{2} v_4
 
 
 
-Para trabalhar com a cardinalidade das bases, utilizaremos alguns fatos
-conhecidos, enunciados na próxima proposição:
+Para trabalhar com a cardinalidade das bases, utilizaremos alguns fatos conhecidos, enunciados na
 \begin{proposicao}
 Se $\lambda$ e $\mu$ são cardinais, então:
 \begin{itemize}
@@ -214,7 +155,7 @@ Se $S$ é subconjunto de $V$, então:
 \]
 \end{proposicao}
 A intersecção de subsespaços sempre é um subespaço, mas o mesmo não acontece com a união de subespaços.
-\begin{proposicao}\label{unotsubsp}
+\begin{proposicao}
 Se $A$ e $B$ são subespaços de $V$ tais que $A\nsubseteq B$ e $B\nsubseteq A$, então $A\cup B$ não é subespaço de $V$.
 \end{proposicao}
 \begin{proof}
@@ -341,10 +282,11 @@ Seja $V$ um espaço vetorial de dimensão finita. Seja $B$ uma base de $V$. Ent�
 \section{Definições}
 
 \begin{definicao}
-Sejam \(U\) e \(V\) espaços vetoriais sobre um corpo \(K\).  uma
-\emph{transformação linear} é uma função $T:U\rightarrow V$ tal que  $$T(\alpha
-u+\beta v)=\alpha T(u)+\beta T(v)$$
- para quaisquer $\alpha,\beta\in K$ e $u,v\in V$. Além disso, denotamos o conjunto das transformações lineares de $U$ a $V$ por $\mathcal{L}(U,V).$
+Uma função $T:U\rightarrow V$ se chama uma \textbf{transformação linear} se para quaisquer $\alpha,\beta\in K$ e $u,v\in V$ tivermos $T(\alpha u+\beta v)=\alpha T(u)+\beta T(v)$.
+\end{definicao}
+
+\begin{definicao}
+Para espaços vetoriais $U$ e $V$, denotamos o conjunto das transformações lineares de $U$ a $V$ por $\mathcal{L}(U,V).$
 \end{definicao}
 
 \begin{teorema}
@@ -719,7 +661,7 @@ Seja $V$ um espaço vetorial e $V^r=V\times\dots\times V$. Uma \textbf{forma $r$
 \[
 F:V^r\rightarrow K,\quad\quad (v_i)_{i\in r}\mapsto F((v_i)_{i\in r})\in K
 \]
-que é linear em cada argumento, ou seja, para cada $i\in r$ temos que
+que é linear em cada argumento, ou seja, para $i\in r$ temos:
 \[
 F(v_0,\dots,\alpha v_i+\beta v'_i,\dots,v_{r-1})=\alpha F(v_0,\dots,v_i,\dots,v_{r-1})+\beta F(v_0,\dots,v'_i,\dots,v_{r-1}).
 \]
@@ -1211,8 +1153,10 @@ Já sabemos que $m_T(t)=\left(\prod_{i\in r}(t-\lambda_i)^{k_i}\right)$ em que $
 
 \section{Subespaços Invariantes}
 
+vvvvvvvvvvvvvvvvvvvv
 \begin{definicao}
 Seja $T\in\mathcal{L}(V)$. Um subespaço $W\subseteq V$ chama-se \textbf{$T$-invariante} se $T(W)\subseteq W$.
+^^^^^^^^^^^^^^^^^^^^
 \end{definicao}
 
 \begin{observacao}
@@ -1262,15 +1206,17 @@ Além disso, \(\bar{T}\) induz um operador linear
 
 \begin{proposicao}
 Seja \(V\) um espaço vetorial sobre um corpo \(K\), seja \(T\in\mathcal{L}(V)\)
-e seja \(W\) um subespaço \(T\)-invariante de \(V\). Seja $B_1$ uma base de $W$ e seja $B$ uma base de $V$ tal que $B_1\subseteq B$ e seja $B_2=B\setminus B_1$ e seja $\overline{B_2}=\{\overline{b}:b\in B_2\}$.
+e seja \(W\) um subespaço \(T\)-invariante de \(V\). Considere \(B\coloneqq
+B_1\cup B_2\) onde \(B\) é uma base de \(V\) e \(B_1\) é uma base de \(W\).
 Então \[[T]_B=\begin{pmatrix}
-X & * \\ 0 & Y
-\end{pmatrix}\]
-onde \(X=[T\upharpoonright W]_{B_1}\) e \(Y=[\overline{T}]_{\overline{B_2}}\).
+    A & * \\ 0 & X 
+  \end{pmatrix}\]
+onde \(A=[T\upharpoonright W]_{B_1}\) e \(X=[\tilde{T}]_{B_2}\).
 \end{proposicao}
 \begin{proof}
 \textcolor{red}{COMPLETAR}
 \end{proof}
+
 
 \begin{lema}
 Seja $\dim(V)=n$, $T\in\mathcal{L}(V)$ e $W\subseteq V$ um subsepaço $T$-invariante. Então:
@@ -1287,200 +1233,71 @@ Escolhamos $B_1$ e $B$ como bases de $W$ e $V$ tais que $B_1\subseteq B$, então
           tI_m-A & * \\ 0 & tI_{n-m}-B\end{pmatrix}\\
         &=\text{det}(tI_m-A)\text{det}(tI_{n-m}-B)\\
         &=p_A(t)p_B(t)=p_{T_1}(t)p_{T_2}(t)
-\end{align*}
+\begin{align*}
 \end{proof}
 
 \begin{observacao}
 O mesmo \textcolor{red}{não} ocorre para polinômios minimais. De fato, seja $T=I_V$ e seja $W$ um subespaço $T$-invariante (De fato, quando \(T\) é a identidade, todo subespaço de \(V\) é \(T\)-invariante), então $T_1=I_W$ e $T_2=I_{V/W}$ e aí $m_T(t)=m_{T_1}(t)=m_{T_2}(t)=t-1$.
 \end{observacao}
 
-\begin{teorema}[Teorema da Cayley-Hamilton]\label{cayley-hamilton}
-Seja \(V\) um espaço vetorial de dimensão finita sobre um corpo \(K\), e seja \(T\in\mathcal{L}(V)\). Então \(p_T(T)=0\), onde \(p_T(t)\in K[t]\) é um polinômio característico de \(T\). 
-\end{teorema}
-\begin{proof}
-Basta provar que \(p_T(T)(v)=0\) para cada \(v\in V\). Se \(v=0\) o resultado é evidente.
-Então seja \(0\not=v\in V\).
-Note que como \(V\) tem dimensão finita temos que existe um \(m \leq n = \text{dim}(V)\) mínimo tal que existem coeficientes \(\alpha_0,\ldots,\alpha_{m-1}\) tais que \(T^m(v)=\sum_{i=0}^{m-1}\alpha_iT^i(v)\). Para tal \(m\in\mathbb{N}\), considere o conjunto
-\(\{v,T(v),\ldots, T^{m-1}\}\) e seja \(W\) o subespaço gerado por ele. Note que \(W\) é \(T\)-invariante e ainda
-\[[T\upharpoonright W]_B=\begin{pmatrix}
-0 & 0 & \ldots& 0 &\alpha_0
-\\ 1 & 0 & \ldots & 0 & \alpha_1
-\\ 0 & 1 & \ldots & 0 & \alpha_2
-\\ \ldots & \ldots  & \ldots  & \ldots  & \ldots \
-\\ 0 & 0 & \ldots & 1 & \alpha_{m-1} 
-\end{pmatrix}=A.\]
- Então, pelo Exercício 18 da lista 1, segue que
-\[p_A(t)=
-p_{T \upharpoonright_{W}}(t)=
-t^m -\alpha_{m-1}t^{m-1}- \ldots -\alpha_1t-\alpha_0.\]
-E também
-\[p_{T \upharpoonright _{W}}(T)=
-T^m-\alpha_{m-1}T^{m-1}-\ldots-\alpha_1 T-\alpha_o I.\]
-Aplicando essa última função a \(v\) segue:
-\[p_{T \upharpoonright_{ W}}(T)(v)=
-T^m(v)-\alpha_{m-1}T^{m-1}(v)-\ldots-\alpha_1 T(v)-\alpha_o v=0.\]
-Para concluir que \(p_T(T)(v)=0\)
-escrevemos \(p_T(T)=p_{T\upharpoonright_{W}}(T)q(T).\)
-\end{proof}
-\begin{corolario}
-Se \(A\in M_n(K)\) então \(P_A(A)=0\),
-onde \(P_A(t)=\text{det}(tI -A)\). \end{corolario}
+  \begin{teorema}[Teorema da Cayley-Hamilton]
+   Seja \(V\) um espaço vetorial de dimensão finita sobre um corpo \(K\), e seja \(T\in\mathcal{L}(V)\). Então \(p_T(T)=0\), onde \(p_T(t)\in K[t]\) é um polinômio característico de \(T\). 
+  \end{teorema}
+   \begin{proof}
+     Basta provar que \(p_T(T)(v)=0\) para cada \(v\in V\). Se \(v=0\) o resultado é evidente.
+     Então seja \(0\not=v\in V\).
+     Note que como \(V\) tem dimensão finita temos que existe um \(m \leq n = \text{dim}(V)\) mínimo tal que existem coeficientes \(\alpha_0,\ldots,\alpha_{m-1}\) tais que \(T^m(v)=\sum_{i=0}^{m-1}\alpha_iT^i(v)\). Para tal \(m\in\mathbb{N}\), considere o conjunto
+     \(\{v,T(v),\ldots, T^{m-1}\}\) e seja \(W\) o subespaço gerado por ele. Note que \(W\) é \(T\)-invariante e ainda
+     \[[T\upharpoonright W]_B]\begin{pmatrix}
+         0 & 0 & \ldots& 0 &\alpha_0
+         \\ 1 & 0 & \ldots & 0 & \alpha_1
+         \\ 0 & 1 & \ldots & 0 & \alpha_2
+         \\ \ldots & \ldots  & \ldots  & \ldots  & \ldots \
+         \\ 0 & 0 & \ldots & 1 & \alpha_{m-1} 
+       \end{pmatrix}=A.\]
+     Então, pelo Exercício 18 da lista 1, segue que \[p_A(t)=p_{T_{\upharpoonright W}}(t)= t^m -\alpha_{m-1}t^{m-1}- \ldots -\alpha_1t-\alpha_0.\]
+     E também
+     \[p_{T_{\upharpoonright W}}(T)=T^m-\alpha_{m-1}T^{m-1}-\ldots-\alpha_1 T-\alpha_o I.\]
+     Aplicando essa última função a \(v\) segue:
+     \[p_{T_{\upharpoonright W}}(T)(v)=T^m(v)-\alpha_{m-1}T^{m-1}(v)-\ldots-\alpha_1 T(v)-\alpha_o v=0.\]
+     Para concluir que \(p_t(T)(v)=0\) escrevemos \(p_T(T)=p_{T_{\upharpoonright W}}q(T).\)
+     \end{proof}
+     \begin{corolario}
+                                   Se \(A\in M_n(K)\) então \(P_A(A)=0\), onde \(P_A(t)=\text{det}(tI -A)\). 
+                                   \end{corolario}
 
-\begin{exemplo}
-Considere a matriz\[\begin{pmatrix}
-a & b \\ c & d
-\end{pmatrix}.\]
-Então temos que \(p_A(t)=t^2-(a+d)t+(ad-bc)\) e também
-\begin{align*}
-P_A(A)&=A^2-(a+d)A+(ad-bc)I\\
-&=
-\begin{pmatrix} a^2+bc & ab+ad\\ac+dc & bc+d^2\end{pmatrix}
--\begin{pmatrix} a^2+ad & ab+bd \\ ac+dc & ad+d^2\end{pmatrix}
-+ \text{det}(A)I
-\\&=\begin{pmatrix}bc-ad & 0 \\ 0 & bc- ad\end{pmatrix}
-+ \begin{pmatrix}ad-bc & 0 \\ 0 & ad - bc\end{pmatrix} = 0.
-\end{align*}
-\end{exemplo}
+                                 \begin{exemplo}
+                                   Considere a matriz \[\begin{pmatrix}
+                                       a & b \\ c & d
+                                     \end{pmatrix}.\]
+                                   Então temos que \(p_A(t)=t^2-(a+d)t+(ad-bc)\) e também
+                                   \begin{align*}
+                                     P_A(A)&=A^2-(a+d)A+(ad-bc)I\\&=
+                                     \begin{pmatrix}
+                                       a^2+bc & ab+ad\\ac+dc & bc+d^2
+                                       \end{pmatrix}
+                                                               -\begin{pmatrix} a^2+ad & ab+bd \\ ac+dc & ad+d^2\end{pmatrix} + \text{det}(A)I
+                                                                 \\&=\begin{pmatrix}bc-ad & 0 \\ 0 & bc- ad\end{pmatrix} + \begin{pmatrix}ad-bc & 0 \\ 0 & ad - bc\end{pmatrix} = 0.
+                                     \end{align*}
+                                 \end{exemplo}
+                                                                                                                                                                       \begin{teorema}[Decomposição Primária]
+                     Seja \(V\) um espaço vetorial sobre um corpo \(K\) tal que \(\text{dim}(V)=n<\infty\) e seja \(T\in\mathcal{L}(V)\). Suponhamos que \(f(T)=0\), onde \[f(t)=p_1^{k_1}(t)\ldots p_r^{k_r}(t)\] e cada \(p_i(t)\in K[t]\) é irredutícel. Então \(V=V_1\oplus\ldots\oplus V_r\) onde cada \(V_i\) é \(T\)-invariante e \(p_i^{k_i}(T_{\upharpoonright V_i})=0\).
+                     \end{teorema}
+                                                                                                                                                                        \begin{lema}
+                                                                                                                                                                          Seja \(f(T)=0\) onde \(f(t)=f_1(t)f_2(t)\) com \(f_1\) e \(f_2\) primas entre si. Então \(V=V_1\oplus V_2\) onde \(V_1\) e \(V_2\) são \(T\)-invariantes, \(f_1(T_{\upharpoonright V_1})=0\) e \(f_2(T_{\upharpoonright V_2})=0\)         \end{lema}
 
-\begin{teorema}[Teorema da Cayley-Hamilton ao Avesso]\label{cayley-hamilton-avesso}
-Se $V$ é espaço de dimensão finita e $T\in L(V)$, então todo polinômio irredutível que divide $p_T$ também divide $m_T$.
-\end{teorema}
-\begin{proof}
-Faremos a demonstração por indução em $V$. Suponhamos o lema válido para $\dim(V)<n$. Seja $V$ espaço vetorial tal que $\dim(V)=n$ e seja $T\in L(V)$ e seja $p$ um polinômio irredutível que divide $p_T$. Se $V=0$, é fácil. Senão, então tome um $v\neq 0$ qualquer. Seja $W$ o subespaço gerado por $\{v,T(v),T^2(v),\dots\}$. É fácil ver que $W$ é $T$-invariante, aí consideremos o espaço quociente $V/W$. Como $v\neq 0$, então $W\neq 0$, aí $\dim(V/W)=\dim(V)-\dim(W)<n$. Seja $k$ o menor tal que $\{v,T(v),T^2(v),\dots,T^k(v)\}$ seja linearmente dependente, então $B_1=\{v,T(v),T^2(v),\dots,T^{k-1}(v)\}$ é uma base de $W$. Seja $B$ uma base de $V$ tal que $B_1\subseteq B$ e seja $B_2=B\setminus B_1$. Então $\overline{B}_2=\{\overline{b}:b\in B_2\}$ é uma base de $V/W$ e, sendo $T'=T\upharpoonright W$ e sendo $\overline{T}\in L(V/W)$ o operador induzido, então temos:
-\[
-[T]_B=
-\begin{pmatrix}
-[T']_{B_1}&*\\0&[\overline{T}]_{\overline{B_2}}
-\end{pmatrix},
-\]
-aí é fácil ver que $p_T=p_{T'}p_{\overline{T}}$ e $m_{T'}\mid m_T$ e $m_{\overline{T}}\mid m_T$. Assim, como $p\mid p_T$, então $p\mid p_{T'}$ ou $p\mid p_{\overline{T}}$.
-\begin{itemize}
-\item Se $p\mid p_{T'}$, então podemos nos lembrar que $p_{T'}=m_{T'}$, ou ver a resolução do exercício 15 da lista 2, aquele que fala sobre matrizes companheiras de polinômios, e aí inferir que $p\mid m_{T'}$, aí $p\mid m_T$.
-\item Se $p\mid p_{\overline{T}}$, então, por hipótese de indução, temos $p\mid m_{\overline T}$, aí $p\mid m_T$.
-\end{itemize}
-\end{proof}
-
-\begin{teorema}[Decomposição Primária]
-Seja \(V\) um espaço vetorial sobre um corpo \(K\) tal que
-\(\text{dim}(V)=n<\infty\) e seja \(T\in\mathcal{L}(V)\). Suponhamos que
-\(f(T)=0\), onde \[f(t)=p_1^{k_1}(t)\ldots p_r^{k_r}(t)\] e cada
-\(p_i(t)\in
-K[t]\) é irredutível. Então \(V=V_1\oplus\ldots\oplus V_r\) onde
-cada \(V_i\) é \(T\)-invariante e \(p_i^{k_i}(T_{\upharpoonright V_i})=0\).
-\end{teorema}
-\begin{lema}
-Seja \(f(T)=0\) onde \(f(t)=f_1(t)f_2(t)\) com
-\(f_1\) e \(f_2\) primas entre si. Então \(V=V_1\oplus V_2\)
-onde \(V_1\) e \(V_2\) são \(T\)-invariantes,
-\(f_1(T_{\upharpoonright V_1})=0\) e \(f_2(T_{\upharpoonright V_2})=0\).
-\end{lema}
-\begin{sublema}[Identidade de Bézout]
-Se \(\text{m.d.c}(f_1(t),f_2(t))=1\) então existem
-\mbox{\(r(t),s(t)\in K[t]\)} tais que
-\[f_1(t)r(t)+f_2(t)s(t)=1.\]
-\end{sublema}
+                                                                                                                                                                        \begin{sublema}[Identidade de Bezout]
+                                                                                                                                                                          Se \(\text{m.d.c}(f_1(t),f_2(t))=1\) então existem
+                                                                                                                                                                          \mbox{\(r(t),s(t)\in K[t]\)} tais que
+                                                                                                                                                                          \[\f_1(t)r(t)+f_2(t)s(t)=1.\]                                                            \end{sublema}
 \begin{proof}[Demonstração do Lema]
-Considere \(V_2\coloneqq\text{Im}(f_1(T))\)
-e \(V_1\coloneqq\text{Im}(f_1(T))\).
-Vamos verificar que que \(V_1\) e \(V_2\) são \(T\)-invariantes.
-Seja \(v\in V_1\). Então \(v=f_2(T)(w)\) para algum \(w\in V\).
-Dessa forma,
-\begin{align*}
-T(v) = T f_2(T)(w)=f_2(T)(T(w))=f_2(T)(T(w))\in\text{Im}(f_2(T))=V.
-\end{align*}
-e analogamente para \(V_2\). Além disso, mostremos que \(V=V_1+V_2\).
-De fato, para cada \(v\in V\) temos \[v=f_1(T)r(T)(v)+f_2(T)s(T)(v).\]
-Como \(f_1(T)r(T)(v)\in V_2\) e \(f_2(T)s(T)(v)\in V_1\)
-concluímos que \(v\in V_1 + V_2\). Agora vamos mostrar que \(V_1\cap
-V_2=\{0\}\). Para tal, vamos verificar que
-\(V_1\subseteq\text{Ker}(f_1)(T)\)
-e \(V_2\subseteq\text{Ker}(f_2(T)).\) Seja \(v\in V_1\). Então
-\(v=f_2(T)(w)\) para algum \(w\in V\).
-\[f_1(T)(v)=f_1(T)f_2(T)(w)=f(T)(w)=0.\]
-Também vejamos que que
-\(\text{Ker}(f_1)(T)\cap\text{Ker}(f_2)(T)=\{0\}\). Seja
-\(v\in\text{Ker}(f_1(T))\cap\text{Ker}(f_2(T))\).
-Então temos por definição que \(f_1(T)(v)=f_2(T)(v)=0\). Segue
-\[v=r(T)f_1(T)(v)+s(T)f_2(T)(v)=0.\]
-Assim concluímos que \(V=V_1\oplus
-V_2\). Finalmente, note que como \(V_1\subseteq\text{Ker}(f_1(T))\) e
-\(V_2\subseteq\text{Ker}(f_2(T))\) segue que  \(f_1(T\upharpoonright_{ V_1})=0\) e \(f_2(T\upharpoonright_{ V_2})=0\).
-\end{proof}
-\begin{proof}[Demonstração do Teorema]
-Vamos mostrar este resultado por indução sobre \(r\). Note que o resultado é
-óbvio para \(r=1\). Agora suponhamos que o resultado vale para
-o caso \(r-1\). Então consideramos \(f(t)=f_1(t)f(t)\),
-onde \(f_1(t)=p_1^{k_1}(t)\ldots p_{r-1}^{k_{r-1}}(t)\) e \(f_2(t)=p_r^{k_r}(t)\).
-Então \(\text{m.d.c}\{f_1(t),f_2(t)\}=1\).
-Aplicando o lema o resultado segue.
-\end{proof}
-\begin{corolario}
-Seja \(V\) um espaço vetorial tal que \(\text{dim}(V)=n < \infty\),
-seja \(T\in\mathcal{L}(V)\), e seja
-\(m_T(t)=p_1^{k_1}(t)\ldots p_r^{k_r}(t) \) com \(p_i(t)\) irredutíveis e
-primos entre si. Então \(V=V_1\oplus\ldots\oplus V_r\) onde \(V_i\)
-são \(T\)-invariantes e \(m_{T_{\upharpoonright V_i}}(t)=p_i^{k_i}(t)\). 
-\end{corolario}
-\begin{proof}
-Temos por definição que \(m_T(T)=0\). Portanto, pelo teorema temos
-que \(V=V_1\oplus\ldots\oplus V_r\),
-onde cada \(V_i\) é \(T\)-invariante.
-Considere \(T_i\coloneqq T_{\upharpoonright V_i}\)
-para cada \(i\in [r]\).
-Temos que \(p_i^{k_i}(T_i)=0\). Então segue que \(m_{T_i}(t)\vert
-p_i^{k_i}(t)\), ou seja,
-\(m_{T_i}(t)=p_i(t)^{m_i}\), onde \(m_i\leq k_i\). Suponhamos que \(m_i <
-k_i\) e consideremos \(g(t)=p_1^{k_1}(t)\ldots p_i^{m_i}(t)\ldots
-p_r^{k_r}(t)\), e então \(\text{deg}(g(t))<\text{deg}(m_T(t))\). Provaremos
-que \(g(T)=0\), o que irá contradizer a minimalidade do grau de \(m_t(t)\). Se
-\(v\in V_j\) com \(j\not= i\) então \(p_j^{k_j}(v)=0\) e portanto
-\(g(T)(v)=0\). Se \(v\in V_i\) então \(p_i^{m_i}(T)(v)=0\) e
-\(g(T)(v)=0\). Assim concluímos que
-\(g(T_k)=0\) para cada \(k=1,\ldots ,r\) e logo \(g(T)=0\).
-Isso implica que \(g(T)\) é o polinômio minimal de \(T\), absurdo.
-\end{proof}
-\begin{corolario}
-Seja \(V\) um espaço vetorial tal que \(\text{dim}(V)=n<\infty\), seja
-\(T\in\mathcal{L}(V)\), e seja
-\(p_T(t)=p_1^{k_1}(t)\ldots p_r^{k_r}(t)\) com
-\(p_i(t)\) irredutíveis e primos entre si.
-Então \(V=V_1\oplus\ldots\oplus
-V_r\), com \(V_i\) \(T\)-invariantes e
-\(p_{T_{\upharpoonright V_i}}(t)=p_i(t)^{k_i}\).
-\end{corolario}
-\begin{proof}
-Pelo teorema temos
-que \(V=V_1\oplus\ldots\oplus V_r\),
-onde cada \(V_i\) é \(T\)-invariante.
-Considere \(T_i\coloneqq T_{\upharpoonright V_i}\)
-para cada \(i\in [r]\).
-Temos que \(p_i^{k_i}(T_i)=0\). Então segue que \(m_{T_i}(t)\vert
-p_i^{k_i}(t)\), mas, pelo teorema de Cayley-Hamilton \textcolor{red}{ao avesso} (Teorema \ref{cayley-hamilton-avesso}), todo fator irredutível de $p_{T_i}$ deve dividir $m_{T_i}$, logo ser igual a $p_i$. Assim $p_{T_i}=p_i^{l_i}$ para algum $l_i$. Entretanto, considerando bases $B_i$ de $V_i$, e juntando numa base $B$ de $V$, é fácil ver que $p_T=p_{T_1}\dots p_{T_k}$, assim $p_T=p_1^{l_1}\ldots p_r^{l_r}$, aí pela fatoração única devemos ter $l_i=k_i$ para todo $i$, concluindo a demonstração.
-\end{proof}
-\begin{corolario}
-Um operador \(T\in\mathcal{L}(V)\) é diagonalizável se, e somente se
-\(m_T=(t-\lambda_1)\ldots(t-\lambda_r)\) com
-\(\lambda_i\not=\lambda_j\) sempre que \(i\not= j\).
-\end{corolario}
-\begin{proof}
-A ida já foi provada em algum momento do passado, então
-vamos mostrar apenas a volta. Pelo primeiro Corolário, temos que
-\(V=V_1\oplus\ldots\oplus V_r\) com \(m_{T_{\upharpoonright
-v_i}}=t-\lambda_i\), ou seja \(T_{\upharpoonright V_i}=\lambda_i
-I_{V_i}\) e ainda \(V_i=V_T(\lambda_i)\). 
-\end{proof}
+Considere \(V_1\coloneqq\text{Im}(f_1(T)) e \(V_2\coloneqq\text{Im}(f_1(T))\). Vamos verificar que \textcolor{continuardaqui}                                                                                                                                                    \end{proof}
+                                                                                                                                                                        \begin{proof}[Demonstração do Teorema]
+                                                                                                                                                                         
+                                                                                                                                                                        \end{proof}
 
-\noindent
-Considere \(\{T_i\,\colon i\in I\}\subseteq\mathcal{L}(V)\).
-Quando os operadores \(T_i\) podem ser diagonalizados simultaneamente?
 
-\begin{teorema}
-Um conjunto \(\{T_i\,\colon i \in I\}\) pode ser diagonalizado
-simultaneamente se, e somente se cada \(T_i\) é diagonalizável e \(T_iT_j=T_jT_i\) para todo \(i,j\in I\).\end{teorema}
-\begin{proof}
-Mostraremos por indução na dimensão. Suponhamos que o teorema é válido para espaços de dimensão menor que $n$. Seja $V$ um espaço tal que $\dim(V)=n$ e seja $\mathcal{F}$ um conjunto de operadores que comutam um com outro. Se todo elemento de $\mathcal{F}$ é múltiplo da identidade, então acaba. Caso contrário, existe um $T\in\mathcal{F}$ que não é múltiplo da identidade. Sejam $c_1,\dots,c_k$ os autovalores de $T$. Para $i$ seja $W_i=\Ker(T-c_iI)$. Então, como os elementos de $\mathcal{F}$ comutam um com outro, então $W_i$ é invariante para todo elemento de $\mathcal{F}$. Para cada $U\in\mathcal{F}$, então $m_U$ é produto de fatores lineares distintos, aí, como $m_{U\upharpoonright W_i}\mid m_U$, então $m_{U\upharpoonright W_i}$ é produto de fatores lineares distintos, aí $U\upharpoonright W_I$ é diagonalizável. Como $\dim(W_i)<n$, então existe uma base $B_i$ tal que para todo $U\in\mathcal{F}$ então $[U\upharpoonright W_i]$ seja diagonal. Então $B=B_1\cup\dots\cup B_k$ é a base que buscamos.
-\end{proof}
 
-\printindex
+                                                                                                                                                                        \printindex
 
 \end{document}

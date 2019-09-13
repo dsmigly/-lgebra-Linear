@@ -1,0 +1,28 @@
+\begin{thebibliography}{1}
+
+\bibitem{linalgedusp}
+Flávio Coelho and Mary~Lilian Lourenço.
+\newblock {\em Um Curso de Álgebra Linear}.
+\newblock Edusp, 2001.
+
+\bibitem{greubmulti}
+Werner~H. Greub.
+\newblock {\em Multilinear Algebra}.
+\newblock Springer, 1978.
+
+\bibitem{greublin}
+Werner~H. Greub.
+\newblock {\em Linear Algebra}.
+\newblock Springer, 1981.
+
+\bibitem{hoffmanlinear}
+Kenneth Hoffman and Ray Kunze.
+\newblock {\em Linear Algebra}.
+\newblock Prentice Hall, 1971.
+
+\bibitem{roman2005advanced}
+Steven Roman.
+\newblock {\em Advanced Linear Algebra}.
+\newblock Springer, 2005.
+
+\end{thebibliography}
