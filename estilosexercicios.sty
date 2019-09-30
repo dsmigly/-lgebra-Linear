@@ -15,7 +15,7 @@
 \usepackage{mathtext}
 \usepackage{wrapfig}
 \usepackage{cancel}
-
+\usepackage{arydshln} %dashed line nas matrizes
 \usepackage{tikz}
 \usepackage{setspace}
 \usepackage{lipsum}
@@ -79,6 +79,8 @@ mathb7 <8-9> mathb8 <9-10> mathb9 <10-12> mathb10 <12-> mathb12 }{}
 \DeclareFontShape{U}{mathb}{m}{n}{ <-6> matha5 <6-7> matha6 <7-8>
 mathb7 <8-9> mathb8 <9-10> mathb9 <10-12> mathb10 <12-> mathb12 }{}
 \DeclareSymbolFont{mathb}{U}{mathb}{m}{n}
+
+\newcommand{\prin}[1]{\left\langle #1 \right\rangle }
 
 
 \newcommand{\exercicio}[1]{\subsection{Exercício #1} \textcolor{blue}{\bf(#1)}}

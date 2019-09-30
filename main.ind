@@ -1,17 +1,18 @@
 \begin{theindex}
 
   \item Espa\IeC {\c c}o Vetorial
-    \subitem Base, 7
-    \subitem Base dual, 14
-    \subitem Dimens\IeC {\~a}o, 9
-    \subitem Soma direta, 10
-    \subitem Teorema do N\IeC {\'u}cleo-Imagem, 13
-    \subitem Transforma\IeC {\c c}\IeC {\~o}es Lineares, 13
+    \subitem Base, 9
+    \subitem Base dual, 19
+    \subitem Base ordenada, 9
+    \subitem Dimens\IeC {\~a}o, 12
+    \subitem Soma direta, 14
+    \subitem Teorema do N\IeC {\'u}cleo-Imagem, 18
+    \subitem Transforma\IeC {\c c}\IeC {\~o}es Lineares, 17
 
   \indexspace
 
-  \item Teorema de Cantor-Bernstein, 9
+  \item Teorema de Cantor-Bernstein, 11
   \item Transforma\IeC {\c c}\IeC {\~o}es Lineares
-    \subitem Isomorfismos, 14
+    \subitem Isomorfismos, 18
 
 \end{theindex}

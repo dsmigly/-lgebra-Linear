@@ -1,4 +1,4 @@
-%%% ------- Readme -------%%%
+BR%%% ------- Readme -------%%%
 
 %%-----------------------%%%
 \documentclass[11pt,twoside,a4paper]{book}
@@ -522,7 +522,7 @@ Uma soma:
 \]
 é dita uma \textbf{soma direta} se para todo $i \in I$ tivermos:
 \[
-W_i \cap \left( \sum\limits_{j \neq i} W_j \right) = 0
+W_i \cap \left( \sum\limits_{j \neq i} W_j \right) = 0.
 \]
 \end{definicao}
 
@@ -864,20 +864,23 @@ $S^0$ é um subespaço de $V$.
 \end{proposicao}
 
 \begin{teorema}
-Seja $V$ um espaço com $\dim(V)<\aleph_0$ e $W\subseteq V$ um subespaço. Então:
+Seja $V$ um espaço de dimensão finita e $W\subseteq V$ um subespaço. Então:
 \[
 \dim(V)=\dim(W)+\dim(V^0).
 \]
 \end{teorema}
 \begin{proof}
-Seja $\dim(V)=n$ e $\dim(W)=m$. Escolhemos uma base $(v_i)_{i\in m}$ de $W$ e completemo-la até uma base $(v_i)_{i\in n}$ de $V$. Consideremos a base dual $(f_{v_i})_{i\in n}$ de $V^*$. Mostraremos que $(f_{v_i})_{i\in n\setminus m}$ é uma base de $W^0$. É claro que $\forall i\in n\setminus m:f_{v_i}\in W^0$. Seja $f\in W^0$, então $f=\sum_{i\in n}f(v_i)f_{v_i}=\sum_{i\in n\setminus m}f(v_i)f_{v_i}$.
+Seja $\dim(V)=n$ e $\dim(W)=m$. Escolhemos uma base $(v_1,\dots,v_m)$ de $W$ e completemo-la até uma base $(v_1,\dots,v_m,v_{m+1},\dots v_n)$ de $V$. Consideremos a base dual $(f_1,\dots,f_n)$ de $V^*$. Mostraremos que $(f_{m+1},\dots,f_n)$ é uma base de $W^0$. É claro que para todo $i=m+1,\dots,n$ temos $f_i\in W^0$. Seja $f\in W^0$, então:
+\[
+f=\sum_{i=1}^nf(v_i)f_i=\sum_{i=m+1}^nf(v_i)f_i. \qedhere
+\]
 \end{proof}
 
 \begin{teorema}
-Se $\dim(V)<\aleph_0$ e $V=U\oplus W$, então $V^*=U^0\oplus W^0$ e $U^0\cong W^*$ e $W_0\cong U^*$.
+Se $\dim(V)$ é finita e $V=U\oplus W$, então $V^*=U^0\oplus W^0$ e $U^0\cong W^*$ e $W_0\cong U^*$.
 \end{teorema}
 \begin{proof}
-Seja $B=B_U\cup B_W$ uma base de $V$, em que $B_U$ é base de $U$ e $B_W$ é base de $W$. Então na base dual temos $B^*=B_U^*\cup B_V^*$, e pelo teorema anterior temos $\langle B_U^*\rangle=W^0$ e $\langle B_V^*\rangle=U^0$.
+Seja $B=B_U\cup B_W$ base de $V$, em que $B_U$ é base de $U$ e $B_W$ é base de $W$. Então a base dual é $B^*=B_U^*\cup B_V^*$, e pelo teorema anterior temos $\langle B_U^*\rangle=W^0$ e $\langle B_V^*\rangle=U^0$.
 \end{proof}
 
 \section{Transpostas}
@@ -892,7 +895,7 @@ T^t:V^t&\rightarrow&U^t\\f&\mapsto&T^t(f)=f\circ T
 \end{definicao}
 
 \begin{proposicao}
-Se $\dim(U)<\aleph_0$ e $T\in\mathcal{L}(U,V)$, então:
+Se $\dim(U)$ é finita e $T\in\mathcal{L}(U,V)$, então:
 \begin{itemize}
 \item[a)] $\mathrm{Ker}(T^t)=(\mathrm{Im}(T))^0$.
 \item[b)] $\mathrm{Rank}(T^t)=\mathrm{Rank}(T)$.
@@ -923,14 +926,14 @@ mas $\dim(V^*)=\dim(V)$ e $\dim(\mathrm{Ker}(T^t))+\dim(\mathrm{Im}(T))^0$.
 \[
 \dim(U)=\dim(\mathrm{Ker}(T))+\dim(\mathrm{Im}(T))
 \]
-aí $\dim(\mathrm{Ker}(T))^0=\dim(\mathrm{Im}(T))$, aí $(\mathrm{Ker}(T))^0=\mathrm{Im}(T)$.
+aí $\dim(\mathrm{Ker}(T))^0=\dim(\mathrm{Im}(T))$, aí $(\mathrm{Ker}(T))^0=\mathrm{Im}(T)$. \qedhere
 \end{itemize}
 \end{proof}
 
 \begin{teorema}
 Sejam $U$ e $V$ espaços vetoriais de dimensão finita com bases $B$ e $C$ e bases duais $B^*$ e $C^*$. Se $T\in\mathcal{L}(U,V)$, então:
 \[
-([T]_{B,C})^t=[T^t]_{C^*,B^*}
+[T]_{B,C}^t=[T^t]_{C^*,B^*}
 \]
 \end{teorema}
 
@@ -946,10 +949,8 @@ Consideremos $T:K^n\rightarrow K^m$ dada por $T(v)=Av$. Sejam $B$ e $C$ as bases
 \begin{array}{ccccc}
 \mathrm{Rank}(T)&=&\mathrm{Column Rank}(A)&&\\
 \mathrm{Rank}(T^t)&=&\mathrm{Column Rank}(A^t)&=&\mathrm{Row Rank}(A).
-\end{array}
+\end{array} \qedhere
 \]
-
-\noindent
 \end{proof}
 
 \section{Espaços Quocientes}
@@ -1018,7 +1019,7 @@ Temos o seguinte:
 
 \medskip
 \noindent
-1) Mostraremos que $\overline{T}$ está ``bem definida''. Se $\overline{u}=\overline{v}$, então $u-v\in W\in\mathrm{Ker}(T)$, aí $T(u-v)=0$, aí $T(u)=T(v)$.
+1) Mostraremos que $\overline{T}$ está ``bem definida''. Se $\overline{u}=\overline{v}$, então $u-v\in W\subseteq\mathrm{Ker}(T)$, aí $T(u-v)=0$, aí $T(u)=T(v)$.
 
 \medskip
 \noindent
@@ -1026,8 +1027,17 @@ Temos o seguinte:
 
 \begin{itemize}
 \item $\overline{T}(\overline{u}+\overline{v})=\overline{T}(\overline{u+v})=T(u+v)=T(u)+T(v)=\overline{T}(\overline{u})+\overline{T}(\overline{v})$.
-\item 
+\item $\overline{T}(\alpha\overline{v})=\overline{T}(\overline{\alpha v})=T(\alpha v)=\alpha T(v)=\alpha\overline{T}(\overline{v})$.
 \end{itemize}
+Agora, para todo $T'\in\mathcal{L}(U/W,V)$ tal que para todo $u\in U$ tenhamos:
+\[
+T'(\overline{u})=T(u),
+\]
+então para todo $v\in U/W$ existe um $u\in U$ tal que $v=\overline{u}$, aí:
+\[
+T'(v)=T'(\overline{u})=T(u)=\overline{T}(\overline{u})=\overline{T}(v);
+\]
+logo $T'=\overline{T}$.
 \end{proof}
 
 \begin{teorema}
@@ -1068,7 +1078,10 @@ Seja $V=W\oplus U$, então $\dim V=\dim W+\dim U$, mas $U\cong V/W$, aí $\dim U
 \end{proof}
 
 \begin{observacao}
-Existem espaços vetoriais $W$ e $U$ e $W'$ e $U'$ tais que $W\oplus U\cong W'\oplus U'$ e $W\cong W'$, mas $U\ncong U'$. De fato podemos tomar $W=\bigoplus_{i=0}^\infty Ke_{2i}$ e $U=\bigoplus_{i=0}^\infty Ke_{2i+1}$ e $W'=\bigoplus_{i=0}^\infty Ke_i$ e $U'=\{0\}$.
+Existem espaços vetoriais $W$ e $U$ e $W'$ e $U'$ tais que $W\oplus U\cong W'\oplus U'$ e $W\cong W'$, mas $U\ncong U'$. De fato podemos tomar:
+\[
+W=\bigoplus_{i=0}^\infty Ke_{2i},\quad U=\bigoplus_{i=0}^\infty Ke_{2i+1},\quad W'=\bigoplus_{i=0}^\infty Ke_i,\quad U'=\{0\}.
+\]
 \end{observacao}
 
 \chapter{Determinantes}
@@ -1076,13 +1089,9 @@ Existem espaços vetoriais $W$ e $U$ e $W'$ e $U'$ tais que $W\oplus U\cong W'\o
 \section{Formas Multilineares}
 
 \begin{definicao}
-Seja $V$ um espaço vetorial e $V^r=V\times\dots\times V$. Uma \textbf{forma $r$-linear} sobre $V$ é uma função:
+Seja $V$ um espaço vetorial e $V^r=V\times\dots\times V$. Uma \textbf{forma $r$-linear} sobre $V$ é uma função $F:V^r\rightarrow K$ que é linear em cada argumento, ou seja, para cada $i=1,\dots,r$ temos:
 \[
-F:V^r\rightarrow K,\quad\quad (v_i)_{i\in r}\mapsto F((v_i)_{i\in r})\in K
-\]
-que é linear em cada argumento, ou seja, para cada $i\in r$ temos que
-\[
-F(v_0,\dots,\alpha v_i+\beta v'_i,\dots,v_{r-1})=\alpha F(v_0,\dots,v_i,\dots,v_{r-1})+\beta F(v_0,\dots,v'_i,\dots,v_{r-1}).
+F(v_1,\dots,\alpha v_i+\beta v'_i,\dots,v_r)=\alpha F(v_1,\dots,v_i,\dots,v_r)+\beta F(v_1,\dots,v'_i,\dots,v_r).
 \]
 Denotamos por $L_r(V)$ o conjunto das formas $r$-lineares sobre $V$.
 \end{definicao}
@@ -1090,30 +1099,30 @@ Denotamos por $L_r(V)$ o conjunto das formas $r$-lineares sobre $V$.
 \begin{exemplo}
 Seja $V=K^2$ e:
 \[
-F((x_0,y_0),(x_1,y_1),(x_2,y_2))=x_0y_1x_2-x_0x_1x_2.
+F((x_1,y_1),(x_2,y_2),(x_3,y_3))=x_1y_2x_3-x_1x_2x_3.
 \]
 Então $F$ é uma forma 3-linear.
 \end{exemplo}
 
 \begin{definicao}
-Uma forma $F\in L_r(V)$ chama-se \textbf{alternativa} se e só se para $v\in V^r$, se $v$ não é injetora, então $F(v)=0$. Denotamos por $A_r(V)$ o conjunto das formas $r$-lineares alternativas.
+Uma forma $F\in L_r(V)$ chama-se \textbf{alternada} se e só se para $(v_1,\dots,v_r)\in V^r$ e $i<j$ tais que $v_i=v_j$ então $F(v_1,\dots,v_r)=0$. Denotamos por $A_r(V)$ o conjunto das formas $r$-lineares alternadas.
 \end{definicao}
 
 \begin{definicao}
-Uma forma $F$ é chamada \textbf{antissimétrica} se para $v\in V^r$ e para $i,j\in r$ tais que $i\neq j$, então:
+Uma forma $F$ é chamada \textbf{antissimétrica} se para $v\in V^r$ e para $i<j$ temos:
 \[
-F(v_0,\dots,v_i,\dots,v_j,\dots,v_{r-1})=-F(v_0,\dots,v_j,\dots,v_i,\dots,v_{r-1}).
+F(v_1,\dots,v_i,\dots,v_j,\dots,v_r)=-F(v_1,\dots,v_j,\dots,v_i,\dots,v_r).
 \]
 \end{definicao}
 
 \begin{proposicao}
-Toda forma alternativa é antissimétrica.
+Toda forma alternada é antissimétrica.
 \end{proposicao}
 \begin{proof}
-Seja $F\in A_r(V)$. Sejam $v\in V^r$ e $i,j\in r$ tais que $i\neq j$. Então:
+Seja $F\in A_r(V)$. Sejam $v\in V^r$ e $i<j$, então:
 \[
 \begin{array}{rcl}
-0&=&F(v_0,\dots,v_i+v_j,\dots,v_i+v_j,\dots,v_{r-1})\\&=&F(v_0,\dots,v_i,\dots,v_i,\dots,v_{r-1})+F(v_0,\dots,v_i,\dots,v_j,\dots,v_{r-1})\\&&+F(v_0,\dots,v_j,\dots,v_i,\dots,v_{r-1})+F(v_0,\dots,v_j,\dots,v_j,\dots,v_{r-1})\\&=&F(v_0,\dots,v_i,\dots,v_j,\dots,v_{r-1})+F(v_0,\dots,v_j,\dots,v_i,\dots,v_{r-1})
+0&=&F(v_1,\dots,v_i+v_j,\dots,v_i+v_j,\dots,v_r)\\&=&F(v_1,\dots,v_i,\dots,v_i,\dots,v_r)+F(v_1,\dots,v_i,\dots,v_j,\dots,v_r)\\&+&F(v_1,\dots,v_j,\dots,v_i,\dots,v_r)+F(v_1,\dots,v_j,\dots,v_j,\dots,v_r)\\&=&F(v_1,\dots,v_i,\dots,v_j,\dots,v_r)+F(v_1,\dots,v_j,\dots,v_i,\dots,v_r)
 \end{array}
 \]
 \end{proof}
@@ -1122,22 +1131,26 @@ Seja $F\in A_r(V)$. Sejam $v\in V^r$ e $i,j\in r$ tais que $i\neq j$. Então:
 Se a característica do corpo é $\neq 2$, então toda forma antissimétrica é reflexiva.
 \end{proposicao}
 \begin{proof}
-Para $F$ antissimétrica e $v\in V^r$ e $i,j\in r$ tais que $i\neq j$, se $v_i=v_j$, sendo $v=v_i$, então:
+Para $F$ antissimétrica e $v\in V^r$ e $i<j$, se $v_i=v_j$, sendo $v=v_i$, então:
 \[
-F(v_0,\dots,v,\dots,v,\dots,v_{r-1})=-F(v_0,\dots,v,\dots,v,\dots,v_{r-1}),
+F(v_1,\dots,v,\dots,v,\dots,v_1)=-F(v_1,\dots,v,\dots,v,\dots,v_r),
 \]
 aí:
 \[
-2F(v_0,\dots,v,\dots,v,\dots,v_{r-1})=0,
+2F(v_1,\dots,v,\dots,v,\dots,v_r)=0,
 \]
 aí:
 \[
-F(v_0,\dots,v,\dots,v,\dots,v_{r-1})=0.
+F(v_1,\dots,v,\dots,v,\dots,v_r)=0.
 \]
 \end{proof}
 
 \begin{definicao}
-Seja $F\in L_r(V)$ e $\sigma\in S_r$ uma permutação. Então, para $v\in V^r$, definamos $(\sigma F)(v)=F(v\circ\sigma)$. Então é fácil ver que $\sigma F\in L_r(V)$.
+Seja $F\in L_r(V)$ e $\sigma\in S_r$ uma permutação. Para $(v_1,\dots,v_r)\in V^r$ definimos:
+\[
+(\sigma F)\left(v_1,\dots,v_r\right)=F\left(v_{\sigma(1)},\dots,v_{\sigma(r)}\right).
+\]
+É fácil ver que $\sigma F\in L_r(V)$.
 \end{definicao}
 
 \begin{observacao}
@@ -1145,27 +1158,34 @@ Para $F\in L_r(V)$, então $F$ é antissimétrica se e somente se para toda tran
 \end{observacao}
 
 \begin{proposicao}
-Seja $F\in L_r(V)$ uma forma antissimétrica. Então para $\sigma\in S_r$, temos $\sigma F=(\sgn\sigma)F$.
+Seja $F\in L_r(V)$ uma forma antissimétrica. Então para $\sigma\in S_r$, temos:
+\[
+\sigma F=(\sgn \ \sigma)F.
+\]
 \end{proposicao}
 \begin{proof}
-Para $\sigma\in S_r$, então $\sigma$ pode ser escrita como $\sigma=\tau_0\dots\tau_{k-1}$, em que $\tau_i$ são transposições, e $\sigma$ é par se e só se $k$ é par.
-
-\medskip
-\noindent
-Temos $\sigma F=(\tau_0\dots\tau_{k-1})F=(-1)^k F=(\sgn\sigma)F$, pois $\sgn\sigma=(-1)^k$.
+Para $\sigma\in S_r$, então $\sigma$ pode ser escrita como um produto de transposições:
+\[
+\sigma=\tau_1\dots\tau_k,
+\]
+aí $\sigma$ é par se e só se $k$ é par. Portanto:
+\[
+\sigma F=(\tau_1\dots\tau_k)F=(-1)^k F=(\sgn \ \sigma)F,
+\]
+pois $\sgn \ \sigma=(-1)^k$.
 \end{proof}
 
 \begin{proposicao}
 Toda forma $r$-linear determina uma forma $r$-linear alternada da seguinte maneira:
 \[
-F\mapsto\varphi(F)=\sum_{\sigma\in S_r}\sgn\sigma(\sigma F).
+F\mapsto\varphi(F)=\sum_{\sigma\in S_r}(\sgn \ \sigma)(\sigma F).
 \]
 \end{proposicao}
 \begin{proof}
-Seja $v_i=v_j=v$ com $i\neq j$. Precisamos provar que $\varphi(F)(v)=0$. Seja $\tau$ a transposição $(i,j)$, então $S=A_r\cup A_r\tau$ e $A_r\cap A_r\tau=\emptyset$. Então temos o seguinte:
+Seja $v_i=v_j=v$ com $i<j$. Precisamos provar que $\varphi(F)(v)=0$. Seja $\tau$ a transposição $(i,j)$, então $ S_r=A_r\cup A_r\tau$ e $A_r\cap A_r\tau=\emptyset$. Então temos o seguinte:
 \[
 \begin{array}{rcl}
-\varphi(F)(v)&=&\sum_{\sigma\in S_r}(\sgn\sigma)(\sigma F(v))\\&=&\sum_{\sigma\in A_r}(\sigma F(v))-\sum_{\sigma\in A_r}(\sigma\tau F(v))\\&=&\sum_{\sigma\in A_r}(\sigma F(v))-\sum_{\sigma\in A_r}(\sigma F(v))\\&=&0
+\varphi(F)(v)&=&\sum_{\sigma\in S_r}(\sgn \ \sigma)(\sigma F(v))\\&=&\sum_{\sigma\in A_r}(\sigma F(v))-\sum_{\sigma\in A_r}(\sigma\tau F(v))\\&=&\sum_{\sigma\in A_r}(\sigma F(v))-\sum_{\sigma\in A_r}(\sigma F(v))\\&=&0.
 \end{array}
 \]
 \end{proof}
@@ -1178,23 +1198,27 @@ F(v)=0.
 \end{observacao}
 
 \begin{lema}
-Seja $\dim V=n$ e $F\in A_n(V)$. Seja $(e_i)_{i\in n}$ uma base de $V$, então $F$ é completamente determinada pelo valor $F(e)$.
+Seja $\dim V=n$ e $F\in A_n(V)$. Seja $(e_1,\dots,e_n)$ uma base de $V$, então $F$ é completamente determinada pelo valor $F(e)$.
 \end{lema}
 \begin{proof}
-Seja $v\in V^n$. Então existe $\alpha:n\times n\rightarrow K$ tal que:
+Seja $(v_1,\dots,v_n)\in V^n$. Então existe $(\alpha_{i,j})\in M_n(K)$ tal que:
 \[
-v_i=\sum_{j\in n}\alpha_{i,j}e_j.
+v_i=\sum_{j=1}^n\alpha_{i,j}e_j.
 \]
 Assim:
 \[
 \begin{array}{rcl}
-F(v)&=&F((\sum_{j\in n}\alpha_{i,j}e_j)_{j\in n})\\&=&\sum_{j\in n^n}\prod_{i\in n}\alpha_{i,j(i)}F(e\circ j)\\&=&\sum_{\sigma\in S_n}\prod_{i\in n}\alpha_{i,\sigma(i)}F(e\circ \sigma)\\&=&\textcolor{red}{\left(\sum\limits_{\sigma\in S_n}\prod_{i\in n}\alpha_{i,\sigma(i)} \sgn\sigma \right)} F(e).
+F(v_1,\dots,v_n)&=&F\left(\sum\limits_{j_1=1}^n\alpha_{1,j_1}e_{j_1},\dots,\sum\limits_{j_n=1}^n\alpha_{n,j_n}e_{j_n}\right)\\&=&\sum\limits_{j_1,\dots,j_n=1}^n\alpha_{1,j_1}\dots\alpha_{n,j_n}F\left(e_{j_1},\dots,e_{j_n}\right)\\&=&\sum\limits_{\sigma\in S_n}\alpha_{1,\sigma_1}\dots\alpha_{n,\sigma_n}F\left(e_{\sigma_1},\dots,e_{\sigma_n}\right)\\&=&\textcolor{red}{\left(\sum\limits_{\sigma\in S_n}\alpha_{1,\sigma_1}\dots\alpha_{n,\sigma_n} \sgn \ \sigma \right)} F(e_1,\dots,e_n).
 \end{array}
 \]
 \end{proof}
 
 \noindent
-Note então que o valor $\sum\limits_{\sigma\in S_n}\prod_{i\in n}\alpha_{i,\sigma(i)} \sgn\sigma$ \emph{determina} $F$ para qualquer $v \in V^n.$ Chamaremos este valor de \textbf{determinante} de $F.$
+Note então que o valor
+\[
+\sum\limits_{\sigma\in S_n}\alpha_{1,\sigma_1}\dots\alpha_{n,\sigma_n} \sgn \ \sigma 
+\]
+\emph{determina} $F$ para qualquer $v \in V^n.$ Chamaremos este valor de \textbf{determinante} de $F.$
 
 \begin{exemplo}
 
@@ -1204,7 +1228,10 @@ Note então que o valor $\sum\limits_{\sigma\in S_n}\prod_{i\in n}\alpha_{i,\sig
 
 Seja $K$ um corpo e consideremos o anel das matrizes $M_n(K)$. Identificaremos os elementos de $M_n(K)$ com os elementos de $(K^n)^n$ assim:
 \[
-A=(a_{i,j})_{(i,j)\in n\times n}\leftrightarrow ((a_{i,j})_{j\in n})_{i\in n}
+\begin{pmatrix}
+a_{1,1}&&a_{1,n}\\&\ddots&\\a_{n,1}&&a_{n,n}
+\end{pmatrix} \longleftrightarrow
+\left((a_{1,1},\dots,a_{1,n}),\dots,(a_{n,1},\dots,a_{n,n})\right).
 \]
 Portanto, uma função $n$-linear aqui é uma função $n$-linear nas linhas da matriz.
 
@@ -1219,32 +1246,32 @@ Pelo que vimos, existe e é única a função determinante: É a forma $n$-linea
 \noindent
 Logo, se $A=(a_{i,j})\in M_n(K)$, então:
 \[
-\det(A)=\sum_{\sigma\in S_n}\sgn(\sigma)\prod_{i\in n}a_{i,\sigma(i)}.
+\det(A)=\sum_{\sigma\in S_n}\sgn(\sigma)a_{1,\sigma_1}\dots a_{n,\sigma_n}.
 \]
 
 \begin{exemplo}
-Para $n=2$, temos $S_2=\{I,(0,1)\}$, e assim, sendo:
+Para $n=2$, temos $S_2=\{I,(1,2)\}$, e assim, sendo:
 \[
 A=\begin{pmatrix}
-a_{0,0}&a_{0,1}\\a_{1,0}&a_{1,1}
+a_{1,1}&a_{1,2}\\a_{2,1}&a_{2,2}
 \end{pmatrix},
 \]
 então temos:
 \[
-\det(A)=a_{0,0}a_{1,1}-a_{0,1}a_{1,0}.
+\det(A)=a_{1,1}a_{2,2}-a_{1,2}a_{2,1}.
 \]
 \end{exemplo}
 
 \begin{exemplo}
-Agora, se $n=3$, então $S_3=\{I,(0,1,2),(0,2,1),(0,1),(0,2),(1,2)\}$, e assim, sendo:
+Agora, se $n=3$, então $S_3=\{I,(1,2,3),(1,3,2),(1,2),(1,3),(2,3)\}$, e assim, sendo:
 \[
 A=\begin{pmatrix}
-a_{0,0}&a_{0,1}&a_{0,2}\\a_{1,0}&a_{1,1}&a_{1,2}\\a_{2,0}&a_{2,1}&a_{2,2}
+a_{1,1}&a_{1,2}&a_{1,3}\\a_{2,1}&a_{2,2}&a_{2,3}\\a_{3,1}&a_{3,2}&a_{3,3}
 \end{pmatrix},
 \]
 então temos:
 \[
-\det(A)=a_{0,0}a_{1,1}a_{2,2}+a_{0,1}a_{1,2}a_{2,0}+a_{0,2}a_{1,0}a_{2,1}-a_{0,1}a_{1,0}a_{2,2}-a_{0,2}a_{1,1}a_{2,0}-a_{0,0}a_{1,2}a_{2,1}.
+\det(A)=a_{1,1}a_{2,2}a_{3,3}+a_{1,2}a_{2,3}a_{3,1}+a_{1,3}a_{2,1}a_{3,2}-a_{1,2}a_{2,1}a_{3,3}-a_{1,3}a_{2,2}a_{3,1}-a_{1,1}a_{2,3}a_{3,2}.
 \]
 \end{exemplo}
 
@@ -1259,14 +1286,18 @@ Temos as seguintes propriedades:
 \begin{proof}
 Temos o seguinte:
 \begin{itemize}
-\item[1)] Sendo $A=(a_{i,j})_{(i,j)\in n\times n}$, então temos:
+\item[1)] Sendo $A=(a_{i,j})\in M_n(K)$, então temos:
 \[
-\begin{array}{rcl}
-\det(A)&=&\sum_{\sigma\in S_n}\sgn(\sigma)\prod_{i\in n}a_{i,\sigma(i)}\\&=&\sum_{\sigma\in S_n}\sgn(\sigma)\prod_{i\in n}a_{\sigma^{-1}(i),i}\\&=&\sum_{\tau\in S_n}\sgn(\tau^{-1})\prod_{i\in n}a_{\tau(i),i}\\&=&\sum_{\tau\in S_n}\sgn(\tau)\prod_{i\in n}a^t_{i,\tau(i)}\\&=&\det(A^t).
+\begin{array}{rccll}
+\det(A)&=&\sum\limits_{\sigma\in S_n}&\sgn(\sigma)&a_{1,\sigma_1}\dots a_{n,\sigma_n}\\&=&\sum\limits_{\sigma\in S_n}&\sgn(\sigma)&a_{\sigma^{-1}_1,1}\dots a_{\sigma^{-1}_n,n}\\&=&\sum\limits_{\tau\in S_n}&\sgn(\tau^{-1})&a_{\tau_1,1}\dots a_{\tau_n,n}\\&=&\sum\limits_{\tau\in S_n}&\sgn(\tau)&a^t_{1,\tau_1}\dots,a^t_{n,\tau_n}\\&=&\det(A^t).&&
 \end{array}
 \]
 \item[2)] Seja $F_A:M_n(K)\rightarrow K$ tal que $\forall X\in M_n(K):F_A(X)=\det(AX)$. Então a função $F_A$ é uma função $n$-linear alternada sobre as colunas, mas também $F_A(I)=\det(A)$, aí $F_A(B)=\det(A)\det(B)$, assim $\det(AB)=\det(A)\det(B)$
-\item[3)] Se $A$ é inversível, então existe a inversa $A^{-1}$, assim $1=\det(I)=\det(AA^{-1})=\det(A)\det(A)^{-1}$, aí $\det(A)\neq 0$ e $\det(A^{-1})=(\det(A))^{-1}$. Por outro lado, se $\det(A)\neq 0$, então $\det(A^t)\neq 0$, aí as colunas de $A$ são linearmente independentes, aí consideremos $T:K^n\rightarrow K^n$ tal que $[T]_{\mathrm{can}}=A$, então $T$ é inversível, assim $A=[T]_{\mathrm{can}}$ é inversível.
+\item[3)] Se $A$ é inversível, então existe a inversa $A^{-1}$, assim:
+\[
+1=\det(I)=\det(AA^{-1})=\det(A)\det(A)^{-1},
+\]
+aí $\det(A)\neq 0$ e $\det(A^{-1})=(\det(A))^{-1}$. Por outro lado, se $\det(A)\neq 0$, então $\det(A^t)\neq 0$, aí as colunas de $A$ são linearmente independentes, aí consideremos $T:K^n\rightarrow K^n$ tal que $[T]_{\mathrm{can}}=A$, então $T$ é inversível, assim $A=[T]_{\mathrm{can}}$ é inversível.
 \end{itemize}
 \end{proof}
 
@@ -1297,9 +1328,13 @@ em que $B\in M_r(K)$ e $D\in M_{n-r}(K)$ e $C\in M_{n-r,r}(K)$ e $0\in M_{r,n-r}
 \begin{proof}
 Temos o seguinte:
 \begin{itemize}
-\item[1)] Seja $A=(a_{i,j})_{(i,j)\in n\times n}$ uma matriz triangular inferior, então para $i,j\in n$ tais que $i<j$ temos $a_{i,j}=0$, mas a única permutação $\sigma\in S_n$ tal que $\forall i\in n:i\geq\sigma(i)$ é a identidade, assim temos:
+\item[1)] Seja $A=(a_{i,j})\in M_n(K)$ uma matriz triangular inferior, então para $i<j$ temos $a_{i,j}=0$, mas a única permutação $\sigma\in S_n$ tal que para todo $i=1,\dots,n$ tenhamos $i\geq\sigma_i$ é a permutação identidade $I$, assim temos:
 \[
-\det(A)=\sum_{\sigma\in S_n}\sgn(\sigma)\prod_{i\in n}a_{i,\sigma(i)}=\sgn(I)\prod_{i\in n}a_{i,I(i)}=\prod_{i\in n}a_{i,i}.
+\begin{array}{rcl}
+\det(A)&=&\sum_{\sigma\in S_n}\sgn(\sigma)a_{1,\sigma_1}\dots a_{n,\sigma_n}\\
+&=&\sgn(I)a_{1,I_1}\dots a_{n,I_n}\\
+&=&a_{1,1}\dots a_{n,n}.
+\end{array}
 \]
 \item[2)] Seja $F:M_r(K)\rightarrow K$ tal que:
 \[
@@ -1331,24 +1366,33 @@ assim $G(Y)=\det(Y)$, aí $F(I)=G(D)=\det(D)$, assim $F(X)=F(I)\det(X)=\det(X)\d
 Agora temos a \textbf{regra de Laplace}:
 
 \begin{teorema}
-Dada $A\in M_n(K)$, indicaremos por $M_{i,j}$ a matriz quadrada de tamanho $n-1$ obtida a partir de $A$ eliminando a linha $i$ e a coluna $j$.
+Dada $A=(a_{i,j})\in M_n(K)$, indicaremos por $M_{i,j}$ a matriz quadrada de tamanho $n-1$ obtida a partir de $A$ eliminando a linha $i$ e a coluna $j$.
 
 \smallskip
 \noindent
-Para cada $i\in n$, então vale:
+Para cada $i=1,\dots,n$, então vale:
 \[
-\det(A)=\sum_{j\in n}(-1)^{i+j}a_{i,j}\det(M_{i,j}).
+\det(A)=\sum_{j=1}^n(-1)^{i+j}a_{i,j}\det(M_{i,j}).
 \]
-Para cada $j\in n$, então vale:
+Para cada $j=1,\dots,n$, então vale:
 \[
-\det(A)=\sum_{i\in n}(-1)^{i+j}a_{i,j}\det(M_{i,j}).
+\det(A)=\sum_{i=1}^n(-1)^{i+j}a_{i,j}\det(M_{i,j}).
 \]
 \end{teorema}
 \begin{proof}
 Provaremos a primeira afirmação pois a segunda é análoga.
 \end{proof}
-\textcolor{red}{AULA DE 19 DE AGOSTO (COLOCAREI ASSIM QUE CONSEGUIR)- FICOU
-  FALTANDO A PROVA DA REGRA DE LAPLACE E A PARTE DE MATRIZES SOBRE ANEIS COMUTATIVOS}
+
+\medskip
+\noindent
+\textcolor{red}{AULA DE 19 DE AGOSTO (COLOCAREI ASSIM QUE CONSEGUIR)}
+
+\medskip
+\noindent
+\textcolor{red}{FICOU FALTANDO A PROVA DA REGRA DE LAPLACE E A PARTE DE MATRIZES SOBRE ANEIS COMUTATIVOS}
+
+\medskip
+\noindent
 Bláa blá blá
 
 \chapter{Formas Canônicas}
@@ -1356,18 +1400,24 @@ Bláa blá blá
 \section{Autovalores e Autovetores}
 
 \begin{definicao}
-Seja \(V\) um espaço vetorial sobre um corpo \(K\) e seja \(T\in\mathcal{L}(V)\). Um vetor \(v\in V\) é um \textbf{autovetor} de \(T\) se existe \(\lambda\in K\) tal que \(T(v)=\lambda v\). O escalar \(\lambda\) é um \textbf{autovalor} do operador \(T\). Dizemos que \(v\) é um autovetor associado com o autovalor \(\lambda\).
+Seja \(V\) um espaço vetorial sobre um corpo \(K\) e seja \(T\in\mathcal{L}(V)\).
+\begin{itemize}
+\item Para $\lambda\in K$, dizemos que $\lambda$ é um \textbf{autovalor} de $T$ se existe um $v\neq 0$ tal que $T(v)=\lambda v$.
+\item Para $\lambda\in K$, um \textbf{autovetor} associado a $\lambda$ é um $v\in V$ tal que $T(v)=\lambda v$.
+\item Para $\lambda\in K$, chamamos de \textbf{autoespaço} associado a $\lambda$ o conjunto $V_T(\lambda)$ dos autovetores associados a $\lambda$.
+\end{itemize}
 \end{definicao}
 
 \begin{exemplo}
-Seja \(V=\mathbb{C}^1(\mathbb{R})\) e considere o operador linear \(T\in\mathcal{L}(V)\) tal que \(T(v)=v^\prime\) para cada \(v\in V\). Considere \(v=e^{\lambda x}\) com \(\lambda\in K\). Então \(T(v)=\lambda e^{\lambda x}=\lambda v\). Ou seja \(v\) é um autovetor associado com o autovalor \(\lambda\).
+Seja \(V=\mathbb{C}^1(\mathbb{R})\) e considere o operador linear \(T\in\mathcal{L}(V)\) tal que \(T(v)=v^\prime\) para cada \(v\in V\). Considere \(v=e^{\lambda x}\) com \(\lambda\in K\). Então \(T(v)=\lambda e^{\lambda x}=\lambda v\). Ou seja \(v\) é um autovetor associado a \(\lambda\).
 \end{exemplo}
 
 \begin{definicao}
-Seja \(V\) um espaço vetorial sobre um corpo \(K\) e seja \(T\in\mathcal{L}(V)\). O \emph{spectrum} do operador \(T\) é o conjunto
+Seja \(V\) um espaço vetorial sobre um corpo \(K\) e seja \(T\in\mathcal{L}(V)\). O \textbf{spectrum} do operador \(T\) é o conjunto:
 \[\text{Spec}(T)\coloneqq\{\lambda\in K\,\colon \lambda \text{ é autovalor de } T\}.\]
-Para cada \(\lambda\in\text{Spec}(T)\), denotamos o conjunto dos autovetores associados a \(\lambda\) como \(V_T(\lambda)\).
 \end{definicao}
+
+\noindent
 No contexto da definição anterior, considere
 \(\lambda\in\text{Spec}(T)\). Então
 \begin{align*}
@@ -1375,146 +1425,190 @@ v\in V_T(\lambda)&\iff T(v)=\lambda v\\&\iff (T-\lambda I)(v)=0\\&\iff v\in\text
 \end{align*}
 
 \noindent
-\textcolor{red}{ALGUMA COISA QUE EU PERDI}
-
-\medskip
-\noindent
 Ainda no mesmo contexto, vamos assumir agora que \(\text{dim}(V)=n<\infty\). Então temos 
 que \[\lambda\in\text{Spec}(T)\implies\text{Ker}(T-\lambda I)\not =\{0\}\implies\text{det}(T-\lambda I)=0.\]
 Reciprocamente, se \(\text{det}(T-\lambda I)=0\) então \(V_T(\lambda)=\text{Ker}(T-\lambda I)\not=\{0\}\).
 \begin{definicao}
-Seja \(V\) um espaço vetorial sobre um corpo \(K\) e seja \(T\in\mathcal{L}(V)\). O \emph{ polinômio característico} de \(T\) é a função \(p_T(\lambda)\colon K\to K\) dada por
-\[p_T(\lambda)\coloneqq\text{det}(T-\lambda I), \text{ para cada }\lambda\in K.\]
+Seja \(V\) um espaço vetorial sobre um corpo \(K\) e seja \(T\in\mathcal{L}(V)\). O \textbf{polinômio característico} de \(T\) é o polinômio:
+\[p_T(t)\coloneqq\text{det}(tI-T).\]
 \end{definicao}
+
+\noindent
 Note que \(\lambda\in\text{Spec}(T)\) se e só se \(\lambda\) é raiz de \(p_T(\lambda)\). Além disso, note que se  \(B\) e \(B^\prime\) são bases \(V\), então \(p_T(\lambda)=p_{[T]_B}(\lambda)\). De fato, se \(P\) é a matriz de mudança da base \(B\) para a base \(B^\prime\), então
 \begin{align*}
-    [\lambda I - T]_{B^\prime}&=P^{-1}[\lambda I - T]_{B}P
+[\lambda I - T]_{B^\prime}&=P^{-1}[\lambda I - T]_{B}P
 \end{align*}
 Isso implica que \[\text{det}([\lambda I- T]_{B^\prime})=\text{det}(P^{-1})\text{det}([\lambda I - T]_B)\text{det}(P).\]
-Ou seja, \(\text{det}([\lambda I- T]_{B^\prime})=\text{det}([\lambda I - T]_B)\).
+Ou seja,
+\[\text{det}([\lambda I- T]_{B^\prime})=\text{det}([\lambda I - T]_B).\]
 \begin{exemplo}
 Seja \(T\in\mathcal{L}(\mathbb{R}^2)\) tal que \[[T]_{\text{can}}=\begin{pmatrix}
 0 & -1\\1 & 0
 \end{pmatrix}.\]
-Isto é, \(T((x,y))=(-y,x)\) para cada \((x,y)\in\mathbb{R}^2\). Então 
+Isto é, \(T(x,y)=(-y,x)\) para cada \((x,y)\in\mathbb{R}^2\). Então 
 \begin{align*}
-p_T(\lambda)&=\text{det}\Bigg(\begin{pmatrix}
--\lambda & -1\\1 & -\lambda
-\end{pmatrix}\Bigg)\\&=\lambda^2+1.
+p_T(x)&=\text{det}\begin{pmatrix}
+x & 1\\-1 & x
+\end{pmatrix}\\&=x^2+1.
 \end{align*}
-Dessa forma, \(\text{Spec}(T)=\varnothing\) pois \(p_T(\lambda)\) não possui raízes em \(K=\mathbb{R}\).
+Dessa forma, \(\text{Spec}(T)=\varnothing\) pois \(p_T(x)\) não possui raízes em \(K=\mathbb{R}\).
 \end{exemplo}
+
 \begin{exemplo}
 Seja \(T\in\mathcal{L}(\mathbb{R}^3)\) tal que\[[T]_{\text{can}}=\begin{pmatrix}
 3 & 1 & -1\\2 & 2 & -1\\ 2 & 2 & 0
 \end{pmatrix}.\]
-Então \begin{align*}
-p_T(\lambda)&=\text{det}\left(\begin{pmatrix}
-3-\lambda & 1 & -1\\2 & 2-\lambda & -1\\ 2 & 2 & -\lambda
-\end{pmatrix}\right)\\&=(\lambda-1)^2(\lambda-2).
+Então:
+\begin{align*}
+p_T(x)&=\text{det}\begin{pmatrix}
+x-3 & -1 & 1 \\ -2 & x-2 & 1 \\ -2 & -2 & x
+\end{pmatrix}\\&=(x-1)^2(x-2).
 \end{align*}
 Isso implica que \(\text{Spec}(T)=\{1,2\}\). Além disso, temos que
-\[V_T(1)=\text{Ker}(T-I)=\text{Ker}(\begin{pmatrix}
+\[V_T(1)=\text{Ker}(T-I)=\text{Ker}\begin{pmatrix}
 2 & 1 & -1\\2 & 1 & -1\\ 2 & 2 & -1
-\end{pmatrix})=\langle (1,0,2)\rangle.\]
+\end{pmatrix}=\langle (1,0,2)\rangle.\]
 e ainda
-\[V_T(2)=\text{Ker}(T-2 I)=\text{Ker}(\begin{pmatrix}
+\[V_T(2)=\text{Ker}(T-2 I)=\text{Ker}\begin{pmatrix}
 1 & 1 & -1\\2 & 0 & -1\\ 2 & 2 & -2
-\end{pmatrix})=\langle (1,1,2)\rangle\]
+\end{pmatrix}=\langle (1,1,2)\rangle\]
 \end{exemplo}
+
 \begin{exemplo}
 Seja \(T\in\mathcal{L}(\mathbb{R}^3)\) tal que
 \[[T]_{\text{can}}=\begin{pmatrix}
 1 & 2 & -1\\-2 & -3 & -1\\ 2 & 2 & -2
 \end{pmatrix}.\]
-Neste caso temos que \begin{align*}
-p_T(\lambda)&=\text{det}(\begin{pmatrix}
-1- \lambda & 2 & -1\\-2 & -3 - \lambda & -1\\ 2 & 2 & -2-\lambda
-\end{pmatrix})\\&=(\lambda+1)^2(\lambda+2).    \end{align*}
-Isso implica que \(\text{Spec}(T)=\{-1,-2\}\) e ainda \[V_T(-1)=\langle\{ (1,0,2),(0,1,2)\}\rangle\] e
-\[V_T(-2)=\langle (1,-1,1)\rangle\].
+Neste caso temos que
+\begin{align*}
+p_T(x)&=\text{det}\begin{pmatrix}
+x-1 & -2 & 1\\2 & x+3 & 1\\ -2 & -2 & x+2
+\end{pmatrix}\\&=(x+1)^2(x+2).
+\end{align*}
+Isso implica que \(\text{Spec}(T)=\{-1,-2\}\) e ainda \[V_T(-1)=\langle(1,0,2),(0,1,2)\rangle\] e
+\[V_T(-2)=\langle (1,-1,1)\rangle.\]
 Uma vez que os autovetores acima são L.I, eles formam uma base \(B\) de \(\mathbb{R}^3\) e 
 \[[T]_B=\begin{pmatrix}
 -1 & 0 & 0\\0 & -1 & 0\\ 0 & 0 & -2
 \end{pmatrix}\]
 é uma matriz diagonal.
 \end{exemplo}
-\begin{teorema}
-Seja \(V\) um espaço vetorial sobre um corpo \(K\) tal que \(\text{dim}(V)=n<\infty\) e seja \(T\in\mathcal{L}(V)\). São equivalentes:
+\begin{teorema}\label{diagonal}
+Seja \(V\) um espaço vetorial sobre um corpo \(K\) tal que \(\text{dim}(V)=n<\infty\) e seja \(T\in\mathcal{L}(V)\), e sejam $\lambda_1,\dots,\lambda_k$ os autovalores distintos, e para $i=1,\dots,k$ seja $n_k=\text{dim} \ V_T(\lambda_i)$. São equivalentes:
 \begin{enumerate}
-    \item \(T\) é diagonalizável.
-    \item \(p_T(t)=(t-\lambda_1)^{n_1}\ldots(t-\lambda_k)^{n_k}\) e \(\text{dim}(V_T(\lambda_i))=n_i\) para cada \(i\in [k]\).
-    \item\(\text{dim}((V_T(\lambda_1))+\ldots+\text{dim}(V_T(\lambda_k))=\text{dim}(V)=n.\)
+\item \(T\) é diagonalizável.
+\item \(p_T(t)=(t-\lambda_1)^{n_1}\ldots(t-\lambda_k)^{n_k}\).
+\item \(n_1+\ldots+n_k=n.\)
 \end{enumerate}
 \end{teorema}
-\begin{lema}
-Seja \(\{\lambda_i\}_{i\in [k]}\subseteq\text{Spec}(T).\)
+\begin{lema}\label{autoespaco}
+Sejam \(\lambda_1,\dots,\lambda_k\in K\) distintos. Então:
 \begin{enumerate}
-    \item Se \(v_i \in V_T(\lambda_i)\) para cada \(i\in [k]\) e \(v_1+\ldots+v_k=0\), então \(v_1=\ldots=v_k=0\).
-    \item Se \(B_i\subseteq V_T(\lambda_i)\) é L.I para cada \(i\in [k]\), então \(\bigcup_{i\in [k]}B_i\) é L.I.
+\item Se \(v_i \in V_T(\lambda_i)\) para cada \(i=1,\dots,k\) e \(v_1+\ldots+v_k=0\), então \(v_1=\ldots=v_k=0\).
+\item Se \(B_i\subseteq V_T(\lambda_i)\) é L.I para cada \(i=1,\dots,k\), então $B_1\cup\dots\cup B_k$ é L.I.
 \end{enumerate}
 \end{lema}
 \begin{proof}[Demonstração do Lema]\hfill
 \begin{enumerate}
 \item Vamos provar essa afirmação por indução em \(k\). Primeiro note que o
-      resultado é trivial quando \(k=1\). Agora seja \(k\in\mathbb{N}\) e
-      assuma  que o resultado vale para cada natural \(i < k\). Sejam
-      \(v_1,\ldots,v_k\) tais que \(v_i\in V_T(\lambda_i)\) para cada \(\i\in
-      [k]\) e \(v_1+\ldots + v_k=0\). Então temos que 
-      \begin{equation}\label{primeira}
-      \lambda_1(v_1+\ldots+v_k)=0\lambda_1=0.
-    \end{equation}
-    Além disso, é claro que
-      \begin{equation}\label{segunda}
-      T(v_1+\ldots +v_k)=\lambda_1v_1+\ldots +\lambda_kv_k=0.
-      \end{equation}
-      Subtraindo a Equação \ref{primeira} de \ref{segunda}, obtemos
-      \begin{equation}\label{terceira}
-       (\lambda_1-\lambda_1)v_1+(\lambda_2-\lambda_1)v_2+\ldots +(\lambda_k-\lambda_1)v_k=0.
-     \end{equation}
-     Agora notamos que cada termo no lado esquerdo é um autovetor de \(T\)     e
-     aplicamos a hipótese de indução para concluir que \(v_2=\ldots =v_k=0
-     \). Finalmente, como sabemos que \(v_1+\ldots +v_k=0\) e \(v_2=\ldots =
-     v_k=0\), obtemos que \(v_1=0\) também, o que conclui nossa prova.
-     \item Seja \(S\subseteq\bigcup_{i\in [k]}B_i\) finito e seja \(\alpha\colon S\to\mathbb{R}\). Note que
-       \(V_T(\lambda_i)\cap V_T(\lambda_j)=\{0\}\) sempre que \(i,j\in [k]\) e
-       \(i\not=j\) e então podemos escrever
-       \[\sum_{v\in S}\alpha_iv_i=\sum_{v\in S_1}\alpha_v v+\ldots+\sum_{v\in
-           S_k}\alpha_vv,\]
-       onde \(S_i\subseteq B_i\) é finito para cada \(i\in [k]\). Utilizan
-       do o fato de que o termo \mbox{\(\sum_{v\in S_i}\alpha_v v\in V_T(\lambda_i)\)}
-       para cada \(i\in [k]\) e aplicando o item anterior, obtemos que
-       \[\sum_{v\in S_1}\alpha_vv=\ldots=\sum_{v\in S_k}\alpha_vv=0.\]
-       Finalmente como como \(S_i\subseteq B_i\) para cada \(i\in [k]\) e
-       \(B_i\) é sempre L.I por hipótese segue que a restrição de \(\alpha\) a
-       cada \(S_i\) é identicamente nula. Como \(S=\bigcup_{i\in [k]}S_i\) segue
-       que \(\alpha\) é indenticamente nula.\qedhere
-    \end{enumerate}
+resultado é trivial quando \(k=1\). Agora seja \(k\in\mathbb{N}\) e
+assuma  que o resultado vale para cada natural \(i < k\). Sejam
+\(v_1,\ldots,v_k\) tais que \(v_i\in V_T(\lambda_i)\) para cada \(i=1,\dots,k\) 
+e \(v_1+\ldots + v_k=0\). Então:
+\begin{equation}\label{primeira}
+0=\lambda_10=\lambda_1(v_1+v_2+\ldots+v_k)=\lambda_1v_1+\lambda_1v_2+\ldots+\lambda_1v_k.
+\end{equation}
+Além disso, é claro que:
+\begin{equation}\label{segunda}
+0=T(0)=T(v_1+v_2+\ldots+v_k)=\lambda_1v_1+\lambda_2v_2+\ldots+\lambda_kv_k.
+\end{equation}
+Subtraindo a Equação \ref{primeira} de \ref{segunda}, obtemos:
+\begin{equation}\label{terceira}
+(\lambda_2-\lambda_1)v_2+\ldots +(\lambda_k-\lambda_1)v_k=0.
+\end{equation}
+Agora notamos que cada termo $(\lambda_i-\lambda_1)v_i$ no lado esquerdo é um autovetor de \(T\) associado a $\lambda_i$ e 
+aplicamos a hipótese de indução para concluir que \(v_2=\ldots =v_k=0\). 
+Finalmente, como sabemos que \(v_1+\ldots +v_k=0\) e \(v_2=\ldots =
+v_k=0\), obtemos que \(v_1=0\) também, o que conclui nossa prova.
+\item Seja \(S\subseteq B_1\cup\dots\cup B_k\) finito e seja \(\alpha\colon S\to\mathbb{R}\) tal que:
+\[
+\sum_{v\in S}\alpha_vv=0.
+\]
+Note que
+\(V_T(\lambda_i)\cap V_T(\lambda_j)=\{0\}\) sempre que e
+\(i\not=j\) e então podemos escrever
+\[\sum_{v\in S}\alpha_vv=\sum_{v\in S_1}\alpha_v v+\ldots+\sum_{v\in
+S_k}\alpha_vv,\]
+onde \(S_i\subseteq B_i\) é finito para cada \(i=1,\dots,k\). Utilizando o fato de que:
+\[
+\sum_{v\in S_i}\alpha_v v\in V_T(\lambda_i)
+\]
+para cada \(i=1,\dots,k\) e aplicando o item anterior, obtemos que
+\[\sum_{v\in S_1}\alpha_vv=\ldots=\sum_{v\in S_k}\alpha_vv=0.\]
+Finalmente como como \(S_i\subseteq B_i\) para cada \(i=1,\dots,k\) e
+\(B_i\) é sempre L.I por hipótese segue que a restrição de \(\alpha\) a
+cada \(S_i\) é identicamente nula. Como \(S=S_1\cup\dots\cup S_k\), segue
+que \(\alpha\) é indenticamente nula. \qedhere
+\end{enumerate}
 \end{proof}
 
 \begin{proof}
+Temos o seguinte:
 \begin{itemize}
-\item (i)$\Rightarrow$(ii): Sejam $(v_{i,j})_{j\in n_i}$ autovetores associados
-  a $\lambda_i\in\text{Spec}(T)$\textcolor{red}{TERMINAR ESSA IMPLICAÇÃO}  
-\item (ii)\(\Rightarrow\)(iii):\[\text{dim}(V_T(\lambda_1))+\ldots +\text{dim}(V_T(\lambda_k))=n_1+\ldots +n_k=\text{deg}(p_T(t))=\text{dim}(V)=n.\]
-\item (iii)\(\Rightarrow\)(i): Para cada \(i\in [k]\) considere uma base \(B_i\)
-  de \(V_T(\lambda_i)\). Seja \(B=\bigcup_{i\in [k]}B_i\). Pelo lema anterior,
-  temos que \(B\) é L.I. Como \(\vert B\vert =n\) segue que \(B\) é uma base de
-  \(V\). Além disso, \(B\) é uma base de autovetores de \(T\). Logo, \(T\) é diagonalizável.
+\item (i)$\Rightarrow$(ii): Seja $B$ uma base tal que:
+\[
+[T]_B=\begin{pmatrix}
+\lambda_1I_{m_1}&&\\&\ddots&\\&&\lambda_kI_{m_k}
+\end{pmatrix},
+\]
+em que $m_1,\dots,m_k$ são inteiros positivos. Então o polinômio característico de $T$ é:
+\[
+p_T(t)=(t-\lambda_1)^{m_1}\ldots(t-\lambda_k)^{m_k}.
+\]
+Além disso, para $i=1,\dots,k$, então a matriz de $T-\lambda_iI$ é igual a:
+\[
+\begin{pmatrix}
+(\lambda_1-\lambda_i)I_{m_1}&&&&\\&\ddots&&&\\&&0_{m_i}&&\\&&&\ddots&\\&&&&(\lambda_k-\lambda_i)I_{m_k}
+\end{pmatrix},
+\]
+aí é fácil ver que:
+\[
+n_i=\mathrm{dim} \ V_T(\lambda_i)=\mathrm{dim} \ \mathrm{Ker}(T-\lambda_iI)=m_i,
+\]
+ou seja, $n_i=m_i$; assim:
+\[
+p_T(t)=(t-\lambda_1)^{n_1}\ldots(t-\lambda_k)^{n_k}.
+\]
+\item (ii)\(\Rightarrow\)(iii): O polinômio característico de $T$ tem grau $n$, aí:
+\[
+n_1+\ldots+n_k=\text{deg}(p_T(t))=n.
+\]
+\item (iii)\(\Rightarrow\)(i): Para cada \(i=1,\dots,k\) considere uma base \(B_i\)
+de \(V_T(\lambda_i)\). Seja \(B=B_1\cup\dots\cup B_k\). Pelo Lema \ref{autoespaco},
+temos que \(B\) é L.I. Como \(\vert B\vert =n\) segue que \(B\) é uma base de
+\(V\). Além disso, \(B\) é uma base de autovetores de \(T\). Logo, \(T\) é diagonalizável.
 \end{itemize}
 \end{proof}
 
 \section{Polinômio Minimal}
 
 \begin{definicao}
-Seja $V$ um espaço sobre $K$, $\dim V=n<\infty$, $T\in\mathcal{L}(V)$. Definamos por recursão $T^0=I$ e $T^{k+1}=T^k\circ T$. Se $p(t)\in K[t]$, $p(t)=a_0+a_1t+\cdot+a_mt^m$, então está bem definido o operador $p(T)=a_0\cdot I+a_1\cdot I+\dots+a_m\cdot T^m\in\mathcal{L}(V)$.
+Seja $V$ um espaço sobre $K$, $\dim V=n<\infty$, $T\in\mathcal{L}(V)$. Definamos por recursão $T^0=I$ e $T^{k+1}=T^k\circ T$. Se $p(t)\in K[t]$, $p(t)=a_0+a_1t+\dots+a_mt^m$, então está bem definido o operador $p(T)=a_0\cdot I+a_1\cdot I+\dots+a_m\cdot T^m\in\mathcal{L}(V)$.
 \end{definicao}
 
 \noindent
-Lembremo-nos de que, se $\dim(U)=m$ e $\dim(V)=n$, então $\dim\mathcal{L}(U,V)=mn$. Assim, se $V$ é um espaço vetorial tal que $\dim(V)=n<\infty$, então $\dim\mathcal{L}(V)=n^2$, de modo que existe $m\leq n^2+1$ tal que os operadores $I,T,T^2,\dots,T^m$ sejam linearmente dependentes. Seja $m$ um número minimal tal que $T^m\in\langle I,T,\dots,T^{m-1}\rangle$. Então $T^m=a_0\cdot I+a_1\cdot T+\dots a_{m-1}T^{m-1}$, com $a_i\in K$. Seja $m_T(t)=t^m-a_{m-1}t^{m-1}-\dots-a_1t-a_0$, então $m_T(t)=0$, e $m_T(t)$ é um polinômio de menor grau tal que $m_T(t)=0$.
+Lembremo-nos de que, se $\dim(U)=m$ e $\dim(V)=n$, então $\dim\mathcal{L}(U,V)=mn$. Assim, se $V$ é um espaço vetorial tal que $\dim(V)=n<\infty$, então $\dim\mathcal{L}(V)=n^2$, de modo que existe $m\leq n^2+1$ tal que os operadores $I,T,T^2,\dots,T^m$ sejam linearmente dependentes. Seja $m$ o menor deles. Então existem $a_0,\dots,a_{m-1}\in K$ tais que:
+\[
+T^m+a_{m-1}T^{m-1}+\dots+a_1T+a_0I=0.
+\]
+Seja:
+\[
+m_T(t)=t^m+a_{m-1}t^{m-1}+\dots+a_1t+a_0,
+\]
+então $m_T(T)=0$, e $m_T(t)$ é um polinômio mônico de grau mínimo tal que $m_T(T)=0$.
 
 \begin{definicao}
-Um polinômio mônico de grau mínimo tal que $m_T(t)\in K[t]$ tal que $m_T(t)=0$ chama-se um \textbf{polinômio minimal} do operador $T$. Chamemos um polinômio $f(t)\in K[t]$ de um \textbf{polinômio anulador} de $T$ se $f(T)=0$.
+Um polinômio mônico de grau mínimo tal que $m_T(t)\in K[t]$ tal que $m_T(t)=0$ chama-se um \textbf{polinômio minimal} do operador $T$.
 \end{definicao}
 
 \begin{lema}
@@ -1530,25 +1624,6 @@ Como $f(T)=0$ e $m_T(t)=0$, então $r(T)=0$, aí $r(t)=0$.
 
 \begin{corolario}
 O polinômio $m_T(t)$ é único.
-\end{corolario}
-
-\begin{definicao}
-Dado $v\in V$, um polinômio mônico de grau mínimo $m_{T,v}(t)\in K[t]$ tal que $m_{T,v}(T)(v)=0$ chama-se um \textbf{polinômio $T$-minimal} do vetor $v$. Chamemos um polinômio $f(t)\in K[t]$ de um \textbf{polinômio $T$-anulador} de $v$ se $f(T)(v)=0$.
-\end{definicao}
-
-\begin{lema}
-Seja $f(t)\in K[t]$ tal que $f(T)(v)=0$. Então $m_{T,v}(t)\mid f(t)$.
-\end{lema}
-\begin{proof}
-Dividimos $f(t)$ por $m_{T,v}(t)$ (com resto):
-\[
-f(t)=m_{T,v}(t)\cdot q(t)+r(t),\quad\quad\deg(r(t))<\deg(m_{T,v}(t))\text{ ou }r(t)=0.
-\]
-Como $f(T)(v)=0$ e $m_{T,v}(v)=0$, então $r(T)(v)=0$, aí $r(t)=0$.
-\end{proof}
-
-\begin{corolario}
-O polinômio $m_{T,v}(t)$ é único.
 \end{corolario}
 
 \noindent
@@ -1578,21 +1653,30 @@ aí $T(v)=\lambda v$, aí $\lambda\in\mathrm{Spec}(T)$.
 
 \medskip
 \noindent
-Por outro lado, se $\lambda\in\mathrm{Spec}(T)$, seja $v\in V$ tal que $v\neq 0$ e $T(v)=\lambda v$, então $T(T(v))=\lambda^2 v,\dots,T^m(v)=\lambda^m v,\dots$, aí para $f(t)\in K[t]$ temos $f(T)(v)=f(\lambda)\cdot v$, aí $0=m_T(T)(v)=m_T(\lambda)\cdot v$, aí $m_T(\lambda)=0$.
+Por outro lado, se $\lambda\in\mathrm{Spec}(T)$, seja $v\in V$ tal que $v\neq 0$ e $T(v)=\lambda v$, então:
+\[
+T(T(v))=\lambda^2 v,\dots,T^m(v)=\lambda^m v,\dots,
+\]
+aí para $f(t)\in K[t]$ temos $f(T)(v)=f(\lambda)\cdot v$, aí $0=m_T(T)(v)=m_T(\lambda)\cdot v$, aí $m_T(\lambda)=0$.
 \end{proof}
 
-\begin{corolario}
-Se $T$ é diagonalizável e $\mathrm{Spec}(T)=\{\lambda_i\}_{i\in r}$, então $m_T(t)=\prod_{i\in r}(t-\lambda_i)$.
+\begin{corolario}\label{diagonal1}
+Se $T$ é diagonalizável e $\mathrm{Spec}(T)=\{\lambda_1,\dots,\lambda_r\}$, então:
+\[
+m_T(t)=(t-\lambda_1)\dots(t-\lambda_r).
+\]
 \end{corolario}
 
-\noindent
-Se $\mathrm{Spec}(T)=\{\lambda_i\}_{i\in r}$, então:
-\[
-V=\sum_{i\in r}V_T(\lambda_i).
-\]
-
 \begin{proof}
-Já sabemos que $m_T(t)=\left(\prod_{i\in r}(t-\lambda_i)^{k_i}\right)$ em que $q(t)$ não tem raízes em $K$. Basta provar que $(T-\lambda_0 I)\dots(T-\lambda_{r-1} I)=0$. Seja $v\in V$, $v=v_0+\dots+v_{r-1}$, com $v_i\in V_T(\lambda_i)$, então temos $(T-\lambda_i I)(v_i)=0$, portanto $()(v_i)=0$, e logo $()(v)=0$. Então o polinômio $f(t)=(t-\lambda_0)\dots$ é um polinômio anulador para $T$, aí $m_T(t)\mid f(t)$, aí $m_T(t)=f(t)$.
+Já sabemos que:
+\[
+m_T(t)=(t-\lambda_1)^{k_1}\dots(t-\lambda_r)^{k_r}q(t)
+\]
+em que $q(t)$ não tem raízes em $K$. Seja
+\[
+f(t)=(t-\lambda_1I)\dots(t-\lambda_rI).
+\]
+Seja $v\in V$, então $v=v_1+\dots+v_r$ para alguns $v_i\in V_T(\lambda_i)$, aí temos $(T-\lambda_iI)(v_i)=0$, aí $f(T)(v_i)=0$; logo $f(T)(v)=0$. Portanto $f(T)=0$, aí $m_T\mid f$, aí $m_T=f$.
 \end{proof}
 
 \section{Subespaços Invariantes}
@@ -1607,80 +1691,176 @@ Um subespaço é $T$-invariante se e só se é um $K[t]$-submódulo.
 \begin{exemplo}
 Seja \(V=\mathbb{C}(\mathbb{R})\) e considere o operador \(D\colon f\to
 f^\prime\). Então o subespaço\[P_n\coloneqq\{f(t)\in\mathbb{R}[t]\,\colon
-  \text{deg}(f)\leq n\}\] é \(D\)-invariante. 
+\text{deg}(f)\leq n\}\] é \(D\)-invariante. 
 \end{exemplo}
-  \noindent
-Seja $\dim(V)=n$ e $T\in\mathcal{L}(V)$, $W\subseteq V$ um subespaço
-$T$-invariante. Escolhemos uma base $B_1=\{v_i\}_{i\in m}$ de $W$ e
-completemo-la até uma base $B=\{v_i\}_{i\in n}$ do espaço $V$. Qual é a matriz
-$[T]_B$?
-
-Vamos começar notando que \(T\) é \(W\)-invariante e então 
-\begin{align*}
-&T(v_1)=\sum_{i\in m}\alpha_{1i}v_i\\&T(v_2)=\sum_{i\in m}\alpha_{2i}v_i\\&\ldots\\&T(v_m)=\sum_{i\in m}\alpha_{mi}v_i\\&T(v_{m+1})=\sum_{i\in n}\alpha_{(m+1)i}v_i\\&\ldots\\&T(v_n)=\sum_{i\in n}\alpha_{ni}v_i.
-\end{align*}
-
-Dessa forma segue que
-\[[T]_B=\begin{pmatrix}
-    \alpha_{11} & \ldots & \alpha_{1m} &\alpha_{1(m+1)}& \ldots & \alpha_{1n}
-    \\ \ldots & \ldots & \ldots & \ldots &\ldots & \ldots
-    \\\alpha_{m1} & \ldots & \alpha_{mm} & \alpha_{m(m+1)} & \ldots &
-    \alpha_{mn}\\ 0 & \ldots & 0 & \alpha_{(m+1)(m+1)}&\ldots &\alpha_{(m+1)n}\\
-    \ldots & \ldots & \ldots & \ldots &\ldots & \ldots \\ 0 & 0 & 0
-    &\alpha_{n(m+1)} & \ldots & \alpha_{nn}
-\end{pmatrix}.\]
-
-Isto é, a matriz de \(T\) na base \(B\) tem a forma
-
-\[[T]_B=\begin{pmatrix}
-    A & * \\ 0 & B\end{pmatrix},\]
-onde \(A\in M_m(K)\) e \(B\in M_{n-m}(K)\). Note que \(A\) é a matriz da
-restrição de \(T\) a \(W\) na base \(B_1\).
-
-Vamos agora considerar a restrição de \(T\) a \(W\), denotada por
-\(T\upharpoonright W\). Claramente, temos que \(T\upharpoonright
-W\in\mathcal{L}(W)\). Considere \(\bar{V}\coloneqq\frac{V}{W}\) e seja 
-\(\pi\colon V\to\bar{V}\) uma projeção. Seja \(\bar{T}\coloneqq \pi\circ T\).
-Então \(\bar{T}\in\mathcal{L}(V,\bar{V})\) e \(W\subseteq\text{Ker}(\bar{T})\).
-De fato, para cada \(w\in W\) temos \[\pi(T(w))\in \pi(W)=0.\]
-Além disso, \(\bar{T}\) induz um operador linear
-\(\tilde{T}\in\mathcal{L}(\bar{V})\) definido por \(\tilde{T}(v+W)=\bar{T}(v)\).
 
 \begin{proposicao}
-Seja \(V\) um espaço vetorial sobre um corpo \(K\), seja \(T\in\mathcal{L}(V)\)
-e seja \(W\) um subespaço \(T\)-invariante de \(V\). Seja $B_1$ uma base de $W$ e seja $B$ uma base de $V$ tal que $B_1\subseteq B$ e seja $B_2=B\setminus B_1$. Então $\overline{B}_2=\{\overline{b}:b\in B_2\}$ é uma base de $V/W$ e, sendo $\overline{T}\in L(V/W)$ o operador induzido, temos:
+Seja \(V\) um espaço vetorial de dimensão finita sobre um corpo \(K\), seja \(T\in\mathcal{L}(V)\)
+e seja \(W\) um subespaço \(T\)-invariante de \(V\). Seja $B_1$ uma base de $W$ e seja $B$ uma base de $V$ tal que $B_1\subseteq B$. Então $B_2=\{\overline{b}:b\in B\setminus B_1\}$ é uma base de $V/W$ e, sendo $\overline{T}\in L(V/W)$ o operador induzido, temos:
 \[
 [T]_B=
 \begin{pmatrix}
-[T\upharpoonright_W]_{B_1}&*\\0&[\overline{T}]_{\overline{B_2}}
+[T\upharpoonright_W]_{B_1}&*\\0&[\overline{T}]_{B_2}
 \end{pmatrix},
 \]
 \end{proposicao}
 \begin{proof}
-\textcolor{red}{COMPLETAR}
+Seja $\dim(V)=\textcolor{blue}{n}$ e $T\in\mathcal{L}(V)$, e seja $W\subseteq V$ um subespaço
+$T$-invariante. Escolhemos uma base $B_1=\{v_1,\dots,v_{\textcolor{red}{m}}\}$ de $W$ e
+completemos uma base $B=\{v_1,\dots,v_{\textcolor{red}{m}},v_{m+1},\dots,v_{\textcolor{blue}{n}}\}$ do espaço $V$. Qual é a matriz
+$[T]_B$?
+
+\medskip
+\noindent
+Vamos começar notando que \(T\) é \(W\)-invariante e então:
+\[
+\begin{array}{lcl}
+T(v_1)&=&\sum\limits_{i=1}^{\textcolor{red}{m}}\alpha_{1,i}v_i\\T(v_2)&=&\sum\limits_{i=1}^{\textcolor{red}{m}}\alpha_{2,i}v_i\\&\vdots&\\T(v_m)&=&\sum\limits_{i=1}^{\textcolor{red}{m}}\alpha_{m,i}v_i\\T(v_{m+1})&=&\sum\limits_{i=1}^{\textcolor{blue}{n}}\alpha_{m+1,i}v_i\\&\vdots&\\T(v_n)&=&\sum\limits_{i=1}^{\textcolor{blue}{n}}\alpha_{n,i}v_i.
+\end{array}
+\]
+Dessa forma segue que:
+\[[T]_B=\begin{pmatrix}
+\alpha_{1,1} & \ldots & \alpha_{1,m} &\alpha_{1,m+1}& \ldots & \alpha_{1,n}
+\\\ldots & \ldots & \ldots & \ldots &\ldots & \ldots
+\\\alpha_{m,1} & \ldots & \alpha_{m,m} & \alpha_{m,m+1} & \ldots &
+\alpha_{m,n}\\ 0 & \ldots & 0 & \alpha_{m+1,m+1}&\ldots &\alpha_{m+1,n}\\
+\ldots & \ldots & \ldots & \ldots &\ldots & \ldots \\ 0 & \ldots & 0
+&\alpha_{n,m+1} & \ldots & \alpha_{n,n}
+\end{pmatrix}.\]
+
+\noindent
+Isto é, a matriz de \(T\) na base \(B\) tem a forma:
+\[[T]_B=\begin{pmatrix}
+X & * \\ 0 & Y\end{pmatrix},\]
+onde \(X\in M_m(K)\) e \(Y\in M_{n-m}(K)\). Note que \(X\) é a matriz da
+restrição de \(T\) a \(W\) na base \(B_1\). Além disso, temos o seguinte:
+\[
+\begin{array}{lcl}
+\bar{T}(\bar{v}_{m+1})&=&\sum\limits_{i={\textcolor{red}{m}}+1}^{\textcolor{blue}{n}}\alpha_{m+1,i}\bar{v}_i\\&\vdots&\\\bar{T}(\bar{v}_n)&=&\sum\limits_{i={\textcolor{red}{m}}+1}^{\textcolor{blue}{n}}\alpha_{n,i}\bar{v}_i.
+\end{array}
+\]
+Portanto $Y$ é a matriz da transformação $\bar{T}$ na base $\{\bar{v}_{m+1},\dots,\bar{v}_n\}$.
 \end{proof}
 
 \begin{lema}
 Seja $\dim(V)=n$, $T\in\mathcal{L}(V)$ e $W\subseteq V$ um subsepaço $T$-invariante. Então:
 \[
-p_T(t)=p_{T_1}(t)\cdot p_{T_2}(t)
+p_T(t)=p_{T\upharpoonright_W}(t)\cdot p_{\bar{T}}(t)
 \]
-em que $T_1\in\mathcal{L}(W)$ e $T_2\in\mathcal{L}(W)$ com $T_1(w)=T(w)$ e $T_2(v+W)=T(v)+W$.
+em que $\bar{T}$ é o operador induzido em $V/W$.
 \end{lema}
 \begin{proof}
-Escolhamos $B_1$ e $B$ como bases de $W$ e $V$ tais que $B_1\subseteq B$, então:
+Escolhamos $B_1$ e $B$ como bases de $W$ e $V$ tais que $B_1\subseteq B$, então, considerando $B_2=\{\bar{b}:b\in B\setminus B_1\}$, a matriz de \(T\) na base \(B\) tem a forma:
+\[Z=\begin{pmatrix}
+X & * \\ 0 & Y\end{pmatrix},\]
+onde $X$ é a matriz de $T\upharpoonright_W$ em relação a $B_1$ e $Y$ é a matriz de $\bar{T}$ em relação a $B_2$, assim:
 \begin{align*}
-p_T(t)&=\det[tI-T]_B\\
+p_T(t)&=p_Z(t)\\
+&=\det(tI-Z)\\
 &=\text{det}\begin{pmatrix}
-tI_m-A & * \\ 0 & tI_{n-m}-B\end{pmatrix}\\
-&=\text{det}(tI_m-A)\text{det}(tI_{n-m}-B)\\
-&=p_A(t)p_B(t)=p_{T_1}(t)p_{T_2}(t)\qedhere
+tI_m-X & * \\ 0 & tI_{n-m}-Y\end{pmatrix}\\
+&=\text{det}(tI_m-X)\text{det}(tI_{n-m}-Y)\\
+&=p_X(t)p_Y(t)\\
+&=p_{T\upharpoonright_W}(t)p_{\bar{T}}(t)\qedhere
 \end{align*}
 \end{proof}
 
 \begin{observacao}
-O mesmo \textcolor{red}{não} ocorre para polinômios minimais. De fato, seja $T=I_V$ e seja $W$ um subespaço $T$-invariante (De fato, quando \(T\) é a identidade, todo subespaço de \(V\) é \(T\)-invariante), então $T_1=I_W$ e $T_2=I_{V/W}$ e aí $m_T(t)=m_{T_1}(t)=m_{T_2}(t)=t-1$.
+O mesmo \textcolor{red}{não} ocorre para polinômios minimais. De fato, seja $T=I_V$ e seja $W$ um subespaço $T$-invariante (De fato, quando \(T\) é a identidade, todo subespaço de \(V\) é \(T\)-invariante), então $T_1=I_W$ e $T_2=I_{V/W}$ e aí $m_T(t)=m_{T_1}(t)=m_{T_2}(t)=t-1$. Não obstante, ainda temos um resultado interessante para isso.
 \end{observacao}
+
+\begin{lema}
+Seja $\dim(V)=n$, $T\in\mathcal{L}(V)$ e $W\subseteq V$ um subsepaço $T$-invariante. Então:
+\[
+m_{T\upharpoonright_W}(t)\mid m_T(t),\quad m_{\bar{T}}(t)\mid m_T(t),
+\]
+em que $\bar{T}$ é o operador induzido em $V/W$.
+\end{lema}
+\begin{proof}
+Escolhamos $B_1$ e $B$ como bases de $W$ e $V$ tais que $B_1\subseteq B$, então, considerando $B_2=\{\bar{b}:b\in B\setminus B_1\}$, a matriz de \(T\) na base \(B\) tem a forma:
+\[Z=\begin{pmatrix}
+X & * \\ 0 & Y\end{pmatrix},\]
+onde $X$ é a matriz de $T\upharpoonright_W$ em relação a $B_1$ e $Y$ é a matriz de $\bar{T}$ em relação a $B_2$, assim é fácil de mostrar por indução que para todo $k\geq 0$ então temos uma matriz da forma:
+\[
+Z^k=
+\begin{pmatrix}
+X^k & * \\ 0 & Y^k
+\end{pmatrix},
+\]
+assim temos uma matriz é da forma:
+\[
+m_T(Z)=
+\begin{pmatrix}
+m_T(X) & * \\ 0 & m_T(Y)
+\end{pmatrix},
+\]
+mas sabemos que $m_T(Z)=0$, aí $m_T(X)=0$ e $m_T(Y)=0$, aí a conclusão segue.
+\end{proof}
+
+\section{Subespaços Cíclicos}
+
+\begin{definicao}
+Seja $V$ um espaço vetorial e $T\in\mathcal{L}(V)$. Para $v\in V$, definimos o \textbf{subespaço $T$-cíclico gerado por $v$} como o conjunto $Z(v,T)$ de todos os vetores da forma $p(T)(v)$ em que $p\in K[x]$. Dizemos que $v$ é um \textbf{vetor cíclico} para $T$ se e só se $Z(v,T)=V$.
+\end{definicao}
+
+\begin{proposicao}
+Seja $V$ um espaço vetorial e seja $T\in\mathcal{L}(V)$. Para $v\in V$, então $Z(v,T)$ é o subespaço gerado pelo conjunto $\{T^n(v):n\in\mathbb{N}\}$.
+\end{proposicao}
+
+\begin{definicao}
+Dado $v\in V$, um polinômio mônico de grau mínimo $m_{T,v}(t)\in K[t]$ tal que $m_{T,v}(T)(v)=0$ chama-se um \textbf{polinômio $T$-anulador} do vetor $v$.
+\end{definicao}
+
+\begin{lema}
+Seja $f(t)\in K[t]$ tal que $f(T)(v)=0$. Então $m_{T,v}(t)\mid f(t)$.
+\end{lema}
+\begin{proof}
+Dividimos $f(t)$ por $m_{T,v}(t)$ (com resto):
+\[
+f(t)=m_{T,v}(t)\cdot q(t)+r(t),\quad\quad\deg(r(t))<\deg(m_{T,v}(t))\text{ ou }r(t)=0.
+\]
+Como $f(T)(v)=0$ e $m_{T,v}(T)(v)=0$, então $r(T)(v)=0$, aí $r(t)=0$.
+\end{proof}
+
+\begin{corolario}
+O polinômio $m_{T,v}(t)$ é único.
+\end{corolario}
+
+\begin{teorema}
+Seja $V$ um espaço vetorial e $T\in\mathcal{L}(V)$. Seja $v\in V$ que possua um polinômio $T$-anulador, e consideremos o polinômio $m_{T,v}$. Então:
+\begin{itemize}
+\item O grau de $m_{T,v}$ é igual à dimensão de $Z(v,T)$.
+\item Se o grau de $m_{T,v}$ é $k$, então $v,T(v),\dots,T^{k-1}(v)$ formam uma base de $Z(v,T)$.
+\item Se $W=Z(v,T)$, então $m_{T\upharpoonright_W}=m_{T,v}$.
+\end{itemize}
+\end{teorema}
+
+\noindent
+O teorema seguinte mostra como subespaços cíclicos podem ser compostos e decompostos.
+
+\begin{teorema}\label{ciclico}
+Seja $V$ um espaço vetorial e $T\in\mathcal{L}(V)$.
+\begin{itemize}
+\item (Compondo subespaços cíclicos) Se $u_1,\dots,u_n\in V$ tem $T$-anuladores mutuamente primos entre si, então o $T$-anulador de $u=u_1+\dots+u_n$ é:
+\[
+m_{T,u}=m_{T,u_1}\dots m_{T,u_n}
+\]
+e também:
+\[
+Z(u,T)=Z(u_1,T)\oplus\dots\oplus Z(u_n,T).
+\]
+\item (Decompondo subespaços cíclicos) Se $m_{T,u}=f_1\dots f_n$ com $f_1,\dots,f_n$ mutuamente primos entre si, então $u$ tem a forma:
+\[
+u=u_1+\dots+u_n,
+\]
+em que $m_{T,u_i}=f_i$, e também:
+\[
+Z(u,T)=Z(u_1,T)\oplus\dots\oplus Z(u_n,T).
+\]
+\end{itemize}
+\end{teorema}
+
+\section{Teorema de Cayley-Hamilton}
 
 \begin{teorema}[Teorema da Cayley-Hamilton]\label{cayley-hamilton}
 Seja \(V\) um espaço vetorial de dimensão finita sobre um corpo \(K\), e seja \(T\in\mathcal{L}(V)\). Então \(p_T(T)=0\), onde \(p_T(t)\in K[t]\) é um polinômio característico de \(T\). 
@@ -1704,7 +1884,7 @@ p_{T \upharpoonright_{W}}(t)=
 t^m + \alpha_{m-1}t^{m-1} + \ldots + \alpha_1t+\alpha_0.\]
 Aplicando essa função a \(v\) segue:
 \[p_{T \upharpoonright_{W}}(T)(v)=m_{T,v}(T)(v)=0.\]
-Para concluir que \(p_T(T)(v)=0\), notamos que \(p_{T\upharpoonright_W}(t)\mid p_T(t).\)
+Para concluir que \(p_T(T)(v)=0\), notamos que \(p_T(t)=p_{T\upharpoonright_W}(t)\cdot p_{\bar{T}}(t),\) em que $\bar{T}$ é o operador induzido em $V/W$.
 \end{proof}
 \begin{corolario}
 Se \(A\in M_n(K)\) então \(p_A(A)=0\),
@@ -1730,7 +1910,7 @@ P_A(A)&=A^2-(a+d)A+(ad-bc)I\\
 Se $V$ é espaço de dimensão finita e $T\in L(V)$, então todo polinômio irredutível que divide $p_T$ também divide $m_T$.
 \end{teorema}
 \begin{proof}
-Faremos a demonstração por indução em $V$. Suponhamos o lema válido para $\dim(V)<n$. Seja $V$ espaço vetorial tal que $\dim(V)=n$ e seja $T\in L(V)$ e seja $p$ um polinômio irredutível que divide $p_T$. Se $V=0$, é fácil. Senão, então tome um $v\neq 0$ qualquer. Consideremos:
+Faremos a demonstração por indução na dimensão de $V$. Suponhamos o lema válido para $\dim(V)<n$. Seja $V$ espaço vetorial tal que $\dim(V)=n$ e seja $T\in L(V)$ e seja $p$ um polinômio irredutível que divide $p_T$. Se $V=0$, é fácil. Senão, então tome um $v\neq 0$ qualquer. Consideremos:
 \[
 m_{T,v}(t)=t^m+\alpha_{m-1}t^{m-1}+\dots+\alpha_1 t+\alpha_0,
 \]
@@ -1752,140 +1932,1369 @@ Além disso, vendo a definição de $m_{T,v}$, é fácil ver que:
 m_{T \upharpoonright_{W}}(t)=
 t^m + \alpha_{m-1}t^{m-1} + \ldots + \alpha_1t+\alpha_0.
 \]
-Seja $B$ uma base de $V$ tal que $B_1\subseteq B$ e seja $B_2=B\setminus B_1$. Então $\overline{B}_2=\{\overline{b}:b\in B_2\}$ é uma base de $V/W$ e, sendo $\overline{T}\in L(V/W)$ o operador induzido, temos:
-\[
-[T]_B=
-\begin{pmatrix}
-[T\upharpoonright_W]_{B_1}&*\\0&[\overline{T}]_{\overline{B_2}}
-\end{pmatrix},
-\]
-aí $p_T=p_{T\upharpoonright_W}p_{\overline{T}}$ e $m_{T\upharpoonright_W}\mid m_T$ e $m_{\overline{T}}\mid m_T$. Assim, como $p\mid p_T$, então $p\mid p_{T\upharpoonright_W}$ ou $p\mid p_{\overline{T}}$.
+Sendo $\overline{T}\in L(V/W)$ o operador induzido, temos $p_T=p_{T\upharpoonright_W}p_{\overline{T}}$ e $m_{T\upharpoonright_W}\mid m_T$ e $m_{\overline{T}}\mid m_T$. Assim, como $p\mid p_T$, então $p\mid p_{T\upharpoonright_W}$ ou $p\mid p_{\overline{T}}$.
 \begin{itemize}
 \item Se $p\mid p_{T\upharpoonright_W}$, como $p_{T\upharpoonright_W}=m_{T\upharpoonright_W}$, então $p\mid m_{T\upharpoonright_W}$, aí $p\mid m_T$.
 \item Se $p\mid p_{\overline{T}}$, então, por hipótese de indução, temos $p\mid m_{\overline T}$, aí $p\mid m_T$. \qedhere
 \end{itemize}
 \end{proof}
 
-\begin{teorema}[Decomposição Primária]
+\section{Decomposições Primárias}
+
+\begin{teorema}[Decomposição Primária Geral]
 Seja \(V\) um espaço vetorial sobre um corpo \(K\) tal que
 \(\text{dim}(V)=n<\infty\) e seja \(T\in\mathcal{L}(V)\). Suponhamos que
-\(f(T)=0\), onde \[f(t)=p_1^{k_1}(t)\ldots p_r^{k_r}(t)\] e cada
-\(p_i(t)\in
-K[t]\) é irredutível. Então \(V=V_1\oplus\ldots\oplus V_r\) onde
-cada \(V_i\) é \(T\)-invariante e \(p_i^{k_i}(T_{\upharpoonright V_i})=0\).
+\(f(T)=0\) e também:
+\[
+f=f_1\ldots f_r,
+\]
+com $f_1,\dots,f_r$ mutuamente primos entre si. Para cada $i$ seja $V_i=\Ker \ f_i(T)$. Então:
+\begin{itemize}
+\item Cada $V_i$ é $T$-invariante.
+\item $V=V_1\oplus\dots\oplus V_r$.
+\item Cada projeção canônica $P_i:V\rightarrow V_i$ é um polinômio de $T$.
+\end{itemize}
 \end{teorema}
-\begin{lema}
-Seja \(f(T)=0\) onde \(f(t)=f_1(t)f_2(t)\) com
-\(f_1\) e \(f_2\) primas entre si. Então \(V=V_1\oplus V_2\)
-onde \(V_1\) e \(V_2\) são \(T\)-invariantes,
-\(f_1(T_{\upharpoonright V_1})=0\) e \(f_2(T_{\upharpoonright V_2})=0\).
+\begin{lema}[Identidade de Bézout]
+Se \(\mathrm{mdc}(f_1,\dots,f_r)=1\) então existem $g_1,\dots,g_r\in K[t]$ tais que:
+\[f_1g_1+\dots+f_rg_r=1.\]
 \end{lema}
-\begin{sublema}[Identidade de Bézout]
-Se \(\text{m.d.c}(f_1(t),f_2(t))=1\) então existem
-\mbox{\(r(t),s(t)\in K[t]\)} tais que
-\[f_1(t)r(t)+f_2(t)s(t)=1.\]
-\end{sublema}
-\begin{proof}[Demonstração do Lema]
-Considere \(V_2\coloneqq\text{Im}(f_1(T))\)
-e \(V_1\coloneqq\text{Im}(f_1(T))\).
-Vamos verificar que que \(V_1\) e \(V_2\) são \(T\)-invariantes.
-Seja \(v\in V_1\). Então \(v=f_2(T)(w)\) para algum \(w\in V\).
-Dessa forma,
-\begin{align*}
-T(v) = T f_2(T)(w)=f_2(T)(T(w))=f_2(T)(T(w))\in\text{Im}(f_2(T))=V.
-\end{align*}
-e analogamente para \(V_2\). Além disso, mostremos que \(V=V_1+V_2\).
-De fato, para cada \(v\in V\) temos \[v=f_1(T)r(T)(v)+f_2(T)s(T)(v).\]
-Como \(f_1(T)r(T)(v)\in V_2\) e \(f_2(T)s(T)(v)\in V_1\)
-concluímos que \(v\in V_1 + V_2\). Agora vamos mostrar que \(V_1\cap
-V_2=\{0\}\). Para tal, vamos verificar que
-\(V_1\subseteq\text{Ker}(f_1)(T)\)
-e \(V_2\subseteq\text{Ker}(f_2(T)).\) Seja \(v\in V_1\). Então
-\(v=f_2(T)(w)\) para algum \(w\in V\).
-\[f_1(T)(v)=f_1(T)f_2(T)(w)=f(T)(w)=0.\]
-Também vejamos que que
-\(\text{Ker}(f_1)(T)\cap\text{Ker}(f_2)(T)=\{0\}\). Seja
-\(v\in\text{Ker}(f_1(T))\cap\text{Ker}(f_2(T))\).
-Então temos por definição que \(f_1(T)(v)=f_2(T)(v)=0\). Segue
-\[v=r(T)f_1(T)(v)+s(T)f_2(T)(v)=0.\]
-Assim concluímos que \(V=V_1\oplus
-V_2\). Finalmente, note que como \(V_1\subseteq\text{Ker}(f_1(T))\) e
-\(V_2\subseteq\text{Ker}(f_2(T))\) segue que  \(f_1(T\upharpoonright_{ V_1})=0\) e \(f_2(T\upharpoonright_{ V_2})=0\).
-\end{proof}
 \begin{proof}[Demonstração do Teorema]
-Vamos mostrar este resultado por indução sobre \(r\). Note que o resultado é
-óbvio para \(r=1\). Agora suponhamos que o resultado vale para
-o caso \(r-1\). Então consideramos \(f(t)=f_1(t)f(t)\),
-onde \(f_1(t)=p_1^{k_1}(t)\ldots p_{r-1}^{k_{r-1}}(t)\) e \(f_2(t)=p_r^{k_r}(t)\).
-Então \(\text{m.d.c}\{f_1(t),f_2(t)\}=1\).
-Aplicando o lema o resultado segue.
+Para cada $i$, então para $v\in V_i$ temos $f_i(T)(v)=0$, aí $Tf_i(T)(v)=0$, aí $f_i(T)T(v)=0$, aí $T(v)\in V_i$; logo $V_i$ é $T$-invariante. Agora para cada $i$ seja:
+\[
+h_i=\frac{f}{f_i}.
+\]
+Então $\mathrm{mdc}(h_1,\dots,h_r)=1$, assim existem $g_1,\dots,g_r\in K[t]$ tais que:
+\[h_1g_1+\dots+h_rg_r=1,\]
+aí:
+\[
+h_1(T)g_1(T)+\dots+h_r(T)g_r(T)=I.
+\]
+Para $v_1,\dots,v_r\in V$, se para todo $i$ tivermos $v_i\in V_i$ e:
+\[
+v_1+\dots+v_r=0,
+\]
+então para cada $i$ temos:
+\[
+h_i(T)(v_1)+\dots+h_i(T)(v_r)=0,
+\]
+mas para cada $j\neq i$ então $f_j\mid h_i$, aí $h_i(T)(v_j)=0$; assim:
+\[
+h_i(T)(v_i)=0,
+\]
+mas:
+\[
+v_i=h_1(T)g_1(T)(v_i)+\dots+h_r(T)g_r(T)(v_i),
+\]
+e para cada $j\neq i$ temos $f_i\mid h_j$, aí $h_j(T)(v_i)=0$; assim:
+\[
+v_i=h_i(T)g_i(T)(v_i)=0;
+\]
+portanto:
+\[
+v_1=\dots=v_r=0.
+\]
+Para todo $v\in V$ então:
+\[
+v=h_1(T)g_1(T)(v)+\dots+h_r(T)g_r(T)(v),
+\]
+e para cada $i$ temos:
+\[
+f_i(T)h_i(T)g_i(T)(v)=f(T)g_i(T)(v)=0,
+\]
+aí:
+\[
+h_i(T)g_i(T)(v)\in V_i;
+\]
+logo:
+\[
+V=V_1\oplus\dots\oplus V_r,
+\]
+e, para cada $i$, a função $h_i(T)g_i(T)$ é a projeção canônica de $V$ em $V_i$.
 \end{proof}
-\begin{corolario}
-Seja \(V\) um espaço vetorial tal que \(\text{dim}(V)=n < \infty\),
-seja \(T\in\mathcal{L}(V)\), e seja
-\(m_T(t)=p_1^{k_1}(t)\ldots p_r^{k_r}(t) \) com \(p_i(t)\) irredutíveis e
-primos entre si. Então \(V=V_1\oplus\ldots\oplus V_r\) onde \(V_i\)
-são \(T\)-invariantes e \(m_{T_{\upharpoonright V_i}}(t)=p_i^{k_i}(t)\). 
-\end{corolario}
+
+\begin{teorema}[Decomposição Primária para Minimais]\label{primaria minimal}
+Seja \(V\) um espaço vetorial sobre um corpo \(K\) tal que
+\(\text{dim}(V)=n<\infty\) e seja \(T\in\mathcal{L}(V)\), e seja:
+\[
+m_T=p_1^{k_1}\ldots p_r^{k_r},
+\]
+com \(p_1\dots,p_r\) irredutíveis e mutuamente
+primos entre si. Para cada $i$ seja $V_i=\Ker \ p_i(T)^{k_i}$. Então:
+\begin{itemize}
+\item Cada $V_i$ é $T$-invariante.
+\item $V=V_1\oplus\dots\oplus V_r$.
+\item Cada projeção canônica $P_i:V\rightarrow V_i$ é um polinômio de $T$.
+\item Para cada $i$ então \(m_{T\upharpoonright_{V_i}}=p_i^{k_i}\).
+\end{itemize}
+\end{teorema}
 \begin{proof}
-Temos por definição que \(m_T(T)=0\). Portanto, pelo teorema temos
-que \(V=V_1\oplus\ldots\oplus V_r\),
-onde cada \(V_i\) é \(T\)-invariante.
-Considere \(T_i\coloneqq T_{\upharpoonright V_i}\)
-para cada \(i\in [r]\).
-Temos que \(p_i^{k_i}(T_i)=0\). Então segue que \(m_{T_i}(t)\vert
-p_i^{k_i}(t)\), ou seja,
-\(m_{T_i}(t)=p_i(t)^{m_i}\), onde \(m_i\leq k_i\). Suponhamos que \(m_i <
-k_i\) e consideremos \(g(t)=p_1^{k_1}(t)\ldots p_i^{m_i}(t)\ldots
-p_r^{k_r}(t)\), e então \(\text{deg}(g(t))<\text{deg}(m_T(t))\). Provaremos
-que \(g(T)=0\), o que irá contradizer a minimalidade do grau de \(m_t(t)\). Se
-\(v\in V_j\) com \(j\not= i\) então \(p_j^{k_j}(v)=0\) e portanto
+Por definição temos \(m_T(T)=0\). Logo, pelo teorema da decomposição primária geral, temos os três primeiros itens. Agora considere \(T_i\coloneqq T\upharpoonright_{V_i}\)
+para cada \(i=1,\dots,r\).
+Temos que \(p_i(T_i)^{k_i}=0\). Então segue que \(m_{T_i}\mid
+p_i^{k_i}\), ou seja,
+\(m_{T_i}=p_i^{m_i}\), onde \(m_i\leq k_i\). Consideremos:
+\[
+g=p_1^{k_1}\ldots p_i^{m_i}\ldots
+p_r^{k_r}.
+\]
+Para $j\neq i$ e para \(v\in V_j\), então \(p_j^{k_j}(v)=0\) e portanto
 \(g(T)(v)=0\). Se \(v\in V_i\) então \(p_i^{m_i}(T)(v)=0\) e
-\(g(T)(v)=0\). Assim concluímos que
-\(g(T_k)=0\) para cada \(k=1,\ldots ,r\) e logo \(g(T)=0\).
-Isso implica que \(g(T)\) é o polinômio minimal de \(T\), absurdo.
+\(g(T)(v)=0\). Assim, como $V=V_1\oplus\dots\oplus V_r$, concluímos que \(g(T)=0\).
+Isso implica que \(m_T\mid g\), aí \(p_i^{k_i}\mid p_i^{m_i}\), aí $k_i\leq m_i$, assim $m_i=k_i$, aí \(m_{T_i}=p_i^{k_i}.\)
 \end{proof}
-\begin{corolario}
-Seja \(V\) um espaço vetorial tal que \(\text{dim}(V)=n<\infty\), seja
-\(T\in\mathcal{L}(V)\), e seja
-\(p_T(t)=p_1^{k_1}(t)\ldots p_r^{k_r}(t)\) com
-\(p_i(t)\) irredutíveis e primos entre si.
-Então \(V=V_1\oplus\ldots\oplus
-V_r\), com \(V_i\) \(T\)-invariantes e
-\(p_{T_{\upharpoonright V_i}}(t)=p_i(t)^{k_i}\).
-\end{corolario}
+\begin{teorema}[Decomposição Primária para Característicos]\label{primaria caracteristico}
+Seja \(V\) um espaço vetorial sobre um corpo \(K\) tal que
+\(\text{dim}(V)=n<\infty\) e seja \(T\in\mathcal{L}(V)\), e seja:
+\[
+p_T=p_1^{k_1}\ldots p_r^{k_r},
+\]
+com \(p_1\dots,p_r\) irredutíveis e mutuamente
+primos entre si. Para cada $i$ seja $V_i=\Ker \ p_i(T)^{k_i}$. Então:
+\begin{itemize}
+\item Cada $V_i$ é $T$-invariante.
+\item $V=V_1\oplus\dots\oplus V_r$.
+\item Cada projeção canônica $P_i:V\rightarrow V_i$ é um polinômio de $T$.
+\item Para cada $i$ então \(p_{T\upharpoonright_{V_i}}=p_i^{k_i}\).
+\end{itemize}
+\end{teorema}
 \begin{proof}
-Pelo teorema temos
-que \(V=V_1\oplus\ldots\oplus V_r\),
-onde cada \(V_i\) é \(T\)-invariante.
-Considere \(T_i\coloneqq T_{\upharpoonright V_i}\)
-para cada \(i\in [r]\).
-Temos que \(p_i^{k_i}(T_i)=0\). Então segue que \(m_{T_i}(t)\vert
-p_i^{k_i}(t)\), mas, pelo teorema de Cayley-Hamilton \textcolor{red}{ao avesso} (Teorema \ref{cayley-hamilton-avesso}), todo fator irredutível de $p_{T_i}$ deve dividir $m_{T_i}$, logo ser igual a $p_i$. Assim $p_{T_i}=p_i^{l_i}$ para algum $l_i$. Entretanto, considerando bases $B_i$ de $V_i$, e juntando numa base $B$ de $V$, é fácil ver que $p_T=p_{T_1}\dots p_{T_k}$, assim $p_T=p_1^{l_1}\ldots p_r^{l_r}$, aí pela fatoração única devemos ter $l_i=k_i$ para todo $i$, concluindo a demonstração.
-\end{proof}
-\begin{corolario}
-Um operador \(T\in\mathcal{L}(V)\) é diagonalizável se, e somente se
-\(m_T=(t-\lambda_1)\ldots(t-\lambda_r)\) com
-\(\lambda_i\not=\lambda_j\) sempre que \(i\not= j\).
-\end{corolario}
-\begin{proof}
-A ida já foi provada em algum momento do passado, então
-vamos mostrar apenas a volta. Pelo primeiro Corolário, temos que
-\(V=V_1\oplus\ldots\oplus V_r\) com \(m_{T_{\upharpoonright
-v_i}}=t-\lambda_i\), ou seja \(T_{\upharpoonright V_i}=\lambda_i
-I_{V_i}\) e ainda \(V_i=V_T(\lambda_i)\). 
+Pelo teorema de Cayley-Hamilton temos \(p_T(T)=0\). Portanto, pelo teorema da decomposição primária geral, temos os três primeiros itens. Agora considere \(T_i\coloneqq T\upharpoonright_{V_i}\)
+para cada \(i=1,\dots,r\).
+Temos que \(p_i(T_i)^{k_i}=0\). Então segue que \(m_{T_i}\mid
+p_i^{k_i}\), aí, pelo teorema de Cayley-Hamilton \textcolor{red}{ao avesso} (Teorema \ref{cayley-hamilton-avesso}), todo fator irredutível de $p_{T_i}$ deve dividir $m_{T_i}$, logo ser igual a $p_i$. Assim $p_{T_i}=p_i^{l_i}$ para algum $l_i$. Entretanto, considerando bases $B_i$ de $V_i$, e juntando numa base $B$ de $V$, é fácil ver que $p_T=p_{T_1}\dots p_{T_k}$, assim $p_T=p_1^{l_1}\ldots p_r^{l_r}$, aí pela fatoração única devemos ter $l_i=k_i$ para todo $i$, concluindo a demonstração.
 \end{proof}
 
 \noindent
-Considere \(\{T_i\,\colon i\in I\}\subseteq\mathcal{L}(V)\).
-Quando os operadores \(T_i\) podem ser diagonalizados simultaneamente?
+A decomposição primária para minimais também goza de uma propriedade muito importante para o estudo da álgebra linear.
+
+\begin{teorema}[Unicidade da Decomposição Primária para Minimais]
+Seja $V$ um espaço vetorial e seja $T\in\mathcal{L}(V)$. Suponhamos que:
+\[
+V=U_1\oplus\dots\oplus U_m
+\]
+em que $U_i$ é um subespaço $T$-invariante tal que $m_{T\upharpoonright_{U_i}}=p_i^{e_i}$ e $p_1,\dots,p_m$ são polinômios mônicos irredutíveis distintos, e suponhamos que:
+\[
+V=W_1\oplus\dots\oplus W_n
+\]
+em que $W_j$ é um subespaço $T$-invariante tal que $m_{T\upharpoonright_{W_j}}=q_j^{f_j}$ e $q_1,\dots,q_n$ são polinômios mônicos irredutíveis distintos. Então $m=n$ e, depois de uma reindexação adequada, $U_k=W_k$ para todo $k$. Portanto $p_k=q_k$ e $e_k=f_k$ para todo $k$.
+\end{teorema}
+\begin{proof}
+Para todo $i$, então $U_i$ contém um elemento $u_i$ tal que $m_{T,u_i}=p_i^{e_i}$; assim, definindo a soma $u=u_1+\dots+u_m$, então $m_{T,u}=p_1^{e_1}\dots p_m^{e_m}$. Logo $m_T=p_1^{e_1}\dots p_m^{e_m}$. Analogamente temos $m_T=q_1^{f_1}\dots q_n^{f_n}$.
+
+\medskip
+\noindent
+Portanto, pela fatoração única em $K[t]$, então $m=n$ e, depois de uma reindexação apropriada, temos $p_k=q_k$ e $e_k=f_k$ para todo $k$. Para todo $k$, temos:
+\[
+U_k\subseteq\Ker \ p_k(T)^{e_k},
+\]
+mas pela decomposição primária geral temos:
+\[
+U_1\oplus\dots\oplus U_m=\left(\Ker \ p_1(T)^{e_1}\right)\oplus\dots\oplus\left(\Ker \ p_m(T)^{e_m}\right),
+\]
+aí para todo $k$ temos $U_k=\Ker \ p_k(T)^{e_k}$. Analogamente temos $W_k=\Ker \ q_k(T)^{f_k}$ para todo $k$.
+\end{proof}
+
+\section{Critérios de Diagonalização}
+
+\begin{teorema}\label{diagonal2}
+Um operador \(T\in\mathcal{L}(V)\) é diagonalizável se, e somente se:
+\[
+m_T(t)=(t-\lambda_1)\ldots(t-\lambda_r)
+\]
+com \(\lambda_i\not=\lambda_j\) sempre que \(i\not= j\).
+\end{teorema}
+\begin{proof}
+A ida já foi provada no corolário \ref{diagonal1}, então
+vamos mostrar apenas a volta. Pelo teorema da decomposição primária geral, sendo $V_i=\mathrm{Ker} \ (T-\lambda_iI)$ para todo $i$, então cada $V_i$ é $T$-invariante e \(V=V_1\oplus\ldots\oplus V_r\), aí para todo $i$ temos \(T\upharpoonright_{V_i}=\lambda_iI\), aí \(V_i\subseteq V_T(\lambda_i)\); logo $T$ é diagonalizável. 
+\end{proof}
+
+\noindent
+Considere \(\{T_i\,\colon i\in I\}\subseteq\mathcal{L}(V)\). Em que condições os operadores \(T_i\) podem ser diagonalizados simultaneamente, ou seja, existe base $B$ de $V$ tal que para todo $i\in I$ a matriz $[T_i]_B$ seja diagonal?
 
 \begin{teorema}
 Um conjunto \(\{T_i\,\colon i \in I\}\) pode ser diagonalizado
 simultaneamente se, e somente se cada \(T_i\) é diagonalizável e \(T_iT_j=T_jT_i\) para todo \(i,j\in I\).\end{teorema}
 \begin{proof}
-Mostraremos por indução na dimensão. Suponhamos que o teorema é válido para espaços de dimensão menor que $n$. Seja $V$ um espaço tal que $\dim(V)=n$ e seja $\mathcal{F}$ um conjunto de operadores que comutam um com outro. Se todo elemento de $\mathcal{F}$ é múltiplo da identidade, então acaba. Caso contrário, existe um $T\in\mathcal{F}$ que não é múltiplo da identidade. Sejam $c_1,\dots,c_k$ os autovalores de $T$. Para $i$ seja $W_i=\Ker(T-c_iI)$. Então, como os elementos de $\mathcal{F}$ comutam um com outro, então $W_i$ é invariante para todo elemento de $\mathcal{F}$. Para cada $U\in\mathcal{F}$, então $m_U$ é produto de fatores lineares distintos, aí, como $m_{U\upharpoonright W_i}\mid m_U$, então $m_{U\upharpoonright W_i}$ é produto de fatores lineares distintos, aí $U\upharpoonright W_I$ é diagonalizável. Como $\dim(W_i)<n$, então existe uma base $B_i$ tal que para todo $U\in\mathcal{F}$ então $[U\upharpoonright W_i]$ seja diagonal. Então $B=B_1\cup\dots\cup B_k$ é a base que buscamos.
+Mostraremos por indução na dimensão. Suponhamos que o teorema é válido para espaços de dimensão menor que $n$. Seja $V$ um espaço tal que $\dim(V)=n$ e seja $\mathcal{F}$ um conjunto de operadores que comutam um com outro. Se todo elemento de $\mathcal{F}$ é múltiplo da identidade, então acaba. Caso contrário, existe um $T\in\mathcal{F}$ que não é múltiplo da identidade. Sejam $c_1,\dots,c_k$ os autovalores de $T$. Para $i$ seja $W_i=\Ker(T-c_iI)$. Então, como os elementos de $\mathcal{F}$ comutam um com outro, então $W_i$ é invariante para todo elemento de $\mathcal{F}$. Para cada $U\in\mathcal{F}$, então $m_U$ é produto de fatores lineares distintos, aí, como $m_{U\upharpoonright_{W_i}}\mid m_U$, então $m_{U\upharpoonright_{W_i}}$ é produto de fatores lineares distintos, aí $U\upharpoonright_{W_i}$ é diagonalizável. Como $\dim(W_i)<n$, então existe uma base $B_i$ tal que para todo $U\in\mathcal{F}$ a matriz $[U\upharpoonright_{W_i}]_{B_i}$ seja diagonal. Portanto $B=B_1\cup\dots\cup B_k$ é a base que buscamos.
 \end{proof}
+
+\section{Triangularização de Matrizes}
+
+\begin{definicao}
+Um operador $T$ sobre um espaço vetorial de dimensão finita $V$ é dito \textbf{triangularizável} se e somente se existe uma base ordenada em que $T$ é representada por uma matriz triangular superior.
+\end{definicao}
+
+\begin{lema}
+Seja $V$ um espaço vetorial de dimensão finita. Seja $T\in\mathcal{L}(V)$ cujo polinômio minimal seja um produto de fatores lineares:
+\[
+m_T(x)=(x-c_1)^{r_1}\dots(x-c_k)^{r_k}.
+\] 
+Seja $W$ um subespaço $T$-invariante de $V$ tal que $W\neq V$. Então existe um vetor $v\in V$ tal que $v\notin W$ e exista $i$ tal que $(T-c_iI)(v)\in W$.
+\end{lema}
+\begin{proof}
+Seja $u\in V$ um vetor tal que $u\notin W$. Seja $g(x)$ o menor polinômio tal que $g(T)(u)\in W$. Então $g$ divide o polinômio minimal $m_T$. Portanto:
+\[
+g(x)=(x-c_1)^{s_1}\dots(x-c_k)^{s_k},
+\]
+em que exista algum $j$ tal que $s_i>0$. Então $(x-c_i)$ divide $g(x)$:
+\[
+g(x)=(x-c_i)h(x).
+\]
+Pela definição de $g$, então $v\coloneqq h(T)(u)\notin W$. Mas:
+\[
+(T-c_iI)(v)=(T-c_iI)h(T)(v)=g(T)(v)\in W.
+\]
+Assim acaba.
+\end{proof}
+
+\begin{teorema}
+Seja $V$ um espaço vetorial de dimensão finita e seja $T\in\mathcal{L}(V)$. Então $T$ é triangularizável se e só se o polinômio minimal de $T$ é um produto de fatores lineares.
+\end{teorema}
+\begin{proof}
+Suponhamos que o polinômio minimal de $T$ se decompões em fatores lineares:
+\[
+m_T(x)=(x-c_1)^{r_1}\dots(x-c_k)^{r_k}.
+\]
+Com uma aplicação repetida do lema acima, chegaremos a uma base ordenada $B=(e_1,\dots,e_n)$ na qual a matriz de $T$ é triangular superior:
+\[
+[T]_B=\begin{pmatrix}
+a_{1,1}&a_{1,2}&a_{1,3}&\ldots&a_{1,n}\\0&a_{2,2}&a_{2,3}&\ldots&a_{2,n}\\0&0&a_{3,3}&\ldots&a_{3,n}\\\vdots&\vdots&\vdots&&\vdots\\0&0&0&\ldots&a_{n,n}
+\end{pmatrix}.
+\]
+Isto simplesmente diz que:
+\[
+T(e_j)=a_{1,j}e_1+\dots+a_{j,j}e_j,\quad\quad\quad j=1,\dots,n,
+\]
+ou seja, $T(e_j)$ está no subespaço gerado por $e_1,\dots,e_j$. Para obter os $e_1,\dots,e_n$, começamos aplicando o lema para o subespaço $W_0=0$, para obter o vetor $e_1$. Então apliquemos o lema para $W_1$, o subespaço gerado por $e_1$, e assim obteremos $e_2$. Depois apliquemos o lema para $W_2$, o subespaço gerado por $e_1$ e $e_2$. Continuemos desta maneira. Notemos que, quando os vetores $e_1,\dots,e_i$ são obtidos, são as relações:
+\[
+T(e_j)=a_{1,j}e_1+\dots+a_{j,j}e_j,\quad\quad\quad j=1,\dots,i
+\]
+que garantem que o subespaço gerado por $e_1,\dots,e_i$ é um subespaço $T$-invariante.
+
+\medskip
+\noindent
+Por outro lado, se $T$ é triangularizável, então é evidente que o polinômio característico de $T$ é da forma:
+\[
+p_T(x)=(x-c_1)^{d_1}\dots(x-c_k)^{d_k}.
+\]
+Para isto, apenas considere a matriz triangular superior:
+\[
+\begin{pmatrix}
+a_{1,1}&a_{1,2}&a_{1,3}&\ldots&a_{1,n}\\0&a_{2,2}&a_{2,3}&\ldots&a_{2,n}\\0&0&a_{3,3}&\ldots&a_{3,n}\\\vdots&\vdots&\vdots&&\vdots\\0&0&0&\ldots&a_{n,n}
+\end{pmatrix}.
+\]
+As entradas diagonais $a_{1,1},\dots,a_{n,n}$ são autovalores, com $c_i$ repetida $d_i$ vezes. Mas, se $p_T$ pode ser assim fatorado, então $m_T$ pode ser decomposto em fatores lineares, pois $m_T$ divide $p_T$.
+\end{proof}
+
+\begin{corolario}
+Num corpo algebricamente fechado $K$, então toda matriz sobre $K$ é semelhante sobre $K$ a uma matriz triangular superior.
+\end{corolario}
+
+\begin{observacao}
+Com o lema acima, também podemos apresentar uma prova alternativa de que um operador linear $T$ cujo polinômio minimal seja produto de fatores lineares \emph{distintos} é diagonalizável.
+\end{observacao}
+\begin{proof}
+De fato, se:
+\[
+m_T=(x-c_1)\dots(x-c_k),
+\]
+em que $c_1,\dots,c_k$ são distintos, então seja $W$ o subespaço gerado por todos os autovetores de $T$. Suponhamos que $W\neq V$. Então pelo lema existe um $v\in V$ tal que $v\notin W$ e existe um $i$ tal que $w\coloneqq(T-c_iI)(v)\in W$. Como $w\in W$, então:
+\[
+w=w_1+\dots+w_k,
+\]
+em que $T(w_j)=c_jw_j$ para $j=1,\dots,k$, assim:
+\[
+h(c_1)w_1+\dots+h(c_k)w_k=h(T)(w)\in W
+\]
+para todo polinômio $h$. Agora $m_T(x)=(x-c_i)q(x)$ para algum polinômio $q(x)$. Também:
+\[
+q(x)-q(c_i)=(x-c_i)h(x)
+\]
+para algum polinômio $h(x)$. Temos:
+\[
+q(T)(v)-q(c_i)(v)=h(T)(T-c_iI)(v)=h(T)(w),
+\]
+mas $h(T)\in W$, e, como:
+\[
+0=m_T(T)(v)=(T-c_iI)q(T)(v),
+\]
+então $q(T)(v)\in W$, aí $q(c_i)(v)\in W$, mas $v\notin W$, aí $q(c_i)=0$, uma contradição.
+\end{proof}
+
+\section{Decomposições Cíclicas}
+
+\begin{definicao}
+Seja $V$ um espaço vetorial e seja $T\in\mathcal{L}(V)$. Dizemos que $V$ é \textbf{primário} em relação a $T$ se e só se existe um polinômio irredutível $p(t)\in K[t]$ e um natural $e$ tal que $p(T)^e=0$.
+\end{definicao}
+
+\noindent
+O seguinte teorema mostra como podemos decompor um espaço vetorial anulável por uma potência de polinômio irredutível em subespaços cíclicos.
+
+\begin{teorema}[Decomposição Cíclica de Espaços Primários]
+Seja $V$ um espaço vetorial com \emph{dimensão finita} e seja $T\in\mathcal{L}(V)$ tal que $m_T=p^e$, em que $p$ é um polinômio irredutível. Então $V$ é uma soma direta:
+\[
+V=Z(v_1,T)\oplus\dots\oplus Z(v_n,T)
+\]
+de subespaços cíclicos com anuladores $m_{T,v_i}=p^{e_i}$, que podem ser arranjados em ordem decrescente:
+\[
+e=e_1\geq e_2\geq\dots\geq e_n.
+\]
+\end{teorema}
+\begin{proof}
+Seja $v_1\in V$ um vetor com anulador igual a polinômio minimal de $T$, ou seja:
+\[
+m_{T,v_1}=m_T=p^e.
+\]
+Tal elemento deve existir pois $m_{T,v}\mid m_T$ para todo $v\in V$ e se ninguém tiver anulador igual a $p(t)^e$, então $p(t)^{e-1}$ anulará $V$.
+
+\medskip
+\noindent
+Se mostrarmos que $Z(v_1,T)$ possui complemento $T$-invariante, ou seja, $V=Z(v_1,T)\oplus S_1$ para algum subespaço $T$-invariante $S_1$, então, como $S_1$ tem dimensão finita sobre $K$, ao considerarmos $T\upharpoonright_{S_1}$, podemos repetir o processo para obter:
+\[
+V=Z(v_1,T)\oplus Z(v_2,T)\oplus S_2
+\]
+em que $m_{T,v_i}=p^{e_i}$. Podemos continuar esta decomposição:
+\[
+V=Z(v_1,T)\oplus Z(v_2,T)\oplus\dots\oplus Z(v_n,T)\oplus S_n
+\]
+enquanto $S_n\neq 0$. Mas a sequência ascendente de subespaços $T$-invariantes:
+\[
+Z(v_1,T)\subseteq Z(v_1,T)\oplus Z(v_2,T)\subseteq\dots
+\]
+deve terminar pois a sequência das dimensões é estritamente crescente e $V$ tem dimensão finita, assim existe um inteiro $n$ tal que $S_n=0$, fornecendo-nos a decomposição buscada.
+
+\medskip
+\noindent
+Seja $v=v_1$. A soma direta de subespaços $T$-invariantes $V_1=Z(v,T)\oplus 0$ claramente existe. Suponhamos que a soma direta de subespaços $T$-invariantes:
+\[
+V_k=Z(v,T)\oplus W_k
+\]
+exista. Afirmamos que, se $V_k\neq V$, então é possível encontrar um subespaço $T$-invariante $W_{k+1}$ que contenha propriamente $W_k$ e para o qual a soma direta $V_{k+1}=Z(v,T)\oplus W_{k+1}$ exista. Esta processo deve também terminar após um número finito de passos, fornecendo-nos uma decomposição em soma direta de subespaços $T$-invariantes:
+\[
+V=Z(v,T)\oplus W
+\]
+como desejado.
+
+\medskip
+\noindent
+Se $V_k\neq V$, então seja $u\in V\setminus V_k$, aí o polinômio de menor grau $r$ tal que $r(T)(u)\in V_k$ deve ser $p^f$ para algum $f\leq e$. Além disso, como $u\notin V_k$, então $f>0$. Assim existem $a(t)\in K[t]$ e $w\in W_k$ tais que:
+\[
+p(T)^f(u)=a(T)(v)+w.
+\]
+Logo:
+\[
+0=p(T)^e(u)=p(T)^{e-f}p(T)^f(u)=p(T)^{e-f}(a(T)(v)+w)=p(T)^{e-f}a(T)(v)+p(T)^{e-f}(w).
+\]
+Como $Z(v,T)\cap W_k=0$ então $p(T)^{e-f}a(T)(v)=0$, aí $p^e\mid p^{e-f}a$, aí $p^f\mid a$, aí existe $\alpha(t)\in K[t]$ tal que $a=p^f\alpha$, assim:
+\[
+p(T)^f(u)=a(T)(v)+w=p(T)^f\alpha(T)(v)+w,
+\]
+aí:
+\[
+p(T)^f(u-\alpha(T)(v))\in W_k.
+\]
+Assim seja:
+\[
+W_{k+1}=W_k+Z\left(u-\alpha(T)(v),T\right).
+\]
+Para $x\in Z(v,T)\cap W_{k+1}$, então existem $f(t)\in K[t]$ e $g(t)\in K[t]$ e $w\in W_k$ tais que:
+\[
+x=f(T)(v)=w+g(T)(u-\alpha(T)(v)),
+\]
+aí:
+\[
+g(T)(u)=(f-g\alpha)(T)(v)-w\in V_k,
+\]
+aí $p^f\mid g$, aí:
+\[
+g(T)(u-\alpha(T)(v))\in W_k,
+\]
+aí:
+\[
+x\in Z(v,T)\cap W_k,
+\]
+aí $x=0$. Logo a soma direta de subespaços $T$-invariantes:
+\[
+V_{k+1}=Z(v,T)\oplus W_{k+1}
+\]
+existe.
+\end{proof}
+
+\noindent
+A decomposição cíclica de espaços primários, assim como a decomposição primária para minimais, goza da propriedade da unicidade.
+
+\begin{teorema}[Unicidade da Decomposição Cíclica de Espaços Primários]
+Seja $V$ um espaço vetorial e seja $T\in\mathcal{L}(V)$. Suponhamos que $V$ é uma soma direta:
+\[
+V=Z(u_1,T)\oplus\dots\oplus Z(u_m,T),
+\]
+em que $m_{T,u_i}=p_i^{e_i}$ e também:
+\[
+e_1\geq e_2\geq\dots\geq e_m,
+\]
+e também suponhamos que $V$ é uma soma direta:
+\[
+V=Z(v_1,T)\oplus\dots\oplus Z(v_n,T),
+\]
+em que $m_{T,v_j}=q_j^{f_j}$ e também:
+\[
+f_1\geq f_2\geq\dots\geq f_n.
+\]
+Então $m=n$ e $p=q$ e $e_k=f_k$ para todo $k$.
+\end{teorema}
+
+\begin{lema}
+Seja $V$ um espaço vetorial e $T\in\mathcal{L}(V)$ e seja $p(t)$ um polinômio irredutível.
+\begin{itemize}
+\item Se $p(T)=0$, então $V$ é um espaço vetorial sobre o corpo $K[t]/p(t)K[t]$ com a
+multiplicação definida por:
+\[
+\overline{r}(v)=r(T)v
+\]
+para quaisquer $r(t)\in K[t]$ e $v\in V$.
+\item Para qualquer subespaço $T$-invariante $W$ de $V$ o conjunto:
+\[
+W\cap \Ker \ p(T)=\{v\in W:p(T)(v)=0\}
+\]
+é um subespaço $T$-invariante de $V$ e se $V=U\oplus W$, então:
+\[
+\Ker \ p(T)=\left(U\cap \Ker \ p(T)\right)\oplus\left(W\cap \Ker \ p(T)\right).
+\]
+\end{itemize}
+\end{lema}
+
+\begin{proof}[Demonstração do Teorema]
+Primeiro notemos que $m_T=p_1^{e_1}$ e $m_T=q_1^{f_1}$. Assim $p=q$ e $e_1=f_1$. Agora mostraremos que $m=n$. De acordo com o lema anterior, sendo $W=Ker p(T)$, então:
+\[
+W=\left(W\cap Z(u_1,T)\right)\oplus\dots\oplus\left(W\cap Z(u_m,T)\right)
+\]
+e também:
+\[
+W=\left(W\cap Z(v_1,T)\right)\oplus\dots\oplus\left(W\cap Z(v_n,T)\right).
+\]
+Como $p(T)[W]=0$, então $W$ é um espaço vetorial sobre o corpo $L=K[t]/p(t)K[t]$ e aí cada uma das duas decomposições expressa $W$ como uma soma direta de subespaços de dimensão $1$. Logo $m=\dim_L(W)=n$.
+
+\medskip
+\noindent
+Finalmente mostraremos que os expoentes $e_i$ e $f_i$ são iguais usando indução em $e_1$. Se $e_1=1$, então $e_i=1$ para todo $i$ e como $f_1=e_1$, temos também $f_i=1$ para todo $i$. Suponhamos que o resultado seja válido para $e_1\leq k-1$ e seja $e_1=k$. Escreva:
+\[
+(e_1,\dots,e_n)=(e_1,\dots,e_s,1,\dots,1),\quad e_s>1
+\]
+e
+\[
+(f_1,\dots,f_n)=(f_1,\dots,f_t,1,\dots,1),\quad f_t>1.
+\]
+Então:
+\[
+p(T)[V]=p(T)[Z(u_1,T)]\oplus\dots\oplus p(T)[Z(u_m,T)]
+\]
+e
+\[
+p(T)[V]=p(T)[Z(v_1,T)]\oplus\dots\oplus p(T)[Z(v_n,T)],
+\]
+mas $p(T)[Z(v_1,T)]$ é um subespaço cíclico anulável por $p(T)^{e_1-1}$, aí pela hipótese de indução temos:
+\[
+s=t\quad\text{e}\quad e_1=f_1,\dots,e_s=f_s,
+\]
+concluindo assim a demonstração da unicidade.
+\end{proof}
+
+\noindent
+Agora podemos juntar a decomposição primária para minimais e a decomposição cíclica para espaços primários e obter a decomposição cíclica em divisores elementares.
+
+\begin{teorema}[Decomposição Cíclica em Divisores Elementares]
+Seja $V$ um espaço vetorial de \emph{dimensão finita} e seja $T\in\mathcal{L}(V)$. Se o polinômio minimal é dado por:
+\[
+m_T=p_1^{e_1}\dots p_n^{e_n},
+\]
+em que os $p_i$ são polinômios irredutíveis mônicos distintos sobre $K$, então $V$ pode ser decomposto em uma soma direta:
+\[
+V=V_1\oplus\dots\oplus V_n,
+\]
+em que:
+\[
+V_i=\Ker \ p_i(T)^{e_i}
+\]
+é um subespaço $T$-invariante tal que $m_{T\upharpoonright_{V_i}}=p_i^{e_i}$. Finalmente, cada subespaço $T$-invariante $V_i$ pode ser escrito como uma soma direta de submódulos cíclicos, de modo que:
+\[
+V=\left(Z(v_{1,1},T)\oplus\dots\oplus Z(v_{1,k_1},T)\right)\oplus\left(Z(v_{n,1},T)\oplus\dots\oplus Z(v_{n,k_n},T)\right),
+\]
+em que $m_{T,v_{i,j}}=p_i^{e_{i,j}}$ e os termos de cada decomposição cíclica podem ser arranjados de modo que para cada $i$ tenhamos:
+\[
+e_i=e_{i,1}\geq e_{i,2}\geq\dots\geq e_{i,k_i}.
+\]
+
+\end{teorema}
+
+\noindent
+Além disso, juntando os teoremas das unicidades da decomposição primária para minimais e da decomposição cíclica para espaços primários, então temos a unicidade da decomposição cíclica em divisores elementares.
+
+\begin{teorema}[Unicidade da Decomposição Cíclica em Divisores Elementares]
+Seja $V$ um espaço vetorial e seja $T\in\mathcal{L}(V)$. Suponhamos que $V$ possa ser escrito como uma soma direta:
+\[
+V=\left(Z(u_{1,1},T)\oplus\dots\oplus Z(u_{1,k_1},T)\right)\oplus\dots\oplus\left(Z(u_{m,1},T)\oplus\dots\oplus Z(u_{m,k_m},T)\right)
+\]
+em que $m_{T,u_{i,j}}=p_i^{e_{i,j}}$ e:
+\[
+e_{i,1}\geq e_{i,2}\geq\dots\geq e_{i,k_i},
+\]
+e suponhamos que $V$ possa ser escrito como uma soma direta:
+\[
+V=\left(Z(v_{1,1},T)\oplus\dots\oplus Z(v_{1,l_1},T)\right)\oplus\dots\oplus\left(Z(v_{n,1},T)\oplus\dots\oplus Z(v_{n,l_n},T)\right)
+\]
+em que $m_{T,v_{i,j}}=q_i^{f_{i,j}}$ e:
+\[
+f_{i,1}\geq f_{i,2}\geq\dots\geq f_{i,l_i}.
+\]
+Então:
+\begin{itemize}
+\item O número de somandos é o mesmo em ambas as decomposições; de fato,
+$m=n$ e, depois de uma reindexação apropriada, $k_u=l_u$ para todo $u$.
+\item Os subespaços primários são os mesmos; isto é, depois de uma reindexação apropriada, para todo $i$ temos $p_i=q_i$ e:
+\[
+Z(u_{i,1},T)\oplus\dots\oplus Z(u_{i,k_i},T)=Z(v_{i,1},T)\oplus\dots\oplus Z(v_{i,l_i},T).
+\]
+\end{itemize}
+\end{teorema}
+
+\begin{definicao}
+O multiconjunto dos polinômios $p_i^{e_{i,j}}$ é unicamente determinado pela decomposição cíclica em divisores elementares, assim ele é chamado o multiconjunto dos \textbf{divisores elementares}.
+\end{definicao}
+
+\noindent
+A forma mais usual de se apresentar uma decomposição em subespaços cíclicos é a decomposição cíclica em fatores invariantes.
+
+\begin{teorema}[Decomposição Cíclica em Fatores Invariantes]
+Seja $V$ um espaço vetorial de \emph{dimensão finita} e seja $T\in\mathcal{L}(V)$. Então $V$ pode ser escrito como uma soma direta:
+\[
+V=Z(v_1,T)\oplus\dots\oplus Z(v_r,T)
+\]
+em que $m_{T,v_i}=p_i$ e também:
+\[
+p_r\mid p_{r-1}\mid\dots\mid p_2\mid p_1.
+\]
+\end{teorema}
+
+\begin{proof}
+De acordo com a decomposição cíclica em divisores elementares, $V$ pode ser escrito como soma direta:
+\[
+V=\left(Z(u_{1,1},T)\oplus\dots\oplus Z(u_{1,k_1},T)\right)\oplus\dots\oplus\left(Z(u_{m,1},T)\oplus\dots\oplus Z(u_{m,k_m},T)\right)
+\]
+em que $m_{T,u_{i,j}}=p_i^{e_{i,j}}$ e:
+\[
+e_{i,1}\geq e_{i,2}\geq\dots\geq e_{i,k_i},
+\]
+assim podemos combinar somandos cíclicos com polinômios minimais relativamente primos. Uma maneira de fazer isto é pegar o subespaço cíclico $Z(u_{i,1},T)$ de cada coleção:
+\[
+Z(u_{i,1},T)\oplus\dots\oplus Z(u_{i,k_i},T)
+\]
+para obtermos o seguinte:
+\[
+Z(v_1,T)=Z(u_{1,1},T)\oplus\dots\oplus Z(u_{m,1},T)
+\]
+e repetir o processo:
+\[
+Z(v_2,T)=Z(u_{1,2},T)\oplus\dots\oplus Z(u_{m,2},T)
+\]
+\[
+Z(v_3,T)=Z(u_{1,3},T)\oplus\dots\oplus Z(u_{m,3},T)
+\]
+\[
+\vdots
+\]
+É claro que alguns somandos podem estar faltando aqui pois os diferentes subespaços primários:
+\[
+Z(u_{i,1},T)\oplus\dots\oplus Z(u_{i,k_i},T)
+\]
+não necessariamente têm o mesmo número de somandos. De qualquer modo o resultado de rearranjarmos e combinarmos os somandos cíclicos é uma decomposição da forma:
+\[
+V=Z(v_1,T)\oplus\dots\oplus Z(v_r,T).
+\]
+\end{proof}
+
+\noindent
+Por causa da unicidade da decomposição cíclica em divisores elementares, então temos a unicidade da decomposição cíclica em fatores invariantes
+
+\begin{teorema}[Unicidade da Decomposição Cíclica em Fatores Invariantes]
+Seja $V$ um espaço vetorial e seja $T\in\mathcal{L}(V)$. Suponhamos que $V$ possa ser escrito como uma soma direta:
+\[
+V=Z(u_1,T)\oplus\dots\oplus Z(u_r,T)
+\]
+em que $m_{T,u_i}=p_i$ e também:
+\[
+p_r\mid p_{r-1}\mid\dots\mid p_2\mid p_1,
+\]
+e que $V$ possa ser escrito como uma soma direta:
+\[
+V=Z(v_1,T)\oplus\dots\oplus Z(v_s,T)
+\]
+em que $m_{T,v_j}=q_j$ e também:
+\[
+q_s\mid q_{s-1}\mid\dots\mid q_2\mid q_1.
+\]
+Então $m=n$ e também $p_k=q_k$ para todo $k$.
+\end{teorema}
+
+\begin{definicao}
+A sequência dos polinômios $p_i$ é unicamente determinado pela decomposição cíclica em fatores invariantes, assim ela é chamada a sequência dos \textbf{fatores invariantes}.
+\end{definicao}
+
+\section{Formas Racionais de Matrizes}
+
+\begin{definicao}
+Definimos a \textbf{matriz companheira} do polinômio mônico:
+\[
+p(x)=x^n+a_{n-1}x^{n-1}+\dots+a_1x+a_0
+\]
+como a matriz:
+\[
+C[p(x)]=\begin{pmatrix}
+0&0&\ldots&0&-a_0\\1&0&\ldots&0&-a_1\\0&1&\ddots&&\vdots\\\vdots&\vdots&\ddots&0&-a_{n-2}\\0&0&\ldots&1&-a_{n-1}
+\end{pmatrix}
+\]
+\end{definicao}
+
+\begin{teorema}
+Dado polinômio $p(x)\in K[x]$, então temos:
+\[
+p_{C[p(x)]}(x)=m_{C[p(x)]}=p(x).
+\]
+Além disso, um espaço vetorial $V$ possui um vetor cíclico para $T\in\mathcal{L}(V)$ se e somente se $T$ pode ser representado por uma matriz companheira, e nesse caso a base representante é $T$-cíclica.
+\end{teorema}
+\begin{proof}
+Veja o Exercício 15 da lista 2.
+\end{proof}
+
+\noindent
+Agora estamos prontos para determinar um conjunto de formas canônicas para similaridade entre matrizes. Faremos isto através das formas racionais. Há pelo menos dois tipos de formas racionais: a forma racional para divisores elementares e a forma racional para fatores invariantes. Primeiro apresentaremos as formas racionais para divisores elementares.
+
+\begin{definicao}
+Dizemos que uma matriz $A$ está na \textbf{forma racional para divisores elementares} se e só se $A$ é da forma:
+\[
+\begin{pmatrix}
+C[r_1^{e_1}(x)]&&\\&\ddots&\\&&C[r_n^{e_n}(x)]
+\end{pmatrix},
+\]
+em que os $r_i(x)$ são polinômios mônicos irredutíveis.
+\end{definicao}
+
+\begin{teorema}[Forma Racional para Divisores Elementares]
+Cada classe de similaridade $S$ de matrizes contém uma matriz $A$ na forma racional para divisores elementares. Além disso, o conjunto das matrizes em $S$ que estão nessa forma
+é o conjunto de matrizes obtidas de $A$ através de reordenação das matrizes companheiras no bloco diagonal.
+\end{teorema}
+\begin{proof}
+Seja $V$ um espaço vetorial de \emph{dimensão finita} e seja $T\in\mathcal{L}(V)$. Pela decomposição cíclica em divisores elementares, o espaço $V$ pode ser expressado pela seguinte soma direta:
+\[
+V=\left(Z(v_{1,1},T)\oplus\dots\oplus Z(v_{1,k_1},T)\right)\oplus\left(Z(v_{n,1},T)\oplus\dots\oplus Z(v_{n,k_n},T)\right),
+\]
+em que $m_{T,v_{i,j}}=p_i^{e_{i,j}}$ e também:
+\[
+e_{i,1}\geq e_{i,2}\geq\dots\geq e_{i,k_i}.
+\]
+A concatenação $B$ das bases ordenadas:
+\[
+B_{i,j}=\left(v_{i,j},T(v_{i,j}),\dots,T^{d_{i,j}-1}(v_{i,j})\right),
+\]
+em que $d_{i,j}=\mathrm{deg}(p_i)\cdot e_{i,j}$, é uma base ordenada tal que:
+\[
+[T]_B=\begin{pmatrix}
+C[p_1^{e_{1,1}}(x)]&&&&&&\\&\ddots&&&&&\\&&C[p_1^{e_{1,k_1}}(x)]&&&&\\&&&\ddots&&&\\&&&&C[p_n^{e_{n,1}}(x)]&&\\&&&&&\ddots&\\&&&&&&C[p_n^{e_{n,k_n}}(x)].
+\end{pmatrix}
+\]
+O restante do enunciado pode ser demonstrada tendo em mente a unicidade da decomposição cíclica em divisores elementares.
+\end{proof}
+
+\noindent
+Agora apresentaremos a forma racional para fatores invariantes, que é a forma racional usual da álgebra linear. Portanto, se alguém pedir que representemos uma matriz na forma racional, muito provavelmente está pedindo a forma racional para fatores invariantes.
+
+\begin{definicao}
+Dizemos que uma matriz $A$ está na \textbf{forma racional para fatores invariantes} se e só se $A$ é uma matriz da forma:
+\[
+\begin{pmatrix}
+C[s_1(x)]&&\\&\ddots&\\&&C[s_n(x)]
+\end{pmatrix},
+\]
+em que $s_{k+1}(x)\mid s_k(x)$ para $k=1,\dots,n-1$.
+\end{definicao}
+
+\begin{teorema}[Forma Racional para Fatores Invariantes]
+Cada classe de similaridade $S$ de matrizes contém uma matriz $A$ na forma racional para fatores invariantes. Além disso, o conjunto das matrizes em $S$ que estão nessa forma
+é o conjunto de matrizes obtidas de $A$ através de reordenação das matrizes companheiras no bloco diagonal.
+\end{teorema}
+
+\begin{lema}
+Se $p(x),q(x)$ são polinômios mônicos primos entre si, então:
+\[
+C[p(x)q(x)]\sim\begin{pmatrix}
+C[p(x)]&\\&C[q(x)]
+\end{pmatrix}.
+\]
+\end{lema}
+\begin{proof}[Demonstração do Lema]
+Se uma matriz $A$ tem polinômio minimal:
+\[
+m_T=p_1^{e_1}\dots p_n^{e_n}
+\]
+de grau igual ao tamanho da matria, então o teorema das formas racionais para divisores elementares implica que os divisores elementares de $A$ são precisamente:
+\[
+p_1^{e_1},\dots,p_n^{e_n}.
+\]
+Como as matrizes $C[p(x)q(x)]$ e $C[p(x)]\oplus C[q(x)]$ têm o mesmo tamanho $m$ e o mesmo polinômio minimal $p(x)q(x)$ de grau $m$, segue que eles têm o mesmo multiconjunto dos divisores elementares e assim são similares.
+\end{proof}
+
+\begin{proof}[Demonstração do Teorema]
+O lema pode ser usado para rearranjar e combinar as matrizes companheiras numa matriz $A$ em forma racional para divisores elementares para produzir uma matriz em forma racional para fatores invariantes que seja similar a $A$. Além disso, é fácil ver que este processo é reversível.
+\end{proof}
+
+\noindent
+Finalizaremos esta seção mostrando uma aplicação das formas racionais para divisores elementares.
+
+\begin{teorema}
+O polinômio característico de uma matriz é igual ao produto de seus divisores elementares.
+\end{teorema}
+\begin{proof}
+Seja $A$ uma matriz, então ela é similar a uma matriz na forma racional para divisores elementares:
+\[
+\begin{pmatrix}
+C[r_1(x)]&&\\&\ddots&\\&&C[r_n(x)]
+\end{pmatrix}.
+\]
+Sabemos que o polinômio característico de $C[r_i(x)]$ é igual a $r_i(x)$, assim o resultado segue.
+\end{proof}
+
+\section{Formas de Jordan de Matrizes}
+
+As formas racionais, seja para divisores elementares ou para fatores invariantes, têm a façanha de que todo operador linear num espaço vetorial de dimensão finita tem uma forma racional canônica, seja para divisores elementares ou para fatores invariantes. Porém, as formas racionais podem estar longes do ideal de simplicidade que tínhamos em mente para um conjunto de formas canônicas fáceis de apresentar, assim servem mais como ferramentas teóricas do que práticas.
+
+\medskip
+\noindent
+Quando o polinômio minimal $m_T(x)$ de $T$ se decompõe sobre $K$, ou seja:
+\[
+m_T(x)=(x-c_1)^{r_1}\dots(x-c_k)^{r_k},
+\]
+então existe uma outra forma canônica que é bem mais fácil de apresentar do que a forma racional.
+
+\medskip
+\noindent
+De algum modo, a complexidade das formas racionais vem da escolha da base para os subespaços $T$-invariantes cíclicos $Z(v_{i,j},T)$. Recordemos que as bases $T$-cíclicas
+têm a forma:
+\[
+B_{i,j}=(v_{i,j},T(v_{i,j}),\dots,T^{d_{i,j}-1}(v_{i,j})),
+\]
+em que $d_{i,j}=\mathrm{deg}(p_i)\cdot(e_{i,j})$. Com essa base, toda complexidade no final quando tentamos expressar:
+\[
+T(T^{d_{i,j}-1}(v_{i,j}))=T^{d_{i,j}}(v_{i,j})
+\]
+como combinação linear dos vetores da base.
+
+\medskip
+\noindent
+No entanto, como $B_{i,j}$ tem a forma:
+\[
+(v,T(v),T^2(v),\dots,T^{d-1}(v)),
+\]
+então qualquer sequência da forma:
+\[
+(p_0(T)(v),p_1(T)(v),\dots,p_{d-1}(T)(v))
+\]
+em que $\mathrm{deg}(p_k)=k$ será uma base de $Z(v_{i,j},T)$. Em particular, quando $m_T(x)$ se decompõe sobre $K$, os divisores elementares são:
+\[
+p_i^{e_{i,j}}(x)=(x-c_i)^{e^{i,j}}
+\]
+e assim a sequência:
+\[
+C_{i,j}=(v_{i,j},(T-c_iI)(v_{i,j}),\dots,(T-c_iI)^{e_{i,j}-1}(v_{i,j}))
+\]
+é também uma base de $Z(v_{i,j},T)$.
+
+\medskip
+\noindent
+Se temporariamente denotarmos o $k$-ésimo vetor da base $C_{i,j}$ por $b_k$, então para $k=0,\dots,e_{i,j}-2$ temos:
+\[
+\begin{array}{rcl}
+T(b_k)&=&T((T-c_iI)^k(v_{i,j}))\\
+&=&(T-c_iI+c_iI)((T-c_iI)^k(v_{i,j}))\\
+&=&(T-c_iI)^{k+1}(v_{i,j})+c_i(T-c_i)^k(v_{i,j})\\
+&=&b_{k+1}+c_ib_k.
+\end{array}
+\]
+Para $k=e_{i,j}-1$, usando o fato de que:
+\[
+(T-c_iI)^{k+1}(v_{i,j})=(T-c_iI)^{e_{i,j}}(v_{i,j})=0,
+\]
+obtemos:
+\[
+T(b_{e_{i,j}-1})=c_ib_{e_{i,j}-1}.
+\]
+Logo, para esta base, a complexidade se espalha melhor, e a matriz de $T\upharpoonright_{Z(v_{i,j},T)}$ em relação a $C_{i,j}$ é a matriz de tamanho $e_{i,j}$:
+\[
+\begin{pmatrix}
+c_i&0&\ldots&\ldots&0\\1&c_i&\ddots&&\vdots\\0&1&\ddots&\ddots&\vdots\\\vdots&\ddots&\ddots&\ddots&0\\0&\ldots&0&1&c_i
+\end{pmatrix}.
+\]
+Assim apresentaremos o conceito das formas de Jordan.
+
+\begin{definicao}
+Um \textbf{bloco de Jordan} é uma matriz do tipo:
+\[
+J(c,n)=\begin{pmatrix}
+c&0&\ldots&\ldots&0\\1&c&\ddots&&\vdots\\0&1&\ddots&\ddots&\vdots\\\vdots&\ddots&\ddots&\ddots&0\\0&\ldots&0&1&c
+\end{pmatrix},
+\]
+em que $c\in K$ e a matriz tem tamanho $n$. Dizemos que uma matriz está na \textbf{forma de Jordan} se e só se é uma soma direta de blocos de Jordan.
+\end{definicao}
+
+\noindent
+Com a discussão anterior, então temos as conhecidas formas de Jordan.
+
+\begin{teorema}[Forma de Jordan]
+Suponhamos que o polinômio minimal de $T\in\mathcal{L}(V)$ se decomponha sobre o corpo $K$, ou seja:
+\[
+m_T(x)=(x-c_1)^{e_1}\dots(x-c_n)^{e_n},
+\]
+em que $c_i\in K$. Então existe uma base $B$ tal que a matriz de $T$ seja:
+\[
+\begin{pmatrix}
+J(c_1,e_{1,1})&&&&&&\\&\ddots&&&&&\\&&J(c_1,e_{1,k_1})&&&&\\&&&\ddots&&&\\&&&&J(c_n,e_{n,1})&&\\&&&&&\ddots&\\&&&&&&J(c_n,e_{n,k_n})
+\end{pmatrix},
+\]
+em que os polinômios $(x-c_i)^{e_{i,j}}$ são os divisores elementares de $T$.
+\end{teorema}
+
+\begin{corolario}
+Se $K$ é algebricamente fechado, então, a menos de ordem dos blocos na diagonal, o conjunto de matrizes na forma de Jordan constitui um conjunto de formas canônicas para a similaridade de matrizes.
+\end{corolario}
+
+\section{Espaços Indecomponíveis}
+
+A decomposição cíclica em divisores elementares pode ser usada para caracterizar espaços vetoriais de dimensão finita com vetores cíclicos através de seus divisores elementares.
+
+\begin{teorema}[Caracterização de Espaços Cíclicos]
+Seja $V$ um espaço vetorial de dimensão finita e seja $T\in\mathcal{L}(V)$. Consideremos o polinômio minimal:
+\[
+m_T=p_1^{e_1}\dots p_n^{e_n}.
+\]
+As seguintes propriedades são equivalentes:
+\begin{itemize}
+\item[1)] $V$ possui um vetor cíclico para $T$.
+\item[2)] $V$ é uma soma direta:
+\[
+V=Z(v_1,T)\oplus\dots\oplus Z(v_n,T)
+\]
+de subespaços cíclicos primários $V_i=Z(v_i,T)$ tais que $m_{T\upharpoonright{V_i}}=p_i^{e_i}$.
+\item[3)] Os divisores elementares de $V$ são precisamente:
+\[
+p_1^{e_1},\dots,p_n^{e_n}.
+\]
+\end{itemize}
+\end{teorema}
+\begin{proof}
+Suponhamos que $V$ tenha vetor cíclico para $T$. Então a decomposição primária para minimais de $V$ é uma decomposição cíclica, pois pelo Exercício 1 da Lista 4 todo subespaço $T$-invariante de um espaço com vetor cíclico também tem um vetor cíclico. Logo, (1) implica (2). Reciprocamente, se (2) ocorre, então como os polinômios minimais são relativamente primos, o Teorema \ref{ciclico} implica que $V$ tem um vetor cíclico. Deixamos o restante da prova para o leitor.
+\end{proof}
+
+\noindent
+A decomposição cíclica em divisores elementares é uma decomposição de $V$ numa soma dureta de subespaços $T$-invariantes que não podem ser decompostos em pedaços menores. De fato, isto caracteriza a decomposição cíclica em divisores elementares de $V$. Antes de justificar estas afirmações, apresentamos a seguinte definição.
+
+\begin{definicao}
+Um espaço vetorial $V$ é dito \textbf{indecomponível} para um $T\in\mathcal{L}(V)$ se e só se não puder ser escrito como uma soma direta de dois subespaços $T$-invariantes próprios.
+\end{definicao}
+
+\begin{teorema}[Caracterização de Espaços Indecomponíveis]
+Seja $V$ um espaço vetorial de dimensão finita e seja $T\in\mathcal{L}(V)$. Então as seguinte propriedades são equivalentes:
+\begin{itemize}
+\item[1)] $V$ é indecomponível para $T$.
+\item[2)] $V$ é um espaço primário e tem um vetor cíclico para $T$.
+\item[3)] $V$ tem apenas um divisor elementar para $T$.
+\end{itemize}
+\end{teorema}
+
+\noindent
+Portanto, a decomposição cíclica em divisores elementares é uma decomposição de $V$ em uma soma direta de subespaços $T$-invariantes indecomponíveis para $T$. Reciprocamente, se:
+\[
+V=V_1\oplus\dots\oplus V_n
+\]
+é uma decomposição de $V$ numa soma direta de subespaços $T$-invariantes indecomponíveis para $T$, então cada subespaço $T$-invariante $V_i$ é primário e possui vetor cíclico, aí esta decomposição é a decomposição cíclica em divisores elementares de $V$.
+
+\medskip
+\noindent
+Quem já está familiarizado com teoria dos grupos sabem que todo grupo de ordem prima é cíclico. Entretanto, existem espaços com polinômio minimal irredutível que no entanto não possuem vetores cíclicos. Não obstante, espaços com polinômio minimal irredutível com vetores cíclicos são importantes.
+
+\medskip
+\noindent
+De fato, se $V$ é um espaço vetorial de dimensão finita e $T\in\mathcal{L}(V)$, com polinômio minimal $m_T$, então cada fator primo de $p$ de $m_T$ nos oferece um subespaço $T$-invariante $W$ de $V$ com vetor cíclico cujo polinômio minimal é $p$ e aí $W$ é também indecomponível para $T$.
+Infelizmente, $W$ não necessariamente tem um complemento $T$-invariante e aí não podemos usá-lo
+para decompor $V$. Não obstante, o teorema ainda é útil.
+
+\begin{teorema}[Teorema de ``Cauchy'' para Álgebra Linear]
+Seja $V$ um espaço vetorial de dimensão finita e $T\in\mathcal{L}(V)$, com polinômio minimal $m_T$. Se $p$ é um divisor primo de $m_T$, então $V$ tem um subespaço $T$-invariante $W$ com vetor cíclico com $T$-anulador $p$.
+\end{teorema}
+\begin{proof}
+Se $m_T=pq$, então existe um $v\in V$ tal que $w\coloneqq q(T)(v)\neq 0$ mas $p(T)(w)=0$.
+Assim $W=Z(w,T)$ é anulado por $p(T)$ e assim $m_{T,w}\mid p$. Mas $p$ é primo e
+$m_{T,w}\neq 1$, aí $m_{T,w}=p$.
+\end{proof}
+
+\chapter{Espaços com Produto Interno}
+
+Neste capítulo, convencionaremos que $K$ é $\mathbb{R}$ ou $\mathbb{C}$.
+
+\section{Definições e Exemplos}
+
+\begin{definicao}
+Um espaço vetorial $V$ é dito um \textbf{espaço com produto interno} se estiver munida com uma função:
+\[
+\begin{array}{rcl}
+V\times V&\rightarrow&K\\
+(u,v)&\mapsto&\langle u,v\rangle
+\end{array}
+\]
+tal que:
+\begin{itemize}
+\item $\langle\alpha u+\beta v,w\rangle=\alpha\langle u,w\rangle+\beta\langle v,w\rangle$ para quaisquer $\alpha,\beta\in K$ e $u,v,w\in V$.
+\item $\overline{\langle u,v\rangle}=\langle v,u\rangle$ para quaisquer $u,v\in V$.
+\item $\langle v,v\rangle\geq 0$ para $v\in V$.
+\item $\langle v,v\rangle=0\Rightarrow v=0$ para $v\in V$.
+\end{itemize}
+\end{definicao}
+
+\begin{exemplo}
+O exemplo principal é $V=K^n$, em que, tomando $u=(\alpha_1,\dots,\alpha_n)$ e $v=(\beta_1,\dots,\beta_n)$, definimos:
+\[
+\langle u,v\rangle=\alpha_1\overline{\beta_1}+\dots+\alpha_n\overline{\beta_n}.
+\]
+\end{exemplo}
+
+\begin{exemplo}
+Podemos considerar $V=\m{n}{K}\cong K^{n^2}$. Com base no exemplo anterior, definimos:
+\[
+\langle A,B\rangle=\sum_{i,j}a_{i,j}\overline{b_{i,j}}.
+\]
+Para toda $A=(a_{i,j})\in\m{n}{K}$, definimos:
+\[
+A^*=(\overline{a_{i,j}}),
+\]
+e
+\[
+\mathrm{tr}(A)=a_{1,1}+\dots+a_{n,n},
+\]
+então podemos ver que:
+\[
+\langle A,B\rangle=\mathrm{tr}(AB^*).
+\]
+\end{exemplo}
+
+\begin{exemplo}
+Podemos tomar $V=\mathcal{C}[a,b]$, o conjunto das funções contínuas de $[a,b]$ em $\mathbb{C}$, e para $f,g\in V$ definirmos:
+\[
+\langle f,g\rangle=\int_a^bf(t)\overline{g(t)}\dif t.
+\]
+\end{exemplo}
+
+\begin{exemplo}
+Seja $T\in\mathcal{L}(U,V)$ bijetora. Suponhamos que $V$ tenha um produto interno. Se $u_1,u_2\in U$, definimos:
+\[
+\langle u_1,u_2\rangle_U=\langle T(u_1),T(u_2)\rangle_V.
+\]
+Suponhamos que $U$ tenha uma base $B=(e_1,\dots,e_n)$. Então existe uma $T:U\rightarrow K^n$ tal que:
+\[
+T(e_i)=(0,\dots,1,\dots,0),
+\]
+em que a entrada $i$ vale $1$ e as outras valem $0$. Sendo:
+\[
+u=\alpha_1e_1+\dots+\alpha_ne_n,\quad v=\beta_1e_1+\dots+\beta_ne_n,
+\]
+então:
+\[
+\langle u,v\rangle_U=\langle T(u),T(v)\rangle_V=\sum_{i=1}^n\alpha_i\overline{\beta_i}.
+\]
+\end{exemplo}
+
+\begin{definicao}
+Se $\dim(V)=n<\infty$ e $K=\mathbb{R}$, então chamamos $V$ de \textbf{euclidiano}.
+
+\smallskip
+\noindent
+Se $\dim(V)=n<\infty$ e $K=\mathbb{C}$, então chamamos $V$ de \textbf{unitário}.
+\end{definicao}
+
+\begin{definicao}
+Se $V$ é um espaço com produto interno e $V$ é um espaço completo em relação à norma $\norm{v}=\sqrt{\langle v,v\rangle}$, então $V$ se chama um \textbf{espaço de Hilbert}.
+\end{definicao}
+
+\section{Matriz de Gramm}
+
+\begin{definicao}
+Seja $V$ um espaço com produto interno. Sejam $v_1,\dots,v_k\in V$. Definimos:
+\[
+G(v_1,\dots,v_n)=\begin{pmatrix}
+\langle v_1,v_1\rangle&\dots&\langle v_1,v_n\rangle\\\dots&\dots&\dots\\\langle v_n,v_1\rangle&\dots&\langle v_n,v_n\rangle
+\end{pmatrix}.
+\]
+Nesse caso temos:
+\[
+G(v_1,\dots,v_n)^*=G(v_1,\dots,v_n).
+\]
+Toda matriz $A$ que satisfaz $A^*=A$ é chamada \textbf{Hermitiana}.
+\end{definicao}
+
+\begin{proposicao}
+Seja $B=(e_1,\dots,e_n)$ uma base de $V$. Então $G(e_1,\dots,e_n)$ é inversível.
+\end{proposicao}
+\begin{proof}
+Primeiro observemos que para quaisquer $u,v\in V$, com:
+\[
+[u]_B=(\alpha_1,\dots,\alpha_n),\quad [v]_B^*=(\beta_1,\dots,\beta_n)
+\]
+então:
+\[
+\langle u,v\rangle=[u]_BA[v]_B^*.
+\]
+De fato:
+\[
+\langle u,v\rangle=\sum_{i,j}\alpha_i\overline{\beta_j}\langle e_i,e_j\rangle,
+\]
+aí:
+\[
+\begin{array}{rcl}
+[u]_BA[v]_B^*&=&(\alpha_1,\dots,\alpha_n)\begin{pmatrix}
+\langle e_1,e_1\rangle&\dots&\langle e_1,e_n\rangle\\\dots&\dots&\dots\\\langle e_n,e_1\rangle&\dots&\langle e_n,e_n\rangle
+\end{pmatrix}\begin{pmatrix}
+\overline{\beta_1}\\\vdots\\\overline{\beta_n}
+\end{pmatrix}\\
+&=&\begin{pmatrix}
+\alpha_1\langle e_1,e_1\rangle+\dots+\alpha_n\langle e_n,e_1\rangle\\\vdots\\\alpha_1\langle e_1,e_n\rangle+\dots+\alpha_n\langle e_n,e_n\rangle
+\end{pmatrix}\begin{pmatrix}
+\overline{\beta_1}\\\vdots\\\overline{\beta_n}
+\end{pmatrix}
+\end{array}.
+\]
+Se $A$ não for inversível, então existe $u\neq 0$ tal que $[u]_BA=0$. Neste caso, $\langle u,u\rangle=[u]_BA[u]_B^*=0$, aí $u=0$, contradição.
+\end{proof}
+
+\noindent
+Se $B=(e_1,\dots,e_n)$ é uma base de $V$ e $A=G(e_1,\dots,e_n)$ então para todo $v\in V$ temos:
+\[
+[v]_BA[v]_B^*\geq 0
+\]
+e a igualdade ocorre se e somente se $v=0$.
+
+\begin{definicao}
+Uma matriz Hermitiana $A$ é dita:
+\begin{itemize}
+\item \textbf{Positiva semidefinitiva} se e só se para todo $x\in K^n$ temos $xAx^*\geq 0$.
+\item \textbf{Positiva definitiva} se e só se para todo $x\in K^n$ tal que $x\neq 0$ temos $xAx^*>0$.
+\end{itemize}
+\end{definicao}
+
+\begin{proposicao}
+Seja $A\in\m{n}{K}$ uma matriz Hermitiana positiva definitiva. Seja $V$ um espaço vetorial com base $B=(e_1,\dots,e_n)$. Definamos, para $u,v\in V$, o seguinte:
+\[
+\langle u,v\rangle=[u]_BA[v]_B^*.
+\]
+Então $\langle u,v\rangle$ é um produto interno.
+\end{proposicao}
+
+\section{Espaços Normados}
+
+\begin{definicao}
+Um espaço vetorial $V$ é dito um \textbf{espaço normado} se estiver munido com uma função:
+\[
+\begin{array}{rcl}
+V&\rightarrow&\mathbb{R}\\
+v&\mapsto&\norm{v}
+\end{array}
+\]
+que satisfaça as seguintes propriedades:
+\begin{itemize}
+\item $\norm{v}\geq 0$ para $v\in V$. 
+\item $\norm{v}=0\Rightarrow v=0$ para $v\in V$.
+\item $\norm{\alpha v}=\abs{\alpha}\norm{v}$ para $\alpha\in K$ e $v\in V$.
+\item $\norm{u+v}\leq\norm{u}+\norm{v}$ para $u,v\in V$.
+\end{itemize}
+\end{definicao}
+
+\begin{proposicao}[Desigualdade de Cauchy-Bunyakovski-Schwarz]
+Seja $V$ um espaço com produto interno. Então para quaisquer $u,v\in V$ temos:
+\[
+\abs{\langle u,v\rangle}\leq\norm{u}\cdot\norm{v}.
+\]
+\end{proposicao}
+\begin{proof}
+Se $v=0$, então é fácil. Se $v\neq 0$, então $\norm{v}>0$, aí para quaisquer $\alpha,\beta\in K$ temos:
+\[
+\begin{array}{rcl}
+0&\leq&\langle\alpha u-\beta v,\alpha u-\beta v\rangle\\
+&=&\alpha\overline{\alpha}\langle u,u\rangle+\beta\overline{\beta}\langle v,v\rangle-\alpha\overline{\beta}\langle u,v\rangle-\beta\overline{\alpha}\langle v,u\rangle\\
+&=&\abs{\alpha}^2\norm{u}^2+\abs{\beta}^2\norm{v}^2-\left(\alpha\overline{\beta}\langle u,v\rangle+\overline{\alpha\overline{\beta}\langle u,v\rangle}\right).
+\end{array}
+\]
+Em particular, fazendo $\alpha=\norm{v}$ e $\beta=\langle u,v\rangle$, então:
+\[
+\begin{array}{rl}
+&\norm{v}^4\norm{u}^2+\abs{\langle u,v\rangle}^2\norm{v}^2-2\norm{v}^2\langle u,v\rangle^2\geq0\\
+\Rightarrow&\norm{v}^2\norm{u}^2-\abs{\langle u,v\rangle}^2\geq 0\\
+\Rightarrow&\left(\norm{v}\norm{u}\right)^2\geq\abs{\langle u,v\rangle}^2.
+\end{array}
+\]
+\end{proof}
+
+\begin{proposicao}
+Seja $V$ um espaço com produto interno e definamos $\norm{v}=\sqrt{\langle v,v\rangle}$. Então $\norm{v}$ é uma norma.
+\end{proposicao}
+\begin{proof}
+Provaremos apenas a última propriedade requerida para espaço normado, deixando as outras para o leitor. Sabemos que para $z\in\mathbb{C}$ então $z+\overline{z}\leq 2\abs{z}$. De fato, sendo $z=a+bi$, então $\abs{z}=\sqrt{a^2+b^2}\geq a$, aí $z+\overline{z}=2a\leq 2\abs{z}$. Agora temos:
+\[
+\begin{array}{rcl}
+\abs{u+v}^2&=&\langle u+v,u+v\rangle\\
+&=&\norm{u}^2+\norm{v}^2+\left(\langle u,v\rangle+\overline{\langle u,v\rangle}\right)\\
+&\leq&\norm{u}^2+\norm{v}^2+2\abs{\langle u,v\rangle}\\
+&\leq&\norm{u}^2+\norm{v}^2+2\norm{u}\cdot\norm{v}\\
+&=&\left(\norm{u}+\norm{v}\right)^2.
+\end{array}
+\]
+\end{proof}
+
+\section{Ortogonalidade}
+
+\begin{definicao}
+Dois vetores $u,v\in V$ são ditos \textbf{ortogonais} se e só se $\langle u,v\rangle=0$.
+
+\smallskip
+\noindent
+Uma família $(v_i)_{i\in I}$ de vetores é chamado \textbf{ortogonal} se e só se para quaisquer $i,j\in I$ tais que $i\neq j$ os vetores $v_i$ e $v_j$ forem ortogonais.
+
+\smallskip
+\noindent
+Uma família $(v_i)_{i\in I}$ de vetores é chamado \textbf{ortonormal} se e só se é ortogonal e para todo $i\in I$ temos $\norm{v_i}=1$.
+\end{definicao}
+
+\begin{proposicao}
+Se $(v_i)_{i\in I}$ é uma família ortogonal de vetores \emph{não nulos}, então a família é L.I.
+\end{proposicao}
+\begin{proof}
+Para conjunto finito $J\subseteq I$ e para $\alpha:J\rightarrow I$, se:
+\[
+\sum_{i\in J}\alpha_iv_i=0,
+\]
+então para $j\in J$ temos:
+\[
+0=\left\langle\sum_{i\in J}\alpha_iv_i,v_j\right\rangle=\sum_{i\in J}\alpha_i\langle v_i,v_j\rangle=\alpha_j\norm{v_j}^2,
+\]
+mas $v_j\neq 0$, aí $\norm{v_j}^2\neq 0$, aí $\alpha_j=0$.
+\end{proof}
+
+\begin{proposicao}[Ortogonalização de Gramm-Schmidt]
+Para toda sequência linearmente independente $(v_1,\dots,v_k)$ de vetores, existe uma sequência ortogonal $(u_1,\dots,u_k)$ tal que $\langle v_1,\dots,v_k\rangle=\langle u_1,\dots,u_k\rangle$.
+\end{proposicao}
+\begin{proof}
+Indução sobre $k$.
+\end{proof}
+
+\begin{corolario}
+Todo espaço com produto interno de dimensão finita tem uma base ortonormal.
+\end{corolario}
+
+\section{Funcionais Lineares}
+
+\begin{proposicao}
+Seja $V$ um espaço com produto interno. Para $u\in V$, definimos $\varphi_u:V\rightarrow K$ assim:
+\[
+\varphi_u(v)=\langle v,u\rangle.
+\]
+Então $\varphi_u$ é um funcional linear.
+\end{proposicao}
+
+\begin{teorema}[Teorema de Riesz]
+Se $\dim(V)<\infty$, então para todo $f\in V^*$ existe $u\in V$ tal que $f=\varphi_u$.
+\end{teorema}
+\begin{proof}
+Seja $f\in V^*$. Escolhemos uma base ortonormal $B=(e_1,\dots,e_n)$ em $V$ e seja $\alpha_i=f(e_i)\in K$ para $i=1,\dots,n$. Consideremos $u=\overline{\alpha_1}e_1+\dots+\overline{\alpha_n}e_n.$ Então para $k=1,\dots,n$ temos:
+\[
+\begin{array}{rcl}
+\varphi_u(e_k)=\langle e_k,u\rangle&=&\langle e_k,\overline{\alpha_1}e_1+\dots+\overline{\alpha_n}e_n\rangle\\
+&=&\alpha_k\langle e_k,e_k\rangle=\alpha_k=f(e_k),
+\end{array}
+\]
+ou seja, $\varphi_u(e_k)=f(e_k)$; logo $\varphi_u=f$.
+\end{proof}
+
+\begin{observacao}
+O teorema de Riesz não é válido para espaços com produto interno de dimensão finita. De fato, se $V=\mathcal{C}[a,b]$, então seja $x_0\in[a,b]$ e seja $\varphi\in V^*$ dada por:
+\[
+\varphi(f)=f(x_0).
+\]
+\end{observacao}
+
+\begin{definicao}
+Agora seja $V$ um espaço com produto interno e $S$ um subconjunto de $V$. Definimos o conjunto:
+\[
+S^\perp=\{v\in V:\mid \forall s\in S:\langle v,s\rangle=0\},
+\]
+e chamamos de \textbf{complemento ortogonal} de $S$.
+\end{definicao}
+
+\begin{proposicao}
+Para qualquer subconjunto $S$ temos:
+\begin{itemize}
+\item[1)] $S^\perp$ é um subespaço de $V$.
+\item[2)] Se $W\subseteq V$ é um subespaço, então $V=W\oplus W^\perp$.
+\item[3)] Se $W\subseteq V$ é um subespaço, então $W^{\perp\perp}=W$.
+\end{itemize}
+\end{proposicao}
+\begin{proof}
+\begin{itemize}
+\item[2)] Escolhemos em $W$ uma base ortonormal $(v_1,\dots,v_k)$. Seja $u\in V$ arbitrário. Consideremos:
+\[
+\tilde{u}=\langle u,v_1\rangle v_1+dots+\langle u,v_k\rangle v_k\in W.
+\]
+Provemos que $u-\tilde{u}\in W^\perp$. Notemos que $W^\perp=\{v_1,\dots,v_k\}^\perp$. Para $i=1,\dots,k$, então temos:
+\[
+\begin{array}{rcl}
+\langle u-\tilde{u},v_i\rangle&=&\langle u,v_i\rangle-\langle\sum_{j=1}^k\langle u,v_j\rangle,v_i\rangle\\
+&=&\langle u,v_i\rangle-\sum_{j=1}^k\langle u,v_i\rangle\langle v_j,v_i\rangle\\
+&=&\langle u,v_i\rangle-\langle u,v_i\rangle\langle u,v_i\rangle\\
+&=&0;
+\end{array}
+\]
+logo $u-\tilde{u}\in W^\perp$, aí $u=\tilde{u}+(u-\tilde{u})\in W+W^\perp$. Para $v\in W\cap W^\perp$, então $\langle u,u\rangle=0$, aí $u=0$.
+\item[3)] Temos $V=W\oplus W^\perp=W^\perp\oplus W^{\perp\perp}$, aí:
+\[
+\dim(W)=\dim(V)-\dim(W^\perp)=\dim(W^{\perp\perp}),
+\]
+mas é fácil ver que $W\subseteq W^{\perp\perp}$, aí $W=W^{\perp\perp}$.
+\end{itemize}
+\end{proof}
+
+\begin{definicao}
+Para subespaço $W$ de $V$, definimos a \textbf{projeção ortogonal} como a função $E_W:V\rightarrow W$ tal que, para $v\in V$ tenhamos $v-E_W(v)\in W^\perp$.
+\end{definicao}
+
+\begin{proposicao}
+Para subespaço $W$ e para $v\in V$, temos:
+\[
+\norm{v-E_W(v)}=\min\{\norm{v-w}\mid w\in W\}.
+\]
+\end{proposicao}
+\begin{proof}
+Seja $v^\perp=v-E_W(v)$. Então para $w\in W$ temos:
+\[
+v-w=v^\perp+E_W(v)-w,
+\]
+mas $v^\perp\in W^\perp$ e $E_W(v)-w\in W$, aí:
+\[
+\norm{v-w}^2=\norm{v^\perp}^2+\norm{E_W(v)-w}^2\geq\norm{v^\perp}^2=\abs{v-E_W(v)}^2.
+\]
+\end{proof}
+
+\begin{teorema}[Desigualdade de Bessel]
+Sejam $v_1,\dots,v_k\in V$ vetores não nulos mutuamente ortogonais. Então para todo $v\in V$ temos:
+\[
+\sum_{i=1}^k\frac{\abs{\langle v,v_i\rangle}^2}{\norm{v_i}^2}\leq\norm{v}^2.
+\]
+\end{teorema}
+\begin{proof}
+\textcolor{red}{Seilah}
+\end{proof}
+
+\section{Transformação Adjunta}
+
+\begin{definicao}
+Sejam $U$ e $V$ espaços com produto interno de dimensão finita e $T\in\mathcal{L}(U,V)$. Uma \textbf{transformação adjunta} para $T$ é uma função $T^*\in\mathcal{L}(V,U)$ tal que para quaisquer $u\in U$ e $v\in V$ tenhamos:
+\[
+\langle T(u),v\rangle_V=\langle u,T^*(v)\rangle_U.
+\]
+\end{definicao}
+
+\begin{teorema}
+$T^*$ sempre existe e é única.
+\end{teorema}
+\begin{proof}
+\textcolor{red}{Preencher os detalhes.}
+
+\medskip
+\noindent
+Seja $v\in V$. Consideremos a função:
+\[
+\varphi_v:u\mapsto\langle T(u),v\rangle\in K.
+\]
+Então $\varphi_v\in U^*$. Assim, pelo teorema de Riesz, então existe um único $T^*(v)\in U$ tal que:
+\[
+\forall u\in U:\varphi_v(u)=\langle u,T^*(v)\rangle.
+\]
+Consideremos a função:
+\[
+T^*:v\mapsto T^*(v).
+\]
+É fácil ver que $T^*\in\mathcal{L}(V,U)$.
+\end{proof}
+
+\begin{teorema}
+Sejam $B=(e_1,\dots,e_n)$ e $C=(f_1,\dots,f_m)$ bases ortonormais de $U$ e $V$, e seja $T\in\mathcal{L}(U,V)$. Se $A=[T]_{B,C}$, então $A^*=[T^*]_{C,B}$.
+\end{teorema}
+\begin{proof}
+\textcolor{red}{Seilah}
+\end{proof}
+
+\begin{observacao}
+Por outro lado, consideremos $V=\mathbb{R}[t]$, e consideremos o produto interno:
+\[
+\langle f,g\rangle=\int_a^bf(t)g(t)\dif t.
+\]
+Consideremos o operador derivação $D=\mathcal{L}(V)$ dado por:
+\[
+\forall f\in\mathbb{R}:D(f)=f'.
+\]
+Então $D$ não tem um adjunto.
+\end{observacao}
+
+\begin{proposicao}
+Sejam $U$ e $V$ e $W$ espaços com produto interno de dimensão finita e sejam $T,S\in\mathcal{L}(U,V)$ e $P\in\mathcal{L}(V,W)$ e $\alpha\in K$. Então:
+\begin{itemize}
+\item $(T+S)^*=T^*+S^*.$
+\item $(\alpha T)^*=\overline{\alpha}T^*.$
+\item $(TP)^*=P^*T^*.$
+\item $T^{**}=T.$
+\end{itemize}
+\end{proposicao}
+\begin{proof}
+\textcolor{red}{É só fazer umas continhas.}
+\end{proof}
+
+\begin{definicao}
+Um operador $L\in\mathcal{L}(V)$ se chama \textbf{autoadjunto}, ou também \textbf{Hermitiano}, se e só se $T^*=T.$
+\end{definicao}
+
+\noindent
+Agora seja $T\in\mathcal{L}(U,V)$ e $b\in V$. Queremos encontrar $x\in U$ que dê a melhor aproximação da equação:
+\[
+T(x)=b,
+\]
+ou seja, queremos encontrar $x\in U$ tal que a distância:
+\[
+\norm{T(x)-b}
+\]
+seja \emph{mínima}. Isso significa encontrarmos um $x\in U$ tal que a projeção ortogonal de $b$ em $\mathrm{Im}(T)$ seja $T(x)$. Temos de encontrar $x\in U$ tal que para todo $v\in\mathrm{Im}(T)$ tenhamos:
+\[
+\langle T(x)-b,v\rangle=0;
+\]
+ou seja,
+\[
+T(x)-b\in(\mathrm{Im}(T))^\perp.
+\]
+Seja $(e_1,\dots,e_n)$ uma base de $U$. Então:
+\[
+\begin{array}{rcl}
+T(x)-b\in(\mathrm{Im}(T))^\perp&\Leftrightarrow&\forall i=1,\dots,n:\langle T(x)-b,T(e_i)\rangle=0\\
+&\Leftrightarrow&\forall i=1,\dots,n:\langle T(x),T(e_i)\rangle=\langle b,T(e_i)\rangle\\
+&\Leftrightarrow&\forall i=1,\dots,n:\langle T^*T(x),e_i\rangle=\langle T^*(b),e_i\rangle\\
+&\Leftrightarrow& T^*T(x)=T^*(b).
+\end{array}
+\]
+
+\medskip
+\noindent
+\textcolor{red}{EXEMPLO NUMÉRICO QUE ESTOU COM PREGUIÇA DE ESCREVER PORQUE É CHATO DEMAIS}
 
 \printindex
 

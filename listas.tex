@@ -2824,41 +2824,25 @@ assim $m_T(x)$ é produto de fatores lineares distintos, aí $T$ é diagonalizá
 \]
 Prove que se $A$ é diagonalizável então $T_A$ é diagonalizável.
 \solucao{
-Se $A$ é diagonalizável, então existe uma matriz inversível $P$ e uma matriz diagonal $D$ tal que $A=PDP^{-1}$. Consideremos primeiro o operador $T_D$. Seja:
+Se $A$ é diagonalizável, então existem uma matriz inversível $P$ e uma matriz diagonal $D$ tais que $A=PDP^{-1}$. Consideremos primeiro o operador $T_D$. Seja:
 \[
 D=\begin{pmatrix}
 d_1&&&\\&d_2&&\\&&\ddots&\\&&&d_n
-\end{pmatrix},
+\end{pmatrix}.
 \]
-então para $(i,j)$, a entrada $(i,j)$ da matriz $DM-MD$ é $(d_i-d_j)m_{i,j}$; assim o operador $T_D$ consiste em multiplicar cada entrada $(i,j)$ de uma matriz $M$ por $(d_i-d_j)$. Assim, para todo polinômio $p(x)$, então $p(T_D)(M)$ consiste em multiplicarmos cada entrada $(i,j)$ da matriz $M$ por $p(d_i-d_j)$. Consideremos o conjunto:
-\[
-E=\{d_i-d_j\mid i,j=1\dots,n\},
-\]
-então $E$ é finito, aí considerando o polinômio:
-\[
-p(x)=\prod_{e\in E}(x-e),
-\]
-então $p(x)$ é produto de fatores lineares distintos e $p(T_D)=0$, mas para toda matriz $M$ temos:
+Então, para matriz $M=(m_{i,j})$ e para $i,j=1,\dots,n$, a entrada $(i,j)$ da matriz $DM-MD$ é $(d_i-d_j)m_{i,j}$; assim, para $i,j=1,\dots,n$, sendo $E_{i,j}$ a matriz que vale $1$ na entrada $(i,j)$ e $0$ nas demais, então é fácil ver que $T_D(E_{i,j})=(d_i-d_j)E_{i,j}$, assim $E_{i,j}$ é autovetor de $T_D$. Porém, para $M\in\m{n}{K}$, temos o seguinte:
 \[
 \begin{array}{rcl}
 T_A(M)&=&AM-MA\\
 &=&PDP^{-1}M-MPDP^{-1}\\
 &=&P(DP^{-1}MP-P^{-1}MPD)P^{-1}\\
-&=&PT_D(P^{-1}MP)P^{-1},
+&=&PT_D(P^{-1}MP)P^{-1}.
 \end{array}
 \]
-aí é fácil provar por indução que para todo $r\geq 0$ temos:
-\[
-T_A^r(M)=PT_D^r(P^{-1}MP)P^{-1},
-\]
-assim particular temos:
-\[
-p(T_A)(M)=Pp(T_D)(P^{-1}MP)P^{-1}=0;
-\]
-logo $p(T_A)=0$, aí o polinômio minimal de $T_A$ é produto de fatores lineares distintos, aí $T_A$ é diagonalizável.
+Logo, para $i,j=1,\dots,n$, é fácil ver que $PE_{i,j}P^{-1}$ é autovetor de $T_A$. Além disso, as matrizes $PE_{i,j}P^{-1}$ em que $i,j=1,\dots,n$ formam uma base de $\m{n}{K}$. Portanto $T_A$ é diagonalizável.
 }
 
-\exercicio{29} Seja $V$ um $K$-espaço de dimensão finita e sejam $E_1, E_2, \ldots E_k \in \mathcal{L}(V)$ tais que $E_1 + E2 + \ldots + E_k = I.$
+\exercicio{29} Seja $V$ um $K$-espaço de dimensão finita e sejam $E_1, E_2, \ldots E_k \in \mathcal{L}(V)$ tais que $E_1 + E_2 + \ldots + E_k = I.$
 \dividiritensdiv{1}{     
 \task[\pers{a}] Prove que se $E_iE_j = 0,$ para $i \neq j,$ então $E_i^2 = E_i$ para todo $i = 1, 2, \ldots, k.$
 \task[\pers{b}] Prove que se $E_i^2 = E_i$ para todo $i = 1, 2, \ldots, k$ e a característica de $K$ é zero, então $E_iE_j= 0,$ sempre que $i \neq j.$
@@ -3051,7 +3035,7 @@ Para encontrar a decomposição primária de $T,$ precisamos encontrar seu polin
 \task[\pers{a}] Encontrando o polinômio característico de $A:$
 \[
 \begin{array}{rcl}
-p(\lambda) &=& \det\left(A - \lambda I  \right) \\
+p(\lambda) &=& \det\left( \lambda I - A \right) \\
 &=& \det\left( \begin{bmatrix} \lambda & 0 & 0 \\
 0 & \lambda& 0 \\
 0 &0 & \lambda 
@@ -3344,7 +3328,7 @@ Prove que $W_i = \Ker(T-\lambda_iI)^{m_i},$ para todo $i = 1, \ldots, k.$
 \task[\pers{a}]
 Sendo $V_i=\Ker(T-\lambda_iI)^{m_i}$, então pela decomposição primária temos $V=V_1\oplus\dots\oplus V_k$ e cada $V_i$ é $T$-invariante. Além disso, sendo $V'_i=\Ker(T-\lambda_iI)^{n_i}$, então pela decomposição primária temos $V=V'_1\oplus\dots\oplus V'_k$ e cada $V'_i$ é $T$-invariante. Mas também temos $V_i\subseteq V'_i$ para cada $i$. Logo é fácil ver que $V_i=V'_i$ para todo $i$. Para cada $i$ seja $T_i=T\upharpoonright V_i$. Então $p_T=p_{T_1}\dots p_{T_k}$. Além disso, para cada $i$ temos $m_{T_i}(t)=(t-\lambda_i)^{m_i}$. Assim $\lambda_i$ é o único autovalor de $T_i$ em $V_i$, mas $p_{T_i}$ é produto de fatores lineares, assim $p_{T_i}(t)=(t-\lambda_i)^{r_i}$ para algum $r_i$. Assim $p_T(t)=(t-\lambda_1)^{r_1}\dots(t-\lambda_k)^{r_k}$, aí, pela fatoração única de polinômios, para todo $i$ temos $r_i=n_i$, aí $p_{T_i}=(t-\lambda_i)^{n_i}$, aí $\dim(V_i)=n_i$, aí $\dim(\Ker(T-\lambda_iI)^{m_i})=n_i$.
 \task[\pers{b}]
-É fácil ver que para todo $i$ temos $V_i\subseteq W_i$. Agora, para cada $i$, então para $v\in W_i$ então existe $r$ tal que $(T-\lambda_iI)(v)=0$, mas seja $v=v_1+\dots+v_k$ com $v_i\in V_i$, então $0=\sum_{j}(T-\lambda_iI)^r(v_j)$ e para todo $j$ temos $(T-\lambda_iI)(v_j)\in V_j$, aí para todo $j\neq i$ temos $(T-\lambda_iI)^r(v_j)=0$, mas $(T-\lambda_jI)^{m_j}(v_j)=0$, mas $(t-\lambda_i)^r$ e $(t-\lambda_j)^{m_j}$ são primos entre si, aí por Bézout temos $v_j=0$; logo $v=v_i$, aí $v\in V_i$. Logo, $V_i=W_i$, ou seja, $W_i=\Ker(T-\lambda_iI)^{m_i}$.
+É fácil ver que para todo $i$ temos $V_i\subseteq W_i$. Agora, para cada $i$, então para $v\in W_i$ então existe $r$ tal que $(T-\lambda_iI)^r(v)=0$, mas seja $v=v_1+\dots+v_k$ com $v_j\in V_j$, então $0=\sum_{j}(T-\lambda_iI)^r(v_j)$ e para todo $j$ temos $(T-\lambda_iI)^r(v_j)\in V_j$, aí para todo $j\neq i$ temos $(T-\lambda_iI)^r(v_j)=0$, mas $(T-\lambda_jI)^{m_j}(v_j)=0$ e $(t-\lambda_i)^r$ e $(t-\lambda_j)^{m_j}$ são primos entre si, aí por Bézout temos $v_j=0$; logo $v=v_i$, aí $v\in V_i$. Logo, $V_i=W_i$, ou seja, $W_i=\Ker(T-\lambda_iI)^{m_i}$.
 }
 }
   
@@ -3364,21 +3348,26 @@ Agora, apliquemos repetidamente o discurso do parágrafo anterior para chegarmos
 
 \bigskip
 \noindent
-\textcolor{red}{Solução Alternativa 1:} Faremos a resolução por indução em $V$. Suponhamos o exercício válido para $\dim(V)<n$. Seja $V$ espaço vetorial tal que $\dim(V)=n$ e seja $N$ um operador nilpotente. Então existe $r$ tal que $N^r=0$. Se $V=0$, é fácil. Senão, então tome um $v\neq 0$ qualquer. Seja $W$ o subespaço gerado por $\{v,N(v),N^2(v),\dots\}$. É fácil ver que $W$ é $N$-invariante, aí consideremos o espaço quociente $V/W$. Como $v\neq 0$, então $W\neq 0$, aí $\dim(V/W)=\dim(v)-\dim(W)<n$. Seja $k$ o menor tal que $\{v,N(v),N^2(v),\dots,N^k(v)\}$ seja linearmente dependente, então $B_1=\{v,N(v),N^2(v),\dots,N^{k-1}(v)\}$ é uma base de $W$. Seja $B$ uma base de $V$ tal que $B_1\subseteq B$ e seja $B_2=B\setminus B_1$. Então $\overline{B}_2=\{\overline{b}:b\in B_2\}$ é uma base de $V/W$ e, sendo $N'=N\upharpoonright W$ e sendo $\overline{N}\in L(V/W)$ o operador induzido, então temos:
+\textcolor{red}{Solução Alternativa 1:} Faremos a resolução por indução na dimensão de $V$. Suponhamos o exercício válido para $\dim(V)<n$. Seja $V$ espaço vetorial tal que $\dim(V)=n$ e seja $N\in L(V)$ tal que exista $r$ tal que $N^r=0$. Se $V=0$, é fácil. Senão, então tome um $v\neq 0$ qualquer. Consideremos:
+\[
+m_{N,v}(t)=t^m+\alpha_{m-1}t^{m-1}+\dots+\alpha_1 t+\alpha_0,
+\]
+o polinômio mônico de menor grau tal que \(m_{N,v}(N)(v)=0\). Então \(B_1=\{v,N(v),\ldots, N^{m-1}(v)\}\) é linearmente independente. Além disso, como \(N^r(v)=0\), então $m_{N,v}(t)\mid t^r$, aí $m_{N,v}(t)=t^m$. Seja \(W\) o subespaço gerado por ele. Note que \(W\) é \(N\)-invariante e ainda:
+\[[N\upharpoonright_W]_{B_1}=\begin{pmatrix}
+0 & 0 & \ldots& 0 & 0
+\\ 1 & 0 & \ldots & 0 & 0
+\\ 0 & 1 & \ldots & 0 & 0
+\\ \ldots & \ldots  & \ldots  & \ldots  & \ldots \
+\\ 0 & 0 & \ldots & 1 & 0
+\end{pmatrix},\]
+assim $p_{N\upharpoonright_W}(t)=t^m$. Seja $B$ uma base de $V$ tal que $B_1\subseteq B$ e seja $B_2=\{\overline{b}:b\in B\setminus B_1\}$. Então $B_2$ é uma base de $V/W$ e, sendo $\overline{N}\in L(V/W)$ o operador induzido, temos:
 \[
 [N]_B=
 \begin{pmatrix}
-[N']_{B_1}&*\\0&[\overline{N}]_{\overline{B_2}}
+[N\upharpoonright_W]_{B_1}&*\\0&[\overline{N}]_{B_2}
 \end{pmatrix},
 \]
-aí é fácil ver que $p_N=p_{N'}p_{\overline{N}}$. Além disso, é fácil ver que:
-\[
-[N]^r_B=
-\begin{pmatrix}
-[N']^r_{B_1}&*\\0&[\overline{N}]^r_{\overline{B_2}}
-\end{pmatrix},
-\]
-de modo que $(N')^r=0$ e $(\overline{N})^r=0$, aí por hipótese de indução temos $p_{\overline{N}}(t)=t^{\dim(V/W)}$. Além disso, $N'$ é a matriz companheira de um polinômio, aí $p_{N'}=m_{N'}$, mas $m_{N'}(t)\mid t^r$, aí $p_{N'}(t)=t^l$ para algum $l$, aí $p_{N}(t)=t^{l+\dim(V/W)}$, mas o grau de $p_{N}$ deve ser $n$, aí $p_{N}(t)=t^n$.
+assim é fácil ver que $p_N(t)=p_{N\upharpoonright_W}(t)p_{\overline{N}}(t)$, mas também é fácil ver que $\overline{N}^r=0$, aí por hipótese de indução temos $p_{\overline{N}}(t)=t^{n-m}$, aí $p_N(t)=t^n.$
 
 \bigskip
 \noindent
@@ -3401,13 +3390,12 @@ $TN = NT$. Prove que
 }
 \solucao{
 \dividiritens{
-\task[\pers{a}] $(\Rightarrow)$ Como $N$ é nilpotente, sabemos que existe $m > 0$ tal que $N^m = 0.$ Assumindo que $N \neq 0$ (pois do contrário não há o que demonstrar), então $m > 1.$ 
-
-Se $T$ é inversível, podemos escrever
+\task[\pers{a}]
+}
+$(\Rightarrow)$ Como $N$ é nilpotente, sabemos que existe $m > 0$ tal que $N^m = 0.$ Assumindo que $N \neq 0$ (pois do contrário não há o que demonstrar), então $m > 1.$ Se $T$ é inversível, podemos escrever
 \[
 T + N = T(I + T^{-1}N)
 \]
-
 Note também que 
 \[
 TN = NT \Rightarrow T^{-1}N = NT^{-1}.
@@ -3416,7 +3404,6 @@ e consequentemente
 \[
 (-T^{-1}N)^m = (-1)^mT^{-m}N^m = 0.
 \]
-
 Lembrando da identidade polinomial
 \[
 x^m - 1 = (x - 1) \displaystyle \sum\limits_0^{m - 1} x^{m - 1 - i},
@@ -3435,54 +3422,51 @@ I - \textcolor{Mahogany}{(-T^{-1}N)^m} =  I - \textcolor{Mahogany}{0} = I,
 \]
 donde segue que
 \[
- \textcolor{Blue}{I - (-T^{-1}N)^m} = (I + T^{-1}N) \displaystyle \sum_0^{m - 1} (-T^{-1}N)^{m - 1- i} \Rightarrow  \textcolor{Blue}{I} = (I + T^{-1}N) \displaystyle \sum_0^{m - 1} (-T^{-1}N)^{m - 1- i}.
+\textcolor{Blue}{I - (-T^{-1}N)^m} = (I + T^{-1}N) \displaystyle \sum_0^{m - 1} (-T^{-1}N)^{m - 1- i} \Rightarrow  \textcolor{Blue}{I} = (I + T^{-1}N) \displaystyle \sum_0^{m - 1} (-T^{-1}N)^{m - 1- i}.
 \]
-
-Logo, isso mostra que $(I + T^{-1}N)$ possui uma inversa (respectivamente, $\sum\limits_0^{m - 1} (-T^{-1}N)^{m - 1- i}.)$
-
+Logo, isso mostra que $(I + T^{-1}N)$ possui uma inversa, respectivamente:
+\[
+\sum\limits_0^{m - 1} (-T^{-1}N)^{m - 1- i}.
+\]
 Daí, concluímos que ambos $T$ e $I + T^{-1}N$ são inversíveis; logo seu produto também o é. Mas
 \[
 T(I + T^{-1}N) = T + N.
 \]
-
 Portanto, segue que $T + N$ é inversível. \\
 
+\medskip
+\noindent
 $(\Leftarrow)$ Se $T+N$ é inversível, como $-N$ é nilpotente e $(T+N)(-N)=(-N)(T+N)$, então basta aplica $(\Rightarrow)$ para $T+N$ e $-N$ em vez de $T$ e $N$ e concluir que $(T+N)-N$ é inversível, aí $T$ é inversível.
 %https://math.mit.edu/~gs/linearalgebra/ila0205.pdf - pg 93
-\task[\pers{b}] Se $\det(T) = 0,$ então $\det(T) $
-
-Utilizando que
+\dividiritens{
+\task[\pers{b}]
+}
+Se $\det(T) = 0,$ então $T$ não é inversível, aí, pelo item (a), a matriz $T+N$ não é inversível, aí temos $\det(T+N)=0$, aí $\det(T)=\det(T+N)$. Se $\det(T)\neq 0$, então $T$ é inversível, aí utilizando que
 \[
 T + N= T(I + T^{-1}N),
 \]
+podemos inferir que:
+\[
+\det(T+N)=\det(T)\det(I+T^{-1}N),
+\]
+porém $TN=NT$ e $N$ é nilpotente, aí $T^{-1}N$ é nilpotente, assim, pela resolução do Exercício 7 da Lista 3, existe uma base $B$ tal que a matriz de $T^{-1}N$ seja estritamente triangular superior, assim $I+T^{-1}N$ é triangular superior com todas as entradas na diagonal valendo $1$, assim $\det(I+T^{-1}N)=1$, aí $\det(T+N)=\det(T)$.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+\dividiritens{
+\task[\pers{c}]
 }
+Para todo $t$, então $-N$ é nilpotente e também:
+\[
+(tI-T)(-N)=(-N)(tI-T),
+\]
+aí pelo item (b) temos:
+\[
+\begin{array}{rcl}
+p_T(t) &=& \det(tI-T) \\
+ &=& \det(tI-T-N) \\
+&=& \det(ti-(T+N)) \\
+&=& p_{T+N}(t)
+\end{array}
+\]
 %https://math.stackexchange.com/questions/2757872/let-t-n-v-to-v-n-is-nilpotent-t-is-invertible-and-nt-tn-prove-nt
 }
 
@@ -3659,7 +3643,22 @@ T_{I_n}(M) = I_n M - M I_n = 0.
 \]
 Logo, $T_{I_n} = 0,$ que obviamente é nilpotente, mas $A = I_n$ não é nilpotente.
 
-\task[\pers{b}]
+\task[\pers{b}] Suponhamos que $A$ possua um autovalor $\lambda$ e $T_A$ seja diagonalizável. Seja $v\neq 0$ tal que $Av=\lambda v$. Sejam $\lambda_1,\dots,\lambda_r$ os autovalores de $T_A$. Para toda $M\in\m{n}{K}$, então existem $M_1,\dots,M_r$ tais que:
+\[
+M=M_1+\dots+M_r
+\]
+e para todo $i$ tenhamos:
+\[
+T_A(M_i)=\lambda_i M_i,
+\]
+assim temos:
+\begin{align*}
+T_A(M_i)v=\lambda_i M_iv
+&\Rightarrow AM_iv-M_iAv=\lambda_i M_iv\\
+&\Rightarrow AM_iv-\lambda M_iv=\lambda_i M_iv\\
+&\Rightarrow AM_iv=(\lambda_i+\lambda)M_iv,
+\end{align*}
+aí $M_iv$ é autovetor de $A$; logo todo vetor da forma $Mv$ pode ser expresso como soma de autovetores de $A$. Além disso, como $v\neq 0$, então existe $j$ tal que $v_j\neq 0$, assim para $i$ seja $E_i\in\m{n}{K}$ a matriz que vale $v_j^{-1}$ na entrada $(i,j)$ e $0$ nas outras, então $E_iv=e_i$, em que $e_i\in K^n$ é o vetor que vale $1$ na entrada $i$ e $0$ nas demais. Portanto toda matriz em $\m{n}{K}$ é da forma $Mv$ para alguma $M\in\m{n}{K}$, aí pode ser expressa como soma de autovalores de $A$. Logo $A$ é diagonalizável.
 }
 
 \textbf{Observação:}  $T_A$ na verdade é um operador de derivação em $\mathcal{M}_n(K).$ Veja que $\forall M, N \in \mathcal{M}_n(K),$ temos que
@@ -3797,59 +3796,93 @@ encontre $k \in \mathbb{N}$ tal que $(AB - BA)^k = 0.$
 \solucao{
 %Utilizando o operador do exercício 10.
 }
+
 \newpage
 \section{\textcolor{Floresta}{Lista 4}}
 
-   \exercicio{1} Sejam $V$ um $K$-espaço vetorial de dimensão finita e $T \in \mathcal{L}(V).$
-  
-  \dividiritens{  
-  \task[\pers{a}] Prove que se existe um vetor cíclico para $T$ então todo subespaço próprio $T$-invariante de $V$ também tem um vetor cíclico. 
-  
-  \task[\pers{b}] Vale a recíproca do item (a)? (Isto é, se todo subespaço próprio $T$-invariante $W$ de $V$tem um vetor cíclico para $T_W,$ é verdade que existe um vetor cíclico para $T$?)
-  
-  }
+\exercicio{1} Sejam $V$ um $K$-espaço vetorial de dimensão finita e $T \in \mathcal{L}(V).$
 
-\solucao{
-  \dividiritens{  
-  \task[\pers{a}] Sabemos que um vetor $v \in V$ é cíclico se $Z(v, T) = V,$ onde 
-  \[
-  Z(v,T) = \{ g(T)(v) | g(t) \in K[t] \}.
-  \]
-  
-  Equivalentemente, dizemos que $v \in V$ é cíclico se $\{v, T(v), T^2(v), \ldots, T^{n-1}(v) \}$ é uma base para $V.$
-  
-  
-  }
+\dividiritens{
+\task[\pers{a}] Prove que se existe um vetor cíclico para $T$ então todo subespaço próprio $T$-invariante de $V$ também tem um vetor cíclico.
 
+\task[\pers{b}] Vale a recíproca do item (a)? (Isto é, se todo subespaço próprio $T$-invariante $W$ de $V$tem um vetor cíclico para $T_W,$ é verdade que existe um vetor cíclico para $T$?)
 }
 
-   \exercicio{2} Sejam $V$ um $K$-espaço vetorial de dimensão finita e $T \in \mathcal{L}(V).$ Prove que se $T^2$ tem um vetor
+\solucao{
+\dividiritens{  
+\task[\pers{a}] Sabemos que um vetor $v \in V$ é cíclico se $Z(v, T) = V,$ onde 
+\[
+Z(v,T) = \{ g(T)(v) \mid g(t) \in K[t] \}.
+\]
+Para subespaço $W$ que seja $T$-invariante, então seja $\{e_1,\dots,e_m\}$ uma base de $W$. Para todo $i$ então existe um polinômio $p_i$ tal que $e_i=p_i(T)(v)$. Seja $p=\mathrm{mdc}(p_1,\dots,p_m)$. Então por Bézout existem polinômios $q_1,\dots,q_m$ tais que $p_1q_1+\dots+p_mq_m=p$, assim
+\[
+p(T)(v)=q_1(T)(e_1)+\dots+q_m(T)(e_m)\in W,
+\]
+aí, como $p\mid p_i$ para todo $i$, então, sendo $w=p(T)(v)$, temos $W=Z(w,T)$.
+\task[\pers{b}] A recíproca não é verdadeira. Seja $V=K^2$ e $T=I$. Então para todo $v\in V$ temos $Z(v,T)=Kv$. Todo subespaço próprio $T$-invariante tem dimensão no máximo $1$, assim é da forma $Ke=Z(e,T)$. Por outro lado, é fácil ver que para todo $v\in V$ temos $Z(v,T)=Kv\neq V$.
+}
+}
+
+
+\exercicio{2} Sejam $V$ um $K$-espaço vetorial de dimensão finita e $T \in \mathcal{L}(V).$ Prove que se $T^2$ tem um vetor
 cíclico, então $T$ tem um vetor cíclico. Vale a recíproca?
   
 \solucao{Seja $n = \dim V.$ Se $v$ é um vetor cíclico para $T^2,$ isso quer dizer que $V = Z(v,T^2).$ Vejamos que $Z(v, T^2) \subseteq Z(v, T). $
 \[
-Z(v,T^2) = \{ g(T^2)(v) | g(t) \in K[t] \} = \langle v, T^2(v), T^4(v), \ldots \rangle \subseteq  \langle v, T(v), T^2(v), \ldots, T^{n-1}(v) \rangle = Z(v, T)
-\]Logo, concluímos que
+Z(v,T^2) = \{ g(T^2)(v) \mid g(t) \in K[t] \} = \langle v, T^2(v), T^4(v), \ldots \rangle \subseteq  \langle v, T(v), T^2(v), \ldots\rangle = Z(v, T).
+\]
+Logo, concluímos que
 \[
 \textcolor{RawSienna}{Z(v,T^2)} \subseteq  Z(v, T) \Rightarrow \textcolor{RawSienna}{V} \subseteq  Z(v, T) \Rightarrow \boxed{Z(v,T) = V}
 \]
 Assim, $v$ é um vetor cíclico para $T.$
 
-Observe que a recíproca não é verdadeira. Tome $T = \begin{bmatrix}
-0 & 1 \\ 1 & 0 \end{bmatrix}.$ Então $v = (1,0)$ é um vetor cíclico para $T,$ mas $T^2 = I,$ que não possui um vetor cíclico.
-%https://math.stackexchange.com/questions/2154881/if-linear-operator-t2-has-a-cyclic-vector-then-so-does-t?rq=1
-
+\medskip
+\noindent
+Observe que a recíproca não é verdadeira. Tome:
+\[
+T = \begin{bmatrix}
+0 & 1 \\ 1 & 0 \end{bmatrix}.
+\]
+Então $v = (1,0)$ é um vetor cíclico para $T,$ mas $T^2 = I,$ que não possui um vetor cíclico.
 }
-    \exercicio{3} Sejam $V$ um $K$-espaço vetorial de dimensão $n$ e $T \in \mathcal{L}(V)$ um operador diagonalizável.
+
+\exercicio{3} Sejam $V$ um $K$-espaço vetorial de dimensão $n$ e $T \in \mathcal{L}(V)$ um operador diagonalizável.
 \dividiritens{
 \task[\pers{a}] Mostre que existe um vetor cíclico para $T$ se, e somente se, $T$ tem $n$ autovalores distintos.
 \task[\pers{b}] Mostre que se $T$ tem $n$ autovalores distintos e se $\{v_1, \ldots , v_n\}$ é uma base de autovetores de $T,$ então $v = v_1 + v_2 + \ldots + v_n$ é um vetor cíclico para $T.$  
- } 
- \solucao{}
+}
+\solucao{
+\dividiritens{
+\task[\pers{a}] Se existe $v\in V$ tal que $V=Z(v,T)$, então $\{v,T(v),\dots,T^{n-1}(v)\}$ é base de $V$, aí $m_T$ tem grau $n$, e sendo $\lambda_1,\dots,\lambda_r$ os autovalores distintos, então
+\[
+m_T(t)=(t-\lambda_1)\dots(t-\lambda_r).
+\]
+Assim, concluímos que $m_T$ tem grau $r$. Logo, $r=n$ e $T$ tem $n$ autovalores distintos. A recíproca será resolvida no item (b).
+
+\task[\pers{b}] Se $T$ tem $n$ autovalores distintos e se $\{v_1, \ldots , v_n\}$ é uma base de autovetores de $T,$ então para cada $i \in \{1, \ldots, n \}.$ existe $\lambda_i$ tal que $T(v_i)=\lambda_iv_i$; assim $\lambda_1,\dots,\lambda_n$ devem ser distintos. Agora, considere para cada $i \in \{1, \ldots, n \},$
+\[
+q_i(t)=\prod_{j\neq i}(t-\lambda_j)\quad \mbox{e} \quad p_i(t)=\frac{q_i(t)}{q_i(\lambda_i)},
+\]
+então:
+\[
+\begin{array}{rcl}
+v_i&=&p_i(\lambda_1)v_1+\dots+p_i(\lambda_n)v_n\\
+&=&p_i(T)v_1+\dots+p_i(T)v_n\\
+&=&p_i(T)(v_1+\dots+v_n).
+\end{array}
+\]
+Logo, $v_1+\dots+v_n$ é um vetor cíclico para $T$.
+}
+}
+
     \exercicio{4} Prove que duas matrizes de ordem $3$ são semelhantes se, e somente se, elas têm o mesmo polinômio característico e o mesmo polinômio minimal.
  \solucao{}
     \exercicio{5} Prove que toda matriz $A \in \mathcal{M}_n(K)$ é semelhante à sua transposta $A^t.$
- \solucao{}
+ \solucao{
+ %https://math.stackexchange.com/questions/94599/a-matrix-is-similar-to-its-transpose
+ 
+ }
     \exercicio{6} Sejam $V$ um $K$-espaço vetorial de dimensão $n$ e $T \in \mathcal{L}(V).$
 \dividiritens{
 \task[\pers{a}] Prove que $\mbox{Im } T$ tem um complementar $T$-invariante se, e somente se, $\mbox{Im } T \cap \Ker T = 0.$
@@ -3866,7 +3899,150 @@ A = \begin{bmatrix}
 \end{bmatrix}
 \]
 Encontre uma matriz inversível $P$ tal que $P^{-1}AP$ esteja na forma racional.
- \solucao{}
+ \solucao{
+ Primeiramente, encontremos o polinômio característico e o polinômio minimal de $A.$ Temos que
+ \[
+ p_A(\lambda) = \det \left( A - \lambda I \right) \Rightarrow  p_A(\lambda) = \det \left( \begin{bmatrix}
+1 & 3 & 3 \\
+3 & 1 & 3 \\
+-3 & -3 & -5
+\end{bmatrix} - \begin{bmatrix}
+\lambda & 0 & 0 \\
+0 & \lambda & 0 \\
+0 & 0 & \lambda
+\end{bmatrix} \right) \Rightarrow \]\[p_A(\lambda) = \det \begin{bmatrix}
+1-\lambda & 3 & 3 \\
+3 & 1-\lambda & 3 \\
+-3 & -3 & -5-\lambda
+\end{bmatrix} \Rightarrow p_A(\lambda) = \lambda^3+3\lambda^2-4 \Rightarrow p_A(\lambda) = (\lambda-1)(\lambda+2)^2
+ \]
+ O polinômio minimal será
+ \[
+ m_A(\lambda) = (\lambda-1)(\lambda+2) = \lambda^2 + \lambda - 2
+ \]
+ Dessa forma, temos que
+ \[
+ V = Z(v_1, A) \oplus Z(v_2, A)
+ \]
+ Como na decomposição cíclica, o $A$-anulador do primeiro vetor $v_1$ é o polinômio minimal, temos que 
+\[
+\dim(Z(v_1, A)) = \deg(m_A) = 2
+\]
+Portanto, na decomposição, aparece apenas mais um vetor $v_2,$ sendo 
+\[
+\dim(Z(v_2, A)) = 1,\] 
+ou seja, $v_2$ é um vetor característico de $A$. O $A$−anulador de $v_2$ é $p_2 = \lambda - 2,$ pois $p_A = p_1p_2.$
+A matriz que representa $Z(v_1, A)$ será portanto, a matriz companheira de $p_1(\lambda) = m_A(\lambda).$ Assim,
+\[
+A_1 = \begin{bmatrix}
+0 & 2 \\
+1 & -1
+\end{bmatrix}
+\]
+A matriz que representa $Z(v_2, A)$ será a matriz companheira de $p_2(\lambda) = \lambda + 2.$ Assim,
+\[A_2 = \begin{bmatrix}
+-2 \end{bmatrix}
+\]
+
+Portanto, temos que a forma racional de $A$ é
+\[
+R = \begin{bmatrix}
+\textcolor{Violet}{A_1} & 0 \\ 0 & \textcolor{PineGreen}{A_2}
+\end{bmatrix} \Rightarrow R = \begin{bmatrix}
+\textcolor{Violet}{0} & \textcolor{Violet}{2} & 0 \\ \textcolor{Violet}{1} & \textcolor{Violet}{-1} & 0 \\
+0 & 0 & \textcolor{PineGreen}{-2}
+\end{bmatrix} 
+\]
+Encontremos agora a matriz $P.$ Para isso, precisaremos encontrar bases para $Z(v_1, A)$ e $Z(v_2, A).$ 
+Vamos primeiramente descrever $V_1 = \Ker(A - I)$ e $V_2 = \Ker(A + 2I).$ 
+\begin{itemize}
+    \item Para encontrar uma base para $V_1$, seja $v = (x, y, z) \in V.$ Então, temos que
+    \[
+    (A - I)v = 0 \Rightarrow \begin{bmatrix}
+0 & 3 & 3 \\
+3 & 0 & 3 \\
+-3 & -3 & -6
+\end{bmatrix} \begin{bmatrix}
+x \\ y \\ z
+\end{bmatrix} = \begin{bmatrix}
+0 \\ 0 \\ 0
+\end{bmatrix} \Rightarrow \]\[\begin{cases}
+3y + 3z = 0 \\
+3x+3z = 0 \\
+-3x-3y-6z = 0
+\end{cases} \Rightarrow v = z \cdot (-1,-1,1)
+    \]
+    Desse modo, temos que $V_1 = \Ker(A - I) = \langle (-1,-1,1) \rangle.$ Denotemos $u_1 = (-1,-1,1).$
+
+\item Para encontrar uma base para $V_2$, seja $v = (x, y, z) \in V.$ Então, temos que
+    \[
+    (A + 2I)v = 0 \Rightarrow \begin{bmatrix}
+3 & 3 & 3 \\
+3 & 3 & 3 \\
+-3 & -3 & -3
+\end{bmatrix} \begin{bmatrix}
+x \\ y \\ z
+\end{bmatrix} = \begin{bmatrix}
+0 \\ 0 \\ 0
+\end{bmatrix} \Rightarrow \]\[\begin{cases}
+3x + 3y + 3z = 0 \\
+3x+3y+3z = 0 \\
+-3x-3y-3z = 0
+\end{cases} \Rightarrow v = y \cdot (-1,1,0) + z (-1,0,1)
+    \]
+        Desse modo, temos que $V_2 = \Ker(A + 2I) = \langle (-1,1,0), (-1,0,1) \rangle.$ Denotemos $u_2 = (-1,1,0)$ e $u_3 =  (-1,0,1).$ 
+\end{itemize}
+Para encontrar $v_1,$ como $p_1 = m_A,$ precisamos escolher um vetor de $V_1$ e um de $V_2.$ Podemos então tomar $v_1 = u_1 + u_2$ (poderia ser $u_1 + u_3$ também), e assim
+\[
+v_1 = (-1,-1,1) + (-1,1,0) \Rightarrow v_1 = (-2,0,1).
+\]
+Sabemos que $\{ v_1, Av_1 \}$ é uma base para $Z(v_1, A).$ Então,
+\[
+Av_ 1 =  \begin{bmatrix}
+1 & 3 & 3 \\
+3 & 1 & 3 \\
+-3 & -3 & -5
+\end{bmatrix} \begin{bmatrix}
+-2 \\ 0 \\ 1
+\end{bmatrix} = \begin{bmatrix}
+1 \\ -3 \\ 1
+\end{bmatrix}
+\]
+Logo, $\mathcal{B_1} = \{ (-2,0,1),(1, -3 , 1)\} $ é base para $Z(v_1, A).$
+Para encontrar $v_2,$ como $p_2 = \lambda + 2,$ podemos tomar $v_2 = u_3.$ Logo,
+\[
+v_2 = u_3 \Rightarrow v_2 =  (-1,0,1)
+\]
+Assim, temos que $\mathcal{B}_2 = \{v_2 \} = \{ (-1,0,1) \}$ é base para $Z(v_2, A).$ A matriz $P$ será composta pelos vetores de $\mathcal{B}_1$ e $\mathcal{B}_2$ dispostos em suas colunas. Assim,
+\[
+P = \begin{bmatrix}
+-2 & 1& -1\\
+0 &-3 & 0\\
+1 &1 &1
+\end{bmatrix}
+\]
+Com efeito, uma rápida verificação mostra que
+\[
+P^{-1}AP = \left[\begin{matrix}
+-1 & -\frac{2}{3} & -1 \\
+0 & -\frac{1}{3} & 0 \\
+1 & 1 & 2
+\end{matrix}\right]  \begin{bmatrix}
+1 & 3 & 3 \\
+3 & 1 & 3 \\
+-3 & -3 & -5
+\end{bmatrix}\begin{bmatrix}
+-2 & 1& -1\\
+0 &-3 & 0\\
+1 &1 &1
+\end{bmatrix} = \left[\begin{matrix}
+0 & 2 & 0 \\
+1 & -1 & 0 \\
+0 & 0 & -2
+\end{matrix}\right] = R \Rightarrow R = P^{-1}AP,
+\]
+como queríamos.
+ }
     \exercicio{8} Seja $A \in \mathcal{M}_n(\mathbb{R})$ a matriz
 \[
 A = \begin{bmatrix}
@@ -3880,7 +4056,10 @@ Encontre vetores $\{v_1, \ldots , v_r \}$ que satisfazem as condições do Teore
  \solucao{}
     \exercicio{9} Sejam $N_1$ e $N_2$ matrizes de ordem $6$ nilpotentes. Suponha que elas têm o mesmo polinômio
 minimal e o mesmo posto. Prove que elas são semelhantes. Mostre que o mesmo resultado não é verdadeiro para matrizes de ordem $7.$
- \solucao{}
+ \solucao{
+ %http://www.professores.uff.br/marco/wp-content/uploads/sites/37/2017/07/SolVE2-2012.pdf -  questão 2 
+ 
+ }
     \exercicio{10} Seja $A \in \mathcal{M}_n(\mathbb{R}),$ tal que $A^2 + I = 0.$ Prove que $n = 2k$ e que $A$ é semelhante à matriz
     \[
     A = \begin{bmatrix}
@@ -3889,13 +4068,26 @@ minimal e o mesmo posto. Prove que elas são semelhantes. Mostre que o mesmo res
     \end{bmatrix},
     \]
     onde $I \in \mathcal{M}_k(\mathbb{R})$ é a matriz identidade.
- \solucao{}
-    \exercicio{11} Sejam $V$ um $K$-espaço vetorial de dimensão finita e $T \in \mathcal{L}(V).$ Prove que $T$ tem um vetor cíclico se, e somente se a seguinte afirmação é verdadeira: “Todo operador linear que comuta com $T$ é um polinômio em $T.$"
-     \solucao{}
-    \exercicio{12} Sejam $V$ um $K$-espaço vetorial de dimensão finita e $T \in \mathcal{L}(V).$ Prove que todo vetor não
+\solucao{}
+
+\exercicio{11} Sejam $V$ um $K$-espaço vetorial de dimensão finita e $T \in \mathcal{L}(V).$ Prove que $T$ tem um vetor cíclico se, e somente se a seguinte afirmação é verdadeira: ``Todo operador linear que comuta com $T$ é um polinômio em $T.$''
+
+\solucao{
+\dividiritens{
+\task[\pers{a}] Se $T$ tem um vetor cíclico, então, para todo operador linear $U$ que comuta com $T$, o conjunto $W=\mathrm{Im}(U)$ é um subespaço $T$-invariante. Pelo Exercício 1 da Lista 4, existe $w$ tal que $W=Z(w,T)$, aí existe um polinômio $p$ tal que $U(v)=p(T)(w)$. Assim, para todo $k,$ temos que
+\[
+UT^k(v)=T^k\textcolor{Mahogany}{U}(v)=T^k\textcolor{Mahogany}{p(T)}(v)=p(T)T^k(v).
+\]
+Logo, como $\{v,T(v),T^2(v)\dots\}$ gera $V$, então $U=p(T)$.
+}
+}
+
+\exercicio{12} Sejam $V$ um $K$-espaço vetorial de dimensão finita e $T \in \mathcal{L}(V).$ Prove que todo vetor não
 nulo $v \in V $é um vetor cíclico para $T$ se, e somente se, o polinômio característico de $T$ é irredutível em $K[t].$
-        \solucao{}
-    \exercicio{13} Sejam $V$ um $K$-espaço vetorial de dimensão finita e $T \in \mathcal{L}(V).$ Suponha que o polinômio
+
+\solucao{}
+
+\exercicio{13} Sejam $V$ um $K$-espaço vetorial de dimensão finita e $T \in \mathcal{L}(V).$ Suponha que o polinômio
 minimal de $T$ é igual ao polinômio característico de $T$ e é uma potência de um polinômio irredutível. Prove que nenhum subespaço não trivial de $V$ invariante sob $T$ tem um complementar que também é invariante sob $T.$  
             \solucao{}
     \exercicio{14} Determine a forma racional $R$ da matriz
@@ -3907,14 +4099,14 @@ minimal de $T$ é igual ao polinômio característico de $T$ e é uma potência 
     2 & 0 & 4 & 1
     \end{bmatrix} \in \mathcal{M}_4(\mathbb{R})
     \]
-e encontre uma matriz inversível $P$ tal que $P^{−1}AP = R.$
-            \solucao{}
-    \exercicio{15} Seja $T \in \mathcal{L}(K^6)$ com polinômio minimal $m_T(x) = (x^2 − 2)(x^2 + 1).$ Ache as possibilidades para a forma racional de $T$ para $K = \mathbb{Q}, K = \mathbb{R}$ e $K = \mathbb{C}.$   
+e encontre uma matriz inversível $P$ tal que $P^{-1}AP = R.$    
+        \solucao{}
+    \exercicio{15} Seja $T \in \mathcal{L}(K^6)$ com polinômio minimal $m_T(x) = (x^2 - 2)(x^2 + 1).$ Ache as possibilidades para a forma racional de $T$ para $K = \mathbb{Q}, K = \mathbb{R}$ e $K = \mathbb{C}.$   
             \solucao{}
     \exercicio{16} Seja $T \in \mathcal{L}(\mathbb{R}^4)$ um operador linear tal que $t^2 + 3$ é um divisor do polinômio minimal de $T$
 e $1$ é o único autovalor de $T.$ Quais são as possíveis a formas racionais de $T?$               \solucao{}
     \exercicio{17} Classifique, a menos de semelhança, as matrizes reais de ordem $6$ com polinômio minimal
-\[(t − 1)^2(t + 1)(t − 2). \]
+\[(t - 1)^2(t + 1)(t - 2). \]
                  \solucao{}
     \exercicio{18} Determine quais das matrizes seguintes são semelhantes:
 \[
@@ -3966,7 +4158,7 @@ são semelhantes.
 \end{bmatrix}
  \]
 e a matriz $P$ tal que $P^{
-−1}AP = J.$
+-1}AP = J.$
                  \solucao{}
     \exercicio{22} Seja
 \[
@@ -3978,7 +4170,170 @@ A  =\begin{bmatrix}
 \end{bmatrix}.
 \]
 Determine a forma de Jordan $J$ de $A$ e encontre uma matriz inversível $P$ tal que $P^{-1}AP = J.$
-                 \solucao{}
+                 \solucao{
+                 Para encontrar a forma de Jordan de $A,$ vamos primeiramente encontrar o polinômio característico e o minimal de $A.$ Temos que
+                 \[
+                 p_A(\lambda) = \det(A - \lambda I) = \det \left( \begin{bmatrix}
+0 & 1 & 0& 0\\
+0 &0 &1 & 0 \\
+0 &0 &0& 1 \\
+0 & 0 & -1&0
+\end{bmatrix} - \lambda \begin{bmatrix}
+1 & 0 & 0& 0\\
+0 &1 &0 & 0 \\
+0 &0 &1& 0 \\
+0 & 0 & 0&1
+\end{bmatrix} \right) = \]\[
+\det \left( \begin{bmatrix}
+-\lambda & 1 & 0& 0\\
+0 &-\lambda &1 & 0 \\
+0 &0 &-\lambda& 1 \\
+0 & 0 & -1&-\lambda
+\end{bmatrix} \right) = \lambda^4 + \lambda^2 \Rightarrow p_A(\lambda) = \lambda^2(\lambda + i)(\lambda - i)
+                 \]
+
+Sabemos que o polinômio minimal é o polinômio de menor grau que anula $T.$ Além disso, $m_A(t) \mid p_A(t).$ Nesse caso, uma inspeção direta mostra que $m_A(t) = p_A(t) = \lambda^2(\lambda + i)(\lambda - i).$ Portanto, os autovalores de $A$ são $0, i$ e $-i.$ A quantidade de vezes que cada um aparecerá em $J$ é exatamente sua multiplicidade algébrica, ou seja, a multiplicidade em $p_a(t).$ Desse modo, já sabemos que $0$ aparecerá duas vezes, enquanto $i$ e $-i$ aparecerão uma vez cada. Resta-nos agora determinar quantos blocos de Jordan estão associados a cada autovalor.        
+
+Para isso, vamos calcular a dimensão de cada autoespaço associado. Temos:
+\begin{itemize}
+    \item $\dim(\Ker(A^2)) =2$. Observe que $A^2$ possui 2 linhas linearmente independentes:
+    \[ \begin{bmatrix}
+0 & 1 & 0& 0\\
+0 &0 &1 & 0 \\
+0 &0 &0& 1 \\
+0 & 0 & -1&0
+\end{bmatrix}^2 = \begin{bmatrix}
+0 & 0 & 1& 0\\
+0 &0 &0 & 1 \\
+0 &0 &-1& 0 \\
+0 & 0 & 0&-1
+\end{bmatrix}  \xrightarrow[]{\substack{L_3 = L_3 +L_1 \\L_4 = L_4 +L_2}}  \begin{bmatrix}
+0 & 0 & 1& 0\\
+0 &0 &0 & 1 \\
+\textcolor{Blue}{0} & \textcolor{Blue}{0} & \textcolor{Blue}{0}&\textcolor{Blue}{0}\\
+\textcolor{Blue}{0} & \textcolor{Blue}{0} & \textcolor{Blue}{0}&\textcolor{Blue}{0}
+\end{bmatrix} 
+    \]
+    Logo, $\mbox{posto}(A) = 2,$ e portanto 
+    \[\dim(\Ker(A)) = 4 - \mbox{posto}(A)  \Rightarrow \dim(\Ker(A)) = 4 - 2 \Rightarrow \dim(\Ker(A)) = 2
+    \]
+Encontremos os autovetores que geram $\Ker(A^2).$ Temos que:
+\[
+\begin{bmatrix}
+0 & 1 & 0& 0\\
+0 &0 &1 & 0 \\
+0 &0 &0& 0 \\
+0 & 0 & 0 & 0
+\end{bmatrix} \begin{bmatrix} x \\ y \\ z \\w  \end{bmatrix} = \begin{bmatrix} 0 \\ 0 \\ 0 \\0  \end{bmatrix} \Rightarrow (x,y,z,w) = x \cdot (1,0,0,0) + y \cdot (0,1,0,0)
+\]
+Logo, $\Ker(A) = \langle (1,0,0,0), (0,1,0,0) \rangle.$
+    \item $\dim(\Ker(A - iI)) = 1.$ Temos que
+    \[
+    A - iI = \begin{bmatrix}
+0 & 1 & 0& 0\\
+0 &0 &1 & 0 \\
+0 &0 &0& 1 \\
+0 & 0 & -1&0
+\end{bmatrix} - \begin{bmatrix}
+i & 0 & 0& 0\\
+0 &i &0 & 0 \\
+0 &0 &i& 0 \\
+0 & 0 & 0&i
+\end{bmatrix} = \begin{bmatrix}
+-i & 1 & 0& 0\\
+0 &-i &1 & 0 \\
+0 &0 &-i& 1 \\
+0 & 0 & -1&-i
+\end{bmatrix} \xrightarrow[]{L_4 = L_4 -iL_3} \begin{bmatrix}
+-i & 1 & 0& 0\\
+0 &-i &1 & 0 \\
+0 &0 &-i& 1 \\
+\textcolor{Blue}{0} & \textcolor{Blue}{0} & \textcolor{Blue}{0}& \textcolor{Blue}{0}
+\end{bmatrix}
+    \]
+    
+    Portanto, $\mbox{posto}(A - iI) = 3,$ e $\dim(\Ker(A - iI)) = 1.$ Encontremos agora um autovetor que gera $\Ker(A - iI).$ Para isso, basta resolver o sistema
+    \[
+     \begin{bmatrix}
+-i & 1 & 0& 0\\
+0 &-i &1 & 0 \\
+0 &0 &-i& 1 \\
+0 & 0 &0& 0\end{bmatrix} \begin{bmatrix} x \\ y \\ z \\ w\end{bmatrix} = \begin{bmatrix} 0 \\ 0\\ 0 \\ 0\end{bmatrix}
+     \Rightarrow (x,y,z,w) = w \cdot (i, -1, -i, 1)\]
+     Portanto, $\Ker(A  - iI) = \langle (i, -1, -i, 1) \rangle.$
+      \item $\dim(\Ker(A + iI)) = 1.$ Temos que
+    \[
+    A + iI = \begin{bmatrix}
+0 & 1 & 0& 0\\
+0 &0 &1 & 0 \\
+0 &0 &0& 1 \\
+0 & 0 & -1&0
+\end{bmatrix} + \begin{bmatrix}
+i & 0 & 0& 0\\
+0 &i &0 & 0 \\
+0 &0 &i& 0 \\
+0 & 0 & 0&i
+\end{bmatrix} = \begin{bmatrix}
+i & 1 & 0& 0\\
+0 &i &1 & 0 \\
+0 &0 &i& 1 \\
+0 & 0 & -1&i
+\end{bmatrix} \xrightarrow[]{L_4 = L_4 +iL_3} \begin{bmatrix}
+i & 1 & 0& 0\\
+0 &i &1 & 0 \\
+0 &0 &i& 1 \\
+\textcolor{Blue}{0} & \textcolor{Blue}{0} & \textcolor{Blue}{0}& \textcolor{Blue}{0}
+\end{bmatrix}
+    \]
+    
+    Portanto, $\mbox{posto}(A + iI) = 3,$ e $\dim(\Ker(A + iI)) = 1.$ Encontremos agora um autovetor que gera $\Ker(A + iI).$ Para isso, basta resolver o sistema
+    \[
+     \begin{bmatrix}
+i & 1 & 0& 0\\
+0 &i &1 & 0 \\
+0 &0 &i& 1 \\
+0 & 0 &0& 0\end{bmatrix} \begin{bmatrix} x \\ y \\ z \\ w\end{bmatrix} = \begin{bmatrix} 0 \\ 0\\ 0 \\ 0\end{bmatrix}
+     \Rightarrow (x,y,z,w) = w \cdot (-i, -1, i, 1)\]
+     Portanto, $\Ker(A  - iI) = \langle (-i, -1, i, 1) \rangle.$
+\end{itemize}
+
+Portanto, a forma de Jordan de $A$ será
+\[
+J = \begin{bmatrix} \textcolor{Blue}{J_{0}} & 0 & 0 \\ 0 & \textcolor{Green}{J_{i}} & 0 \\  0 & 0  & \textcolor{Red}{J_{-i}}\end{bmatrix}
+ = \begin{bmatrix}  \textcolor{Blue}{0} & \textcolor{Blue}{1} & 0 & 0\\ \textcolor{Blue}{0} & \textcolor{Blue}{0} & 0 & 0 \\ 0 & 0 & \textcolor{Green}{i} & 0 \\ 0 & 0 & 0 & \textcolor{Red}{-i} \end{bmatrix}\]
+ 
+ Para encontrar a matriz $P,$ basta colocar na $i$-ésima coluna o autovetor que gera o respectivo autoespaço associado ao autovalor da $i$-ésima coluna de $J.$ Assim,
+ \[
+ P = \begin{bmatrix} \textcolor{Blue}{1} & \textcolor{Blue}{0} & \textcolor{Green}{i} & \textcolor{Red}{-i} \\
+ \textcolor{Blue}{0} & \textcolor{Blue}{1} & \textcolor{Green}{-1} & \textcolor{Red}{-1} \\
+ \textcolor{Blue}{0} & \textcolor{Blue}{0} & \textcolor{Green}{-i} & \textcolor{Red}{i} \\
+ \textcolor{Blue}{0} & \textcolor{Blue}{0} & \textcolor{Green}{1} & \textcolor{Red}{1} \\ \end{bmatrix}.
+ \]
+ De fato,
+ \[
+ P^{-1}AP = \left(\begin{matrix}
+1 & 0 & 1 & 0 \\
+0 & 1 & 0 & 1 \\
+0 & 0 & \frac{i}{2} & \frac{1}{2} \\
+0 & 0 & -\frac{i}{2} & \frac{1}{2}
+\end{matrix}\right) \left(\begin{matrix}
+0 & 1 &0 & 0 \\
+0 &0 & 0 & 0 \\
+0 & 0 & 0 &1 \\
+0 & 0 & -1 & 0
+\end{matrix}\right) \left(\begin{matrix}
+1 & 0 & i & -i \\
+0 & 1 & -1 & -1 \\
+0 & 0 & -i & i \\
+0 & 0 & 1 & 1
+\end{matrix}\right) = \left(\begin{matrix}
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & i & 0 \\
+0 & 0 & 0 & -i
+\end{matrix}\right)
+ \]
+                 }
     \exercicio{23} Seja $V$ um espaço vetorial de dimensão $n$, com $n \ge 2$ e seja $T$ um operador linear em $V$ de posto $2.$ Determine todas as possíveis formas de Jordan de $T.$
                  \solucao{}
     \exercicio{24} Seja $T \colon \mathcal{P}_n(\mathbb{R}) \to \mathcal{P}_n(\mathbb{R}) $ o operador linear definido por 
@@ -4005,8 +4360,108 @@ e $a \neq b.$ Determine a forma racional e a forma de Jordan de $T.$
 \solucao{}
 \exercicio{27} Classifique, a menos de semelhança, todas as matrizes reais de ordem $7$ com polinômio
 característico 
-\[p_T(t) = (t − 1)^4(t − 2)^2(t − 1).\]
-\solucao{}
+\[p_T(t) = (t - 1)^4(t - 2)^2(t - 3).\]
+\solucao{Sabemos que duas matrizes são semelhantes se, e somente se, possuem a mesma forma de Jordan. Logo, todas as matrizes reais de ordem $7$ serão semelhantes a uma das formas de Jordan determinadas pelo operador $T \colon \mathbb{R}^7 \to \mathbb{R}^7$ que possui o polinômio característico acima. Daí, observe que
+\begin{itemize}
+\item Como $t-1$ tem expoente $4$ em $p_T(t),$ o autovalor $1$ deve aparecer quatro vezes na diagonal principal;
+\item Como $t-2$ tem expoente $2$ em $p_T(t),$ o autovalor $2$ deve aparecer duas vezes na diagonal principal;
+\item Como $t-3$ tem expoente $2$ em $p_T(t),$ o autovalor $3$ deve aparecer uma vez na diagonal principal.
+\end{itemize}
+Assim, as formas canônicas de Jordan possíveis são:
+\[
+\left(\begin{array}{cccc:cc:c}
+1 & 1 & 0 & 0 & 0 & 0 & 0\\
+0 & 1 & 1 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 & 0 & 0 \\ \hdashline
+0 & 0 & 0 & 0 & 2 & 1 & 0 \\
+0 & 0 & 0 & 0 & 0 & 2 & 0 \\ \hdashline
+0 & 0 & 0 & 0 & 0 & 0 & 3
+\end{array}\right) \quad
+\left(\begin{array}{ccc:c:cc:c}
+1 & 1 & 0 & 0 & 0 & 0 & 0\\
+0 & 1 & 1 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 & 0 & 0 \\ \hdashline
+0 & 0 & 0 & 1 & 0 & 0 & 0 \\ \hdashline
+0 & 0 & 0 & 0 & 2 & 1 & 0 \\
+0 & 0 & 0 & 0 & 0 & 2 & 0 \\ \hdashline
+0 & 0 & 0 & 0 & 0 & 0 & 3
+\end{array}\right) \quad
+\left(\begin{array}{cc:cc:cc:c}
+1 & 1 & 0 & 0 & 0 & 0 & 0\\
+0 & 1 & 0 & 0 & 0 & 0 & 0 \\ \hdashline
+0 & 0 & 1 & 1 & 0 & 0 & 0 \\ 
+0 & 0 & 0 & 1 & 0 & 0 & 0 \\ \hdashline
+0 & 0 & 0 & 0 & 2 & 1 & 0 \\
+0 & 0 & 0 & 0 & 0 & 2 & 0 \\ \hdashline
+0 & 0 & 0 & 0 & 0 & 0 & 3
+\end{array}\right) \]\[
+\left(\begin{array}{cc:c:c:cc:c}
+1 & 1 & 0 & 0 & 0 & 0 & 0\\
+0 & 1 & 0 & 0 & 0 & 0 & 0 \\ \hdashline
+0 & 0 & 1 & 0 & 0 & 0 & 0 \\ \hdashline
+0 & 0 & 0 & 1 & 0 & 0 & 0 \\ \hdashline
+0 & 0 & 0 & 0 & 2 & 1 & 0 \\
+0 & 0 & 0 & 0 & 0 & 2 & 0 \\ \hdashline
+0 & 0 & 0 & 0 & 0 & 0 & 3
+\end{array}\right) \quad
+\left(\begin{array}{c:c:c:c:cc:c}
+1 & 0 & 0 & 0 & 0 & 0 & 0\\ \hdashline
+0 & 1 & 0 & 0 & 0 & 0 & 0 \\ \hdashline
+0 & 0 & 1 & 0 & 0 & 0 & 0 \\ \hdashline
+0 & 0 & 0 & 1 & 0 & 0 & 0 \\ \hdashline
+0 & 0 & 0 & 0 & 2 & 1 & 0 \\
+0 & 0 & 0 & 0 & 0 & 2 & 0 \\ \hdashline
+0 & 0 & 0 & 0 & 0 & 0 & 3
+\end{array}\right)  \]\[
+\left(\begin{array}{cccc:c:c:c}
+1 & 1 & 0 & 0 & 0 & 0 & 0\\
+0 & 1 & 1 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 1 & 0 & 0 & 0 \\ \hdashline
+0 & 0 & 0 & 0 & 2 & 0 & 0 \\ \hdashline
+0 & 0 & 0 & 0 & 0 & 2 & 0 \\ \hdashline
+0 & 0 & 0 & 0 & 0 & 0 & 3
+\end{array}\right) \quad
+\left(\begin{array}{ccc:c:c:c:c}
+1 & 1 & 0 & 0 & 0 & 0 & 0\\
+0 & 1 & 1 & 0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 & 0 & 0 & 0 \\ \hdashline
+0 & 0 & 0 & 1 & 0 & 0 & 0 \\ \hdashline
+0 & 0 & 0 & 0 & 2 & 0 & 0 \\  \hdashline
+0 & 0 & 0 & 0 & 0 & 2 & 0 \\ \hdashline
+0 & 0 & 0 & 0 & 0 & 0 & 3
+\end{array}\right) \quad
+\left(\begin{array}{cc:cc:c:c:c}
+1 & 1 & 0 & 0 & 0 & 0 & 0\\
+0 & 1 & 0 & 0 & 0 & 0 & 0 \\ \hdashline
+0 & 0 & 1 & 1 & 0 & 0 & 0 \\ 
+0 & 0 & 0 & 1 & 0 & 0 & 0 \\ \hdashline
+0 & 0 & 0 & 0 & 2 & 0 & 0 \\  \hdashline
+0 & 0 & 0 & 0 & 0 & 2 & 0 \\ \hdashline
+0 & 0 & 0 & 0 & 0 & 0 & 3
+\end{array}\right) \]\[
+\left(\begin{array}{cc:c:c:c:c:c}
+1 & 1 & 0 & 0 & 0 & 0 & 0\\
+0 & 1 & 0 & 0 & 0 & 0 & 0 \\ \hdashline
+0 & 0 & 1 & 0 & 0 & 0 & 0 \\ \hdashline
+0 & 0 & 0 & 1 & 0 & 0 & 0 \\ \hdashline
+0 & 0 & 0 & 0 & 2 & 0 & 0 \\ \hdashline
+0 & 0 & 0 & 0 & 0 & 2 & 0 \\ \hdashline
+0 & 0 & 0 & 0 & 0 & 0 & 3
+\end{array}\right) \quad
+\left(\begin{array}{c:c:c:c:c:c:c}
+1 & 0 & 0 & 0 & 0 & 0 & 0\\ \hdashline
+0 & 1 & 0 & 0 & 0 & 0 & 0 \\ \hdashline
+0 & 0 & 1 & 0 & 0 & 0 & 0 \\ \hdashline
+0 & 0 & 0 & 1 & 0 & 0 & 0 \\ \hdashline
+0 & 0 & 0 & 0 & 2 & 0 & 0 \\  \hdashline
+0 & 0 & 0 & 0 & 0 & 2 & 0 \\ \hdashline
+0 & 0 & 0 & 0 & 0 & 0 & 3
+\end{array}\right)  \quad
+\]
+
+}
 \exercicio{28} Determine a forma racional e a forma de Jordan da matriz real
 \[
 A  =\begin{bmatrix}
@@ -4025,24 +4480,1101 @@ A  =\begin{bmatrix}
 verdade que $d \mid n?$ Justifique.
 }
 \solucao{}
-\exercicio{30} Dê a forma de Jordan de um operador linear $T \colon \mathbb{R}^7 \to \mathbb{R}^7$ com polinômio característico $p_T(t) = (t − 1)^2(t − 2)^4(t − 3)$ e tal que $\dim(\Ker(T − 2I)) = 2, \dim(\Ker(T − I)) = 1$ e $\Ker(T − 2I)^3 \neq \Ker(T − 2I)^2.$
+\exercicio{30} Dê a forma de Jordan de um operador linear $T \colon \mathbb{R}^7 \to \mathbb{R}^7$ com polinômio característico $p_T(t) = (t - 1)^2(t - 2)^4(t - 3)$ e tal que $\dim(\Ker(T - 2I)) = 2, \dim(\Ker(T - I)) = 1$ e $\Ker(T - 2I)^3 \neq \Ker(T - 2I)^2.$
 \solucao{}
 
 \textcolor{Red}{Questões Suplementares}
 
-\exercicio{31} 
+\exercicio{31} Seja $V$ um espaço vetorial de dimensão $n$ e considere $T \colon V \to V$ cuja matriz na base canônica é $A \in \mathcal{M}_n(\mathbb{R}),$ que possui como polinômio característico
+\[
+p_A(t) = (t - \lambda_1)^{P(a_1)} \cdot (t - \lambda_2)^{P(a_2)} \cdot \ldots \cdot (t - \lambda_k)^{P(a_k)},
+\]
+onde $P(k)$ representa o $k$-ésimo número pentagonal, e $(a_n)_{n \ge 1}$ é a sequência definida recursivamente por
+\[\begin{cases}
+a_1 = 2,\\
+a_{n+1} = 7n - a_{n} - 9, \forall n > 1
+\end{cases}\]
+\dividiritens{
+\task[\pers{a}] Prove que $n$ não pode ser $2019.$ %dica mod 17
+%(\sum\limits_{k=0}^n \frac{3(7k+2)^2 -(7k+2)}{2}) + (\sum\limits_{k=0}^n \frac{3(7k+3)^2 -(7k+3)}{2}) =  \frac{(n+1)}{2} ( 98n^2 + 147n + 34) = \frac{1}{2} (98n^3 +245n^2 + 181n + 34) ou
+%49n^3+196n^2+276n+134
+\task[\pers{b}] Mostre que a quantidade de formas de Jordan que a matriz $A$ pode ter é um múltiplo de $7.$ 
+}
 \solucao{}
 \newpage
 \section{\textcolor{Floresta}{Lista 5}}
-\exercicio{1} 
+
+Nesta lista, $V$ é um $K$-espaço com produto interno $\prin{ , }$ em que $K = \mathbb{R}$ ou $K = \mathbb{C}.$
+\exercicio{1} Faça o que se pede:
+\dividiritens{
+\task[\pers{a}] Se $K = \mathbb{R},$ mostre que, para $u,v \in V,$
+\[
+\prin{u,v}= 0 \Leftrightarrow \norm{u+v}^2= \norm{u}^2 + \norm{v}^2.
+\]
+\task[\pers{b}] Mostre que $\textbf{(a)}$ é falso se $K = \mathbb{C}.$
+\task[\pers{c}] Se $K = \mathbb{C},$ mostre que para $u,v \in V,$
+\[
+\prin{u,v} = 0\Leftrightarrow \norm{\alpha u + \beta v}^2 = \norm{\alpha u}^2 + \norm{\beta v}^2, 
+\]
+para todos $\alpha, \beta \in \mathbb{C}.$
+}
+\solucao{
+\dividiritens{
+\task[\pers{a}] Observando que 
+\[
+\norm{v} = \sqrt{\prin{v,v}} \Rightarrow \norm{u + v} = \sqrt{\prin{u+v,u+v}},
+\]
+a partir das propriedades do produto interno, segue que
+\[
+\textcolor{Green}{\norm{u+v}}^2 = \textcolor{Green}{ \sqrt{\prin{u+v,u+v}}}^2 = \prin{u + v, u+v} =\]\[ \textcolor{Red}{\prin{u,u}} + \textcolor{Magenta}{\prin{u,v}} + \textcolor{Laranja}{\prin{v,u}} + \textcolor{Blue}{\prin{v,v}} =\]\[ \textcolor{Red}{\norm{u}^2} + \textcolor{Magenta}{0} + \textcolor{Laranja}{0} + \textcolor{Blue}{\norm{v}^2} = \norm{u}^2 + \norm{v}^2 \Rightarrow \boxed{\norm{u+v}^2= \norm{u}^2 + \norm{v}^2}
+\]
+Agora, se $\norm{u+v}^2= \norm{u}^2 + \norm{v}^2,$ então temos que 
+\[\norm{u+v}^2 = \prin{u+v, u+v} = \norm{u}^2 + \norm{v}^2 + 2 \prin{u,v} \Rightarrow \textcolor{Green}{\norm{u+v}^2} = \norm{u}^2 + \norm{v}^2 + 2 \prin{u,v} \Rightarrow\]\[ \textcolor{Green}{\norm{u}^2 + \norm{v}^2} = \norm{u}^2 + \norm{v}^2 + 2 \prin{u,v} \Rightarrow 2 \prin{u,v} = 0 \Rightarrow \boxed{\prin{u,v} = 0}
+\]
+}
+}
+\exercicio{2} Mostre que vale a \emph{lei do paralelogramo}:
+\[
+\norm{u + v}^2 + \norm{u-v}^2 = 2 \norm{u}^2 + 2 \norm{v}^2, \ \forall u,v \in V
+\]
 \solucao{}
+\exercicio{3} Se $K = \mathbb{R},$ mostre que, para $u, v \in V$, $\norm{u} = \norm{v}$ se, e somente se, $u + v$ e $u - v$ são
+ortogonais. Discuta a afirmação para $K = \mathbb{C}.$
+\solucao{}
+\exercicio{4} Seja $V$ um espaço vetorial sobre um corpo $K.$
+\dividiritens{
+\task[\pers{a}] Se $K = \mathbb{C}$, mostre que vale a \emph{identidade de polarização}, para todos $u, v \in V:$
+\[
+4 \prin{u,v} = \norm{u+v}^2 - \norm{u-v}^2 + i \norm{u+iv}^2 - i\norm{u-iv}^2
+\]
+\task[\pers{b}] Se $K = \mathbb{R}$, mostre que vale a \emph{identidade de polarização}, para todos $u, v \in V:$
+\[
+4 \prin{u,v} = \norm{u+v}^2 - \norm{u-v}^2
+\]
+}
+\solucao{}
+\exercicio{5} Encontre uma base ortonormal de cada um dos seguintes subespaços $S$ e determine também, em cada caso, o subespaço $S^{\perp}.$ 
+\dividiritens{
+\task[\pers{a}] $S$ é o subespaço de $\mathbb{C}^3$ gerado pelos vetores $v_1 = (1, 0, i)$ e $v_2 = (2, 1, 1 + i),$ com o produto interno usual. 
+\task[\pers{b}] $S = \{ (x,y,z) \in \mathbb{R}^3 | x + y + z = 0 \},$ com o produto interno usual.
+\task[\pers{c}] $S = \{ p(t) \in \mathcal{P}_3 (\mathbb{R}) | tp^{\prime}(t) = p(t) \}$ e $\prin{p,q} = \displaystyle \int\limits_0^1 p(t)q(t) \dif t$
+\task[\pers{d}] $S = \{ A \in \mathcal{M}_3(\mathbb{R}) | \tr(A) = 0 \}$ e $\prin{A,B} = \tr(AB^t).$
+\task[\pers{e}] $S = \langle (1,-1,1) \rangle,$ com o produto interno usual.%S^{\perp} = \langle (0, 1, 1), (1,1,0) \rangle
+}
+\solucao{}
+\exercicio{6}  Prove que se 
+\[\abs{\prin{u,v}} = \norm{u} \norm{v},
+\] então $u$ e $v$ são linearmente dependentes.
+\solucao{}
+\exercicio{7} Sejam $W$ um subespaço de $V$ e $v \in V.$ Um vetor $w \in W$ é uma \emph{melhor aproximação} para $v$ por
+vetores em $W$ se \[\norm{v - w} \le \norm{v - u}, \mbox{ para todo } u \in W.\] Prove que
+\dividiritens{
+\task[\pers{a}] O vetor $w \in W$ é uma melhor aproximação para $v \in V$ por vetores em $W$ se, e somente
+se, $v - w \in W^{\perp}.$
+\task[\pers{b}] Se uma melhor aproximação para $v \in V$ por vetores em $W$ existe, então ela é única.
+\task[\pers{c}] Se $\dim W < \infty$ então existe uma melhor aproximação para $v \in V$ por vetores em $W$ e ela é dada por $w = \displaystyle\sum\limits_{i=1}^k \prin{v,e_i} e_i,$ onde $\{e_1, \ldots, e_k\}$ é uma base ortonormal qualquer de $W.$
+}
+
+Tal vetor é chamado de \emph{projeção ortogonal de v em W.}
+\solucao{}
+\exercicio{8} Sejam $W$ um subespaço de $V$ e $v \in V.$ Seja $E \colon V \to V$ a função tal que $E(v) = w,$ a projeção
+ortogonal de $v$ em $W.$ (Assuma que, para todo $v \in V,$ existe tal $w.$) Prove que 
+\dividiritens{
+\task[\pers{a}] $E$ é um operador linear em $V.$
+\task[\pers{b}] $E$ é idempotente.
+\task[\pers{c}] $\mbox{Im } E = W$ e $\Ker E = W^{\perp}.$
+\task[\pers{d}] $V = W \oplus W^{\perp}.$
+}
+\solucao{}
+\exercicio{9} Seja $W$ um subespaço de dimensão finita de $V.$ Existem, em geral, várias projeções cuja imagem é $W.$ Uma delas, a projeção ortogonal, tem a propriedade que $\norm{E(v)} \le \norm{v},$ para
+todo $v \in V.$ Prove se $E \in \mathcal{L}(V)$ é uma projeção cuja imagem é $W$ e $\norm{E(v)} \le \norm{v},$ para todo $v \in V,$ então $E$ é a projeção ortogonal em $W.$
+(\textbf{Sugestão:} Prove que $\prin{E(v), v - E(v)} = 0,$ para todo $v \in V$ se, e somente se, $\prin{u, E(v)} = 0,$
+para todo $u \in \Ker E$ e $v \in V.$ )
+\solucao{}
+\exercicio{10}  Sejam $W$ um subespaço de dimensão finita de $V$ e $E$ a projeção ortogonal de $V$ em $W$. Prove que $\prin{E(v), u} = \prin{v, E(u)}$ para todos $u, v \in V.$
+\solucao{}
+\exercicio{11} Sejam $V$ e $W$ espaços vetoriais de mesma dimensão (finita) sobre $K$ e com produtos internos $\prin{,}_V$ e $\prin{,}_W,$ respectivamente. Seja $T : V \rightarrow W$ uma transformação linear. Prove que as
+seguintes afirmações são equivalentes: 
+\dividiritens{
+\task[\pers{a}] $\prin{T(u), T(v)}_W = \prin{u,v},$ para todos $u,v \in V.$
+\task[\pers{b}] $T$ leva \textbf{toda} base ortonormal de $V$ em uma base ortonormal de $W.$
+\task[\pers{c}] $T$ leva \textbf{uma} base ortonormal de $V$ em uma base ortonormal de $W.$
+\task[\pers{d}] $\norm{T(v)}_W = \norm{v}_V$ para todo $v \in V.$
+}
+Tal $T$ é um \emph{isomorfismo de espaços com produto interno.}
+\solucao{}
+\exercicio{12} Uma matriz $A \in \mathcal{M}_n(K)$ é chamada \emph{ortogonal} se $AA^t = I_n$ e \emph{unitária} se $AA^{*} = I_n.$ Encontre um exemplo de uma matriz complexa unitária que não é ortogonal e um exemplo de uma matriz que é ortogonal e não é unitária.
+\solucao{}
+\exercicio{13} Seja $T \in \mathcal{L}(V)$ um isomorfismo de espaços com produto interno, isto é,
+\[\prin{T(u), T(v)} = \prin{u,v},
+\] para todos $u, v \in V.$ Prove que $T$ possui um adjunto e $T^{*} = T^{-1}.$ Prove que vale
+também a recíproca, isto é, se $T$ possui um adjunto com $T^{*} = T^{-1},$ então $T$ é um isomorfismo de espaços com produto interno. Tal $T$ é chamado \emph{operador unitário} se $K = \mathbb{C}$ e \emph{ortogonal} se $K = \mathbb{R}.$
+\solucao{$(\Rightarrow)$ Para provar que $T$ possui um adjunto, precisamos verificar que existe $T^* \in \mathcal{L}(V)$ tal que
+\[
+\prin{T(u), v} = \prin{u, T^{*}(v)}, \quad \forall u,v \in V
+\]
+Como $T$ é um isomorfismo, sabemos que existe $T^{-1} \in \mathcal{L}(V).$ Consideremos o vetor $v = T^{-1}(w).$ Daí, $\forall u, w \in V:$
+\[
+\begin{array}{rcl}
+\prin{T(u), T(\textcolor{Green}{v})} = \prin{u,\textcolor{Green}{v}} &\Rightarrow& \prin{T(u), T(\textcolor{Green}{T^{-1}(w)})} = \prin{u,\textcolor{Green}{T^{-1}(w)}} \\&\Rightarrow& \prin{T(u), w} = \prin{u, T^{-1}(w)}.
+\end{array}
+\]
+Logo, $T$ possui um adjunto, e $T^{*} = T^{-1}.$
+\newline
+$(\Leftarrow)$ Se $T \in \mathcal{L}(V)$ possui um operador adjunto $T^{*} \in \mathcal{L}(V),$ sabemos por definição que
+\[
+\prin{T(u), v} = \prin{u, T^{*}(v)}, \quad \forall u,v \in V
+\]
+Como $T^{*} = T^{-1},$ escrevendo $v = T(w),$ temos que
+\[
+\begin{array}{rcl}
+\prin{T(u), v} = \prin{u, \textcolor{Blue}{T^{*}}(v)} &\Rightarrow& \prin{T(u), \textcolor{Violet}{v}} = \prin{u, \textcolor{Blue}{T^{-1}}(\textcolor{Violet}{v})} \\&\Rightarrow& \prin{T(u), \textcolor{Violet}{T(w)}} = \prin{u, \textcolor{Blue}{T^{-1}}(\textcolor{Violet}{T(w)})} \\&\Rightarrow& \prin{T(u), T(w)} = \prin{u, T^{-1}(T(w))} \\&\Rightarrow& \prin{T(u), T(w)} = \prin{u, w}.
+\end{array}
+\]
+Logo, $T$ é um isomorfismo.
+}
+\solucao{}
+\exercicio{14} Seja $T$ o operador linear em $\mathbb{C}^2$ (com o produto interno usual) definido por: $T(1, 0) = (1 +
+i, 2)$ e $T(0, 1) = (i, i).$ Determine a matriz de $T^{*}$
+em relação à base canônica de $\mathbb{C}^2$. Vale que
+$TT^{*} = T^{*}T?$
+\solucao{Seja $A \in \mathcal{M}_2(\mathbb{C})$ a matriz que representa $T.$ Pelas informações do enunciado, se
+\[
+A = \begin{pmatrix}
+\alpha & \beta \\
+\gamma & \delta
+\end{pmatrix},
+\]
+devemos ter
+\[
+\begin{pmatrix}
+\alpha & \beta \\
+\gamma & \delta
+\end{pmatrix} \begin{pmatrix}
+1 \\ 0
+\end{pmatrix} =  \begin{pmatrix}
+1+i \\ 2
+\end{pmatrix} \quad \mbox{e} \quad \begin{pmatrix}
+\alpha & \beta \\
+\gamma & \delta
+\end{pmatrix} \begin{pmatrix}
+0 \\ 1
+\end{pmatrix} =  \begin{pmatrix}
+i \\ i
+\end{pmatrix}.
+\]
+Daí, segue que $\alpha = 1 + i, \gamma = 2, $ e $\beta = \delta = i.$ Portanto, a matriz de $T$ na base canônica de $\mathbb{C}^2$ é \[\begin{pmatrix}
+1+i & i \\
+2 & i
+\end{pmatrix}.\]
+Observe que a matriz adjunta $T^{*}$ corresponde ao hermitiano de $A,$ ou seja,
+\[
+[T^{*}]_{\mbox{can}} = A^{*} = A^{H} = \overline{A}^t.
+\]
+Logo, temos que a matriz procurada é
+\[[T^{*}]_{\mbox{can}} = A^{*} = \overline{\begin{pmatrix}
+1+i & i \\
+2 & i
+\end{pmatrix}}^t = \begin{pmatrix}
+1-i & -i \\
+2 & -i
+\end{pmatrix}^t = \begin{pmatrix}
+1-i & 2\\
+-i & -i
+\end{pmatrix}\]
+Observe que
+\[AA^{*} = \begin{pmatrix}
+1+i & i \\
+2 & i
+\end{pmatrix}\begin{pmatrix}
+1-i & 2\\
+-i & -i
+\end{pmatrix} = \begin{pmatrix}
+3 & 3 +2i\\
+3-2i & 5
+\end{pmatrix}
+\]
+\[
+A^{*}A = 
+\begin{pmatrix}
+1-i & 2\\
+-i & -i
+\end{pmatrix} \begin{pmatrix}
+1+i & i \\
+2 & i
+\end{pmatrix} =
+\begin{pmatrix}
+6 & 1+3i\\
+1-3i & 2
+\end{pmatrix}
+\]
+Logo $TT^{*} \neq T^{*}T$ nesse caso, ou seja, $T$ não é um operador normal.
+}
+\exercicio{15} Seja $T$ um operador linear em $V$ que possui um adjunto $T^{*}.$
+\dividiritens{
+\task[\pers{a}] Mostre que $\Ker T^{*} = (\mbox{Im }T)^{\perp}$ e que $\mbox{Im }T^{*} \subset (\Ker T)^{\perp}.$
+\task[\pers{b}] Mostre que se $\dim V < \infty,$ então $\mbox{Im }T^{*} = (\Ker T)^{\perp}.$
+\task[\pers{c}] Seja $V = \mathcal{C}([0, 1], \mathbb{R})$ e $T \in \mathcal{L}(V)$ definida por: $f \longmapsto T(f),$, com $(T(f))(t) = t f(t)$ para
+todo $t \in [0, 1].$ Determine $T^{*}$ e mostre que $\mbox{Im } T^{*} \neq (\Ker T)^{\perp}.$
+}
+\solucao{
+\dividiritens{
+\task[\pers{a}] Provemos que $\Ker T^{*} = (\mbox{Im }T)^{\perp}.$ Temos que
+\[
+\begin{array}{rcl}
+  x \in \Ker T^{*}   &  \Leftrightarrow & T^{*}(x) = 0\\
+     &  \Leftrightarrow & \prin{T^{*}(x),y} = 0, \ \forall y \in V\\
+     &  \Leftrightarrow & \prin{x,T(y)} = 0, \ \forall y \in V\\
+     &  \Leftrightarrow & x \perp \mbox{Im } T \\
+     &  \Leftrightarrow & x \in (\mbox{Im }T)^{\perp}
+\end{array}
+\]
+}
+
+}
+
+\exercicio{16} Seja $T \in \mathcal{L}(V).$ Prove que se $T$ é inversível, então $T^{*}$ é inversível e $(T^{*})^{-1} = (T^{-1})^{*}.$
+\solucao{Se $T$ é inversível, então existe $T^{-1} \in \mathcal{L}(V)$ tal que $TT^{-1} = I.$ Desse modo, das propriedades da adjunção, temos que
+\[
+(TT^{-1})^{*} = I^{*} \Rightarrow (T^{-1})^{*} T^{*} = I
+\]
+Logo, $(T^{-1})^{*} \in \mathcal{L}(V)$ é tal que $(T^{-1})^{*} T^{*} = I.$ Portanto, $T^{*}$ é inversível.
+
+Para mostrar que $(T^{*})^{-1} = (T^{-1})^{*},$ podemos seguir dois caminhos:
+\begin{itemize}
+
+\item Temos que
+\[
+I = I^{*}(TT^{-1})^{*} = (T^{-1})^{*}T^{*}.
+\]
+Logo, $\left(T^{-1}\right)^{*} = \left(T^{*}\right)^{-1}.$
+
+\item Sabemos que $(T^{*})^{-1}T^{*} = I,$ então $((T^{*})^{-1}T^{*})^{*} = I^{*}.$ Das propriedades de $*,$ temos que $I^{*} = I,$ $(AB)^{*} = B^{*}A^{*}$ e $A^{**} = A.$ Daí,
+\[
+(\textcolor{Cerulean}{(T^{*})^{-1}} \textcolor{JungleGreen}{T^{*}})^{*} = \textcolor{RawSienna}{I^{*}} \Rightarrow
+(\textcolor{JungleGreen}{(T^{*}})^{*} (\textcolor{Cerulean}{T^{*})^{-1}})^{*}  = \textcolor{RawSienna}{I} \Rightarrow \textcolor{Gray}{T^{**}} ((T^{*})^{-1})^{*} = I \Rightarrow \textcolor{Gray}{T} ((T^{*})^{-1})^{*} = I 
+\]
+Assim, concluímos que $((T^{*})^{-1})^{*}$ é a inversa de $T.$ Ou seja,
+\[
+T^{-1} = ((T^{*})^{-1})^{*} \Rightarrow (T^{-1})^{*} = (((T^{*})^{-1})^{*})^{*} \Rightarrow (T^{-1})^{*} = ((T^{*})^{-1})^{**}  \Rightarrow \boxed{(T^{-1})^{*} = (T^{*})^{-1}}
+\]
 
 
+    \item Sendo $T^{*}$ o adjunto de $T,$ sabemos por definição que
+     \[\langle T(u),v \rangle = \langle u, T^*(v) \rangle \quad \forall u,v\in V\]
+
+Então, substituindo $u$ por $T^{-1}(w),$ onde $w \in V,$ ficamos com
+\[
+\langle T(\textcolor{Green}{u}),v \rangle = \langle \textcolor{Green}{u}, T^*(v) \rangle \Rightarrow \langle T(\textcolor{Green}{T^{-1}(w)}),v \rangle = \langle \textcolor{Green}{T^{-1}(w)}, T^*(v) \rangle \Rightarrow \langle w, v \rangle = \langle T^{-1}(w), T^{*}(v) \rangle
+\]
+Por outro lado, para $T^{-1}$ e $x = T^{*}(v) \in V:$
+\[
+\langle \textcolor{Blue}{T^{-1}}(w),\textcolor{Magenta}{x} \rangle = \langle w, (\textcolor{Blue}{T^{-1}})^*(\textcolor{Magenta}{x}) \rangle \Rightarrow \langle \textcolor{Blue}{T^{-1}}(w),\textcolor{Magenta}{T^{*}(v)} \rangle = \]\[\langle w, (\textcolor{Blue}{T^{-1}})^*(T^{*}(v)) \rangle \Rightarrow  \langle T^{-1}(w),T^{*}(v) \rangle = \langle w, (\textcolor{Laranja}{TT^{-1}})^*(v) \rangle \Rightarrow  \]\[ \langle T^{-1}(w),T^{*}(v) \rangle = \langle w, \textcolor{Laranja}{I}^*(v) \rangle \Rightarrow  \langle T^{-1}(w),T^{*}(v) \rangle = \langle w, v \rangle  
+\]
+Daí, temos que
+\[
+\langle T^{-1}(w), T^{*}(v) \rangle = 
+\] \textcolor{Red}{MelhorarEXPLICAÇÃO}
+%https://math.stackexchange.com/questions/1006975/adjoint-operator-and-inverse
+\end{itemize}
+}
+\exercicio{17}  Seja $E$ um operador linear em $V$ tal que $E^2 = E$ e tal que $E$ possui um adjunto $E^{*}.$ Prove que $E$ é autoadjunto se, e somente se $EE^{∗} = E^{*}E.$ Prove também que, neste caso, $E$ é a projeção
+ortogonal em $W = \mbox{Im }E.$
+\solucao{}
+\exercicio{18} Sejam $V$ um espaço vetorial sobre $\mathbb{C}$ e $T \in \mathcal{L}(V).$ Prove que $T$ é autoadjunto se, e somente se $\prin{T(v), v} \in \mathbb{R},$ para todo $v \in V.$
+\solucao{$(\Rightarrow)$ Seja $T$ um operador auto-adjunto. Então, sabemos que $T^{*} = T.$ Para mostrar que certo $z \in \mathbb{C}$ é real, basta verificar que $z = \overline{z}.$ Dado  $v \in V,$ tem-se que
+\[
+\langle T(v), v \rangle = \langle v, \textcolor{Brown}{T^{*}}(v) \rangle = \langle v, \textcolor{Brown}{T^{*}}(v) \rangle = \overline{\langle T(v),v \rangle} \Rightarrow \langle T(v), v \rangle \in \mathbb{R}
+\]
+$(\Leftrightarrow)$ Dado $v \in V,$ se $\prin{T(v), v} \in \mathbb{R}$, então temos que $\prin{T(v), v} = \overline{\prin{T(v), v}}.$ Assim,
+\[
+\langle T(v), v \rangle = \overline{ \langle T(v), v \rangle } = \overline{ \langle v, T^{*}(v) \rangle } = \langle T^{*}(v), v \rangle \Rightarrow \langle (T - T^{*})(v), v \rangle = 0 \quad \forall v \in V
+\]
+Como $V$ é um espaço vetorial sobre $\mathbb{C},$ temos que $T - T^{*},$ acarretando $T = T^{*}.$
+}
+\exercicio{19} Sejam $V$ um espaço vetorial sobre $\mathbb{C}$ e $T \in \mathcal{L}(V).$ Prove que se $\prin{T(v), v} = 0,$ para todo $v \in V,$ então $T = 0.$ Dê um exemplo para mostrar que o mesmo resultado não é necessariamente
+verdadeiro se $V$ é um espaço vetorial sobre $\mathbb{R}.$ 
+\solucao{Por hipótese, $\prin{T(v + w), v + w} = 0$ para quaisquer $v,w \in V.$ Assim,
+\[
+\prin{T(v + w), v + w} = 0 \Rightarrow \prin{T(v) + T(w), v + w} = 0 \Rightarrow  \textcolor{Laranja}{\prin{T(v), v}} + \prin{T(v), w} + \prin{T(w), v} + \textcolor{Laranja}{\prin{T(w), w}} \Rightarrow  \]\[ \textcolor{Laranja}{0} + \prin{T(v), w} + \prin{T(w), v} + \textcolor{Laranja}{0} \Rightarrow \prin{T(v), w} + \prin{T(w), v} = 0
+\]
+Note que $w$ é arbitrário na igualdade obtida acima.  Daí, podemos substituir $w$ por $iw,$ e usando que
+\[
+\prin{T(v), i w} = \overline{i} \prin{T(v), w} =  -i \prin{T(v), w} \quad \mbox{e} \quad \prin{T(iw),v} = \prin{iT(w), v} = i \prin{T(w), v},
+\]
+podemos verificar que
+\[
+\prin{T(v), \textcolor{Blue}{w}} + \prin{T(\textcolor{Blue}{w}), v} = 0 \Rightarrow \prin{T(v), \textcolor{Blue}{iw}} + \prin{T(\textcolor{Blue}{iw}), v} = 0 \Rightarrow - i \prin{T(v), w} + i \prin{T(w), v} = 0 \Rightarrow \]\[i(\prin{T(w), v} - \prin{T(v), w}) = 0 \Rightarrow \prin{T(w), v} - \prin{T(v), w} = 0
+\]
+Dessa forma, temos que
+\[
+\cancel{\prin{T(v), w}} + \prin{T(w), v} + \prin{T(w), v} - \cancel{\prin{T(v), w}} = 0 \Rightarrow 2\prin{T(w), v} = 0 \Rightarrow \boxed{\prin{T(w), v} = 0}
+\]
+Obtemos portanto que $\prin{T(w), v} = 0$ para quaisquer $v,w \in V.$ Vejamos que isso acarreta $T = 0.$
+
+Faça $v = T(w).$ Então $\prin{T(w), T(w)} = 0$ e daí $T(w) = 0$ para todo $w \in V.$ Consequentemente, $T = 0.$
+
+Observe que na resolução acima tivemos que considerar a unidade imaginária em certo momento. Vejamos que tal resultado não vale para espaços vetoriais sobre $\mathbb{R}.$ Considere o operador linear $T$ em $V = \mathbb{R}^2$ definido por $T(x,y) = (y,-x).$ Então, para todo $v = (v_1, v_2) \in \mathbb{R}^2,$ temos que
+\[
+\prin{\textcolor{Emerald}{T(v)}, v} = \prin{\textcolor{Emerald}{(-v_2, v_1)}, (v_1, v_2)} = -v_2v_1 + v_1v_2 = 0.
+\]
+Logo, $\prin{T(v),v} = 0$ para todo $v \in V,$ mas claramente $T \neq 0.$
+}
+\exercicio{20} Sejam $V$ um espaço vetorial sobre $\mathbb{C}$ e $T$ uma função de $V$ em $V$ tal que, para todos $u, v \in V,$ $\norm{T(u) - T(v)} = \norm{u-v}$ e $T(iv) = iT(v).$ Prove que $T$ é linear e que $\norm{T(v)} = \norm{v},$ para todo $v \in V.$
+
+\solucao{}
+\exercicio{21} Seja $T$ um operador linear em $V$ tal que $T$ admite um adjunto. Prove que se $T^{*}T = 0$ então $T = 0.$
+
+\solucao{Vamos primeiramente provar que, se $T^{*}T = 0,$ então $TT^{*} = 0.$
+
+Observe que $0^{*} = 0,$ pois para todos $u,v \in V,$
+\[
+\prin{0(u),v} = \prin{0,v} = 0 = \prin{u,0} = \prin{u, v(0)}.
+\]
+Veja que 
+\[
+\left(T^{*}T\right)^{*} = 0^{*}\Rightarrow T^{*} T^{**} = 0 \Rightarrow T^{*}T = 0.
+\]
+}
+\begin{comment}
+Agora, note que
+\[
+T + T^{*} + T^{*}T = T + T^{*}(T + I)
+\]
+Se $T^{*}T = 0,$ então para todos $u,v \in V,$ temos que
+\[
+\prin{T^{*}T(u), v} = \prin{0(u), v} = 0
+\]
+Por outro lado, substituindo $v$ por $T(w),$ temos que
+\end{comment}
+\exercicio{22} Seja $A \in \mathcal{M}_n(\mathbb{C}).$ Mostre que $A$ se escreve de modo único como $A = B + iC,$ onde $B$ e $C$ são matrizes autoadjuntas.
+\solucao{Façamos 
+\[
+B = \frac{A + A^{*}}{2} \quad \mbox{e} \quad C = \frac{A - A^{*}}{2i}.
+\]
+Então
+\[
+\textcolor{Emerald}{B} + i\textcolor{Cyan}{C} = \textcolor{Emerald}{\frac{A + A^{*}}{2}} + i\textcolor{Cyan}{\frac{A - A^{*}}{2i}} = \frac{A + A^{*}}{2} + \frac{A - A^{*}}{2} = \frac{2A}{2} = A.
+\]
+Além disso, 
+\[
+B^{*} = \left(  \frac{A + A^{*}}{2} \right)^{*} =  \frac{A^{*} + A^{**}}{2}  =  \frac{A^{*} + A}{2} = B
+\]
+e
+\[
+C^{*} = \left( \frac{A - A^{*}}{2i} \right)^{*} =  \frac{A^{*} - A^{**}}{\overline{2i}} =  - \frac{A^{*} - A}{2i} =  \frac{A - A^{*}}{2i} = C, 
+\]
+ou seja, $B$ e $C$ são matrizes auto-adjuntas.
+}
+\exercicio{23}
+Sejam $S, T \in \mathcal{L}(V).$ Suponha que $S$ e $T$ admitem adjuntas.
+
+\dividiritens{
+\task[\pers{a}] Mostre que se $S$ e $T$ são autoadjuntas, então $ST$ é autoadjunta se, e somente se, $ST = TS.$ 
+\task[\pers{b}] Encontre duas matrizes $S$ e $T$ autoadjuntas tais que $ST$ não é autoadjunta.
+\task[\pers{c}] Prove que $T^{*}T$ é autoadjunta.
+\task[\pers{d}] Se $T$ é autoadjunta, mostre que $S^{*}TS$ é autoadjunta.
+\task[\pers{e}] Mostre que se $S$ e $T$ são autoadjuntas, então $ST + TS$ é autoadjunta.
+}
+
+\solucao{\dividiritens{
+\task[\pers{a}] Se $S$ e $T$ são autoadjuntas, então $S = S^{*}$ e $T = T^{*}.$ 
+\newline
+$(\Rightarrow)$ Se $ST$ é autoadjunta, então \[(ST)^{*} = \textcolor{Red}{S}\textcolor{Magenta}{T} = \textcolor{Red}{S^{*}}\textcolor{Magenta}{T^{*}} (TS)^{*}
+\]
+Portanto, da unicidade do operador adjunto, temos
+\[
+(ST)^* - (TS)^{*} = 0 \Rightarrow (ST - TS)^{*} = 0 \Rightarrow ST - TS = 0 \Rightarrow ST = TS. 
+\]
+
+$(\Leftrightarrow)$ Se $ST = TS,$ então
+\[
+(ST)^{*} = (TS)^{*} \Rightarrow (ST)^{*} = \textcolor{Red}{S^{*}}\textcolor{Magenta}{T^{*}} \Rightarrow  (ST)^{*} = \textcolor{Red}{S}\textcolor{Magenta}{T}.
+\]
+Portanto, $ST$ é autoadjunta.
+\task[\pers{b}] Considere
+\[
+S = \begin{bmatrix}
+1 & 0 \\ 0 & 0
+\end{bmatrix} \quad \mbox{e} \quad T = \begin{bmatrix}
+1 & 0 \\ 0 & 1 
+\end{bmatrix} 
+\]
+Então $ST = \begin{bmatrix}
+0 &1 \\ 0 & 0
+\end{bmatrix}$ não é autoadjunta.
+\newline
+Outro exemplo: Sejam $T, S \in \mathcal{L}(\mathbb{R}^2),$ dadas por
+\[
+T(x,y) = (x+2y, 2x) \quad \mbox{e} \quad S(x,y)  = (y, x+y)
+\]
+As matrizes que representam $T$ e $S$ na base canônica (que é ortonormal) são
+\[
+A = \begin{bmatrix}
+1 & 2 \\
+2 & 0 
+\end{bmatrix} \quad \mbox{e} \quad B = \begin{bmatrix}
+0 & 1 \\
+1 & 1
+\end{bmatrix},
+\]
+respectivamente. Observe que $T$ e $S$ são autoadjuntos pois $A$ e $B$ são matrizes hermitianas. Temos que
+\[
+AB = \begin{bmatrix}
+2 &3 \\ 0 & 2
+\end{bmatrix}.
+\]
+Essa matriz não é hermitiana. Como a base canônica é ortonormal, então $TS$ não é autoadjunta.
+
+\task[\pers{c}] Se $T$ é autoadjunta, então
+\[
+T^{*}T = TT^{*}
+\]
+Pelo item (a), tomando $S = T^{*},$ segue que $T^{*}T$ é autoadjunta.
+\task[\pers{d}] Se $T$ é autoadjunta, então $T^{*} = T.$ Logo,
+\[
+\left(S^*TS\right)^{*} = \left(S^*(TS)\right)^{*} = (TS)^{*} S^{**} = S^{*}\textcolor{Green}{T^{*}}S = S^{*}\textcolor{Green}{T}S.
+\]
+
+\task[\pers{e}] Vamos provar $ST + TS$ é autoadjunta pela definição, ou seja, mostraremos que para todo $u,v \in V,$ 
+\[
+\prin{(ST + TS)(u), v} = \prin{u, (ST + TS)(v)}
+\]
+Para isso, lembrando que $T^{*} = T$ e $S^{*} = S,$ vemos que
+\[
+\begin{array}{rcl}
+\prin{(ST+TS)(u),v} & = & \prin{(ST)(u),v} + \prin{(TS)(u), v} \\
+& =&  \prin{S(\textcolor{Mahogany}{T(u)}),v} + \prin{T(\textcolor{Mahogany}{S(u)}), v} \\
+& =&  \prin{\textcolor{Mahogany}{T(v)},\textcolor{Green}{S^{*}}(v)} + \prin{\textcolor{Mahogany}{S(u)}, \textcolor{Blue}{T^{*}}(v)} \\
+& =&  \prin{T(v),\textcolor{Green}{S}(v)} + \prin{S(u), \textcolor{Blue}{T(v)}} \\
+&=& \prin{u,  \textcolor{Blue}{T^{*}}(S(v))} + \prin{u, \textcolor{Green}{S^{*}}(T(v))} \\
+&=& \prin{u,  \textcolor{Blue}{T}(S(v))} + \prin{u, \textcolor{Green}{S}(T(v))} \\
+&=& \prin{u,(TS)(v)} + \prin{u, (ST)(v)} \\
+& = & \prin{u, (ST + TS)(v)}
+\end{array}
+\]
+Portanto, $\prin{(ST+TS)(u),v} =  \prin{u, (ST + TS)(v)},$ e $ST + TS$ é autoadjunta.
+}
+}
+
+\exercicio{24} Seja $V$ um espaço vetorial com dimensão finita e seja $T \in \mathcal{L}(V)$ normal. Mostre que
+\dividiritens{
+\task[\pers{a}] Se $T$ é nilpotente, então $T = 0.$
+\task[\pers{b}] Se $T$ é idempotente, então $T^{*} = T.$
+\task[\pers{c}] Se $T^3 = T^2,$ então $T$ é idempotente.
+\task[\pers{d}] Se $T^{8} = T^{7},$ $T$ é autoadjunto e idempotente.
+}
+
+\solucao{
+\dividiritens{
+\task[\pers{a}] Seja $A$ a matriz que representa $T$ na base canônica. Como $T$ é normal, então $A$ também é normal, ou seja, $A^{*}A = AA^{*}.$ 
+
+Sendo $A$ normal, então $A$ é diagonalizável. Logo, existe uma matriz invertível $P$ tal que $P^{-1}AP = D,$ onde $D$ é uma matriz diagonal cujas entradas na diagonal são exatamente os autovalores de $A.$
+
+Como $A$ é nilpotente, todos os seus autovalores são $0.$ Consequentemente, as entradas na diagonal de $D$ são todas nulas, e assim $D = 0.$ Segue que
+\[
+A = P\textcolor{WildStrawberry}{D}P^{-1} = P\textcolor{WildStrawberry}{0}P^{-1} = 0
+\]
+Portanto, todo operator normal e nilpotente é nulo.
+\newline
+
+\textcolor{Red}{Outra solução:} Seja $A$ a matriz que representa $T$ na base canônica. Como $A$ é nilpotente, existe um inteiro positivo $k$ tal que $A^k = 0.$ Vamos provar por indução que $A = 0.$ Se $k = 1,$ o resultado é trivial.
+
+Suponha $k > 1$ e que o caso $k - 1$ funcione. Tome $B = A^{k-1}.$ Note que, como $T$ é normal, então $A$ também é normal, e consequentemente a matriz $B$ também é normal.
+
+Para um vetor $x \in \mathbb{C}^n,$ vamos calcular a norma do vetor $B^{*}Bx$ como segue:
+\[
+\begin{array}{rcl}
+\norm{B^*Bx} &=& (B^*Bx)^{*}(B^{*}Bx) \\
+&=& (Bx)^{*} B^{**} B^{*} Bx \\
+&  = & x^{*}B^* \textcolor{TealBlue}{BB^{*}}Bx \\
+&  = & x^{*}B^* \textcolor{TealBlue}{B^{*}B}Bx \\
+&=& x^{*}(B^{*})^2B^2x\\
+&=& 0,
+\end{array}
+\]
+pois $B^2 = A^{2k-2} = 0,$ já que $k \ge 2$ implica $2k-2 \ge k.$ Daí, temos que $B^*Bx = 0$ para todo $x \in \mathbb{C}^n.$
+
+Assim,
+\[
+\norm{Bx} = (Bx)^{*}(Bx) = x^*B^*Bx = 0, \quad \forall x \in \mathbb{C}^n.
+\]
+Consequentemente, $B = 0.$
+Pela hipótese de indução, $A^{k-1} = 0$ implica $A = 0,$ e portanto $A$
+ deve ser a matriz nula. Assim, $T$ também é o operador nulo.
+ 
+ \task[\pers{b}] Se $T$ é idempotente, então sabemos que $T^2 = T.$ Sendo normal, sabemos também que $T^*T = TT^*.$ Se $T^{*}T = 0,$ pelo Exercício 21, temos que $T = 0,$ que claramente é autoadjunto. 
+ 
+ Consideremos agora $T^{*}T \neq 0.$ Então, observe que
+ \[
+ (T - T^{*})(T^{*}T) = T\textcolor{PineGreen}{T^{*}T} - T^{*}T^{*}T = T\textcolor{PineGreen}{TT^*} - \textcolor{ProcessBlue}{(T^2)}^{*}T =  \textcolor{ProcessBlue}{T^2}T^* - \textcolor{ProcessBlue}{T}^{*}T =   \textcolor{ProcessBlue}{T}T^* - \textcolor{PineGreen}{T^{*}T} =   \textcolor{ProcessBlue}{T}T^* - \textcolor{PineGreen}{TT^{*}} = 0
+ \]
+ Concluímos portanto que $(T - T^{*})(T^{*}T) = 0.$ Como $T^{*}T \neq 0,$ segue que $T - T^{*} = 0,$ acarretando $T = T^{*}.$
+  \task[\pers{c}] Como $T$ é normal, pelo Teorema Espectral, existe uma base ortonormal $\{e_1, e_2, \ldots, e_n \}$ de $V$ consistindo de autovetores de $T.$ Sejam $\lambda_1, \ldots, \lambda_n$ os correspondentes autovalores. Então,
+  \[
+  T(e_j) = \lambda_j e_j,
+  \]
+  para $j = 1, \ldots, n.$ Aplicando $T$ uma quantidade adequada de vezes em ambos os membros da equação acima, temos que
+\[
+T^3(e_j) = \lambda_j^3e_j \quad \mbox{e} \quad T^2(e_j) = \lambda_j^{2}e_j.
+\]
+Dessa forma,
+\[
+T^3(e_j) = T^2(e_j) \Rightarrow \lambda_j^3e_j = \lambda_j^{2}e_j \Rightarrow \lambda_j^3 = \lambda_j^2 \Rightarrow \lambda_j^2(\lambda - 1) = 0
+\]
+Isso implica que $\lambda_j$ vale $1$
+ ou $0.$ Em particular, todos os autovalores de $T$ são reais. A matriz de $T$ com respeito à base ortonormal $\{e_1, \ldots, e_n \}$ será a matriz diagona com $\lambda_1, \ldots, \lambda_n$ na diagonal. Esta matriz claramente é equivalente à sua transposta conjugada, e portanto é hermitiana. Daí, $T = T^{*}.$ %Consequentemente, $T$ é autoadjunto.
+ Aplicando $T$ em ambos os membros na equação obtida inicialmente, ficamos com
+ \[
+ T^2(e_j) = \textcolor{Maroon}{\lambda^2_j} e_j = \textcolor{Maroon}{\lambda_j} e_j = T(e_j),
+ \]
+ onde utilizamos que $\lambda_j^2 = \lambda_j,$ afinal $\lambda_j$ vale $0$ ou $1.$ Como $T^2$ e $T$ coincidem numa base, então devem ser iguais. Logo, $T^2 = T,$ e $T$ é idempotente.
+ \task[\pers{d}] Um raciocínio análogo ao do item (c)  permite concluir que $T$  é autoadjunto e idempotente. Em geral, usando uma argumentação similar, pode-se provar que todo operador normal para o qual existe um inteiro positivo $k \ge 1$ tal que $T^{k+1} = T^k$ é autoadjunto e idempotente.
+ }
+}
+
+\exercicio{25} 
+
+\solucao{}
 \textcolor{Red}{Questões Suplementares}
 
-\exercicio{31} 
+\exercicio{31} Considere o seguinte subespaço de $\mathbb{R}^3:$
+\[
+W = \{ (x,y,z) \in \mathbb{R}^3 |x + 2y - 3z = 0, x - 2y + z = 0 \}
+\]
+\dividiritens{
+\task[\pers{a}] Descreva o operador de projeção ortogonal de $V$ em $W.$
+\task[\pers{b}] Verifique que $\mathbb{R}^3 = W \oplus W^{\perp}.$ 
+}
+\solucao{}
+\exercicio{32} Seja $\mathcal{F}$ o espaço vetorial das funções reais com o produto interno usual, e considere os conjuntos
+%https://www.ime.unicamp.br/~marcia/AlgebraLinear/Arquivos%20PDF/exemplos_subespacos.pdf
+\[
+S_p = \{ f \mid f(x) = f(-x) \} \quad \mbox{e} \quad S_i = \{ f \mid f(x) = -f(-x) \}
+\]
+\dividiritens{
+\task[\pers{a}] Verifique que $S_i$ e $S_p$ são subespaços vetoriais de $\mathcal{F}.$
+\task[\pers{b}] Descreva os operadores de projeção ortogonal de $\mathcal{F}$ em $S_i$ e em $S_p.$
+\task[\pers{c}] Encontre subespaços $W_1$ e $W_2$ de $\mathcal{F}$ tais que \[\mathcal{F} = S_i \oplus W_1 \quad \mbox{e} \quad \mathcal{F} = S_p \oplus W_2 \]
+\task[\pers{d}] Conclua que $\mathcal{F} = S_p \oplus S_i.$%http://www.uel.br/projetos/matessencial/superior/alinear/somadir.htm
+%http://vectorsandgeometry.wikidot.com/3-5-exemplos-resolvidos-com-interseccao
+}
+
 \solucao{}
 
+\exercicio{33} (Decomposição QR) A \emph{Decomposição QR} de uma matriz $A \in \mathcal{M}_n(K)$ consiste em escrever a matriz $A$ como um produto $QR,$ onde $Q$ é uma matriz ortogonal (se $K = \mathbb{R}$) ou unitária (se $K = \mathbb{C}$) e $R$ é uma matriz triangular superior. Tal decomposição é importante para o método dos mínimos quadrados e é base para algoritmos computacionais de cálculo de autovalores de uma matriz. 
+\dividiritens{
+\task[\pers{a}] Prove que toda matriz $A \in \mathcal{M}_n(K)$ admite uma decomposição $QR.$
+\task[\pers{b}] Encontre a decomposição QR das seguintes matrizes:
+\begin{itemize}
+    \item[\textbf{($\alpha$)}] $A = \begin{pmatrix}
+  12 & -51 &   4 \\
+   6 & 167 & -68 \\
+  -4 &  24 & -41
+\end{pmatrix}$
+    \item[\textbf{($\beta$)}]
+\end{itemize}
+}
+%https://pt.wikipedia.org/wiki/Decomposi%C3%A7%C3%A3o_QR
+%https://www.ufrgs.br/reamat/AlgebraLinear/livro/s13-o_processo_de_ortogonalizax00e7x00e3o_de_gramx2013schmidt.html
+\solucao{}
+
+\exercicio{34} Considere  $T_2 \in \mathcal{L}(\mathbb{R}^2)$ e $T_3 \in \mathcal{L}(\mathbb{R}^3),$ dadas respectivamente por
+\[
+T_2(x,y) = (x+3y, 3x+2y) \quad \mbox{e} \quad T_3(x,y,z) = (2x+7y+8z, 7x+3y+7z, 8x+7y+5z.
+\]
+\dividiritens{
+\task[\pers{a}] Escreva as matrizes de $T_2$ e $T_3$ nas bases canônicas de $\mathbb{R}^2$ e $\mathbb{R}^3,$ respectivamente.
+\task[\pers{b}] Encontre $T_2^{*}$ e $T_3^{*},$ e verifique que $T_2$ e $T_3$ são autoadjuntos.
+
+Sabe-se que $\mathcal{B}_2 = \{ (1,1), (1,0) \}$ é uma base para $\mathbb{R}^2,$ e  $\mathcal{B}_3 = \{ (1,1,-1), (2,-1,0), (3,2,0) \}$ é uma base para $\mathbb{R}^3.$
+
+\task[\pers{c}] Encontre as matrizes que representam $T_2$ e $T_3$ nessas bases.
+\task[\pers{d}] Encontre as matrizes que representam $T_2^{*}$ e $T_3^{*}$ nessas bases e observe que ssas matrizes não são hermitianas. Isso entra em contradição com o fato de $T_2$ e $T_3$ serem autoadjuntas?
+%$\mathcal{B}_2 = \{ (2,-1), (-3,2) \}$ 
+}
+\solucao{}
+
+\exercicio{35} Suponha que $T$ é um operador normal em $V$ e $3$ e $4$ são seus autovalores. Prove que existe um vetor $v \in V$ tal que $\norm{v} = \sqrt{2}$ e $\norm{T(v)} = 5.$
+\solucao{Sejam $u$ e $v$ os autovetores de $T$ com respeito aos autovalores $3$ e $4,$ respectivamente. Então,
+\[
+T(u) = 3u \quad \mbox{e} \quad T(w) = 4w.
+\]
+Trocando $u$ por $\frac{u}{\norm{u}}$ e $w$ por $\frac{w}{\norm{w}},$ podemos assumir sem perda de generalidade que $\norm{u} = \norm{w} = 1.$ 
+
+Como $T$ é normal, $u$ e $w$ são ortogonais. O Teorema de Pitágoras implica que
+\[
+\norm{u + w} = \sqrt{\norm{u}^2 + \norm{w}^2} = \sqrt{2},
+\]
+e também
+\[
+\norm{T(u+w)} = \norm{T(u) + T(w)} = \norm{3u + 4w} = \sqrt{9 \norm{u}^2 + 16 \norm{v}^2} = 5.
+\]
+Tomando $v = u + w,$ obtemos um vetor $v$ tal que $\norm{v} = \sqrt{2}$ e $\norm{T(v)} = 5,$ como pedido pelo enunciado.
+}
+\newpage
+\section{\textcolor{Floresta}{Lista 5,5}}
+
+\subsection{Espaços com produto interno}
+
+   \exercicio{1} Determine quais das funções $\prin{,} \colon \mathbb{R}^4 \to \mathbb{R}$ abaixo definem um produto interno em $\mathbb{R}^4:$ 
+\dividiritens{
+\task[\pers{a}] $\prin{(a,b,c,d), (x,y,z,w)} = ax + 2by + 5cz + dw;$
+\task[\pers{b}] $\prin{(a,b,c,d), (x,y,z,w)} = ax - by + cz + 3dw;$
+\task[\pers{c}] $\prin{(a,b,c,d), (x,y,z,w)} = ay + 2bx + cz + dw;$
+\task[\pers{d}] $\prin{(a,b,c,d), (x,y,z,w)} = ax + 5cz + dw;$
+\task[\pers{e}] $\prin{(a,b,c,d), (x,y,z,w)} = ax + 2b + 5z + dw.$
+}
+\solucao{
+Para resolver essa questão, podemos utilizar duas técnicas diferentes:
+\begin{itemize}
+    \item Verificando se os axiomas de produto interno são satisfeitos:
+    \dividiritens{
+    \task[\pers{a}] Temos que
+    \newline 
+    $\clubsuit$ $\prin{u+v,w} = \prin{u,w} + \prin{v,w}.$ 
+        
+        Sejam $u = (u_1, u_2, u_3, u_4), v = (v_1, v_2, v_3, v_4), w = (w_1, w_2, w_3, w_4) \in \mathbb{R}^4.$ Então
+        \[
+        \begin{array}{rcl}
+        \prin{u +v,w} &=& \prin{\textcolor{Green}{(u_1 + v_1, u_2 + v_2, u_3 + v_3, u_4 + v_4)}, \textcolor{Blue}{(w_1, w_2, w_3, w_4)}} \\
+        &=& \textcolor{Green}{(u_1+v_1)}\textcolor{Blue}{w_1} + 2\textcolor{Green}{(u_2+v_2)} \textcolor{Blue}{w_2} + 5 \textcolor{Green}{(u_3+v_3)}\textcolor{Blue}{w_3}+\textcolor{Green}{(u_4+v_4)}\textcolor{Blue}{w_4} \\ 
+        &=& u_1w_1 +v_1w_1 + 2u_2w_2 + 2v_2w_2 + 5u_3w_3 + 5v_3w_3 + u_4w_4 + v_4w_4 \\ 
+        &=& u_1w_1+ 2u_2w_2+5u_3w_3+ u_4w_4 + v_1w_1+ 2v_2w_2+5v_3w_3+ v_4w_4 \\ &=& \prin{(u_1,u_2,u_3,u_4),(w_1,w_2,w_3,w_4)} + \prin{(v_1,v_2,v_3,v_4),(w_1,w_2,w_3,w_4)} \\
+        &=& \prin{u,w} + \prin{v,w}
+        \end{array}
+        \]
+        \newline
+$\textcolor{Red}{\varheart}$ $\prin{\alpha u, v} = \alpha \prin{u,v},$
+
+Sejam $u = (u_1, u_2, u_3, u_4), v = (v_1, v_2, v_3, v_4) \in \mathbb{R}^4$ e $\alpha \in \mathbb{R}.$ Temos:
+\[
+\begin{array}{rcl}
+\prin{\alpha u, v} &=& \prin{\textcolor{Green}{(\alpha u_1, \alpha u_2, \alpha u_3, \alpha u_4)}, \textcolor{Blue}{(v_1,v_2, v_3, v_4)}} \\
+&=&\textcolor{Green}{\alpha u_1} \textcolor{Blue}{v_1} + 2\textcolor{Green}{\alpha u_2} \textcolor{Blue}{v_2} + 5\textcolor{Green}{\alpha u_3} \textcolor{Blue}{v_3} + \textcolor{Green}{\alpha u_4} \textcolor{Blue}{v_4} \\ &=& \alpha (u_1v_1+ 2u_2v_2+5u_3v_3+ u_4v_4) \\ &=& \alpha \prin{(u_1,u_2, u_3, u_4), (v_1,v_2, v_3, v_4)} \\ &=& \alpha \prin{u,v}
+\end{array}
+\]
+\newline
+$\spadesuit$ $\prin{u,v} = \prin{v,u}.$
+Sejam $u = (u_1, u_2, u_3, u_4), v = (v_1, v_2, v_3, v_4) \in \mathbb{R}^4.$ Então
+\[
+\begin{array}{rcl}
+\prin{u,v} &=& \prin{\textcolor{Green}{(u_1, u_2, u_3, u_4)}, \textcolor{Blue}{(v_1, v_2, v_3, v_4)} } \\
+&=&\textcolor{Green}{u_1} \textcolor{Blue}{v_1} + 2\textcolor{Green}{ u_2} \textcolor{Blue}{v_2} + 5\textcolor{Green}{ u_3} \textcolor{Blue}{v_3} + \textcolor{Green}{ u_4} \textcolor{Blue}{v_4} \\
+&=& v_1u_1 + 2v_2u_2 + 5v_3u_3 + v_4u_4 \\
+&=& \prin{(v_1, v_2, v_3, v_4),(u_1, u_2, u_3, u_4)} \\
+&=& \prin{v,u}
+\end{array}
+\]
+\newline
+$\textcolor{Red}{\vardiamond}$ $\prin{u,u} \ge 0; \prin{u,u} = 0 \Leftrightarrow u = 0.$ 
+
+Seja $u = (u_1, u_2, u_3, u_4) \in \mathbb{R}^4.$ Então
+\[
+\prin{u,u} = \prin{(u_1, u_2, u_3, u_4),(u_1, u_2, u_3, u_4)} = u_1^2 +2u_2^2 + 5u_3^2 + u_4^2 \ge 0
+\]
+Além disso, 
+\[
+\prin{u,u} = 0 \Leftrightarrow u_1^2 +2u_2^2 + 5u_3^2 + u_4^2 = 0 \Leftrightarrow u = 0.
+\]
+
+Logo, temos que $\prin{(a,b,c,d), (x,y,z,w)} = ax + 2by + 5cz + dw$ é um produto interno em $\mathbb{R}^4.$
+
+    \task[\pers{b}]
+    
+    
+    \item Argumentando via matrizes, escrevendo o produto interno utilizando a notação matricial. 
+    
+    
+    \task[\pers{a}] Podemos escrever
+    \[
+    \prin{(a,b,c,d), (x,y,z,w)} = u^t A v = (a,b,c,d) \begin{pmatrix}
+    1 & 0 & 0 & 0 \\
+    0 & 2 & 0 & 0 \\
+    0 & 0 & 5 & 0 \\
+    0 & 0 & 0 & 1 \\
+    \end{pmatrix} \begin{pmatrix}
+    x\\ y\\ z \\ w
+    \end{pmatrix}.
+    \]
+    Como $A$ é real e simétrica, basta mostrar que $A$ é positiva definida. Se uma matriz é positiva definida, então é possível reduzí-la a uma matriz diagonal que possui todas as entradas na diagonal positivas. Claramente $A$ é uma matriz diagonal, e todas suas entradas na diagonal são positivas. Logo, $A$ é positiva definida, e $\prin{(a,b,c,d), (x,y,z,w)} = ax + 2by + 5cz + dw$ é um produto interno em $\mathbb{R}^4.$
+    
+    \task[\pers{b}]
+    }
+    
+\end{itemize}
+
+
+}
+
+\exercicio{2} Considere a função $\prin{,} \colon \mathbb{C}^2 \to \mathbb{C}^2$ dada por
+\[
+\prin{u,v} = x_1\overline{y_1} + (1+i)x_1\overline{y_2} + (1-i)x_2\overline{y_1} + 3x_2\overline{y_2}.
+\]
+\dividiritens{
+\task[\pers{a}] Verifique que $\prin{,}$ é um produto interno em $\mathbb{C}^2.$
+\task[\pers{b}] Encotnre a norma de $v = (1+2i, 2+3i) \in \mathbb{C}^2$ em relação a esse produto interno.
+}
+
+\solucao{}
+
+\exercicio{3} Use a desigualdade de Cauchy-Bunyakovski-Schwarz em $\mathbb{R}^3$ para provar a seguinte desigualdade, para $a_i > 0, i = 1,2,3:$
+\[
+(a_1 + a_2 + a_3) \left( \frac{1}{a_1} + \frac{1}{a_2} + \frac{1}{a_3} \right) \ge 0
+\]
+
+\solucao{}
+
+\exercicio{4} Seja $V = \mathcal{M}_{m \times n}(\mathbb{R}).$ Mostre que \[\prin{A,B} = \tr(B^tA) \] define um produto interno em $V.$
+
+\solucao{}
+
+\exercicio{5} Encontre uma base ortonormal para o subespaço $W \subset \mathbb{C}^3$ gerado por $u_1 = (1,i,1)$ e $u_2 = (1+i,0,2).$
+
+\solucao{
+Pelo Processo de Ortonormalização de Gramm-Schmidt, sabemos que existe um conjunto ortonormal $\{u_1, u_2 \}$ tal que $\prin{u_1,u_2} = \prin{(1,i,1),(1+i,0,2)}.$
+Temos então que, para $v_1 = (1,i,1)$ e $v_2 = (1+i,0,2),$
+\[
+u_1 = v_1 = (1,i,1)
+\]
+e
+\[
+u_2 = v_2 - \frac{\prin{v_2,u_1}}{\norm{u_1}^2}u_1 = (1+i,0,2) - \frac{\prin{(1,i,1),(1+i,0,2)}}{\norm{(1,i,1)}^2}(1,i,1) \Rightarrow \]\[u_2 = (1+i,0,2) - \frac{3+i}{1}(1,i,1) \Rightarrow u_2 = (4+2i, -1+3i, 5+i)
+\]
+Em seguida, veja que $\norm{u_1} = 1$ e $\norm{u_2} = 28 + 20i.$ Logo, $u_1$ já está normalizado. Para $u_2,$ temos
+\[
+\hat{u_2} = \frac{(4+2i, -1+3i, 5+i)}{28+20i} = 
+\]
+%https://www.emathhelp.net/calculators/linear-algebra/gram-schmidt-calculator/?i=%5B%5B1%2C1%2Bi%5D%2C%5Bi%2C0%5D%2C%5B1%2C2%5D%5D&steps=on
+}
+
+\exercicio{6} Completar até uma base ortogonal em $\mathbb{R}^4$ o seguinte sistema de vetores:
+\[
+\{ (1,-2,2,-3),(2,-3,2,4) \}
+\]
+
+\solucao{}
+
+\exercicio{7} Usando o processo de ortogonalização de Gramm-Schmidt, construir uma base ortogonal de subespaços para cada item:
+\dividiritens{
+\task[\pers{a}] $\{ (1,2,2,-1), (1,1,-5,3),(3,2,8,-7) \} \subset \mathbb{R}^4;$
+
+\task[\pers{b}] $\{ (1,1,-1,-2),(5,8,-2,-3),(3,9,3,8) \} \subset \mathbb{R}^4;$
+
+\task[\pers{c}] $\{ (1+i,3i,2-i),(2-3i, 10+2i, 5 - i) \} \subset \mathbb{C}^3.$
+}
+\solucao{}
+
+\exercicio{8} Seja $V = \mathcal{C}([0,1], \mathbb{C})$ o espaço de funções complexas contínuas com produto interno dado por
+\[
+\prin{f,g} = \displaystyle \int\limits_{0}^1 f(t) \overline{g(t)} \dif t.
+\]
+Prove que
+\dividiritens{
+\task[\pers{a}] o sistema de funções
+\[
+\{1, \sqrt{2} \cos(2 \pi nt), \sqrt{2} \sen(2 \pi n t), n,m = 1,2, \ldots \}
+\]
+é um conjunto ortonormal em $V;$
+\task[\pers{b}] o sistema de funções $\{ e^{2 \pi i nt}, n = 0, \pm 1, \pm 2, \ldots \}$ é um conjunto ortonormal em $V.$
+}
+\solucao{}
+
+\exercicio{9} Seja $V = \mathcal{M}_N(\mathbb{R})$ com produto interno $\prin{A,B} = \tr(AB^t).$ Achar complementos ortogonais para os subespaços
+\dividiritens{
+\task[\pers{a}] $\{ A \in \mathcal{M}_n(\mathbb{R}) | \tr(A) = 0 \};$
+\task[\pers{b}] $\{ A \in \mathcal{M}_n(\mathbb{R}) | A = A^t \};$
+\task[\pers{c}] $\{ A \in \mathcal{M}_n(\mathbb{R}) | A = -A^t \};$
+\task[\pers{d}] matrizes com zeros debaixo da diagonal principal.%$\{ A \in \mathcal{M}_n(\mathbb{R}) | \tr(A) = 0 \}.$
+}
+\solucao{}
+\exercicio{10}
+Encontre o cosseno do ângulo entre $u$ e $v$ se 
+\[
+u = \begin{pmatrix}
+2 & 1 \\ 3 & -1
+\end{pmatrix} \quad \mbox{e} \quad v = \begin{pmatrix}
+0 & -1 \\ 2 & 3
+\end{pmatrix}
+\]
+no espaço euclidiano $V = \mathcal{M}_2(\mathbb{R})$ com produto interno do exercício anterior.
+\solucao{Temos que
+\[
+\cos \theta = \frac{\prin{u,v}}{\norm{u} \norm{v}},
+\]
+onde $\theta$ é o ângulo entre $u$ e $v.$ Calculemos os elementos necessários:
+\[
+\prin{u,v} = \prin{\begin{pmatrix}
+2 & 1 \\ 3 & -1
+\end{pmatrix}, \begin{pmatrix}
+0 & -1 \\ 2 & 3
+\end{pmatrix}} = \tr\left(\begin{pmatrix}
+2 & 1 \\ 3 & -1
+\end{pmatrix} \begin{pmatrix}
+0 & -1 \\ 2 & 3
+\end{pmatrix}^t  \right) =  \tr\left(\begin{pmatrix}
+2 & 1 \\ 3 & -1
+\end{pmatrix} \begin{pmatrix}
+0 & -1 \\ 2 & 3
+\end{pmatrix}^t  \right)= \]\[ \tr\left(\begin{pmatrix}
+2 & 1 \\ 3 & -1
+\end{pmatrix} \begin{pmatrix}
+0 & 2 \\ -1 & 3
+\end{pmatrix} \right) =   \tr\left(\begin{pmatrix}
+-1 & 7 \\ 1 & 3
+\end{pmatrix} \right) = 2
+\]
+\[
+\prin{u,u} =  \prin{\begin{pmatrix}
+2 & 1 \\ 3 & -1
+\end{pmatrix},\begin{pmatrix}
+2 & 1 \\ 3 & -1
+\end{pmatrix} } = \tr\left( \begin{pmatrix}
+2 & 1 \\ 3 & -1
+\end{pmatrix} \begin{pmatrix}
+2 & 1 \\ 3 & -1
+\end{pmatrix}^{t}  \right) = \]\[ \tr\left( \begin{pmatrix}
+2 & 1 \\ 3 & -1
+\end{pmatrix} \begin{pmatrix}
+2 & 3 \\ 1 & -1
+\end{pmatrix}  \right) =  \tr\left( \begin{pmatrix}
+5 & 5 \\ 5 & 10
+\end{pmatrix}  \right) = 15
+\]
+\[
+\prin{v,v} =  \prin{ \begin{pmatrix}
+0 & -1 \\ 2 & 3
+\end{pmatrix}, \begin{pmatrix}
+0 & -1 \\ 2 & 3
+\end{pmatrix} } = \tr\left( \begin{pmatrix}
+0 & -1 \\ 2 & 3
+\end{pmatrix}  \begin{pmatrix}
+0 & -1 \\ 2 & 3
+\end{pmatrix}^{t}  \right) =  \]\[\tr\left(  \begin{pmatrix}
+0 & -1 \\ 2 & 3
+\end{pmatrix}  \begin{pmatrix}
+0 & 2 \\ -1 & 3
+\end{pmatrix} \right) =  \tr\left( \begin{pmatrix}
+1 & -3 \\ -3 & 13
+\end{pmatrix}  \right) = 14
+\]
+Então
+\[
+\norm{u} = \sqrt{\prin{u,u}} = \sqrt{15} \quad \mbox{e} \quad \norm{v} = \sqrt{\prin{v,v}} = \sqrt{14}
+\]
+Logo,
+\[
+\cos \theta = \frac{\prin{u,v}}{\norm{u} \norm{v}} \Rightarrow \cos \theta = 
+\frac{2}{\sqrt{15} \sqrt{14}}  \Rightarrow \cos \theta = 
+\frac{2}{\sqrt{210}} \Rightarrow \boxed{\cos \theta = 
+\frac{\sqrt{210}}{105}}
+\]
+}
+\exercicio{11} Sejam $\mathbb{R}^4$ com o produto interno usual e 
+\[
+S = \{ (x,y,z,w) \in \mathbb{R}^4 | x - 2y + z + w = 0 \}
+\]
+Determine uma base ortogonal de $S$ e uma outra para $S^{\perp}.$
+
+\solucao{Observe que $w = -x +2y-z$. Logo, um vetor $v \in S$ é da forma
+\[
+v = (x,y,z,-x+2y-z) = x(1,0,0,-1) + y(0,1,0,2) + z(0,0,1,-1).
+\]
+Portanto, temos que $\mathcal{B} = \{(1,0,0,-1), (0,1,0,2), (0,0,1,-1)\}$ é uma base para $S.$ Vamos ortogonalizá-la, utilizando o processo de Ortogonalização de Gramm-Schmidt. Tomando $u_1 = (1,0,0,-1), u_2 = (0,1,0,2)$ e $u_3 = (0,0,1,-1),$ encontraremos a base ortogonal $\{w_1,w_2,w_3\}:$
+\[
+w_1 = u_1 = (1,0,0,-1)
+\]
+\[
+w_2 = u_2 - \frac{\prin{u_2,w_1}}{\norm{w_1}^2}w_1 = (0,1,0,2) - \frac{\prin{ (0,1,0,2),(1,0,0,-1)}}{\norm{(1,0,0,-1)}^2}(1,0,0,-1) = \]\[(0,1,0,2) -  \frac{-2}{(\sqrt{2})^2}(1,0,0,-1) = (0,1,0,2) + (1,0,0,-1) = (1,1,0,1)
+\]
+\[
+w_3 = u_3 - \frac{\prin{u_3,w_1}}{\norm{w_1}^2}w_1 - \frac{\prin{u_3,w_2}}{\norm{w_2}^2}w_2 = \]\[(0,0,1,-1) - \frac{\prin{ (0,0,1,-1),(1,0,0,-1)}}{\norm{(1,0,0,-1)}^2}(1,0,0,-1) - \frac{\prin{ (0,0,1,-1),(1,1,0,1)}}{\norm{(1,1,0,1)}^2}(1,1,0,1) = \]\[ 
+ (0,0,1,-1) - \frac{1}{(\sqrt{2})^2}(1,0,0,-1) - \frac{-1}{(\sqrt{3})^2}(1,1,0,1) = (0,0,1,-1) = \]\[ \frac{1}{2}(1,0,0,-1) + \frac{1}{3}(1,1,0,1) =\left( -\frac{1}{6},\frac{1}{3},1, -\frac{1}{6} \right)
+\]
+Logo, $\left\{  (1,0,0,-1),(1,1,0,1),   \left( -\frac{1}{6},\frac{1}{3},1, -\frac{1}{6} \right) \right\}$ é uma base ortogonal de $S.$
+
+Para encontrar uma base para $S^{\perp},$ precisamos primeiro descrever os elementos desse conjunto. Para isso, sabemos que, se $w \in S^{\perp},$ então $\prin{w, v} = 0 \ \forall v \in S.$ Em particular, isso ocorre para os elementos da base de $S.$ Daí, sendo $w = (w_1,w_2,w_3,w_4),$
+\[
+\begin{cases}
+\prin{w,u_1} = 0 \\
+\prin{w,u_2} = 0 \\
+\prin{w,u_3} = 0 \\
+\end{cases} \Rightarrow \begin{cases}
+w_1 - w_4 = 0 \\
+w_2 + 2w_4 = 0 \\
+w_3-w_4 = 0 \\
+\end{cases} \Rightarrow w = w_4(1,-2,1,1)
+\]
+Logo, $\{ (1,-2,1,1) \}$ é uma base ortogonal para $S^{\perp}.$
+}
+
+\exercicio{12} Considere o espaço $V = \mathcal{P}_3(\mathbb{R})$ com o produto interno dado por
+\[
+\prin{f,g} = \displaystyle\int\limits_{0}^1 f(t) g(t) \dif t
+\]
+Ache uma base ortonormal de $\langle 1, 5+t \rangle^{\perp}.$
+
+\solucao{ Seja $h \in \langle 1, 5+t \rangle^{\perp}.$ Então, temos que
+\[
+\begin{cases}
+\prin{1,h} = 0 \\
+\prin{5+t,h} = 0
+\end{cases} \Rightarrow
+\begin{cases}
+\displaystyle\int\limits_0^1 h(t) \dif t = 0 \\
+\displaystyle\int\limits_0^1 (5+t)h(t) \dif t = 0
+\end{cases} 
+\]
+Como $h \in \mathcal{P}_3(\mathbb{R}),$ temos que $h(t) = \alpha t^3 + \beta t^2 + \gamma t + \delta.$ Então
+\[
+\begin{cases}
+\displaystyle\int\limits_0^1  \alpha t^3 + \beta t^2 + \gamma t + \delta \dif t = 0 \\
+\displaystyle\int\limits_0^1 (5+t)( \alpha t^3 + \beta t^2 + \gamma t + \delta) \dif t = 0
+\end{cases}  \Rightarrow \begin{cases}
+ \frac{1}{4}\alpha + \frac{1}{3}\beta + \frac{1}{2}\gamma+ \delta = 0 \\
+\frac{29}{20} \alpha + \frac{23}{12} \beta + \frac{17}{6} \gamma + \frac{11}{2} \delta = 0
+\end{cases} \Rightarrow \]\[(\alpha, \beta, \gamma, \delta) = \gamma \left( \frac{10}{3}, -4,1,0 \right) + \delta (20,-18,0,1)
+\]
+Logo, sendo $f(t) = \frac{10t^3}{3} - 4t^2 + t$ e $g(t) = 20t^3 - 18t^2 + 1,$ temos que $\{ f, g \}$ é uma base para $\langle 1, 5+t \rangle^{\perp}.$ Observe que $\norm{f} = \frac{\sqrt{105}}{105}, \norm{g} =  \sqrt{\frac{33}{35}}$ e $\prin{f,g} = \frac{19}{210}.$ Logo, vamos precisar ortonormalizá-la, e para isso, utilizaremos o Processo de Ortogonalização de Gramm-Schmidt. Sendo $\{ h_1, h_2 \}$ a base que procuramos, temos:
+\[
+h_1(t) = f(t) = \frac{10t^3}{3} - 4t^2 + t
+\]
+\[
+h_2(t) = g - \frac{\prin{g, h_1} }{\norm{h_1}^2}h_1  =  20t^3 - 18t^2 + 1 - \frac{\frac{19}{210} }{\left( \frac{\sqrt{105}}{105} \right)^2}\left(\frac{10t^3}{3} - 4t^2 + t\right) = \]\[20t^3 - 18t^2 + 1 - \frac{19}{2}\left(\frac{10t^3}{3} - 4t^2 + t\right) = -\frac{1}{6}(70t^3 - 120t^2 + 57t - 6)
+\]
+Temos então que $h_1$ e $h_2$ são ortogonais. Basta agora normalizá-los. Como $\norm{h_1} =  \frac{\sqrt{105}}{105}$ e $\norm{h_2} = \frac{\sqrt{3}}{6},$ temos
+\[
+h_1(t) = \sqrt{105}\left(\frac{10t^3}{3} - 4t^2 + t\right) \quad \mbox{e} \quad h_2(t) = -\frac{\sqrt{3}}{3}(70t^3 - 120t^2 + 57t - 6)
+\]
+Assim, $\{h_1, h_2 \}$ é a base ortonormal procurada.
+}
+
+\exercicio{13} Seja $V = \mathcal{C}([-1,1], \mathbb{R})$ com o produto interno dado por
+\[
+\prin{f,g} = \displaystyle\int\limits_{-1}^1 f(t) g(t) \dif t
+ \]
+Seja $W \subset V$ o subespaço formado pelas funções ímpares. Determine $W^{\perp}.$
+
+\solucao{ Seja $f$ uma função ímpar. Então sabemos por definição que $f(-x) = -f(x).$ Além disso, sabemos que, se $f$ é ímpar, então
+\[
+\displaystyle\int\limits_{-a}^a f(t) \dif t = 0, \forall a \in \mathbb{R}.
+\]
+Daí, queremos que $h(t) = f(t)g(t)$ seja ímpar, para $f$ ímpar.
+Ou seja, $h(-t) = -h(t).$ Mas como
+\[
+h(-t) = \textcolor{Green}{f(-t)}g(-t) = \textcolor{Green}{-f(t)}g(-t)
+\]
+\[
+-h(t) = -f(t)g(t),
+\]
+devemos ter então
+\[
+h(-t) = -h(t) \Rightarrow -f(t)g(-t) = -f(t)g(t) \Rightarrow g(-t) = g(t).
+\]
+Logo, se $g$ for uma função par, então $\prin{f,g} = 0,$ para toda função $f$ ímpar. Concluímos assim que todas as funções ímpares são ortogonais às funções pares. Portanto, $W^{\perp}$ é o subespaço formado pelas funções pares.
+}
+
+\exercicio{14} Para cada caso, encontre a distância entre o vetor $x$ e o subespaço que contém as soluções de cada sistema de equações:
+\dividiritens{
+\task[\pers{a}] $\begin{cases}
+2x_1 + 2x_2 + x_3 + x_4 = 0 \\ 2x_1 + 4x_2 + 2x_3 + 4x_4 = 0
+\end{cases}$ e $x = (2,4,0,-1);$
+\task[\pers{b}] $\begin{cases}
+x_1 + 2x_2 + x_3 - x_4 = 0 \\ x_1 + 3x_2 + x_3 -3x_4 = 0
+\end{cases}$ e $x = (3,3,-4,2);$
+}
+
+\solucao{}
+\exercicio{15} A sequência de polinômios $( p_k )_{k \in \mathbb{N}},$ dada recursivamente por
+\[
+\begin{cases}
+p_0(x) = 1,\\
+p_n(x) =  \frac{1}{2^n n!} \od[n]{}{t} (x^2 - 1)^n, n \ge 1
+\end{cases}
+\]
+são chamados \emph{polinômios de Legendre}. Prove que os polinômios de Legendre formam uma base ortonormal no espaço euclidiano $\mathcal{P}_n(\mathbb{R})$ com produto interno $\prin{f,g} = \displaystyle\int\limits_{-1}^1 f(t) g(t) \dif t.$
+\solucao{Mostremos que a sequência $(p_k)_{k \le n}$ pode ser obtida por meio da ortonormalização da base $\{ 1, t, t^2, \ldots, t^n \}$ de $\mathcal{P}_n(\mathbb{R}).$
+
+
+ A tabela abaixo mostra os $11$ primeiros polinômios de Legendre:
+ \begin{center}
+ \begin{tabular}{|c|c|}
+ \hline
+ $n$ & $p_n(t)$ \\ \hline
+ $0$ & $1$ \\ \hline
+  $1$ & $t$ \\ \hline
+$2$ &  $\frac{1}{2} \left( 3t^2 - 1 \right)$\\ \hline
+$3$ &  $\frac{1}{2} \left( 5t^3 - 3t \right)$ \\ \hline
+$4$& $\frac{1}{8} \left( 35t^4 - 30t^2 + 3 \right)$  \\ \hline
+$5$ & $\frac{1}{8} \left( 63t^5 - 70t^3 + 15t \right)$   \\ \hline
+$6$ &  $\frac{1}{16} \left( 231t^6 - 315t^4 + 105t^2 -5\right)$  \\ \hline
+$7$ & $\frac{1}{16} \left( 429t^7 - 693t^5 + 315t^3 -35t\right)$ \\ \hline 
+$8$ & $\frac{1}{128} \left( 6435t^8 - 12012t^6 + 6930t^4 -1260t^2 + 35\right)$ \\ \hline
+$9$ & $\frac{1}{128} \left( 12155t^9 - 25740t^7 + 18018t^5 -4620t^3 + 315t\right)$  \\ \hline
+$10$ &  $\frac{1}{128} \left( 46189t^{10} - 109395t^8 + 90090t^6 -30030t^4 + 3465t^2 - 63\right)$   \\ \hline
+ \end{tabular}
+ \end{center}
+ Os gráficos dos polinômios de Legendre com $n \le 5$ são mostrados abaixo:
+ 
+ \begin{figure}
+     \includegraphics[scale=0.6]{figuras/legendre.png}
+     \caption{Gráficos dos polinômios de Legendre com $n \le 5$}
+ \end{figure}
+
+
+
+ \textbf{Observação:} Vamos mostrar que $(p_n(t))_{n \ge 0}$ é base ortonormal para $L^2[-1,1].$ Tem-se
+ \[
+ p_n(t) = \frac{1}{2^n n!} \od[n]{}{t} (t^2 - 1)^n
+ \]
+ 
+ Segue do Teorema de Stone-Weierstrass que
+ \[
+ \mathcal{C}([-1,1], \mathbb{R}) = \overline{[t^n, n \ge 0 ]}^{\norm{\centerdot}_\infty} = \overline{[p_n , n \ge 0]}^{\norm{\centerdot}_\infty}
+ \]
+ Além disso,
+ \[
+ \norm{f}_2 \le \sqrt{2} \norm{f}_\infty \ \forall f \in L^2[-1,1] 
+ \]
+ Daí, $[p_n, n \ge 0]$ é denso em $(\mathcal{C}([-1,1], \mathbb{R}), \norm{\centerdot}_2),$ e $[p_n, n \ge 0]$ é denso em $L^2[-1,1].$
+ 
+ Sendo que $(p_n)_{n \ge 0}$ é uma família ortonormal, segue do Teorema da Base Ortonormal que $(p_n)_{n \ge 0}$ é base ortonormal de $L^2[-1,1].$
+
+}
+
+\exercicio{16} Calcule o volume do paralelepípedo formado pelos vetores
+\dividiritens{
+\task[\pers{a}] $(1,-1,1,-1), (1,1,1,1),(1,0,-1,0),(0,1,0,-1).$
+\task[\pers{b}] $(1,1,1,1),(1,-1,-1,1), (2,1,1,3),(0,1,-1,0).$
+}
+
+\solucao{}
+\exercicio{17} No espaço euclidiano $\mathcal{P}_n(\mathbb{R})$ com o produto interno $\displaystyle\int\limits_{-1}^1 f(x)g(x) \dif x,$ calcule
+\dividiritens{
+\task[\pers{a}] o volume do paralelepípedo $P[1,x, \ldots, x^n];$
+\task[\pers{b}] a distância do vetor $x^n$ até o subespaço $\mathcal{P}_{n-1}(\mathbb{R});$
+\task[\pers{c}] o ângulo entre o vetor $x^n$ e o subespaço $\mathcal{P}_{n-1}(\mathbb{R});$
+\task[\pers{d}] a distância do vetor $x^k$ até o subespaço $\mathcal{P}_{\ell}(\mathbb{R}),$ onde $k = 0, 1, \ldots, n$ e $\ell \le n;$
+\task[\pers{e}] o ângulo entre o vetor $x^n$ e o subespaço $\mathcal{P}_{n-1}(\mathbb{R}),$ onde $k = 0, 1, \ldots, n$ e $\ell \le n.$
+}
+\solucao{
+}
+\textcolor{Red}{Questões Suplementares}
+
+\exercicio{k} Prove que para qualquer triângulo, a soma dos quadrados das medidas de suas três medianas é igual a três quartos da soma dos quadrados das medidas de seus lados.
+
+%https://repositorio.unesp.br/bitstream/handle/11449/144302/pontes_rc_me_rcla.pdf?sequence=3
+
+
+\solucao{}
+
+\exercicio{k+1} Considere um tetraedro. Chamamos de \emph{bimediana} o segmento que liga os pontos médios de duas
+arestas opostas do tetraedro.
+\dividiritens{
+\task[\pers{a}] Prove que, para qualquer tetraedro, a soma dos quadrados das medidas de suas três bimedianas é igual a um quarto da soma dos quadrados das medidas de suas arestas.
+
+\task[\pers{b}] Encontre  %https://repositorio.unesp.br/bitstream/handle/11449/144302/pontes_rc_me_rcla.pdf?sequence=3
+}
 \newpage
 \section{\textcolor{Floresta}{Lista 6}}
 
@@ -4054,5 +5586,12 @@ verdade que $d \mid n?$ Justifique.
 \exercicio{31} 
 \solucao{}
 \end{document} 
+
+%Interessante:
+
 %https://en.wikipedia.org/wiki/Berlekamp%E2%80%93Massey_algorithm
 %https://math.stackexchange.com/questions/1186477/given-minimal-characteristic-polynomial-how-to-derive-linear-recurrence
+
+%http://www.kurims.kyoto-u.ac.jp/~kyodo/kokyuroku/contents/pdf/2033-19.pdf
+
+%http://correio.fdvmg.edu.br/downloads/DET142/alglin_UFF.pdf
