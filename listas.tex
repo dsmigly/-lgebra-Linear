@@ -5559,6 +5559,225 @@ $10$ &  $\frac{1}{128} \left( 46189t^{10} - 109395t^8 + 90090t^6 -30030t^4 + 346
 }
 \solucao{
 }
+
+
+\exercicio{18} Considere $\mathcal{C}([0, 2 \pi], \mathbb{R})$ munido do produto interno
+\[
+\prin{f,g} = \displaystyle\int\limits_{0}^{2 \pi} f(x)g(x) \dif x.
+\]
+Determine a função $h \in \prin{1, \sen x, \cos x}$ que melhor se aproxime de $f \colon [0, 2 \pi] \to \mathbb{R} $ dada por $f(t) = t - 1.$
+\solucao{}
+
+\exercicio{19} Sabemos que é possível representar um sistema linear a partir de um operador linear $T \in \mathcal{L}(V,U)$, escrevendo o sistema na forma $Tx = b.$ Mesmo assim, esse sistema pode ser insolúvel. Vamos então procurar um $x$ tal que a distância para a imagem de $T$ seja a menor possível. Considere então $x \in U$ ta que para todo $v \in \mbox{Im }(T),$ tenhamos $\prin{T(x)-b,v} = 0.$
+\dividiritens{
+\task[\pers{a}] Prove que $x$ satisfaz
+\[
+(T^{*}T)(x) = T^{*}(b)
+\]
+\task[\pers{b}] Verifique que o sistema representado pela equação acima sempre possui solução.
+}
+\solucao{
+\dividiritens{
+\task[\pers{a}] Se $\prin{T(x)-b,v} = 0$ para todo $v \in \mbox{Im }(T),$ então $T(x)-b \in (\mbox{Im }(T))^{\perp}.$ Mas $(\mbox{Im }(T))^{\perp} = \Ker(T^{*}).$ Daí,
+\[
+T^{*}(T(x) - b) = 0 \Rightarrow (T^{*}T)(x) = T^{*}(b).
+\]
+
+\task[\pers{b}] Claramente $T(x) \in \mbox{Im }(T).$ Logo, o sistema $T^{*}(T(x)) = T^{*}(b)$ possui solução.
+}
+}
+
+\exercicio{20} Determine a reta que melhor se ajusta aos pontos $(−1, −10), (0, −6), (1, −4), (2, −2)$ de $\mathbb{R}^2$.
+\solucao{
+Considere $\alpha x + \beta y + \gamma = 0$ a equação da reta desejada. Queremos que esses pontos pertençam à reta. Logo, formamos o seguinte sistema:
+\[
+\begin{cases}
+-\alpha -10 \beta + \gamma = 0\\
+-6 \beta + \gamma = 0\\
+\alpha - 4 \beta + \gamma = 0\\
+2\alpha - 2 \beta + \gamma = 0\\
+\end{cases} \Rightarrow A = [T]_{\mbox{can}} = \begin{bmatrix}
+-1 & -10 & 1 \\
+0  & -6  & 1 \\
+1  & -4  & 1 \\
+2  & -2  & 1
+\end{bmatrix} \begin{bmatrix}
+\alpha \\ \beta \\ \gamma
+\end{bmatrix} = \begin{bmatrix}
+0 \\ 0 \\ 0
+\end{bmatrix}
+\]
+Sendo $x = (\alpha, \beta, \gamma)^t$ e $b = (0,0,0)^t,$ queremos encontrar $x$ que resolva
+\[
+(A^{*}A)(x) = A^{*}(b).
+\]
+Logo, temos que
+\[
+\left(\begin{matrix}
+6 & 2 & 2 \\
+2 & 156 & -22 \\
+2 & -22 & 4
+\end{matrix}\right)   \begin{bmatrix}
+\alpha \\ \beta \\ \gamma
+\end{bmatrix} = \left(\begin{matrix}
+-1 & 0 & 1 & 2 \\
+-10 & -6 & -4 & -2 \\
+1 & 1 & 1 & 1
+\end{matrix}\right) \begin{bmatrix}
+0 \\ 0 \\ 0
+\end{bmatrix} \Rightarrow \begin{cases}
+6\alpha + 2\beta + 2 \gamma =0 \\
+2\alpha + 156\beta  -22 \gamma =0 \\
+2\alpha  -22\beta + 4 \gamma =0
+\end{cases}
+\]
+}
+
+\exercicio{21} Determine o polinômio de grau $2$ que melhor se ajusta aos pontos $(−1, 0), (0, −1), (1, 1), (2, 4)$ de $\mathbb{R}^2$.
+\solucao{}
+\exercicio{22} Determine a melhor solução aproximada do sistema
+\[
+\begin{cases}
+x-2y=1\\
+x-y=0\\
+2x+2y=2
+\end{cases}
+\]
+\solucao{A matriz que representa o sistema será
+\[
+A = \begin{bmatrix}
+1 & -2 \\
+1 & -1 \\
+2 & 2
+\end{bmatrix}
+\]
+Logo, tomando $z = (x,y)^t$ e $b = (1,0,2)^t,$ 
+\[
+Az = b
+\]
+Vamos encontrar $z$ tal que $A^{*}Az = A^*b:$
+\[
+A^{*}Az = A^{*}b \Rightarrow \begin{bmatrix}
+6 & 1 \\
+1 & 9
+\end{bmatrix}  \begin{bmatrix}
+x \\
+y
+\end{bmatrix} = \begin{bmatrix}
+1 & 1 & 2 \\
+-2 & -1 & 2
+\end{bmatrix}\begin{bmatrix}
+1 \\
+0 \\
+2
+\end{bmatrix} \Rightarrow \begin{cases}
+6x+y = 5\\
+x + 9y = 2
+\end{cases} \Rightarrow Z = \left( \frac{43}{53}, \frac{7}{53} \right)
+\]
+Portanto, a melhor solução aproximada para o sistema será $\left( \frac{43}{53}, \frac{7}{53} \right).$
+}
+
+
+\exercicio{23} Considere o espaço vetorial $\mathcal{P}_3(\mathbb{R})$ com produto interno dado por
+\[
+\prin{f,g} = \displaystyle\int\limits_{0}^{1} f(x)g(x) \dif x.\]
+
+Determine o polinômio do subespaço $\prin{1,x^2}$ que melhor se aproxima de $f(x) = x^3−x.$
+
+\solucao{
+Seja $W =\prin{1,x^2}.$ Vamos encontrar 
+\[
+d(f, W) = \{ \norm{f - w} | w \in W \} 
+\]
+Sabemos que $d(f,W) = \norm{f - E_W(f)},$ onde 
+\[
+E_W(f) = \sum\limits_{i=1}^2 \frac{\prin{f, w_i}}{\norm{w_i}^2} w_i =  \frac{\prin{f, 1}}{\norm{1}^2} + \frac{\prin{f, x^2}}{\norm{x^2}^2}
+\]
+Logo, 
+\[
+E(x^3 - x) = \frac{\prin{x^3 - x, 1}}{\norm{1}^2} + \frac{\prin{x^3 - x, x^2}}{\norm{x^2}^2} =  \frac{-\frac{1}{4}}{1} + \frac{-\frac{1}{12}}{\frac{1}{5}} = -\frac{2}{3}
+\]
+e
+\[
+d(f,W) = \norm{x^3 - x +\frac{2}{3}} = \displaystyle\int\limits_0^1  \left(x^3 - x +\frac{2}{3} \right) \left(x^3 - x +\frac{2}{3} \right)  \dif x = \frac{59}{315}.
+\]
+Basta encontrar um $g(x)$ tal que
+\[
+\norm{f - g} = \frac{59}{315}
+\]
+
+}
+
+
+\exercicio{24}  Ache $a, b, c \in \mathbb{R}$ de forma a minimizar o valor da integral
+\[
+\displaystyle\int\limits_{-1}^1 \abs{x^3 - ax^2 - bx -c}^2 \dif x.
+\]
+
+\solucao{}
+
+\exercicio{25}  Sejam $U, V$ espaços com produtos internos e $T \colon U \to V$ uma aplicação tal que $\prin{T(u), T(v)} = \prin{u, v} \ \forall u,v \in U.$ Mostre que $T$ é linear.
+
+\solucao{Para verificar que $T$ é linear, precisamos mostrar que, para todo $u, v \in V$ e $\alpha \in K,$ temos que $T(u + v) =  T(u) + T(v)$ e $T(\alpha u) = \alpha T(u).$ De fato,
+\begin{itemize}
+    \item para $u,v, w\in U,$ temos que 
+    \[\prin{T(u+v), T(w)} = \prin{(u+v),w} = \prin{u,w} + \prin{v,w} = \prin{T(u), T(w)} + \prin{T(v), T(w)} = \prin{T(u) + T(v), T(w)} \Rightarrow T(u+v) = T(u) + T(v).\]
+    \item para $u,v, w\in U,$ temos que 
+    \[\prin{T(\alpha u), T(w)} = \prin{\alpha u,w} = \alpha \prin{u,w} = \alpha \prin{T(u), T(w)} + \prin{\alpha T(v), T(w)} \Rightarrow T(\alpha u) = \alpha T(u).\]
+
+\end{itemize}
+Logo, $T$ é linear.
+}
+\subsection{Operadores lineares em espaços com produto interno}
+\exercicio{26} Para cada um dos seguintes funcionais lineares $\varphi \in V^{*},$ encontre um vetor $u \in V$ tal que $\varphi(v) = \prin{v, u} \ \forall v \in V:$
+
+\dividiritens{
+\task[\pers{a}] $V = \mathbb{R}^3, \varphi(x,y,z) = x + 2y -3z;$
+\task[\pers{b}] $V = \mathbb{C}^3, \varphi(x,y,z) = ix + (2+3i)y + (1-2i)z;$
+\task[\pers{c}] $V = \mathcal{P}_2(\mathbb{R}), \varphi(f) = f(1);$
+}
+
+\solucao{\dividiritens{
+\task[\pers{a}] Note que
+\[
+x +2y-3z = \prin{(1,2,-3),(x,y,z)}.
+\]
+Portanto, temos que para $u = (1,2,-3),$ $\varphi(v) = \prin{u, v}, \ \forall v \in V.$
+\task[\pers{b}] Veja que
+\[
+ ix + (2+3i)y + (1-2i)z = \prin{(i,2+3i,1-2i),(x,y,z)}.
+\]
+Portanto, temos que para $u = (i,2+3i,1-2i),$ $\varphi(v) = \prin{u, v}, \ \forall v \in V.$
+
+\task[\pers{c}]
+}
+
+
+}
+
+\exercicio{27} Seja $T \in \mathcal{L}(\mathbb{C}^2)$ o operador dado por $T(1, 0) = (1 + i, 2)$ e $T(0, 1) = (i, i).$ Considerando $\mathbb{C}^2$ com o produto interno canônico, determine $T^{*}.$
+
+\solucao{Observe que a representação matricial de $T$ na base canônica de $\mathbb{C}^2$ é
+\[
+A = [T]_{\mbox{can}} = \begin{bmatrix}
+1 + i & i \\
+2 & i
+\end{bmatrix}
+\]
+Como a base canônica é uma base ortonormal, a matriz que representa $T^{*}$ na base canônica será a hermitiana de $A,$ ou seja,
+\[
+[T^{*}]_{\mbox{can}} = A^{H} = A^{*} = [T^{*}]_{\mbox{can}} = \overline{\begin{bmatrix}
+1 + i & i \\
+2 & i
+\end{bmatrix}^t} = \begin{bmatrix}
+1 - i & 2 \\
+-i & -i
+\end{bmatrix}
+\]
+Logo, o operador $T^{*} \in \mathcal{L}(\mathbb{C}^2)$ é dado por $T(1,0) = (1-i,-i)$ e $T(0,1) = (2,-i).$
+}
+
 \textcolor{Red}{Questões Suplementares}
 
 \exercicio{k} Prove que para qualquer triângulo, a soma dos quadrados das medidas de suas três medianas é igual a três quartos da soma dos quadrados das medidas de seus lados.
