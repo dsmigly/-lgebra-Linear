@@ -83,7 +83,16 @@ mathb7 <8-9> mathb8 <9-10> mathb9 <10-12> mathb10 <12-> mathb12 }{}
 \newcommand{\prin}[1]{\left\langle #1 \right\rangle }
 
 
-\newcommand{\exercicio}[1]{\subsection{Exercício #1} \textcolor{blue}{\bf(#1)}}
+%\newcommand{\exercicio}[1]{\subsection{Exercício #1} \textcolor{blue}{\bf(#1)}}
+
+%Uso de counters para numeração automática dos exercícios 
+%Para mais infos: https://www.overleaf.com/learn/latex/Counters
+
+\newcounter{exercicio}[section]
+\newenvironment{exercicio}[1][]{\refstepcounter{exercicio}\par\medskip
+   \subsection{Exercício~\theexercicio. #1} \rmfamily \textcolor{blue}{\bf(\theexercicio)} \rmfamily}{\medskip }
+   
+   
 \newcommand{\dividiritens}[1]{\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](1) #1 \end{tasks}}
 
 \newcommand{\dividiritensdiv}[2]{\begin{tasks}[counter-format={(tsk[a])},label-width=3.6ex, label-format = {\bfseries}, column-sep = {0pt}](#1) #2 \end{tasks}}

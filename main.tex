@@ -1,4 +1,4 @@
-BR%%% ------- Readme -------%%%
+%%% ------- Readme -------%%%
 
 %%-----------------------%%%
 \documentclass[11pt,twoside,a4paper]{book}
@@ -229,15 +229,15 @@ um conjunto que gere $V$. Então
 \end{corolario}
 
 \begin{lema}\label{basefin1} Seja $V$ um espaço vetorial sobre um corpo $K$.
-Sejam $(v_i)_{i=1}^n$ uma sequência linearmente independente e
-$(u_j)_{j=1}^m$ uma sequência que gera $V$. Então $n\leq m$.
+Sejam $(v_1,\dots,v_n)$ uma sequência linearmente independente e
+$(u_1,\dots,u_m)$ uma sequência que gera $V$. Então $n\leq m$.
 \end{lema}
 
 \begin{sublema} Seja $V$ um espaço vetorial sobre um corpo $K$.
-Uma sequência $(v_i)_{i=1}^m$ é linearmente dependente se e somente se existem $i$ e uma sequência $(\alpha_j)_{j=1}^{i-1}$ tais que \[v_i=\sum\limits_{j=1}^{i-1}\alpha_jv_j.\]
+Uma sequência $(v_1,\dots,v_m)$ é linearmente dependente se e somente se existem $i$ e uma sequência $(\alpha_1,\dots,\alpha_{i-1})$ tais que \[v_i=\sum\limits_{j=1}^{i-1}\alpha_jv_j.\]
 \end{sublema}
 \begin{proof}[Demonstração do Sublema]
-Se $(v_i)_{i=1}^m$ é linearmente dependente, então existe uma sequência $(\alpha_i)_{i=1}^m$ não identicamente nula tal que:
+Se $(v_1,\dots,v_m)$ é linearmente dependente, então existe uma sequência $(\alpha_1,\dots,\alpha_m)$ não identicamente nula tal que:
 \[
 \sum_{i=1}^m\alpha_iv_i=0.
 \]
@@ -299,7 +299,7 @@ Com o lema, também podemos mostrar que, se existe um conjunto gerador finito, e
 
 \medskip
 \noindent
-De fato, se existirem uma sequência geradora $(u_j)_{j=1}^m$ e um conjunto linearmente independente infinito $S$, então podemos pegar $m+1$ vetores distintos e assim formar uma sequência linearmente independente $(v_i)_{i=1}^{m+1}$, contradizendo o lema \ref{basefin1}.
+De fato, se existirem uma sequência geradora $(u_1,\dots,u_m)$ e um conjunto linearmente independente infinito $S$, então podemos pegar $m+1$ vetores distintos e assim formar uma sequência linearmente independente $(v_1,\dots,v_{m+1})$, contradizendo o lema \ref{basefin1}.
 \end{observacao}
 
 \noindent
@@ -743,7 +743,7 @@ Seja $V$ um espaço vetorial sobre $K$. Denotamos $V^*=\mathcal{L}(V,K)$. O espa
 Se $\dim(V)=n$, então $\dim(V^*)=n\cdot 1=n$, aí $V$ e $V^*$ são isomorfos.
 
 \begin{teorema}\label{basedual}
-Seja $V$ um espaço vetorial com $\dim(V)=n$ e $B=(v_i)_{i=1}^n$ uma base de $V$. Então existe uma base $B^*=(f_i)_{i=1}^n$ de $V^*$ tal que $f_i(v_j)=\delta_{i,j}$ para quaisquer $i,j$. Além disso:
+Seja $V$ um espaço vetorial com $\dim(V)=n$ e $B=(v_1,\dots,v_n)$ uma base de $V$. Então existe uma base $B^*=(f_1,\dots,f_n)$ de $V^*$ tal que $f_i(v_j)=\delta_{i,j}$ para quaisquer $i,j$. Além disso:
 \[
 \forall v\in V:v=\sum_{i=1}^nf_i(v)v_i
 \]
@@ -842,11 +842,11 @@ Nesse caso $\varphi$ é um isomorfismo natural, ou seja, não depende da escolha
 Se $\dim(V)$ é finita, então toda base de $V^*$ é a base dual para uma base de $V$.
 \end{corolario}
 \begin{proof}
-Seja $C=(f_i)_{i=1}^n$ uma base de $V^*$. Consideremos a base dual $C^*=(g_i)_{i=1}^n$ de $V^{**}$. Mas $\varphi$ é sobrejetora, então existem $v_1,\dots,v_n\in V$ tais que para todo $i$ tenhamos $g_i=\varphi_{v_i}$, assim:
+Seja $C=(f_1,\dots,f_n)$ uma base de $V^*$. Consideremos a base dual $C^*=(g_1,\dots,g_n)$ de $V^{**}$. Mas $\varphi$ é sobrejetora, então existem $v_1,\dots,v_n\in V$ tais que para todo $i$ tenhamos $g_i=\varphi_{v_i}$, assim:
 \[
 f_i(v_j)=\varphi_{v_j}(f_i)=g_j(f_i)=\delta_{j,i}=\delta_{i,j},
 \]
-logo $C=(f_i)_{i=1}^n$ é base dual da base $(v_i)_{i=1}^n$ de $V$.
+logo $C=(f_1,\dots,f_n)$ é base dual da base $(v_1,\dots,v_n)$ de $V$.
 \end{proof}
 
 \section{Anuladores}
@@ -1397,14 +1397,16 @@ Bláa blá blá
 
 \chapter{Formas Canônicas}
 
-\section{Autovalores e Autovetores}
+\section{Espectro de um Operador}
+
+\subsection{Autovalores e Autovetores}
 
 \begin{definicao}
 Seja \(V\) um espaço vetorial sobre um corpo \(K\) e seja \(T\in\mathcal{L}(V)\).
 \begin{itemize}
-\item Para $\lambda\in K$, dizemos que $\lambda$ é um \textbf{autovalor} de $T$ se existe um $v\neq 0$ tal que $T(v)=\lambda v$.
-\item Para $\lambda\in K$, um \textbf{autovetor} associado a $\lambda$ é um $v\in V$ tal que $T(v)=\lambda v$.
-\item Para $\lambda\in K$, chamamos de \textbf{autoespaço} associado a $\lambda$ o conjunto $V_T(\lambda)$ dos autovetores associados a $\lambda$.
+\item Para $\lambda\in K$, dizemos que $\lambda$ é um \textbf{autovalor} de $T$ se existe um $v\neq 0$ tal que $T(v)=\lambda v$.\index{Autovalor}
+\item Para $\lambda\in K$, um \textbf{autovetor} associado a $\lambda$ é um $v\in V$ tal que $T(v)=\lambda v$.\index{Autovetor}
+\item Para $\lambda\in K$, chamamos de \textbf{autoespaço} associado a $\lambda$ o conjunto $V_T(\lambda)$ dos autovetores associados a $\lambda$.\index{Autoespaço}
 \end{itemize}
 \end{definicao}
 
@@ -1412,7 +1414,7 @@ Seja \(V\) um espaço vetorial sobre um corpo \(K\) e seja \(T\in\mathcal{L}(V)\
 Seja \(V=\mathbb{C}^1(\mathbb{R})\) e considere o operador linear \(T\in\mathcal{L}(V)\) tal que \(T(v)=v^\prime\) para cada \(v\in V\). Considere \(v=e^{\lambda x}\) com \(\lambda\in K\). Então \(T(v)=\lambda e^{\lambda x}=\lambda v\). Ou seja \(v\) é um autovetor associado a \(\lambda\).
 \end{exemplo}
 
-\begin{definicao}
+\begin{definicao}\index{Spectrum}
 Seja \(V\) um espaço vetorial sobre um corpo \(K\) e seja \(T\in\mathcal{L}(V)\). O \textbf{spectrum} do operador \(T\) é o conjunto:
 \[\text{Spec}(T)\coloneqq\{\lambda\in K\,\colon \lambda \text{ é autovalor de } T\}.\]
 \end{definicao}
@@ -1428,6 +1430,9 @@ v\in V_T(\lambda)&\iff T(v)=\lambda v\\&\iff (T-\lambda I)(v)=0\\&\iff v\in\text
 Ainda no mesmo contexto, vamos assumir agora que \(\text{dim}(V)=n<\infty\). Então temos 
 que \[\lambda\in\text{Spec}(T)\implies\text{Ker}(T-\lambda I)\not =\{0\}\implies\text{det}(T-\lambda I)=0.\]
 Reciprocamente, se \(\text{det}(T-\lambda I)=0\) então \(V_T(\lambda)=\text{Ker}(T-\lambda I)\not=\{0\}\).
+
+\subsection{Polinômio Característico}
+
 \begin{definicao}
 Seja \(V\) um espaço vetorial sobre um corpo \(K\) e seja \(T\in\mathcal{L}(V)\). O \textbf{polinômio característico} de \(T\) é o polinômio:
 \[p_T(t)\coloneqq\text{det}(tI-T).\]
@@ -1590,7 +1595,7 @@ temos que \(B\) é L.I. Como \(\vert B\vert =n\) segue que \(B\) é uma base de
 \end{itemize}
 \end{proof}
 
-\section{Polinômio Minimal}
+\subsection{Polinômio Minimal}
 
 \begin{definicao}
 Seja $V$ um espaço sobre $K$, $\dim V=n<\infty$, $T\in\mathcal{L}(V)$. Definamos por recursão $T^0=I$ e $T^{k+1}=T^k\circ T$. Se $p(t)\in K[t]$, $p(t)=a_0+a_1t+\dots+a_mt^m$, então está bem definido o operador $p(T)=a_0\cdot I+a_1\cdot I+\dots+a_m\cdot T^m\in\mathcal{L}(V)$.
@@ -1679,7 +1684,9 @@ f(t)=(t-\lambda_1I)\dots(t-\lambda_rI).
 Seja $v\in V$, então $v=v_1+\dots+v_r$ para alguns $v_i\in V_T(\lambda_i)$, aí temos $(T-\lambda_iI)(v_i)=0$, aí $f(T)(v_i)=0$; logo $f(T)(v)=0$. Portanto $f(T)=0$, aí $m_T\mid f$, aí $m_T=f$.
 \end{proof}
 
-\section{Subespaços Invariantes}
+\section{Restrições de Operadores}
+
+\subsection{Subespaços Invariantes}
 
 \begin{definicao}
 Seja $T\in\mathcal{L}(V)$. Um subespaço $W\subseteq V$ chama-se \textbf{$T$-invariante} se $T(W)\subseteq W$.
@@ -1797,7 +1804,7 @@ m_T(X) & * \\ 0 & m_T(Y)
 mas sabemos que $m_T(Z)=0$, aí $m_T(X)=0$ e $m_T(Y)=0$, aí a conclusão segue.
 \end{proof}
 
-\section{Subespaços Cíclicos}
+\subsection{Subespaços Cíclicos}
 
 \begin{definicao}
 Seja $V$ um espaço vetorial e $T\in\mathcal{L}(V)$. Para $v\in V$, definimos o \textbf{subespaço $T$-cíclico gerado por $v$} como o conjunto $Z(v,T)$ de todos os vetores da forma $p(T)(v)$ em que $p\in K[x]$. Dizemos que $v$ é um \textbf{vetor cíclico} para $T$ se e só se $Z(v,T)=V$.
@@ -1860,7 +1867,9 @@ Z(u,T)=Z(u_1,T)\oplus\dots\oplus Z(u_n,T).
 \end{itemize}
 \end{teorema}
 
-\section{Teorema de Cayley-Hamilton}
+\section{Teoremas de Cayley-Hamilton}
+
+\subsection{Teorema de Cayley-Hamilton Usual}
 
 \begin{teorema}[Teorema da Cayley-Hamilton]\label{cayley-hamilton}
 Seja \(V\) um espaço vetorial de dimensão finita sobre um corpo \(K\), e seja \(T\in\mathcal{L}(V)\). Então \(p_T(T)=0\), onde \(p_T(t)\in K[t]\) é um polinômio característico de \(T\). 
@@ -1906,6 +1915,8 @@ P_A(A)&=A^2-(a+d)A+(ad-bc)I\\
 \end{align*}
 \end{exemplo}
 
+\subsection{Teorema de Cayley Hamilton ao Avesso}
+
 \begin{teorema}[Teorema da Cayley-Hamilton ao Avesso]\label{cayley-hamilton-avesso}
 Se $V$ é espaço de dimensão finita e $T\in L(V)$, então todo polinômio irredutível que divide $p_T$ também divide $m_T$.
 \end{teorema}
@@ -1940,6 +1951,8 @@ Sendo $\overline{T}\in L(V/W)$ o operador induzido, temos $p_T=p_{T\upharpoonrig
 \end{proof}
 
 \section{Decomposições Primárias}
+
+\subsection{Decomposição Primária Geral}
 
 \begin{teorema}[Decomposição Primária Geral]
 Seja \(V\) um espaço vetorial sobre um corpo \(K\) tal que
@@ -2013,6 +2026,8 @@ V=V_1\oplus\dots\oplus V_r,
 e, para cada $i$, a função $h_i(T)g_i(T)$ é a projeção canônica de $V$ em $V_i$.
 \end{proof}
 
+\subsection{Decomposição Primária para Minimais}
+
 \begin{teorema}[Decomposição Primária para Minimais]\label{primaria minimal}
 Seja \(V\) um espaço vetorial sobre um corpo \(K\) tal que
 \(\text{dim}(V)=n<\infty\) e seja \(T\in\mathcal{L}(V)\), e seja:
@@ -2042,27 +2057,6 @@ Para $j\neq i$ e para \(v\in V_j\), então \(p_j^{k_j}(v)=0\) e portanto
 \(g(T)(v)=0\). Se \(v\in V_i\) então \(p_i^{m_i}(T)(v)=0\) e
 \(g(T)(v)=0\). Assim, como $V=V_1\oplus\dots\oplus V_r$, concluímos que \(g(T)=0\).
 Isso implica que \(m_T\mid g\), aí \(p_i^{k_i}\mid p_i^{m_i}\), aí $k_i\leq m_i$, assim $m_i=k_i$, aí \(m_{T_i}=p_i^{k_i}.\)
-\end{proof}
-\begin{teorema}[Decomposição Primária para Característicos]\label{primaria caracteristico}
-Seja \(V\) um espaço vetorial sobre um corpo \(K\) tal que
-\(\text{dim}(V)=n<\infty\) e seja \(T\in\mathcal{L}(V)\), e seja:
-\[
-p_T=p_1^{k_1}\ldots p_r^{k_r},
-\]
-com \(p_1\dots,p_r\) irredutíveis e mutuamente
-primos entre si. Para cada $i$ seja $V_i=\Ker \ p_i(T)^{k_i}$. Então:
-\begin{itemize}
-\item Cada $V_i$ é $T$-invariante.
-\item $V=V_1\oplus\dots\oplus V_r$.
-\item Cada projeção canônica $P_i:V\rightarrow V_i$ é um polinômio de $T$.
-\item Para cada $i$ então \(p_{T\upharpoonright_{V_i}}=p_i^{k_i}\).
-\end{itemize}
-\end{teorema}
-\begin{proof}
-Pelo teorema de Cayley-Hamilton temos \(p_T(T)=0\). Portanto, pelo teorema da decomposição primária geral, temos os três primeiros itens. Agora considere \(T_i\coloneqq T\upharpoonright_{V_i}\)
-para cada \(i=1,\dots,r\).
-Temos que \(p_i(T_i)^{k_i}=0\). Então segue que \(m_{T_i}\mid
-p_i^{k_i}\), aí, pelo teorema de Cayley-Hamilton \textcolor{red}{ao avesso} (Teorema \ref{cayley-hamilton-avesso}), todo fator irredutível de $p_{T_i}$ deve dividir $m_{T_i}$, logo ser igual a $p_i$. Assim $p_{T_i}=p_i^{l_i}$ para algum $l_i$. Entretanto, considerando bases $B_i$ de $V_i$, e juntando numa base $B$ de $V$, é fácil ver que $p_T=p_{T_1}\dots p_{T_k}$, assim $p_T=p_1^{l_1}\ldots p_r^{l_r}$, aí pela fatoração única devemos ter $l_i=k_i$ para todo $i$, concluindo a demonstração.
 \end{proof}
 
 \noindent
@@ -2095,7 +2089,33 @@ U_1\oplus\dots\oplus U_m=\left(\Ker \ p_1(T)^{e_1}\right)\oplus\dots\oplus\left(
 aí para todo $k$ temos $U_k=\Ker \ p_k(T)^{e_k}$. Analogamente temos $W_k=\Ker \ q_k(T)^{f_k}$ para todo $k$.
 \end{proof}
 
+\subsection{Decomposição Primária para Característicos}
+
+\begin{teorema}[Decomposição Primária para Característicos]\label{primaria caracteristico}
+Seja \(V\) um espaço vetorial sobre um corpo \(K\) tal que
+\(\text{dim}(V)=n<\infty\) e seja \(T\in\mathcal{L}(V)\), e seja:
+\[
+p_T=p_1^{k_1}\ldots p_r^{k_r},
+\]
+com \(p_1\dots,p_r\) irredutíveis e mutuamente
+primos entre si. Para cada $i$ seja $V_i=\Ker \ p_i(T)^{k_i}$. Então:
+\begin{itemize}
+\item Cada $V_i$ é $T$-invariante.
+\item $V=V_1\oplus\dots\oplus V_r$.
+\item Cada projeção canônica $P_i:V\rightarrow V_i$ é um polinômio de $T$.
+\item Para cada $i$ então \(p_{T\upharpoonright_{V_i}}=p_i^{k_i}\).
+\end{itemize}
+\end{teorema}
+\begin{proof}
+Pelo teorema de Cayley-Hamilton temos \(p_T(T)=0\). Portanto, pelo teorema da decomposição primária geral, temos os três primeiros itens. Agora considere \(T_i\coloneqq T\upharpoonright_{V_i}\)
+para cada \(i=1,\dots,r\).
+Temos que \(p_i(T_i)^{k_i}=0\). Então segue que \(m_{T_i}\mid
+p_i^{k_i}\), aí, pelo teorema de Cayley-Hamilton \textcolor{red}{ao avesso} (Teorema \ref{cayley-hamilton-avesso}), todo fator irredutível de $p_{T_i}$ deve dividir $m_{T_i}$, logo ser igual a $p_i$. Assim $p_{T_i}=p_i^{l_i}$ para algum $l_i$. Entretanto, considerando bases $B_i$ de $V_i$, e juntando numa base $B$ de $V$, é fácil ver que $p_T=p_{T_1}\dots p_{T_k}$, assim $p_T=p_1^{l_1}\ldots p_r^{l_r}$, aí pela fatoração única devemos ter $l_i=k_i$ para todo $i$, concluindo a demonstração.
+\end{proof}
+
 \section{Critérios de Diagonalização}
+
+\subsection{Diagonalização Usual}
 
 \begin{teorema}\label{diagonal2}
 Um operador \(T\in\mathcal{L}(V)\) é diagonalizável se, e somente se:
@@ -2109,82 +2129,75 @@ A ida já foi provada no corolário \ref{diagonal1}, então
 vamos mostrar apenas a volta. Pelo teorema da decomposição primária geral, sendo $V_i=\mathrm{Ker} \ (T-\lambda_iI)$ para todo $i$, então cada $V_i$ é $T$-invariante e \(V=V_1\oplus\ldots\oplus V_r\), aí para todo $i$ temos \(T\upharpoonright_{V_i}=\lambda_iI\), aí \(V_i\subseteq V_T(\lambda_i)\); logo $T$ é diagonalizável. 
 \end{proof}
 
-\noindent
-Considere \(\{T_i\,\colon i\in I\}\subseteq\mathcal{L}(V)\). Em que condições os operadores \(T_i\) podem ser diagonalizados simultaneamente, ou seja, existe base $B$ de $V$ tal que para todo $i\in I$ a matriz $[T_i]_B$ seja diagonal?
+\subsection{Diagonalização Simultânea de Vários Operadores}
+
+Considere \(\mathcal{F}\subseteq\mathcal{L}(V)\). Em que condições os operadores $T\in\mathcal{F}$ podem ser diagonalizados simultaneamente, ou seja, existe base $B$ de $V$ tal que para todo $T\in\mathcal{F}$ a matriz $[T]_B$ seja diagonal?
 
 \begin{teorema}
-Um conjunto \(\{T_i\,\colon i \in I\}\) pode ser diagonalizado
-simultaneamente se, e somente se cada \(T_i\) é diagonalizável e \(T_iT_j=T_jT_i\) para todo \(i,j\in I\).\end{teorema}
+Um conjunto \(\mathcal{F}\subseteq\mathcal{L}(V)\) pode ser diagonalizado
+simultaneamente se, e somente se cada \(T\in\mathcal{F}\) é diagonalizável e \(TU=UT\) para quaisquer \(T,U\in\mathcal{F}\).
+\end{teorema}
 \begin{proof}
 Mostraremos por indução na dimensão. Suponhamos que o teorema é válido para espaços de dimensão menor que $n$. Seja $V$ um espaço tal que $\dim(V)=n$ e seja $\mathcal{F}$ um conjunto de operadores que comutam um com outro. Se todo elemento de $\mathcal{F}$ é múltiplo da identidade, então acaba. Caso contrário, existe um $T\in\mathcal{F}$ que não é múltiplo da identidade. Sejam $c_1,\dots,c_k$ os autovalores de $T$. Para $i$ seja $W_i=\Ker(T-c_iI)$. Então, como os elementos de $\mathcal{F}$ comutam um com outro, então $W_i$ é invariante para todo elemento de $\mathcal{F}$. Para cada $U\in\mathcal{F}$, então $m_U$ é produto de fatores lineares distintos, aí, como $m_{U\upharpoonright_{W_i}}\mid m_U$, então $m_{U\upharpoonright_{W_i}}$ é produto de fatores lineares distintos, aí $U\upharpoonright_{W_i}$ é diagonalizável. Como $\dim(W_i)<n$, então existe uma base $B_i$ tal que para todo $U\in\mathcal{F}$ a matriz $[U\upharpoonright_{W_i}]_{B_i}$ seja diagonal. Portanto $B=B_1\cup\dots\cup B_k$ é a base que buscamos.
 \end{proof}
 
 \section{Triangularização de Matrizes}
 
+\subsection{Triangularização Usual}
+
 \begin{definicao}
-Um operador $T$ sobre um espaço vetorial de dimensão finita $V$ é dito \textbf{triangularizável} se e somente se existe uma base ordenada em que $T$ é representada por uma matriz triangular superior.
+Um operador linear $T\in\mathcal{L}(V)$ é dito \textbf{triangularizável} se existe uma
+base ordenada $B=(v_1,\dots,v_n)$ de $V$ tal que a matriz $[T]_B$ seja triangular por cima, ou equivalentemente, se:
+\[
+T(v_i)\in\langle v_1\dots,v_i\rangle
+\]
+para todo $i=1,\dots,n$.
 \end{definicao}
 
-\begin{lema}
-Seja $V$ um espaço vetorial de dimensão finita. Seja $T\in\mathcal{L}(V)$ cujo polinômio minimal seja um produto de fatores lineares:
-\[
-m_T(x)=(x-c_1)^{r_1}\dots(x-c_k)^{r_k}.
-\] 
-Seja $W$ um subespaço $T$-invariante de $V$ tal que $W\neq V$. Então existe um vetor $v\in V$ tal que $v\notin W$ e exista $i$ tal que $(T-c_iI)(v)\in W$.
-\end{lema}
-\begin{proof}
-Seja $u\in V$ um vetor tal que $u\notin W$. Seja $g(x)$ o menor polinômio tal que $g(T)(u)\in W$. Então $g$ divide o polinômio minimal $m_T$. Portanto:
-\[
-g(x)=(x-c_1)^{s_1}\dots(x-c_k)^{s_k},
-\]
-em que exista algum $j$ tal que $s_i>0$. Então $(x-c_i)$ divide $g(x)$:
-\[
-g(x)=(x-c_i)h(x).
-\]
-Pela definição de $g$, então $v\coloneqq h(T)(u)\notin W$. Mas:
-\[
-(T-c_iI)(v)=(T-c_iI)h(T)(v)=g(T)(v)\in W.
-\]
-Assim acaba.
-\end{proof}
-
-\begin{teorema}
-Seja $V$ um espaço vetorial de dimensão finita e seja $T\in\mathcal{L}(V)$. Então $T$ é triangularizável se e só se o polinômio minimal de $T$ é um produto de fatores lineares.
+\begin{teorema}[Teorema de Schur]
+Seja $V$ um espaço vetorial de dimensão finita sobre um corpo $K$ e seja $T\in\mathcal{L}(V)$. Se o polinômio característico (ou o polinômio minimal) de $T$ se decompõe em fatores lineares sobre $K$, então $T$ é triangularizável.
 \end{teorema}
 \begin{proof}
-Suponhamos que o polinômio minimal de $T$ se decompões em fatores lineares:
-\[
-m_T(x)=(x-c_1)^{r_1}\dots(x-c_k)^{r_k}.
-\]
-Com uma aplicação repetida do lema acima, chegaremos a uma base ordenada $B=(e_1,\dots,e_n)$ na qual a matriz de $T$ é triangular superior:
-\[
-[T]_B=\begin{pmatrix}
-a_{1,1}&a_{1,2}&a_{1,3}&\ldots&a_{1,n}\\0&a_{2,2}&a_{2,3}&\ldots&a_{2,n}\\0&0&a_{3,3}&\ldots&a_{3,n}\\\vdots&\vdots&\vdots&&\vdots\\0&0&0&\ldots&a_{n,n}
-\end{pmatrix}.
-\]
-Isto simplesmente diz que:
-\[
-T(e_j)=a_{1,j}e_1+\dots+a_{j,j}e_j,\quad\quad\quad j=1,\dots,n,
-\]
-ou seja, $T(e_j)$ está no subespaço gerado por $e_1,\dots,e_j$. Para obter os $e_1,\dots,e_n$, começamos aplicando o lema para o subespaço $W_0=0$, para obter o vetor $e_1$. Então apliquemos o lema para $W_1$, o subespaço gerado por $e_1$, e assim obteremos $e_2$. Depois apliquemos o lema para $W_2$, o subespaço gerado por $e_1$ e $e_2$. Continuemos desta maneira. Notemos que, quando os vetores $e_1,\dots,e_i$ são obtidos, são as relações:
-\[
-T(e_j)=a_{1,j}e_1+\dots+a_{j,j}e_j,\quad\quad\quad j=1,\dots,i
-\]
-que garantem que o subespaço gerado por $e_1,\dots,e_i$ é um subespaço $T$-invariante.
+Provaremos por indução em $n$ que cada matriz $A\in\mathcal{M}_n(K)$
+cujo polinômio característico se decomponha em fatores lineares sobre $K$ é similar
+a uma matriz triangular por cima. Se $n=1$, então é fácil, já que todas as matrizes quadradas de tamanho $1$ são triangulares por cima. Assumamos o resultado para $n-1$ e seja $A\in M_n(K)$ tal que o polinômio característico se decomponha em fatores lineares sobre $K$.
 
 \medskip
 \noindent
-Por outro lado, se $T$ é triangularizável, então é evidente que o polinômio característico de $T$ é da forma:
+Seja $\lambda$ um autovalor de $T$ e seja $e_1\neq 0$ tal que $T(e_1)=\lambda e_1$, e estenda $(e_1)$ a uma base ordenada $B=(e_1,\dots,e_n)$ de $K^n$. A matriz de $A$ em relação a $B$ tem a forma:
 \[
-p_T(x)=(x-c_1)^{d_1}\dots(x-c_k)^{d_k}.
+[A]_B=\begin{pmatrix}
+\lambda&*\\0&A'
+\end{pmatrix}
 \]
-Para isto, apenas considere a matriz triangular superior:
+para alguma matriz $A'\in M_{n-1}(K)$. Como $[A]_B$ e $A$ são similares, temos:
 \[
+\det(xI-A)=\det(xI-[A]_B)=(x-\lambda)\det(xI-A').
+\]
+Portanto o polinômio característico de $A'$ também se decompõe em fatores lineares sobre $K$ a hipótese de indução implica que exista uma matriz inversível $P\in M_{n-1}(K)$ tal que:
+\[
+U=PA'P^{-1}
+\]
+seja triangular por cima. Assim, se:
+\[
+Q=\begin{pmatrix}
+1&0\\0&P
+\end{pmatrix},
+\]
+então $Q$ é inversível e:
+\[
+Q[A]_BQ^{-1}=\begin{pmatrix}
+1&0\\0&P
+\end{pmatrix}\begin{pmatrix}
+\lambda&*\\0&A'
+\end{pmatrix}\begin{pmatrix}
+1&0\\0&P^{-1}
+\end{pmatrix}=
 \begin{pmatrix}
-a_{1,1}&a_{1,2}&a_{1,3}&\ldots&a_{1,n}\\0&a_{2,2}&a_{2,3}&\ldots&a_{2,n}\\0&0&a_{3,3}&\ldots&a_{3,n}\\\vdots&\vdots&\vdots&&\vdots\\0&0&0&\ldots&a_{n,n}
-\end{pmatrix}.
+\lambda&*\\0&U
+\end{pmatrix}
 \]
-As entradas diagonais $a_{1,1},\dots,a_{n,n}$ são autovalores, com $c_i$ repetida $d_i$ vezes. Mas, se $p_T$ pode ser assim fatorado, então $m_T$ pode ser decomposto em fatores lineares, pois $m_T$ divide $p_T$.
+é triangular por cima.
 \end{proof}
 
 \begin{corolario}
@@ -2192,37 +2205,51 @@ Num corpo algebricamente fechado $K$, então toda matriz sobre $K$ é semelhante
 \end{corolario}
 
 \begin{observacao}
-Com o lema acima, também podemos apresentar uma prova alternativa de que um operador linear $T$ cujo polinômio minimal seja produto de fatores lineares \emph{distintos} é diagonalizável.
+Por outro lado, se $T\in\mathcal{L}(V)$ é triangularizável, então é evidente que o polinômio característico de $T$ se decompõe em fatores lineares sobre $K$.
 \end{observacao}
 \begin{proof}
-De fato, se:
+Para isto, apenas considere a matriz triangular superior:
 \[
-m_T=(x-c_1)\dots(x-c_k),
+[T]_B=\begin{pmatrix}
+a_{1,1}&a_{1,2}&a_{1,3}&\ldots&a_{1,n}\\0&a_{2,2}&a_{2,3}&\ldots&a_{2,n}\\0&0&a_{3,3}&\ldots&a_{3,n}\\\vdots&\vdots&\vdots&\ddots&\vdots\\0&0&0&\ldots&a_{n,n}
+\end{pmatrix}.
 \]
-em que $c_1,\dots,c_k$ são distintos, então seja $W$ o subespaço gerado por todos os autovetores de $T$. Suponhamos que $W\neq V$. Então pelo lema existe um $v\in V$ tal que $v\notin W$ e existe um $i$ tal que $w\coloneqq(T-c_iI)(v)\in W$. Como $w\in W$, então:
+Então é fácil ver que:
 \[
-w=w_1+\dots+w_k,
+p_T(x)=(x-a_{1,1})\dots(x-a_{n,n}),
 \]
-em que $T(w_j)=c_jw_j$ para $j=1,\dots,k$, assim:
-\[
-h(c_1)w_1+\dots+h(c_k)w_k=h(T)(w)\in W
-\]
-para todo polinômio $h$. Agora $m_T(x)=(x-c_i)q(x)$ para algum polinômio $q(x)$. Também:
-\[
-q(x)-q(c_i)=(x-c_i)h(x)
-\]
-para algum polinômio $h(x)$. Temos:
-\[
-q(T)(v)-q(c_i)(v)=h(T)(T-c_iI)(v)=h(T)(w),
-\]
-mas $h(T)\in W$, e, como:
-\[
-0=m_T(T)(v)=(T-c_iI)q(T)(v),
-\]
-então $q(T)(v)\in W$, aí $q(c_i)(v)\in W$, mas $v\notin W$, aí $q(c_i)=0$, uma contradição.
+ou seja, o polinômio característico se decompõe em fatores lineares sobre $K$.
 \end{proof}
 
+\subsection{Triangularização Simultânea de Vários Operadores}
+
+Considere \(\mathcal{F}\subseteq\mathcal{L}(V)\). Em que condições os operadores \(T\in\mathcal{F}\) podem ser triangularizados simultaneamente, ou seja, existe base $B$ de $V$ tal que para todo $T\in\mathcal{F}$ a matriz $[T]_B$ seja triangular por cima?
+
+\medskip
+\noindent
+Infelizmente não responderemos a esta pergunta, mas mostraremos uma condição suficiente para a triangularização simultânea.
+
+\begin{teorema}
+Seja \(\mathcal{F}\subseteq\mathcal{L}(V)\) um conjunto tal que cada $T\in\mathcal{F}$ seja triangularizável e \(TU=UT\) para quaisquer \(T,U\in\mathcal{F}\). Então $\mathcal{F}$ pode ser triangularizado simultaneamente.
+\end{teorema}
+
+\begin{lema}
+Para todo espaço vetorial $V$ de dimensão finita tal que $V\neq 0$ e conjunto $\mathcal{F}\subseteq\mathcal{L}(V)$ de operadores triangularizáveis que comutam um com outro, então existe um $v\in V$ tal que $v\neq 0$ e para todo $T\in\mathcal{F}$ exista $\lambda\in K$ tal que $T(v)=\lambda v$.
+\end{lema}
+
+\begin{proof}
+Suponhamos a afirmação para espaços vetoriais de dimensão menor que $n$. Seja $V$ um espaço com $\dim(V)=n$. Seja $\mathcal{F}$ conjunto de operadores triangularizáveis que comutam. Se todo elemento de $\mathcal{F}$ é múltiplo da identidade, então acaba. Senão, então existe $T\in\mathcal{F}$ que não é múltiplo da identidade, então, como $T$ é triangularizável, então existe um autovalor $c$, aí, sendo $W=\Ker(T-cI)$, então $0<\dim(W)<n$, aí, como os elementos de $\mathcal{F}$ se comutam, então $W$ é invariante para todo elemento de $\mathcal{F}$. Para $U\in\mathcal{F}$, então $m_U$ é produto de fatores lineares, aí, como $m_{U\upharpoonright_W}\mid m_U$, então $m_{U\upharpoonright_W}$ é produto de fatores lineares, aí $U\upharpoonright_W$ é triangularizável. Como $\dim(W)<n$, então existe um $v\in W$ não nulo tal que para cada $U\in\mathcal{F}$ exista um $\lambda\in K$ tal que $(U\upharpoonright_W)(v)=\lambda v$, aí $U(v)=\lambda v$; aí acaba.
+\end{proof}
+
+\begin{proof}[Demonstração do Teorema]
+
+\end{proof}
+
+\subsection{Quase Triangularização}
+
 \section{Decomposições Cíclicas}
+
+\subsection{Espaços Primários}
 
 \begin{definicao}
 Seja $V$ um espaço vetorial e seja $T\in\mathcal{L}(V)$. Dizemos que $V$ é \textbf{primário} em relação a $T$ se e só se existe um polinômio irredutível $p(t)\in K[t]$ e um natural $e$ tal que $p(T)^e=0$.
@@ -2400,7 +2427,8 @@ s=t\quad\text{e}\quad e_1=f_1,\dots,e_s=f_s,
 concluindo assim a demonstração da unicidade.
 \end{proof}
 
-\noindent
+\subsection{Decomposição Cíclica em Divisores Elementares}
+
 Agora podemos juntar a decomposição primária para minimais e a decomposição cíclica para espaços primários e obter a decomposição cíclica em divisores elementares.
 
 \begin{teorema}[Decomposição Cíclica em Divisores Elementares]
@@ -2462,7 +2490,8 @@ Z(u_{i,1},T)\oplus\dots\oplus Z(u_{i,k_i},T)=Z(v_{i,1},T)\oplus\dots\oplus Z(v_{
 O multiconjunto dos polinômios $p_i^{e_{i,j}}$ é unicamente determinado pela decomposição cíclica em divisores elementares, assim ele é chamado o multiconjunto dos \textbf{divisores elementares}.
 \end{definicao}
 
-\noindent
+\subsection{Decomposição Cíclica em Fatores Invariantes}
+
 A forma mais usual de se apresentar uma decomposição em subespaços cíclicos é a decomposição cíclica em fatores invariantes.
 
 \begin{teorema}[Decomposição Cíclica em Fatores Invariantes]
@@ -2542,6 +2571,8 @@ A sequência dos polinômios $p_i$ é unicamente determinado pela decomposição
 
 \section{Formas Racionais de Matrizes}
 
+\subsection{Matrizes Companheiras}
+
 \begin{definicao}
 Definimos a \textbf{matriz companheira} do polinômio mônico:
 \[
@@ -2566,7 +2597,8 @@ Além disso, um espaço vetorial $V$ possui um vetor cíclico para $T\in\mathcal
 Veja o Exercício 15 da lista 2.
 \end{proof}
 
-\noindent
+\subsection{Forma Racional para Divisores Elementares}
+
 Agora estamos prontos para determinar um conjunto de formas canônicas para similaridade entre matrizes. Faremos isto através das formas racionais. Há pelo menos dois tipos de formas racionais: a forma racional para divisores elementares e a forma racional para fatores invariantes. Primeiro apresentaremos as formas racionais para divisores elementares.
 
 \begin{definicao}
@@ -2605,7 +2637,8 @@ C[p_1^{e_{1,1}}(x)]&&&&&&\\&\ddots&&&&&\\&&C[p_1^{e_{1,k_1}}(x)]&&&&\\&&&\ddots&
 O restante do enunciado pode ser demonstrada tendo em mente a unicidade da decomposição cíclica em divisores elementares.
 \end{proof}
 
-\noindent
+\subsection{Forma Racional para Fatores Invariantes}
+
 Agora apresentaremos a forma racional para fatores invariantes, que é a forma racional usual da álgebra linear. Portanto, se alguém pedir que representemos uma matriz na forma racional, muito provavelmente está pedindo a forma racional para fatores invariantes.
 
 \begin{definicao}
@@ -2664,6 +2697,8 @@ Sabemos que o polinômio característico de $C[r_i(x)]$ é igual a $r_i(x)$, ass
 \end{proof}
 
 \section{Formas de Jordan de Matrizes}
+
+\subsection{Forma de Jordan Usual}
 
 As formas racionais, seja para divisores elementares ou para fatores invariantes, têm a façanha de que todo operador linear num espaço vetorial de dimensão finita tem uma forma racional canônica, seja para divisores elementares ou para fatores invariantes. Porém, as formas racionais podem estar longes do ideal de simplicidade que tínhamos em mente para um conjunto de formas canônicas fáceis de apresentar, assim servem mais como ferramentas teóricas do que práticas.
 
@@ -2766,7 +2801,13 @@ em que os polinômios $(x-c_i)^{e_{i,j}}$ são os divisores elementares de $T$.
 Se $K$ é algebricamente fechado, então, a menos de ordem dos blocos na diagonal, o conjunto de matrizes na forma de Jordan constitui um conjunto de formas canônicas para a similaridade de matrizes.
 \end{corolario}
 
+\subsection{Forma de Jordan Generalizada}
+
+\subsection{Forma de Jordan Real}
+
 \section{Espaços Indecomponíveis}
+
+\subsection{Espaços Cíclicos}
 
 A decomposição cíclica em divisores elementares pode ser usada para caracterizar espaços vetoriais de dimensão finita com vetores cíclicos através de seus divisores elementares.
 
@@ -2793,7 +2834,8 @@ p_1^{e_1},\dots,p_n^{e_n}.
 Suponhamos que $V$ tenha vetor cíclico para $T$. Então a decomposição primária para minimais de $V$ é uma decomposição cíclica, pois pelo Exercício 1 da Lista 4 todo subespaço $T$-invariante de um espaço com vetor cíclico também tem um vetor cíclico. Logo, (1) implica (2). Reciprocamente, se (2) ocorre, então como os polinômios minimais são relativamente primos, o Teorema \ref{ciclico} implica que $V$ tem um vetor cíclico. Deixamos o restante da prova para o leitor.
 \end{proof}
 
-\noindent
+\subsection{Espaços Indecomponíveis}
+
 A decomposição cíclica em divisores elementares é uma decomposição de $V$ numa soma dureta de subespaços $T$-invariantes que não podem ser decompostos em pedaços menores. De fato, isto caracteriza a decomposição cíclica em divisores elementares de $V$. Antes de justificar estas afirmações, apresentamos a seguinte definição.
 
 \begin{definicao}
@@ -2816,8 +2858,8 @@ V=V_1\oplus\dots\oplus V_n
 \]
 é uma decomposição de $V$ numa soma direta de subespaços $T$-invariantes indecomponíveis para $T$, então cada subespaço $T$-invariante $V_i$ é primário e possui vetor cíclico, aí esta decomposição é a decomposição cíclica em divisores elementares de $V$.
 
-\medskip
-\noindent
+\subsection{Teorema de Cauchy}
+
 Quem já está familiarizado com teoria dos grupos sabem que todo grupo de ordem prima é cíclico. Entretanto, existem espaços com polinômio minimal irredutível que no entanto não possuem vetores cíclicos. Não obstante, espaços com polinômio minimal irredutível com vetores cíclicos são importantes.
 
 \medskip
@@ -2911,11 +2953,11 @@ então:
 \end{exemplo}
 
 \begin{definicao}
-Se $\dim(V)=n<\infty$ e $K=\mathbb{R}$, então chamamos $V$ de \textbf{euclidiano}.
-
-\smallskip
-\noindent
-Se $\dim(V)=n<\infty$ e $K=\mathbb{C}$, então chamamos $V$ de \textbf{unitário}.
+Definimos o seguinte:
+\begin{itemize}
+\item Se $\dim(V)=n<\infty$ e $K=\mathbb{R}$, então chamamos $V$ de \textbf{euclidiano}.
+\item Se $\dim(V)=n<\infty$ e $K=\mathbb{C}$, então chamamos $V$ de \textbf{unitário}.
+\end{itemize}
 \end{definicao}
 
 \begin{definicao}
@@ -3295,6 +3337,467 @@ T(x)-b\in(\mathrm{Im}(T))^\perp&\Leftrightarrow&\forall i=1,\dots,n:\langle T(x)
 \medskip
 \noindent
 \textcolor{red}{EXEMPLO NUMÉRICO QUE ESTOU COM PREGUIÇA DE ESCREVER PORQUE É CHATO DEMAIS}
+
+\section{Operadores Unitários}
+
+\begin{teorema}
+Seja $U$ e $V$ espaços com produto interno de \emph{uma mesma} dimensão finita e seja $T\in\mathcal{L}(U,V)$. Sao equivalentes:
+\begin{itemize}
+\item Para $u,v\in U$ temos $\langle u,v\rangle=\langle T(u),T(v)\rangle$.
+\item $T$ é um isomorfismo de espaços com produto interno.
+\item Para toda base ortonormal $B$ de $U$, a sua imagem $T[B]$ é uma base ortonormal de $V$. 
+\item Existe uma base ortonormal $B$ de $U$ tal que $T[B]$ seja uma base ortonormal de $V$.
+\end{itemize}
+\end{teorema}
+\begin{proof}
+Se (i), então primeiro provemos que $\Ker(T)=0$. Para $v\in \Ker(T)$, então $T(v)=0$, aí:
+\[
+\langle v,v\rangle=\langle T(v),T(v)\rangle=0,
+\]
+aí $v=0$. Como $\dim \ V=\dim \ U=\dim \ \mathrm{Im} \ T+\dim \ \Ker \ T$, então $\dim \ \mathrm{Im} \ T=\dim \ V$, aí $T$ é sobrejetora, aí (ii).
+
+\medskip
+\noindent
+Se (ii), então para base ortonormal $B=(e_1,\dots,e_n)$ de $U$, então $(T(e_1),\dots,T(e_n))$ é um conjunto ortonormal em $V$, aí é uma base ortonormal de $V$; logo (iii).
+
+\medskip
+\noindent
+Se (iii), como sempre existe uma base ortonormal de $U$, então (iv) é evidente.
+
+\medskip
+\noindent
+Se (iv), então seja $B=(e_1,\dots,e_n)$ uma base ortonormal de $U$ tal que $(T(e_1),\dots,T(e_n))$ seja base ortonormal de $V$. Para $u,v\in U$, então existem $a_1,dots,a_n\in K$ e $b_1,\dots,b_n$ tais que:
+\[
+u=a_1e_1+\dots+a_ne_n,\quad\quad v=b_1e_1+\dots+b_ne_n,
+\]
+então:
+\[
+\langle u,v\rangle=a_1\overline{b_1}+\dots+a_n\overline{b_n},
+\]
+aí:
+\[
+T(u)=a_1T(e_1)+\dots+a_nT(e_n),\quad\quad T(v)=b_1T(e_1)+\dots+b_nT(e_n),
+\]
+aí:
+\[
+\begin{array}{rcl}
+\langle T(u),T(v)\rangle&=&\sum_{i,j}\langle a_iT(e_i),b_jT(e_j)\rangle\\
+&=&\sum_{i,j}a_i\overline{b_j}\langle T(e_i),T(e_j)\rangle\\
+&=&\sum_{k=1}a_k\overline{b_k}\\
+&=&\langle u,v\rangle.
+\end{array}
+\]
+\end{proof}
+
+\begin{corolario}
+Dois espaços vetoriais $U$ e $V$ com produto interno de dimensão finita são isomorfos se e só se $\dim \ U=\dim \ V$.
+\end{corolario}
+
+\begin{proof}
+$(\Rightarrow)$ é claro. Por outro lado, se $\dim \ U=\dim \ V$, então escolhamos bases ortonormais $B=(e_1,\dots,e_n)$ de $U$ e $C=(f_1,\dots,f_n)$ de $V$, aí seja $T:U\rightarrow V$ dada por:
+\[
+T(a_1e_1+\dots+a_ne_n)=a_1f_1+\dots+a_nf_n,
+\]
+então $T\in\mathcal{L}(U,V)$, e para $u,v\in U$, sendo:
+\[
+u=a_1e_1+\dots+a_ne_n,\dots\dots v=b_1e_1+\dots+b_ne_n,
+\]
+então:
+\[
+\langle u,v\rangle=a_1\overline{b_1}+\dots+a_n\overline{b_n}
+\]
+e também:
+\[
+\langle T(u),T(v)\rangle=a_1\overline{b_1}+\dots+a_n\overline{b_n},
+\]
+assim:
+\[
+\langle u,v\rangle=\langle T(u),T(v)\rangle.
+\]
+\end{proof}
+
+\begin{definicao}
+Se $V$ é um espaço com produto interno e $T\in\mathcal{L}(V)$, dizemos que $T$ é \textbf{operador unitário} se e só se $\forall u,v\in V:\langle T(u),T(v)\rangle=\langle u,v\rangle$.
+\end{definicao}
+
+\begin{teorema}
+Seja $T\in\mathcal{L}(U,V)$. Então $T$ preserva o produto interno se e só se $\forall u\in U:\norm{T(u)}=\norm{u}$.
+\end{teorema}
+\begin{proof}
+$(\Rightarrow)$ É fácil pois:
+\[
+\norm{T(u)}^2=\langle T(u),T(u)\rangle=\langle u,u\rangle=\norm{u}^2.
+\]
+$(\Leftarrow)$ Por outro lado, então:
+\[
+\norm{T(u+v)}^2=\norm{u+v}^2,
+\]
+aí:
+\[
+\norm{T(u)}^2+\langle T(u),T(v)\rangle+\langle T(v),T(u)\rangle+\norm{T(v)}^2=
+\norm{u}^2+\langle u,v\rangle+\langle v,u\rangle+\norm{v}^2,
+\]
+aí:
+\[
+\langle T(u),T(v)\rangle+\langle T(v),T(u)\rangle=
+\langle u,v\rangle+\langle v,u\rangle,
+\]
+\end{proof}
+
+\begin{proposicao}
+Sejam $T,S\in\mathcal{L}(V)$ unitários. Então $T\circ S$ é operador unitário. O conjunto dos operadores unitários formam um grupo em relação à composição.
+\end{proposicao}
+\begin{proof}
+\[
+\langle TS(u),TS(v)\rangle=\langle S(u),S(v)\rangle=\langle u,v\rangle.
+\]
+\end{proof}
+
+\begin{definicao}
+O conjunto dos operadores unitários no espaço $K^n$ se denota por $U(n,K)$.
+\end{definicao}
+
+\begin{teorema}
+Para $T\in\mathcal{L}(V)$, então $T$ é unitário se e somente se $T^*=T^{-1}$.
+\end{teorema}
+\begin{proof}
+$(\Rightarrow)$ Se $T$ é unitário, então para todo $v\in V$ temos:
+\[
+\forall u\in V: \langle u,v\rangle=\langle T(u),T(v)\rangle=\langle u,T^*T(v)\rangle,
+\]
+aí $T^*T(v)=v$; logo $T^*T=I$.
+
+\medskip
+\noindent
+$(\Leftarrow)$ se $T^*=T^{-1}$, então para $u,v\in V$ temos:
+\[
+\langle T(u),T(v)\rangle=\langle u,T^*T(v)\rangle=\langle u,T^{-1}T(v)\rangle=\langle u,v\rangle;
+\]
+logo $T$ é unitário.
+\end{proof}
+
+\begin{definicao}
+Uma matriz $A\in\m{n}{K}$ se chama \textbf{unitária} se e só se $A^*=A^{-1}$. 
+\end{definicao}
+
+\begin{corolario}
+Para operador $T\in\mathcal{L}(V)$, então $T$ é unitário se e só se para toda base $B$ de $V$ a matriz $[T]_B$ é unitária.
+\end{corolario}
+
+\begin{teorema}
+Para matriz $A\in\m{n}{K}$, então $A$ é unitária se e só se as linhas de $A$ formam conjunto ortonormal em $K^n$, e isso equivale a dizer que as colunas de $A$ formam um conjunto ortonormal em $K^n$.
+\end{teorema}
+\begin{proof}
+Seja $A\in\m{n}{K}$ uma matriz unitária, então $AA^*=I$, aí sendo:
+\[
+A=\begin{pmatrix}
+a_{1,1}&\dots&a_{1,n}\\\dots&\dots&\dots\\a_{n,1}&\dots&a_{n,n}
+\end{pmatrix},
+\]
+então:
+\[
+A^*=\begin{pmatrix}
+\overline{a_{1,1}}&\dots&\overline{a_{n,1}}\\\dots&\dots&\dots\\\overline{a_{1,n}}&\dots&\overline{a_{n,n}}
+\end{pmatrix},
+\]
+então temos:
+\[
+A_i=(a_{i,1},\dots,a_{i,n}),\quad\quad(A^*)^j=\begin{pmatrix}
+\overline{a_{j,1}}\\\vdots\\\overline{a_{j,n}}
+\end{pmatrix},
+\]
+assim:
+\[
+a_{i,1}\overline{a_{j,1}}+\dots+a_{i,n}\overline{a_{j,n}}=\delta_{i,j},
+\]
+assim:
+\[
+\langle(a_{i,1},\dots,a_{i,n}),(a_{j,1},\dots,a_{j,n})\rangle=\delta_{i,j}.
+\]
+\end{proof}
+
+\begin{definicao}
+Para $A\in\m{n}{K}$, dizemos que $A$ se chama \textbf{ortogonal} se e só se $A^{-1}=A^t$.
+\end{definicao}
+
+\begin{observacao}
+Toda matriz real ortogonal é unitária. Toda matriz unitária ortogonal é real.
+\end{observacao}
+
+\begin{definicao}
+Definimos o \textbf{grupo ortogonal} $O(n,\mathbb{R})$ como o conjunto das matrizes reais ortogonais.
+\end{definicao}
+
+\begin{definicao}
+Para matrizes $A,B\in\m{n}{K}$, dizemos que $A$ é \textbf{unitariamente equivalente} a $B$ se e só se existe uma matriz $U\in\m{n}{K}$ \emph{unitária} tal que $U^{-1}AU=B$.
+\end{definicao}
+
+\begin{definicao}
+Para matrizes $A,B\in\m{n}{R}$, dizemos que $A$ é \textbf{ortogonalmente equivalente} a $B$ se e só se existe uma matriz $U\in\m{n}{\mathbb{R}}$ \emph{ortogonal} tal que $U^{-1}AU=B$.
+\end{definicao}
+
+\begin{proposicao}
+Seja $T\in\mathcal{L}(V)$. Então, para quaisquer bases ortonormais $B$ e $C$ de $V$, as matrizes $[T]_B$ e $[T]_C$ são unitariamente equivalentes.
+\end{proposicao}
+\begin{proof}
+Seja $P_{B,C}$ a matriz de mudança de $B$ para $C$. Então $P_{B,C}$ é unitária. Mas também:
+\[
+[T]_C=P^{-1}_{B,C}[T]_BP_{B,C}.
+\]
+\end{proof}
+
+\section{Operadores Normais}
+
+Assim como estudamos os operadores que possuíssem uma base de autovetores em espaços vetoriais, agora queremos estudar os operadores que possuam uma base \emph{ortonormal} de autovetores em espaços com \emph{produto interno}.
+
+\medskip
+\noindent
+Seja $T\in\mathcal{L}(V)$ que possua uma base $B=(e_1,\dots,e_n)$ de autovetores. Então:
+\[
+[T]_B=\begin{pmatrix}
+\lambda_1&&0\\&\dots&\\0&&\lambda_n
+\end{pmatrix},
+\]
+e também:
+\[
+[T]_B=\begin{pmatrix}
+\overline{\lambda_1}&&0\\&\dots&\\0&&\overline{\lambda_n}
+\end{pmatrix},
+\]
+aí:
+\[
+[TT^*]_B=[T]_B[T^*]_B=\begin{pmatrix}
+\lambda_1\overline{\lambda_1}&&0\\&\dots&\\0&&\lambda_n\overline{\lambda_n}
+\end{pmatrix}=\begin{pmatrix}
+\overline{\lambda_1}\lambda_1&&0\\&\dots&\\0&&\overline{\lambda_n}\lambda_n
+\end{pmatrix}=[T^*]_B[T]_B=[T^*T]_B,
+\]
+assim $TT^*=T^*T$.
+
+\begin{definicao}
+Para $T\in\mathcal{L}(V)$, dizemos que $T$ é \textbf{normal} se e só se $TT^*=T^*T$.
+\end{definicao}
+
+\begin{exemplo}
+Temos alguns exemplos:
+\begin{itemize}
+\item Operadores autoadjuntos (isto é, que satisfazem $T^*=T$) são normais.
+\item Operadores unitários (isto é, que satisfazem $T^*=T^{-1}$) são normais.
+\item Operadores antiadjuntos (isto é, que satisfazem $T^*=-T$) são normais.
+\end{itemize}
+\end{exemplo}
+
+\begin{lema}
+Seja $T\in\mathcal{L}(V)$ normal e $\lambda$ um autovalor de $T$. Então $\overline{\lambda}$ é um autovalor de $T$.
+\end{lema}
+\begin{proof}
+Seja $v\in V$ tal que $v\neq 0$ e $T(v)=\lambda v$. Então $(T-\lambda I)(v)=0$, aí para $u\in V$:
+\[
+\begin{array}{rcl}
+0&=&\langle(T-\lambda I)(v),(T-\lambda I)(v)\rangle\\
+&=&\langle v,(T-\lambda I)^*(T-\lambda I)(v)\rangle\\
+&=&\langle v,(T^*-\overline{\lambda}I)(T-\lambda I)(v)\rangle\\
+&=&\langle v,(T-\lambda I)(T^*-\overline{\lambda}I)(v)\rangle\\
+&=&\langle (T-\lambda I)^*(v),(T^*-\overline{\lambda}I)(v)\rangle\\
+&=&\langle (T^*-\overline{\lambda}I)(v),(T^*-\overline{\lambda}I)(v)\rangle,
+\end{array}
+\]
+aí $(T^*-\overline{\lambda}I)(v)=0$, aí $T^*(v)=\overline{\lambda}v$.
+\end{proof}
+
+\begin{lema}
+Seja $T\in\mathcal{L}(V)$ e $W\subseteq V$ um subespaço $T$-invariante. Então $W^\perp$ é $T^*$-invariante.
+\end{lema}
+\begin{proof}
+Seja $w'\in W^\perp$. Para $w\in W$ então $T(w)\in W$, aí $\langle T(w),w'\rangle=0$, aí $\langle w,T^*(w')\rangle=0$. Logo $T^*(w')\in W^\perp$.
+\end{proof}
+
+\begin{lema}
+Seja $T\in\mathcal{L}(V)$ normal e sejam $\lambda,\mu$ tais que $\lambda\neq\mu$. Se $u$ e $v$ são autovetores associados a $\lambda$ e $\mu$ respectivamente, então $\langle u,v\rangle=0$.
+\end{lema}
+\begin{proof}
+Temos o seguinte:
+\[
+\begin{array}{rcl}
+\lambda\langle u,v\rangle&=&\langle\lambda u,v\rangle\\
+&=&\langle T(u),v\rangle\\
+&=&\langle u,T^*(v)\rangle\\
+&=&\langle u,\overline{\mu}v\rangle\\
+&=&\mu\langle u,v\rangle,
+\end{array}
+\]
+aí $(\lambda-\mu)\langle u,v\rangle=0$, mas $\lambda-\mu\neq 0$, aí $\langle u,v\rangle=0$.
+\end{proof}
+
+\section{Formas Canônicas}
+
+\subsection{Caso dos Números Complexos}
+
+\begin{teorema}
+Seja $V$ um espaço com produto interno sobre $\mathbb{C}$ e $T\in\mathcal{L}(V)$. Então $T$ é normal se e somente se existe uma base ortonormal $B$ de $V$ tal que $[T]_B$ seja diagonal.
+\end{teorema}
+\begin{proof}
+$(\Leftarrow)$ Já foi provado.
+
+\medskip
+\noindent
+$(\Rightarrow)$ Indução em $n=\dim(V)$. Para $n=1$ é claro. Para $n>1$, se assumirmos o teorema válido para $\dim(V)<n$, então seja $\lambda$ um autovalor e seja $v\neq 0$ tal que $T(v)=\lambda v$. Nós temos $V=\langle v\rangle\oplus\langle v\rangle^\perp$. Sabemos que $\langle v\rangle^\perp$ é $T^*$-invariante. Provaremos que $\langle v\rangle^\perp$ é $T$-invariante. Seja $u\in\langle v\rangle^\perp$, então para $u\in V$ temos:
+\[
+\langle v,T(u)\rangle=\langle T^*(v),u\rangle=\langle \overline{\lambda}v,u\rangle=\overline{\lambda}\langle v,u\rangle=0;
+\]
+logo $T(v)\in\langle v\rangle^\perp$. Além disso, $\dim\langle v\rangle=n-1$. Portanto podemos definir $T\upharpoonright_{\langle v\rangle^\perp}$ e ele é normal \textcolor{red}{(Cheque!)}. Assim por hipótese de indução existe uma base ortonormal $B'=(e_2,\dots,e_n)$ de $\langle v\rangle^\perp$ tal que $[T\upharpoonright_{\langle v\rangle^\perp}]_{B'}$ seja diagonal. Seja $e_1=\frac{v}{\norm{v}}$, então $B=(e_1,e_2,\dots,e_n)$ uma base ortonormal e é fácil ver que $[T]_B$ é diagonal.
+\end{proof}
+
+\noindent
+\textcolor{red}{Outro exemplo numérico enfadonho!}
+
+\subsection{Caso dos Números Reais}
+
+Para isso primeiro definimos o seguinte.
+
+\begin{definicao}
+Seja $V$ um espaço vetorial sobre $\mathbb{R}$. Definimos a \textbf{complexificação} de $V$ como:
+\[
+V_\mathbb{C}=\{(x,y)\mid x,y\in V\},
+\]
+e munimo-lo do seguinte:
+\[
+\begin{array}{rcl}
+(x,y)+(x',y')&=&(x+x',y+y').\\
+(a+bi)(x,y)&=&(ax-by,bx+ay).
+\end{array}
+\]
+\end{definicao}
+
+\begin{proposicao}
+Nas notações acima, verifica-se que $V_\mathbb{C}$ é um espaço vetorial sobre $\mathbb{C}$.
+\end{proposicao}
+\begin{proof}
+\textcolor{red}{É só fazer umas continhas.}
+\end{proof}
+
+\begin{definicao}
+Para espaço vetorial $V$ sobre $\mathbb{R}$, para $T\in\mathcal{L}(V)$ definimos:
+\[
+T_\mathbb{C}(x,y)=(T(x),T(y)).
+\]
+\end{definicao}
+
+\begin{proposicao}
+Nas notações acima, verifica-se que $T_\mathbb{C}\in\mathcal{L}(V_\mathbb{C})$.
+\end{proposicao}
+\begin{proof}
+\textcolor{red}{É só fazer umas continhas.}
+\end{proof}
+
+\begin{proposicao}
+Nas notações acima, verificam-se:
+\begin{itemize}
+\item Para toda base $B$ base de $V$, então $B_\mathbb{C}=\{(x,0)\mid x\in B\}$ é uma base de $V_\mathbb{C}$.
+\item Para todo $T\in\mathcal{L}(V)$, então $p_T=p_{T_\mathbb{C}}$.
+\item Para subespaço $W$ de $V_\mathbb{C}$, então $W$ é da forma $W=U_\mathbb{C}$ para algum subespaço $U$ de $V$ se e só se $W^*\subseteq W$, em que definimos $W^*=\{(x,-y)\mid(x,y)\in W\}$.
+\end{itemize}
+\end{proposicao}
+\begin{proof}
+Temos o seguinte:
+\begin{itemize}
+\item Seja $B=(e_1,\dots,e_n)$ uma base ortonormal de $V$. Para $(x,y)\in V_\mathbb{C}$, existem números reais:
+\[
+a_1,\dots,a_n,b_1,\dots,b_n\in\mathbb{R}
+\]
+tais que:
+\[
+x=a_1e_1+\dots+a_ne_n,\quad\quad y=b_1e_1+\dots+b_ne_n,
+\]
+assim:
+\[
+(x,y)=(a_1+b_1i)(e_1,0)+\dots+(a_n+b_ni)(e_n,0).
+\]
+Logo $B_\mathbb{C}$ gera $V_\mathbb{C}$. Para:
+\[
+a_1,\dots,a_n,b_1,\dots,b_n\in\mathbb{R},
+\]
+se:
+\[
+(a_1+b_1i)(e_1,0)+\dots+(a_n+b_ni)(e_n,0)=0,
+\]
+então:
+\[
+(a_1e_1+\dots+a_ne_n,b_1e_1+\dots+b_ne_n)=0,
+\]
+aí:
+\[
+a_1e_1+\dots+a_ne_n=0,\quad\quad b_1e_1+\dots+b_ne_n=0,
+\]
+assim:
+\[
+a_1=\dots=a_n=b_1=\dots=b_n=0.
+\]
+Logo $B_\mathbb{C}$ é linearmente independente.
+\item \textcolor{red}{É só aplicar o item anterior e fazer umas continhas.}
+\item $(\Rightarrow)$ Se $W$ é da forma $U_\mathbb{C}$ para algum subespaço $U$ de $V$, então para todo $(x,y)\in W$ temos $x\in U$ e $y\in U$, aí $x\in U$ e $-y\in U$, aí $(x,-y)\in W$; logo $W^*\subseteq W$.
+
+\medskip
+\noindent
+$(\Leftarrow)$ Se $W^*\subseteq W$, então seja $(v_1,\dots,v_k)$ uma base de $W$, e para todo $i=1,\dots,k$ seja $v_i=(e_i,f_i)$ com $e_i,f_i\in V$, então temos $v_i^*=(e_i,-f_i)\in W$, assim:
+\[
+\begin{array}{rcl}
+(e_i,0)&=&\frac{1}{2}(v_i+v_i^*)\in W\\
+(f_i,0)&=&\frac{1}{2i}(v_i-v_i^*)\in W,
+\end{array}
+\]
+assim, sendo $U$ o subespaço gerado por $e_1,\dots,e_n,f_1,\dots,f_n$, é fácil ver que $W=U_\mathbb{C}$.
+\end{itemize}
+\end{proof}
+
+\begin{definicao}
+Seja $V$ um espaço com produto interno sobre os reais. Então definimos:
+\[
+\langle(x,y),(x',y')\rangle=\left(\langle x,x'\rangle+\langle y,y'\rangle,\langle y,x'\rangle-\langle x,y'\rangle\right).
+\]
+\end{definicao}
+
+\begin{proposicao}
+Nas notações acima, verificam-se:
+\begin{itemize}
+\item $V_\mathbb{C}$ é um espaço com produto interno sobre os complexos.
+\item Para $T\in\mathcal{L}(V)$ então temos $(T_\mathbb{C})^*=(T^*)_\mathbb{C}.$
+\end{itemize}
+\end{proposicao}
+\begin{proof}
+\textcolor{red}{É só fazer umas continhas.}
+\end{proof}
+
+\begin{corolario}
+$T\in\mathcal{L}(V)$ é normal (resp. unitário; autoadjunto) se e só se $T_\mathbb{C}$ é normal (resp. unitário; autoadjunto).
+\end{corolario}
+\begin{proof}
+\textcolor{red}{É só fazer umas continhas.}
+\end{proof}
+
+\begin{teorema}
+Seja $V$ um espaço com produto interno sobre os reais e seja $T\in\mathcal{L}(V)$. Então $T$ é normal se e só se existe uma base ortonormal $B$ de $V$ tal que:
+\[
+[T]_B=\begin{pmatrix}
+A_1&&0\\&\ddots&\\0&&A_n
+\end{pmatrix},
+\]
+em que $A_i$ esteja em uma das seguintes formas:
+\begin{itemize}
+\item
+\[
+A_i=\begin{pmatrix}
+a_i
+\end{pmatrix},\quad\quad a_i\in\mathbb{R}
+\]
+\item
+\[
+A_i=r_i\begin{pmatrix}
+\cos(\varphi_i)&-\sin(\varphi_i)\\\sin(\varphi_i)&\cos(\varphi_i)
+\end{pmatrix},\quad\quad r_i\neq 0,0<\varphi<\pi
+\]
+\end{itemize}
+\end{teorema}
 
 \printindex
 
