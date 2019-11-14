@@ -20,7 +20,7 @@
 
 \section{\textcolor{Floresta}{Prova 1}}
 
-\exercicio{1} Sejam $a,b,c,d \in \mathbb{R}.$ Encontre o valor de
+\begin{exercicio} Sejam $a,b,c,d \in \mathbb{R}.$ Encontre o valor de
 \[
 \det \begin{bmatrix}
 a & b & c & d\\
@@ -29,6 +29,7 @@ a & b & c & d\\
 2020 & 2018 & 2017 & 2016
 \end{bmatrix}
 \]
+\end{exercicio}
 \solucao{
 Como o determinante é uma forma $3$-linear nas linhas da matriz, podemos notar que
 \[
@@ -94,13 +95,16 @@ a & b & c & d\\
 \]
 }
 
-\exercicio{2} Seja $V$ um $K$-espaço vetorial e $T \in \mathcal{L}(V).$ Seja $W \subseteq V$ um subespaço $T$-invariante de $V.$
+\begin{exercicio}
+ Seja $V$ um $K$-espaço vetorial e $T \in \mathcal{L}(V).$ Seja $W \subseteq V$ um subespaço $T$-invariante de $V.$
 \dividiritens{
 \task[\pers{a}] Mostre que, se $T$ é diagonalizável, então a restrição $T \upharpoonleft_W$ é diagonalizável.
 \task[\pers{b}] Seja $\mbox{Spec } T = \{ \lambda_1, \ldots, \lambda_n \}$ o conjunto de autovalores de $T,$ onde $\lambda_i \neq \lambda_j$ para $i \neq j.$ Quantos subespaços $T$-invariantes o espaço vetorial $V$ possui?
 }
+\end{exercicio}
 \solucao{}
-\exercicio{3} Encontre o polinômio característico e o polinômio minimal da matriz
+\begin{exercicio}
+Encontre o polinômio característico e o polinômio minimal da matriz
 \[
 \begin{bmatrix}
 1 & -1 & 1 & -1 & 1 & -1 \\
@@ -111,8 +115,11 @@ a & b & c & d\\
 1 & -1 & 1 & -1 & 1 & -1
 \end{bmatrix} \in \mathcal{M}_6(K)
 \]
+ 
+\end{exercicio}
 \solucao{}
-\exercicio{4} Dentre as três matrizes abaixos, quais delas são semelhantes?
+\begin{exercicio}
+ Dentre as três matrizes abaixos, quais delas são semelhantes?
 \[
 A = \begin{pmatrix}
 1 & 1 & 1 \\
@@ -128,8 +135,9 @@ A = \begin{pmatrix}
 -1& -2 &-3
 \end{pmatrix}
 \]
+\end{exercicio}
 \solucao{}
-\exercicio{5} Seja $V = \mathcal{P}_3(\mathbb{R})$ o espaço vetorial formado por todos os polinômios de grau menor ou igual a $3.$ Considere o operador $T \in \mathcal{L}(V)$ dado por
+\begin{exercicio} Seja $V = \mathcal{P}_3(\mathbb{R})$ o espaço vetorial formado por todos os polinômios de grau menor ou igual a $3.$ Considere o operador $T \in \mathcal{L}(V)$ dado por
 \[
 T(f(x)) = (x-1) f^{\prime}(x)
 \]
@@ -137,4 +145,225 @@ T(f(x)) = (x-1) f^{\prime}(x)
 \task[\pers{a}] Encontre o polinômio característico e o polinômio minimal de $T.$
 \task[\pers{b}] $T$ é diagonalizável? Em caso afirmativo, apresente uma base de autovetores para $V.$
 }
+\end{exercicio}
+\solucao{
+\dividiritens{
+\task[\pers{a}] Considere a base canônica $B = \{1, x, x^2, x^3 \}$ de $V.$ Vamos encontrar a matriz que representa $T$ nessa base. Para tanto, note que
+\[
+T(1) = (x-1)(1)^{\prime} = 0, \quad T(x) = (x-1)(x)^{\prime} = x-1,
+\]
+\[
+T(x^2) = (x-1)(x^2)^{\prime} = 2x^2 - 2x, \quad T(x^3) = (x-1)(x^3)^{\prime} = 3x^3 - 3x^2.
+\]
+Logo,
+\[
+[T]_B = \begin{pmatrix}
+0  & 0 & 0 & 0 \\
+-1 & 1 & 0 & 0 \\
+0 & -2 & 2 & 0 \\
+0 & 0 & -3 & 3
+\end{pmatrix}
+\]
+
+
+\task[\pers{b}]
+}
+
+}
+
+\newpage
+\section{\textcolor{Floresta}{Prova 2}}
+
+\begin{exercicio}
+ Suponha que $\mathbb{C}^2$ esteja munido de um produto interno $\prin{,}$ e que a base $\mathcal{B} = \{ (1,1), (1,i) \}$ seja ortonormal em relação a $\prin{,}.$
+ \dividiritens{
+ \task[\pers{a}] Calcule os seguintes produtos: $\prin{(i,1),(-i,i)}, \prin{(-1,1),(1,1)}$ e $\prin{(1,0),(0,1)}.$
+  \task[\pers{b}] Seja $T \in \mathcal{L}(\mathbb{C}^2)$ um operador linear cuja matriz em relação à base canônica de $\mathbb{C}^2$ é
+  \[
+  [T]_{\mbox{can}} = \begin{pmatrix}
+  i+1 & -1 \\
+  i & 0
+  \end{pmatrix}.
+  \]
+  
+  Determine o operador adjunto $T^{*}$ (relativamente ao produto interno $\prin{,}$ acima) e verifique se $T$ é normal.
+ }
+\end{exercicio}
+\solucao{
+\dividiritens{
+\task[\pers{a}] Sejam $e_1 = (1,1)$ e $e_2 = (1,i).$ Como $\mathcal{B}$ é ortonormal, então $\prin{e_i, e_j} = \delta_{ij}.$ Com base nisso, vamos calcular cada um dos produtos requisitados:
+\begin{itemize}
+    \item $\prin{(i,1),(-i,i)}:$
+\end{itemize}
+
+}
+
+}
+
+\begin{exercicio}
+Determine o polinômio de grau $2$ cujo gráfico melhor se ajusta aos pontos $(-1,-1), (0,0), (1,1)$ e $(-1,1).$
+\end{exercicio}
+\solucao{
+
+
+
+}
+
+\begin{exercicio}
+Sejam $U$ e $V$ espaços com produto interno, $T \in \mathcal{L}(U,V)$ uma aplicação linear de $U$ a $V$ e $T^{*} \in \mathcal{L}(V,U)$ a aplicação adjunta. Considere as afirmações abaixo e assinale quais delas são corretas:
+\dividiritens{
+\task[\pers{a}] $T$ é sobrejetora se, e somente se, $T^{*}$ é sobrejetora;
+\task[\pers{b}] $T$ é injetora se, e somente se, $T^{*}$ é injetora;
+\task[\pers{c}] $T$ é injetora se, e somente se, $T^{*}$ é sobrejetora;
+\task[\pers{d}] $T$ é bijetora se, e somente se, $T^{*}$ é bijetora.
+}
+\end{exercicio}
+\solucao{Observe que 
+\[
+\mbox{Im }(T^{*}) = (\Ker T)^{\perp} \quad \mbox{e} \quad (\mbox{Im } T)^{\perp} = \Ker (T^{*})
+\]
+Suponha então que $T$ seja injetora. Logo, $\mbox{Im }(T^{*}) = \{ 0 \}^{\perp} = V.$ Assim, $T^{*}$ é sobrejetora. 
+
+Se $T^{*}$ é injetora, então $\Ker T^{*} = \{ 0 \},$ acarretando $\mbox{Im }T = V.$ Assim, $T$ é injetora. 
+
+Logo, as alternativas corretas são a $T$ e a $T.$
+}
+\begin{exercicio}
+Encontre as formas de Jordan e racional do operador $T \in \mathcal{L}(\mathbb{R}^n)$ se a matriz de $T$ na base canônica do $\mathbb{R}^n$ é a seguinte:
+\[
+\begin{bmatrix}
+1 & 1 & \cdots & 1 \\
+2 & 2 & \cdots & 2 \\
+\vdots & \vdots & \ddots & \vdots \\
+n & n & \cdots & n
+\end{bmatrix}
+\]
+\end{exercicio}
+\solucao{
+}
+\begin{exercicio}
+Encontre as formas de Jordan e racional do operador $T \in \mathcal{L}(\mathbb{R}^4)$ e as bases correspondentes se a matriz de $T$ na base canônica do $\mathbb{R}^4$ é a seguinte:
+\[
+\begin{pmatrix}
+-5 & -6 & -15 & 14 \\
+4 & 5 & 9 & -6 \\
+0 & 0 & 2 & -4 \\
+0 & 0 & 1 & -2
+\end{pmatrix}
+\]
+\end{exercicio}
+\solucao{}
+\begin{exercicio}
+Sejam $V$ um $K$-espaço vetorial com produto interno, $T \in \mathcal{L}(V)$ e $W \subseteq V$ um subespaço $T$-invariante. Mostre que se $T$ é normal, então $W$ também é $T^{*}$-invariante.
+\end{exercicio}
+\solucao{}
+
+\newpage
+\section{\textcolor{Floresta}{Prova 2}}
+
+
+\begin{exercicio}
+(3,0) Verifique quais das afirmações abaixo são falsas, justificando cada item adequadamente:
+\dividiritens{
+\task[\pers{a}] Se $A \in \mathcal{M}_n(\mathbb{C})$ é normal, então $A^t$ é normal;
+\task[\pers{b}] Se $A = (a_{ij}) \in \mathcal{M}_n(\mathbb{C})$ é normal, então $\overline{A} = (\overline{a_{ij}})$ é normal;
+\task[\pers{c}] Seja $A \in \mathcal{M}_n(\mathbb{C}),$ e considere matrizes $B, C \in \mathcal{M}_n(\mathbb{R}),$ tais que $A = B + iC.$ Se $A$ é normal, então $B$ e $C$ são normais;
+\task[\pers{d}] No item anterior, se $B$ e $C$ são normais, então $A = B + iC$ é normal;
+
+\task[\pers{e}] Para qualquer matriz $A \in \mathcal{M}_n(\mathbb{R}),$ a amtriz $A + iA^t \in \mathcal{M}_n(\mathbb{C})$ é normal; 
+
+\task[\pers{f}] Existe um operador normal $T \in \mathcal{L}(\mathbb{R}^3)$ tal que
+\[
+T(1,2,3) = (1,2,3) \quad \mbox{e} \quad T(1,1,1) = (0,0,0).
+\]
+}
+\end{exercicio}
+\solucao{}
+
+\begin{exercicio}
+(2,0) Decomponha a matriz
+\[
+A = \begin{bmatrix}
+0 & 2 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & -1
+\end{bmatrix}
+\]
+num produto de uma matriz positiva $S$ e uma matriz unitária (que nesse caso será ortogonal) $U$.
+\end{exercicio}
+\solucao{Vamos encontrar os valores singulares e autovetores de $A.$ Temos que
+\[
+AA^{*} = \begin{bmatrix}
+0 & 2 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & -1
+\end{bmatrix}\begin{bmatrix}
+0 & 1 & 0 \\
+2 & 0 & 0 \\
+0 & 0 & -1
+\end{bmatrix} = \begin{bmatrix}
+4 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\]
+Como $AA^{*}$ já está na forma diagonal, temos diretamente que os autovalores de $AA^{*}$ são $\lambda_1 = 4$ e $\lambda_2 = 1.$ Daí, os valores singulares de $A$ são $r_1 = \sqrt{\lambda_1} = \sqrt{4} = 2$ e $r_2 = \sqrt{\lambda_2} = \sqrt{1} = 1.$
+
+Encontremos agora autovetores de $AA^{*}.$
+
+Seja $v = (x,y,z) \in \Ker(AA^{*} - 4I).$ Então
+\[
+(AA^{*} - 4I)v = 0 \Rightarrow \begin{bmatrix}
+0 & 0 & 0 \\
+0 & -3 & 0 \\
+0 & 0 & -3
+\end{bmatrix} \begin{bmatrix}
+x \\
+y \\
+z
+\end{bmatrix} = 0 \Rightarrow v = x(1,0,0)
+\]
+Logo, $\Ker(AA^{*} - 4I) = \langle (1,0,0) \rangle.$
+
+Seja $v = (x,y,z) \in \Ker(AA^{*} - I).$ Então
+\[
+(AA^{*} - I)v = 0 \Rightarrow \begin{bmatrix}
+3 & 0 & 0 \\
+0 & 0 & 0 \\
+0 & 0 & 0
+\end{bmatrix} \begin{bmatrix}
+x \\
+y \\
+z
+\end{bmatrix} = 0 \Rightarrow v = y(0,1,0) + z(0,0,1)
+\]
+Logo, $\Ker(AA^{*} - 4I) = \langle (0,1,0), (0,0,1) \rangle.$
+
+Assim, $e_1, e_2$ e $e_3$ são autovetores de $AA^{*}.$ Portanto, temos a matriz $P = I.$
+}
+
+\begin{exercicio}
+Dada a matriz simétrica positiva
+\[
+A = \begin{bmatrix}
+11 & 7 & 7 \\
+7 & 11 & 7 \\
+7 & 7 & 11
+\end{bmatrix},
+\]
+ache a raiz quadrada de $A,$ ou seja, encontre uma matriz simétrica positiva $B \in \mathcal{M}_3(\mathbb{R})$ tal que $B^2 = A.$
+\end{exercicio}
+\solucao{}
+\begin{exercicio}
+(2,0) Prove que um operador $T \in \mathcal{L}(\mathbb{R}^n)$ é diagonalizável se e somente se o espaço $\mathbb{R}^n$ pode ser mundio com um produto interno tal que o operador $T$ seja simétrico relativamente a este produto. Qual é a matriz de Gram que define este produto na base canônica do $\mathbb{R}^n?$
+\end{exercicio}
+\solucao{}
+\begin{exercicio}
+(1,0) Fazendo uma troca ortogonal de variáveis conveniente, transforme a forma quadrática
+\[
+q(x) = x^2 + y^2 +5z^2 - 6xy - 2xz + 2yz
+\]
+para uma forma diagonal.
+\end{exercicio}
+\solucao{}
  \end{document}

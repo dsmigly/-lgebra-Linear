@@ -2704,7 +2704,7 @@ As formas racionais, seja para divisores elementares ou para fatores invariantes
 
 \medskip
 \noindent
-Quando o polinômio minimal $m_T(x)$ de $T$ se decompõe sobre $K$, ou seja:
+Quando $V$ tem dimensão finita e o polinômio minimal $m_T(x)$ de $T$ se decompõe sobre $K$, ou seja:
 \[
 m_T(x)=(x-c_1)^{r_1}\dots(x-c_k)^{r_k},
 \]
@@ -2717,7 +2717,7 @@ têm a forma:
 \[
 B_{i,j}=(v_{i,j},T(v_{i,j}),\dots,T^{d_{i,j}-1}(v_{i,j})),
 \]
-em que $d_{i,j}=\mathrm{deg}(p_i)\cdot(e_{i,j})$. Com essa base, toda complexidade no final quando tentamos expressar:
+em que $d_{i,j}=\mathrm{deg}(p_i)\cdot e_{i,j}$. Com essa base, toda complexidade no final quando tentamos expressar:
 \[
 T(T^{d_{i,j}-1}(v_{i,j}))=T^{d_{i,j}}(v_{i,j})
 \]
@@ -2735,7 +2735,7 @@ então qualquer sequência da forma:
 \]
 em que $\mathrm{deg}(p_k)=k$ será uma base de $Z(v_{i,j},T)$. Em particular, quando $m_T(x)$ se decompõe sobre $K$, os divisores elementares são:
 \[
-p_i^{e_{i,j}}(x)=(x-c_i)^{e^{i,j}}
+p_i^{e_{i,j}}(x)=(x-c_i)^{e_{i,j}}
 \]
 e assim a sequência:
 \[
@@ -2745,22 +2745,13 @@ C_{i,j}=(v_{i,j},(T-c_iI)(v_{i,j}),\dots,(T-c_iI)^{e_{i,j}-1}(v_{i,j}))
 
 \medskip
 \noindent
-Se temporariamente denotarmos o $k$-ésimo vetor da base $C_{i,j}$ por $b_k$, então para $k=0,\dots,e_{i,j}-2$ temos:
+Para $0\leq k<e_{i,j}$ temos:
 \[
 \begin{array}{rcl}
-T(b_k)&=&T((T-c_iI)^k(v_{i,j}))\\
+T((T-c_iI)^k(v_{i,j}))
 &=&(T-c_iI+c_iI)((T-c_iI)^k(v_{i,j}))\\
-&=&(T-c_iI)^{k+1}(v_{i,j})+c_i(T-c_i)^k(v_{i,j})\\
-&=&b_{k+1}+c_ib_k.
+&=&(T-c_iI)^{k+1}(v_{i,j})+c_i(T-c_i)^k(v_{i,j}).
 \end{array}
-\]
-Para $k=e_{i,j}-1$, usando o fato de que:
-\[
-(T-c_iI)^{k+1}(v_{i,j})=(T-c_iI)^{e_{i,j}}(v_{i,j})=0,
-\]
-obtemos:
-\[
-T(b_{e_{i,j}-1})=c_ib_{e_{i,j}-1}.
 \]
 Logo, para esta base, a complexidade se espalha melhor, e a matriz de $T\upharpoonright_{Z(v_{i,j},T)}$ em relação a $C_{i,j}$ é a matriz de tamanho $e_{i,j}$:
 \[
@@ -2773,7 +2764,7 @@ Assim apresentaremos o conceito das formas de Jordan.
 \begin{definicao}
 Um \textbf{bloco de Jordan} é uma matriz do tipo:
 \[
-J(c,n)=\begin{pmatrix}
+J_{c,n}=\begin{pmatrix}
 c&0&\ldots&\ldots&0\\1&c&\ddots&&\vdots\\0&1&\ddots&\ddots&\vdots\\\vdots&\ddots&\ddots&\ddots&0\\0&\ldots&0&1&c
 \end{pmatrix},
 \]
@@ -2784,14 +2775,14 @@ em que $c\in K$ e a matriz tem tamanho $n$. Dizemos que uma matriz está na \tex
 Com a discussão anterior, então temos as conhecidas formas de Jordan.
 
 \begin{teorema}[Forma de Jordan]
-Suponhamos que o polinômio minimal de $T\in\mathcal{L}(V)$ se decomponha sobre o corpo $K$, ou seja:
+Seja $V$ um espaço vetorial de dimensão finita sobre um corpo $K$ e seja $T\in\mathcal{L}(V)$. Suponhamos que o polinômio minimal de $T\in\mathcal{L}(V)$ se decomponha sobre o corpo $K$, ou seja:
 \[
 m_T(x)=(x-c_1)^{e_1}\dots(x-c_n)^{e_n},
 \]
 em que $c_i\in K$. Então existe uma base $B$ tal que a matriz de $T$ seja:
 \[
 \begin{pmatrix}
-J(c_1,e_{1,1})&&&&&&\\&\ddots&&&&&\\&&J(c_1,e_{1,k_1})&&&&\\&&&\ddots&&&\\&&&&J(c_n,e_{n,1})&&\\&&&&&\ddots&\\&&&&&&J(c_n,e_{n,k_n})
+J_{c_1,e_{1,1}}&&&&&&\\&\ddots&&&&&\\&&J_{c_1,e_{1,k_1}}&&&&\\&&&\ddots&&&\\&&&&J_{c_n,e_{n,1}}&&\\&&&&&\ddots&\\&&&&&&J_{c_n,e_{n,k_n}}
 \end{pmatrix},
 \]
 em que os polinômios $(x-c_i)^{e_{i,j}}$ são os divisores elementares de $T$.
@@ -2803,7 +2794,111 @@ Se $K$ é algebricamente fechado, então, a menos de ordem dos blocos na diagona
 
 \subsection{Forma de Jordan Generalizada}
 
+Vimos que, para $T$ possuir uma forma canônica de Jordan, o polinômio minimal $m_T(x)$ deve ser um produto de fatores lineares. Agora apresentaremos uma forma canônica de Jordan generalizada para lidarmos com as demais situações. Começaremos com o caso de um espaço vetorial de dimensão finita primário para um operador linear $T$.
+
+\begin{definicao}
+Seja $p$ polinômio mônico de grau $d$. Um
+\textbf{bloco de Jordan generalizado} é uma matriz do tipo:
+\[
+\mathfrak{J}_{p,n} =
+\begin{pmatrix}
+C[p]&0&\ldots&0&0\\N&C[p]&\ldots&0&0\\0&N&\ldots&0&0\\\vdots&\vdots&\ddots&\vdots&\vdots\\0&0&\ldots&C[p]&0\\0&0&\ldots&N&C[p]
+\end{pmatrix},
+\]
+em que:
+\[
+N=\begin{pmatrix}
+0&0&\ldots&0&1\\0&0&\ldots&0&0\\\vdots&\vdots&\ddots&\vdots&\vdots\\0&0&\ldots&0&0\\0&0&\ldots&0&0\\
+\end{pmatrix},
+\]
+que é a matriz valendo $1$ na entrada $(1,d)$ e $0$ nas outras entradas.
+Dizemos que $\mathfrak{J}_{p,n}$ é \textbf{irredutível} se e só se $p$ é um polinômio irredutível. Dizemos que uma matriz está na \textbf{forma de Jordan generalizada} se e só se é uma soma direta de blocos de Jordan generalizados \emph{irredutíveis}. Note, em particular, que o bloco de Jordan usual $J_{c,n}$ é a mesma coisa que o bloco de Jordan generalizado irredutível $\mathfrak{J}_{x-c,n}$.
+\end{definicao}
+
+\begin{proposicao}
+Seja $V$ um espaço vetorial de dimensão finita sobre um corpo $K$ e seja $T\in\mathcal{L}(V)$, e assuma
+que $m_T=p^n$, em que $p$ é um polinômio de grau $d$, e que $T$ tenha um vetor cíclico $v$. Defina $B$ assim:
+\[
+B = \left(v,\dots,T^{d-1}(v), p(T)(v),...,T^{d-1}p(T)(v),\dots,p(T)^{n-1}(v),\dots,T^{d-1}p(T)^{n-1}(v)\right).
+\]
+Então $B$ é uma base de $V$ sobre $K$ e $[T]_B=\mathfrak{J}_{p,n}$.
+\end{proposicao}
+\begin{proof}
+Seja:
+\[
+p(x)=x^d+a_{d-1}x^{d-1}+\dots+a_1x+a_0.
+\]
+Para $0\leq k<n$ temos:
+\[
+\begin{array}{rcl}
+T(T^{d-1}p(T)^k(v))
+&=&T^dp(T)^k(v)\\
+&=&\left(p(T)-\left(a_{d-1}T^{d-1}+\dots+a_1T+a_0\right)\right)p(T)^k(v)\\
+&=&\left(p(T)\right)^{k+1}(v)-\left(a_{d-1}T^{d-1}p(T)^k(v)+\dots+a_1Tp(T)^k(v)+a_0p(T)^k(v)\right).
+\end{array}
+\]
+Logo é fácil ver que $[T]_B=\mathfrak{J}_{p,n}$.
+\end{proof}
+
+\begin{teorema}[Forma de Jordan Generalizada]
+Seja $V$ um espaço vetorial de dimensão finita sobre um corpo $K$ e seja $T\in\mathcal{L}(V)$.
+Então existe uma base $B$ tal que a matriz de $T$ seja:
+\[
+\mathfrak{J}=\begin{pmatrix}
+\mathfrak{J}_{p_1,e_{1,1}}&&&&&&\\&\ddots&&&&&\\&&\mathfrak{J}_{p_1,e_{1,k_1}}&&&&\\&&&\ddots&&&\\&&&&\mathfrak{J}_{p_n,e_{n,1}}&&\\&&&&&\ddots&\\&&&&&&\mathfrak{J}_{p_n,e_{n,k_n}}
+\end{pmatrix},
+\]
+em que os polinômios $p_i^{e_{i,j}}$ são os divisores elementares de $T$.
+\end{teorema}
+
 \subsection{Forma de Jordan Real}
+
+Agora seja $K=\mathbb{R}$ o corpo dos números reais. Produziremos uma outra versão
+da forma canônica de Jordan que é válida para todas as matrizes
+com entradas em $\mathbb{R}$. Essa forma canônica será de alguma forma diferente da
+forma de Jordan generalizada.
+
+\medskip
+\noindent
+Lembremo-nos de que um operador linear $T\in\mathcal{L}(V)$, em que
+$V$ é um espaço vetorial de dimensão finita sobre um corpo $K$, tem uma forma canônica de Jordan se e somente se o polinômio minimal $m_T$ é um produto de fatores lineares, não necessariamente distintas. Essa condição
+será satisfeita para todos os polinômios sobre $K$ se e somente se o corpo $K$ for
+algebricamente fechado. O corpo $\mathbb{C}$ dos números complexos é algebricamente fechado
+(embora não apresentaremos uma prova desse fato nestas notas de aula), mas o corpo
+$\mathbb{R}$ dos números reais não é. De fato, $x^2+1$ é um polinômio sobre $\mathbb{R}$ que não possui raízes em $\mathbb{R}$. Portanto, nenhum operador linear $T\in\mathcal{L}_{\mathbb{R}}(\mathbb{R}^2)$
+tal que $m_T(x) = x^2 + 1$ pode possuir uma forma canônica de Jordan. Não obstante, há uma variante bem simples da forma canônica de Jordan que é válida sobre $\mathbb{R}$ e dá conta da natureza especial de $\mathbb{R}$ e de sua relação com os números complexos.
+
+\begin{definicao}
+Um
+\textbf{bloco de Jordan real} é um bloco de Jordan usual ou uma matriz do tipo:
+\[
+J_{a+bi,n} =
+\begin{pmatrix}
+C_{a+bi}&0&\ldots&0&0\\I&C_{a+bi}&\ldots&0&0\\0&I&\ldots&0&0\\\vdots&\vdots&\ddots&\vdots&\vdots\\0&0&\ldots&C_{a+bi}&0\\0&0&\ldots&I&C_{a+bi}
+\end{pmatrix},
+\]
+em que $a$ e $b$ são reais com $b\neq 0$ e:
+\[
+C_{a+bi}=\begin{pmatrix}
+a&-b\\b&a
+\end{pmatrix}.
+\]
+Dizemos que uma matriz está na \textbf{forma de Jordan real} se e só se é uma soma direta de blocos de Jordan reais.
+\end{definicao}
+
+\begin{proposicao}
+Seja $V$ um espaço vetorial de dimensão finita sobre $\mathbb{R}$ e seja $T\in\mathcal{L}(V)$, e assuma
+que:
+\[
+m_T(x)=\left((x-a)^2+b^2\right)^n,
+\]
+em que $a$ e $b$ são reais e $b\neq 0$, e que $T$ tenha um vetor cíclico $v$. Então existe uma base $B$ de $V$ sobre $\mathbb{R}$ tal que $[T]_B=J_{a+bi,n}$.
+\end{proposicao}
+
+\begin{teorema}[Forma de Jordan Real]
+Seja $V$ um espaço vetorial de dimensão finita sobre $\mathbb{R}$ e seja $T\in\mathcal{L}(V)$.
+Então existe uma base $B$ tal que a matriz de $T$ seja uma soma direta de blocos de Jordan reais.
+\end{teorema}
 
 \section{Espaços Indecomponíveis}
 
@@ -2883,15 +2978,17 @@ Neste capítulo, convencionaremos que $K$ é $\mathbb{R}$ ou $\mathbb{C}$.
 
 \section{Definições e Exemplos}
 
+\subsection{Definições}
+
 \begin{definicao}
-Um espaço vetorial $V$ é dito um \textbf{espaço com produto interno} se estiver munida com uma função:
+Para espaço vetorial $V$, um \textbf{produto interno} é uma função:
 \[
 \begin{array}{rcl}
 V\times V&\rightarrow&K\\
 (u,v)&\mapsto&\langle u,v\rangle
 \end{array}
 \]
-tal que:
+que satisfaz as seguintes propriedades:
 \begin{itemize}
 \item $\langle\alpha u+\beta v,w\rangle=\alpha\langle u,w\rangle+\beta\langle v,w\rangle$ para quaisquer $\alpha,\beta\in K$ e $u,v,w\in V$.
 \item $\overline{\langle u,v\rangle}=\langle v,u\rangle$ para quaisquer $u,v\in V$.
@@ -2900,147 +2997,252 @@ tal que:
 \end{itemize}
 \end{definicao}
 
+\begin{definicao}
+Um \textbf{espaço com produto interno} é um espaço vetorial munido de um produto interno.
+\end{definicao}
+
+\begin{definicao}
+Definimos o seguinte:
+\begin{itemize}
+\item Um \textbf{espaço euclidiano} é um espaço com produto interno sobre $\mathbb{R}$ de dimensão finita.
+\item Um \textbf{espaço unitário} é um espaço com produto interno sobre $\mathbb{C}$ de dimensão finita.
+\end{itemize}
+\end{definicao}
+
+\subsection{Exemplos}
+
 \begin{exemplo}
-O exemplo principal é $V=K^n$, em que, tomando $u=(\alpha_1,\dots,\alpha_n)$ e $v=(\beta_1,\dots,\beta_n)$, definimos:
+O exemplo principal é $V=K^n$, em que, para quaisquer:
 \[
-\langle u,v\rangle=\alpha_1\overline{\beta_1}+\dots+\alpha_n\overline{\beta_n}.
+u=(\alpha_1,\dots,\alpha_n),\quad\quad v=(\beta_1,\dots,\beta_n),
 \]
+definimos:
+\[
+\langle u,v\rangle_{\text{usual}}=\alpha_1\overline{\beta_1}+\dots+\alpha_n\overline{\beta_n}.
+\]
+Este é o \textbf{produto interno usual}.
 \end{exemplo}
 
 \begin{exemplo}
-Podemos considerar $V=\m{n}{K}\cong K^{n^2}$. Com base no exemplo anterior, definimos:
+Podemos considerar $V=\m{n}{K}\cong K^{n^2}$. Com base no exemplo anterior, para quaisquer matrizes:
+\[
+A=(a_{i,j}),\quad\quad B=(b_{i,j}),
+\]
+definimos:
 \[
 \langle A,B\rangle=\sum_{i,j}a_{i,j}\overline{b_{i,j}}.
 \]
-Para toda $A=(a_{i,j})\in\m{n}{K}$, definimos:
-\[
-A^*=(\overline{a_{i,j}}),
-\]
-e
-\[
-\mathrm{tr}(A)=a_{1,1}+\dots+a_{n,n},
-\]
-então podemos ver que:
-\[
-\langle A,B\rangle=\mathrm{tr}(AB^*).
-\]
 \end{exemplo}
 
 \begin{exemplo}
-Podemos tomar $V=\mathcal{C}[a,b]$, o conjunto das funções contínuas de $[a,b]$ em $\mathbb{C}$, e para $f,g\in V$ definirmos:
+Consideremos $V=\mathcal{C}[a,b]$, o conjunto das funções contínuas de $[a,b]$ em $\mathbb{C}$, e para $f,g\in V$ definamos:
 \[
 \langle f,g\rangle=\int_a^bf(t)\overline{g(t)}\dif t.
 \]
 \end{exemplo}
 
 \begin{exemplo}
-Seja $T\in\mathcal{L}(U,V)$ bijetora. Suponhamos que $V$ tenha um produto interno. Se $u_1,u_2\in U$, definimos:
+Seja $T\in\mathcal{L}(U,V)$ bijetora. Seja $\langle\cdot,\cdot\rangle_V$ um produto interno em $V$. Para $u,v\in U$, definimos:
 \[
-\langle u_1,u_2\rangle_U=\langle T(u_1),T(u_2)\rangle_V.
-\]
-Suponhamos que $U$ tenha uma base $B=(e_1,\dots,e_n)$. Então existe uma $T:U\rightarrow K^n$ tal que:
-\[
-T(e_i)=(0,\dots,1,\dots,0),
-\]
-em que a entrada $i$ vale $1$ e as outras valem $0$. Sendo:
-\[
-u=\alpha_1e_1+\dots+\alpha_ne_n,\quad v=\beta_1e_1+\dots+\beta_ne_n,
-\]
-então:
-\[
-\langle u,v\rangle_U=\langle T(u),T(v)\rangle_V=\sum_{i=1}^n\alpha_i\overline{\beta_i}.
+\langle u,v\rangle_U=\langle T(u),T(v)\rangle_V.
 \]
 \end{exemplo}
 
-\begin{definicao}
-Definimos o seguinte:
-\begin{itemize}
-\item Se $\dim(V)=n<\infty$ e $K=\mathbb{R}$, então chamamos $V$ de \textbf{euclidiano}.
-\item Se $\dim(V)=n<\infty$ e $K=\mathbb{C}$, então chamamos $V$ de \textbf{unitário}.
-\end{itemize}
-\end{definicao}
-
-\begin{definicao}
-Se $V$ é um espaço com produto interno e $V$ é um espaço completo em relação à norma $\norm{v}=\sqrt{\langle v,v\rangle}$, então $V$ se chama um \textbf{espaço de Hilbert}.
-\end{definicao}
-
-\section{Matriz de Gramm}
-
-\begin{definicao}
-Seja $V$ um espaço com produto interno. Sejam $v_1,\dots,v_k\in V$. Definimos:
+\begin{exemplo}
+Seja $U$ um espaço de dimensão finita e seja $B=(e_1,\dots,e_n)$ uma base de $U$. Então existe uma única transformação linear $T:U\rightarrow K^n$ tal que:
 \[
-G(v_1,\dots,v_n)=\begin{pmatrix}
-\langle v_1,v_1\rangle&\dots&\langle v_1,v_n\rangle\\\dots&\dots&\dots\\\langle v_n,v_1\rangle&\dots&\langle v_n,v_n\rangle
-\end{pmatrix}.
+T(e_i)=(0,\dots,1,\dots,0),
 \]
-Nesse caso temos:
+em que a entrada $i$ vale $1$ e as outras valem $0$. Defininamos:
 \[
-G(v_1,\dots,v_n)^*=G(v_1,\dots,v_n).
+\langle u,v\rangle_U=\langle T(u),T(v)\rangle_{\text{usual}}.
 \]
-Toda matriz $A$ que satisfaz $A^*=A$ é chamada \textbf{Hermitiana}.
-\end{definicao}
+Para quaisquer vetores em $U$:
+\[
+u=\alpha_1e_1+\dots+\alpha_ne_n,\quad v=\beta_1e_1+\dots+\beta_ne_n,
+\]
+então temos:
+\[
+\langle u,v\rangle_U=\langle T(u),T(v)\rangle_{\text{usual}}=\sum_{i=1}^n\alpha_i\overline{\beta_i}.
+\]
+\end{exemplo}
+
+\subsection{Propriedades Iniciais}
 
 \begin{proposicao}
-Seja $B=(e_1,\dots,e_n)$ uma base de $V$. Então $G(e_1,\dots,e_n)$ é inversível.
+Para espaço vetorial $V$ e produto interno $\langle\cdot,\cdot\rangle$, então temos:
+\[
+\langle u,\alpha v+\beta w\rangle=\overline{\alpha}\langle u,v\rangle+\overline{\beta}\langle u,w\rangle
+\]
+para quaisquer $\alpha,\beta\in K$ e $u,v,w\in V$.
 \end{proposicao}
 \begin{proof}
-Primeiro observemos que para quaisquer $u,v\in V$, com:
-\[
-[u]_B=(\alpha_1,\dots,\alpha_n),\quad [v]_B^*=(\beta_1,\dots,\beta_n)
-\]
-então:
-\[
-\langle u,v\rangle=[u]_BA[v]_B^*.
-\]
-De fato:
-\[
-\langle u,v\rangle=\sum_{i,j}\alpha_i\overline{\beta_j}\langle e_i,e_j\rangle,
-\]
-aí:
+Temos o seguinte:
 \[
 \begin{array}{rcl}
-[u]_BA[v]_B^*&=&(\alpha_1,\dots,\alpha_n)\begin{pmatrix}
-\langle e_1,e_1\rangle&\dots&\langle e_1,e_n\rangle\\\dots&\dots&\dots\\\langle e_n,e_1\rangle&\dots&\langle e_n,e_n\rangle
-\end{pmatrix}\begin{pmatrix}
-\overline{\beta_1}\\\vdots\\\overline{\beta_n}
-\end{pmatrix}\\
-&=&\begin{pmatrix}
-\alpha_1\langle e_1,e_1\rangle+\dots+\alpha_n\langle e_n,e_1\rangle\\\vdots\\\alpha_1\langle e_1,e_n\rangle+\dots+\alpha_n\langle e_n,e_n\rangle
-\end{pmatrix}\begin{pmatrix}
-\overline{\beta_1}\\\vdots\\\overline{\beta_n}
-\end{pmatrix}
-\end{array}.
+\langle u,\alpha v+\beta w\rangle&=&\overline{\langle \alpha v+\beta w,u\rangle}\\
+&=&\overline{\alpha\langle v,u\rangle+\beta\langle w,u\rangle}\\
+&=&\overline{\alpha}\overline{\langle v,u\rangle}+\overline{\beta}\overline{\langle w,u\rangle}\\
+&=&\overline{\alpha}\langle u,v\rangle+\overline{\beta}\langle u,w\rangle.
+\end{array}
 \]
-Se $A$ não for inversível, então existe $u\neq 0$ tal que $[u]_BA=0$. Neste caso, $\langle u,u\rangle=[u]_BA[u]_B^*=0$, aí $u=0$, contradição.
 \end{proof}
 
-\noindent
-Se $B=(e_1,\dots,e_n)$ é uma base de $V$ e $A=G(e_1,\dots,e_n)$ então para todo $v\in V$ temos:
-\[
-[v]_BA[v]_B^*\geq 0
-\]
-e a igualdade ocorre se e somente se $v=0$.
+\newpage
+
+\section{Geometria de Vetores}
+
+\subsection{Norma de Vetores}
 
 \begin{definicao}
-Uma matriz Hermitiana $A$ é dita:
+Para vetor $x$, definimos a \textbf{norma} de $x$ como:
+\[
+\norm{x}=\sqrt{\langle x,x\rangle}.
+\]
+\end{definicao}
+
+\begin{proposicao}\label{norma1}
+A função $\norm{\cdot}$ satisfaz as seguintes propriedades:
 \begin{itemize}
-\item \textbf{Positiva semidefinitiva} se e só se para todo $x\in K^n$ temos $xAx^*\geq 0$.
-\item \textbf{Positiva definitiva} se e só se para todo $x\in K^n$ tal que $x\neq 0$ temos $xAx^*>0$.
+\item $\norm{v}\geq 0$ para $v\in V$. 
+\item $\norm{v}=0\Rightarrow v=0$ para $v\in V$.
+\item $\norm{\alpha v}=\abs{\alpha}\norm{v}$ para $\alpha\in K$ e $v\in V$.
 \end{itemize}
+\end{proposicao}
+\begin{proof}
+Temos o seguinte:
+\begin{itemize}
+\item Para $v$ temos $\langle v,v\rangle\geq 0$, aí $\sqrt{\langle v,v\rangle}\geq 0$, aí $\norm{v}\geq 0.$
+\item Para $v$, se $\norm{v}=0$, então $\sqrt{\langle v,v\rangle}=0$, aí $\langle v,v\rangle=0$, aí $v=0.$
+\item Para $v\in V$ e $\alpha\in K$ temos:
+\[
+\norm{\alpha v}^2=\langle\alpha v,\alpha v\rangle
+=\alpha\overline{\alpha}\langle v,v\rangle
+=\abs{\alpha}^2\norm{v}^2
+=\left(\abs{\alpha}\norm{v}\right)^2,
+\]
+mas $\forall x\in V:\norm{x}\geq 0$ e também $\forall\gamma\in K:\abs{\gamma}\geq 0$,
+assim $\norm{\alpha v}=\abs{\alpha}\norm{v}.$
+\end{itemize}
+\end{proof}
+
+\subsection{Teorema de Pitágoras}
+
+\begin{definicao}
+Dois vetores $u,v\in V$ são ditos \textbf{ortogonais} se e só se $\langle u,v\rangle=0$.
+\end{definicao}
+
+\begin{proposicao}[Teorema de Pitágoras]
+Para $u,v\in V$, se $u$ e $v$ são ortogonais, então:
+\[
+\norm{u+v}^2=\norm{u}^2+\norm{v}^2.
+\]
+\end{proposicao}
+\begin{proof}
+Temos o seguinte:
+\[
+\begin{array}{rcl}
+\norm{u+v}^2&=&\langle u+v,u+v\rangle\\
+&=&\langle u,u\rangle+\langle u,v\rangle+\langle v,u\rangle+\langle v,v\rangle\\
+&=&\norm{u}^2+\langle u,v\rangle+\overline{\langle u,v\rangle}+\norm{v}^2\\
+&=&\norm{u}^2+\norm{v}^2.
+\end{array}
+\]
+\end{proof}
+
+\begin{definicao}
+Para vetores $u$ e $v$ tais que $v\neq 0$, definimos a \textbf{projeção ortogonal} de $u$ sobre $v$ como o vetor:
+\[
+w=\frac{\langle u,v\rangle}{\norm{v}^2}v.
+\]
 \end{definicao}
 
 \begin{proposicao}
-Seja $A\in\m{n}{K}$ uma matriz Hermitiana positiva definitiva. Seja $V$ um espaço vetorial com base $B=(e_1,\dots,e_n)$. Definamos, para $u,v\in V$, o seguinte:
-\[
-\langle u,v\rangle=[u]_BA[v]_B^*.
-\]
-Então $\langle u,v\rangle$ é um produto interno.
+Se $u$ e $v$ são vetores tais que $v\neq 0$, sendo $w$ a projeção ortogonal de $u$ sobre $v$ então $u-w$ e $v$ são ortogonais.
 \end{proposicao}
+\begin{proof}
+Temos o seguinte:
+\[
+\begin{array}{rcl}
+\langle w,v\rangle&=&\left\langle \frac{\langle u,v\rangle}{\norm{v}^2}v,v\right\rangle\\
+&=&\frac{\langle u,v\rangle}{\norm{v}^2}\left\langle v,v\right\rangle\\
+&=&\frac{\langle u,v\rangle}{\norm{v}^2}\norm{v}^2\\
+&=&\langle u,v\rangle,
+\end{array}
+\]
+assim:
+\[
+\langle u-w,v\rangle=\langle u,v\rangle-\langle w,v\rangle=0.
+\]
+\end{proof}
 
-\section{Espaços Normados}
+\begin{proposicao}[Desigualdade de Cauchy-Bunyakovski-Schwarz]
+Seja $V$ um espaço com produto interno. Então para quaisquer $u,v\in V$ temos:
+\[
+\abs{\langle u,v\rangle}\leq\norm{u}\cdot\norm{v}.
+\]
+\end{proposicao}
+\begin{proof}
+Suponhamos sem perda de generalidade que $v\neq 0.$ Seja $w$ a projeção ortogonal de $u$ sobre $v.$ Então $u-w$ e $v$ são ortogonais, mas $w$ é múltiplo de $v,$ aí $u-w$ e $w$ são ortogonais, aí, pelo teorema de Pitágoras, temos:
+\[
+\norm{u-w}^2+\norm{w}^2=\norm{(u-w)+w}^2=\norm{u}^2,
+\]
+assim temos $\norm{w}^2\leq\norm{u}^2$, aí $\norm{w}\leq\norm{u}$, mas:
+\[
+\norm{w}=\norm{\frac{\langle u,v\rangle}{\norm{v}^2}v}=\frac{\abs{\langle u,v\rangle}}{\norm{v}^2}\norm{v}=\frac{\abs{\langle u,v\rangle}}{\norm{v}},
+\]
+aí temos:
+\[
+\frac{\abs{\langle u,v\rangle}}{\norm{v}}\leq\norm{u},
+\]
+aí concluímos que:
+\[
+\abs{\langle u,v\rangle}\leq\norm{u}\cdot\norm{v}.
+\]
+\end{proof}
+
+\begin{proposicao}[Desigualdade Triangular]\label{norma2}
+Para vetores $u$ e $v$, então:
+\[
+\norm{u+v}\leq\norm{u}+\norm{v}.
+\]
+\end{proposicao}
+\begin{proof}
+Sabemos que para $z\in\mathbb{C}$ então $z+\overline{z}\leq 2\abs{z}$. De fato, sendo $z=a+bi$ com $a,b\in\mathbb{R}$, então $\abs{z}=\sqrt{a^2+b^2}\geq a$, aí $z+\overline{z}=2a\leq 2\abs{z}$. Agora, para $u,v\in V$ temos:
+\[
+\begin{array}{rcl}
+\norm{u+v}^2&=&\langle u+v,u+v\rangle\\
+&=&\norm{u}^2+\norm{v}^2+\left(\langle u,v\rangle+\overline{\langle u,v\rangle}\right)\\
+&\leq&\norm{u}^2+\norm{v}^2+2\abs{\langle u,v\rangle}\\
+&\leq&\norm{u}^2+\norm{v}^2+2\norm{u}\cdot\norm{v}\\
+&=&\left(\norm{u}+\norm{v}\right)^2,
+\end{array}
+\]
+portanto $\norm{u+v}\leq\norm{u}+\norm{v}.$
+\end{proof}
+
+\subsection{Lei dos Cossenos}
+
+Com a desigualdade de Cauchy-Bunyakovski-Schwarz, podemos definir o seguinte:
 
 \begin{definicao}
-Um espaço vetorial $V$ é dito um \textbf{espaço normado} se estiver munido com uma função:
+Para vetores não nulos $u$ e $v$, definimos o \textbf{ângulo} entre $u$ e $v$ como o único $\theta$ tal que $0\leq\theta\leq\pi$ tal que:
+\[
+\cos(\theta)=\frac{\mbox{Re}{\langle u,v\rangle}}{\norm{u}\cdot\norm{v}}.
+\]
+\end{definicao}
+
+\begin{proposicao}[Lei dos Cossenos]
+Para vetores não nulos $u$ e $v$, sendo $\theta$ o ângulo entre $u$ e $v$, então:
+\[
+\norm{u-v}^2=\norm{u}^2+\norm{v}^2-2\norm{u}\norm{v}\cos(\theta).
+\]
+\end{proposicao}
+
+\subsection{Espaços Normados}
+
+\begin{definicao}
+Para espaço vetorial $V$, uma \textbf{norma} é uma função:
 \[
 \begin{array}{rcl}
 V&\rightarrow&\mathbb{R}\\
@@ -3056,59 +3258,47 @@ que satisfaça as seguintes propriedades:
 \end{itemize}
 \end{definicao}
 
-\begin{proposicao}[Desigualdade de Cauchy-Bunyakovski-Schwarz]
-Seja $V$ um espaço com produto interno. Então para quaisquer $u,v\in V$ temos:
-\[
-\abs{\langle u,v\rangle}\leq\norm{u}\cdot\norm{v}.
-\]
+\begin{definicao}
+Um \textbf{espaço normado} é um espaço vetorial munido de uma norma.
+\end{definicao}
+
+\begin{proposicao}
+Seja $V$ um espaço com produto interno. Então $\norm{\cdot}$ é uma norma.
 \end{proposicao}
 \begin{proof}
-Se $v=0$, então é fácil. Se $v\neq 0$, então $\norm{v}>0$, aí para quaisquer $\alpha,\beta\in K$ temos:
-\[
-\begin{array}{rcl}
-0&\leq&\langle\alpha u-\beta v,\alpha u-\beta v\rangle\\
-&=&\alpha\overline{\alpha}\langle u,u\rangle+\beta\overline{\beta}\langle v,v\rangle-\alpha\overline{\beta}\langle u,v\rangle-\beta\overline{\alpha}\langle v,u\rangle\\
-&=&\abs{\alpha}^2\norm{u}^2+\abs{\beta}^2\norm{v}^2-\left(\alpha\overline{\beta}\langle u,v\rangle+\overline{\alpha\overline{\beta}\langle u,v\rangle}\right).
-\end{array}
-\]
-Em particular, fazendo $\alpha=\norm{v}$ e $\beta=\langle u,v\rangle$, então:
-\[
-\begin{array}{rl}
-&\norm{v}^4\norm{u}^2+\abs{\langle u,v\rangle}^2\norm{v}^2-2\norm{v}^2\langle u,v\rangle^2\geq0\\
-\Rightarrow&\norm{v}^2\norm{u}^2-\abs{\langle u,v\rangle}^2\geq 0\\
-\Rightarrow&\left(\norm{v}\norm{u}\right)^2\geq\abs{\langle u,v\rangle}^2.
-\end{array}
-\]
+Segue das Proposições \ref{norma1} e \ref{norma2}.
 \end{proof}
 
 \begin{proposicao}
-Seja $V$ um espaço com produto interno e definamos $\norm{v}=\sqrt{\langle v,v\rangle}$. Então $\norm{v}$ é uma norma.
+Seja $V$ um espaço vetorial, e seja $\norm{\cdot}\colon V\rightarrow\mathbb{R}$ uma função satisfazendo as seguintes propriedades:
+\begin{enumerate}
+    \item $\norm{ax+by}\leq\abs{a}\norm{x}+\abs{b}\norm{y}$.
+    \item Se $\norm{x}=0$ então $x=0$.
+\end{enumerate}
+Então $\norm{\cdot}$ é uma norma.
 \end{proposicao}
-\begin{proof}
-Provaremos apenas a última propriedade requerida para espaço normado, deixando as outras para o leitor. Sabemos que para $z\in\mathbb{C}$ então $z+\overline{z}\leq 2\abs{z}$. De fato, sendo $z=a+bi$, então $\abs{z}=\sqrt{a^2+b^2}\geq a$, aí $z+\overline{z}=2a\leq 2\abs{z}$. Agora temos:
-\[
-\begin{array}{rcl}
-\abs{u+v}^2&=&\langle u+v,u+v\rangle\\
-&=&\norm{u}^2+\norm{v}^2+\left(\langle u,v\rangle+\overline{\langle u,v\rangle}\right)\\
-&\leq&\norm{u}^2+\norm{v}^2+2\abs{\langle u,v\rangle}\\
-&\leq&\norm{u}^2+\norm{v}^2+2\norm{u}\cdot\norm{v}\\
-&=&\left(\norm{u}+\norm{v}\right)^2.
-\end{array}
-\]
+\begin{proof}[Demonstração]
+Vamos dividir em etapas:
+\begin{enumerate}
+    \item Mostraremos que $\norm{x+y}\leq\norm{x}+\norm{y}$. De fato temos $\norm{1x+1y}\leq\abs{1}\norm{x}+\abs{1}\norm{y}$, aí $\norm{x+y}\leq\norm{x}+\norm{y}$.
+    \item Mostraremos que $\norm{0}=0$. Temos $\norm{0\cdot0+0\cdot0}\leq\abs{0}\norm{0}+\abs{0}\norm{0}$, aí $\norm{0}\leq 0$, além disso, por (1) temos $\norm{0+0}\leq\norm{0}+\norm{0}$, aí $\norm{0}\leq2\norm{0}$, aí $0\leq\norm{0}$, assim $\norm{0}=0$.
+    \item Mostraremos que $\norm{x}\geq 0$. Por (1) temos $\norm{1x+(-1)x}\leq\abs{1}\norm{x}+\abs{-1}\norm{x}$, aí $\norm{0}\leq 2\norm{x}$, aí por (2) temos $2\norm{x}\geq 0$, aí $\norm{x}\geq 0$.
+    \item Mostraremos que se $k\neq 0$ então $\norm{kx}=\abs{k}\norm{x}$. Para $k$ e $x$ então $\norm{kx+0\cdot0}\leq\abs{k}\norm{x}+\abs{0}\norm{0}$, aí $\norm{kx}\leq\abs{k}\norm{x}$. Logo, para $k$ e $x$, se $k\neq 0$ então $\norm{\frac{1}{k}\cdot kx}\leq\abs{\frac{1}{k}}\norm{kx}$, aí $\norm{x}\leq\frac{1}{\abs{k}}\norm{kx}$, aí $\abs{k}\norm{x}\leq\norm{kx}$, mas também $\norm{kx}\leq\abs{k}\norm{x}$, aí $\norm{kx}=\abs{k}\norm{x}$.
+\end{enumerate}
 \end{proof}
 
-\section{Ortogonalidade}
+\begin{definicao}
+Um \textbf{espaço de Hilbert} é um espaço com produto interno $V$ que é completo em relação à norma induzida.
+\end{definicao}
+
+\subsection{Bases Ortonormais}
 
 \begin{definicao}
-Dois vetores $u,v\in V$ são ditos \textbf{ortogonais} se e só se $\langle u,v\rangle=0$.
-
-\smallskip
-\noindent
-Uma família $(v_i)_{i\in I}$ de vetores é chamado \textbf{ortogonal} se e só se para quaisquer $i,j\in I$ tais que $i\neq j$ os vetores $v_i$ e $v_j$ forem ortogonais.
-
-\smallskip
-\noindent
-Uma família $(v_i)_{i\in I}$ de vetores é chamado \textbf{ortonormal} se e só se é ortogonal e para todo $i\in I$ temos $\norm{v_i}=1$.
+Seja $(v_i)_{i\in I}$ família de vetores. Dizemos que:
+\begin{itemize}
+\item A família é \textbf{ortogonal} se e só se para quaisquer $i,j\in I$ tais que $i\neq j$ os vetores $v_i$ e $v_j$ forem ortogonais.
+\item A família é \textbf{ortonormal} se e só se é ortogonal e para todo $i\in I$ temos $\norm{v_i}=1$.
+\end{itemize}
 \end{definicao}
 
 \begin{proposicao}
@@ -3126,96 +3316,132 @@ então para $j\in J$ temos:
 mas $v_j\neq 0$, aí $\norm{v_j}^2\neq 0$, aí $\alpha_j=0$.
 \end{proof}
 
-\begin{proposicao}[Ortogonalização de Gramm-Schmidt]
-Para toda sequência linearmente independente $(v_1,\dots,v_k)$ de vetores, existe uma sequência ortogonal $(u_1,\dots,u_k)$ tal que $\langle v_1,\dots,v_k\rangle=\langle u_1,\dots,u_k\rangle$.
-\end{proposicao}
+\begin{teorema}[Ortogonalização de Gram-Schmidt]
+Para toda sequência linearmente independente $(u_1,\dots,u_k)$ de vetores, existe uma sequência ortogonal $(v_1,\dots,v_k)$ tal que $\langle u_1,\dots,u_k\rangle=\langle v_1,\dots,v_k\rangle$.
+\end{teorema}
 \begin{proof}
-Indução sobre $k$.
+Indução sobre $k$. O caso $k=1$ é fácil. Agora suponhamos que $k>1$ e o teorema seja válido para $k-1.$ Seja $(u_1,\dots,u_k)$ uma sequência linearmente independente. Então existe uma sequência ortogonal $(v_1,\dots,v_{k-1})$ tal que $\langle u_1,\dots,u_{k-1}\rangle=\langle v_1,\dots,v_{k-1}\rangle.$ Agora seja:
+\[
+\tilde{u}_k=\frac{\langle u_k,v_1\rangle}{\norm{v_1}^2}v_1+\dots+\frac{\langle u_k,v_{k-1}\rangle}{\norm{v_{k-1}}^2}v_{k-1},
+\]
+a soma das projeções de $u_k$ sobre os vetores $v_1,\dots,v_{k-1},$ e seja $v_k=u_k-\tilde{u}_k.$ Então, para $j=1,\dots,k-1,$ temos:
+\[
+\langle\tilde{u}_k,v_j\rangle=\left\langle\sum_{i=1}^{k-1}\frac{\langle u_k,v_i\rangle}{\norm{v_i}^2}v_i,v_j\right\rangle=\sum_{i=1}^{k-1}\frac{\langle u_k,v_i\rangle}{\norm{v_i}^2}\langle v_i,v_j\rangle=\frac{\langle u_k,v_j\rangle}{\norm{v_j}^2}\langle v_j,v_j\rangle=\langle u_k,v_j\rangle,
+\]
+assim:
+\[
+\langle v_k,v_i\rangle=\langle u_k,v_i\rangle-\langle \tilde{u}_k,v_i\rangle=0;
+\]
+portanto $(v_1,\dots,v_{k-1},v_k)$ é ortogonal. Agora, $\tilde{u}_k$ é gerado pelos vetores $v_1,\dots,v_{k-1},$ de modo que $u_k=\tilde{u}_k+v_k$ é gerado pelos vetores $v_1,\dots,v_{k-1},v_k.$ Além disso, como $\langle u_1,\dots,u_{k-1}\rangle=\langle v_1,\dots,v_{k-1}\rangle,$ então $\tilde{u}_k$ é gerado pelos vetores $u_1,\dots,u_{k-1},$ de modo que $v_k=u_k-\tilde{u}_k$ é gerado pelos vetores $u_1,\dots,u_{k-1},u_k.$ Portanto temos $\langle u_1,\dots,u_{k-1},u_k\rangle=\langle v_1,\dots,v_{k-1},v_k\rangle.$ 
 \end{proof}
 
 \begin{corolario}
 Todo espaço com produto interno de dimensão finita tem uma base ortonormal.
 \end{corolario}
-
-\section{Funcionais Lineares}
-
-\begin{proposicao}
-Seja $V$ um espaço com produto interno. Para $u\in V$, definimos $\varphi_u:V\rightarrow K$ assim:
-\[
-\varphi_u(v)=\langle v,u\rangle.
-\]
-Então $\varphi_u$ é um funcional linear.
-\end{proposicao}
-
-\begin{teorema}[Teorema de Riesz]
-Se $\dim(V)<\infty$, então para todo $f\in V^*$ existe $u\in V$ tal que $f=\varphi_u$.
-\end{teorema}
 \begin{proof}
-Seja $f\in V^*$. Escolhemos uma base ortonormal $B=(e_1,\dots,e_n)$ em $V$ e seja $\alpha_i=f(e_i)\in K$ para $i=1,\dots,n$. Consideremos $u=\overline{\alpha_1}e_1+\dots+\overline{\alpha_n}e_n.$ Então para $k=1,\dots,n$ temos:
-\[
-\begin{array}{rcl}
-\varphi_u(e_k)=\langle e_k,u\rangle&=&\langle e_k,\overline{\alpha_1}e_1+\dots+\overline{\alpha_n}e_n\rangle\\
-&=&\alpha_k\langle e_k,e_k\rangle=\alpha_k=f(e_k),
-\end{array}
-\]
-ou seja, $\varphi_u(e_k)=f(e_k)$; logo $\varphi_u=f$.
+Basta pegar uma base $(v_1,\dots,v_n),$ aplicar a ortogonalização de Gram-Schmidt, e para cada $i$ pegar $e_i=\frac{v_i}{\norm{v_i}}.$
 \end{proof}
 
-\begin{observacao}
-O teorema de Riesz não é válido para espaços com produto interno de dimensão finita. De fato, se $V=\mathcal{C}[a,b]$, então seja $x_0\in[a,b]$ e seja $\varphi\in V^*$ dada por:
+\begin{proposicao}\label{matriz}
+Sejam $U$ e $V$ espaços com produto interno de dimensão finita e seja $T\in\mathcal{L}(U,V).$ Se $B=(e_1,\dots,e_n)$ e $C=(f_1,\dots,f_n)$ são bases \emph{ortonormais} de $U$ e $V,$ então:
 \[
-\varphi(f)=f(x_0).
+[T]_{B,C}=\begin{pmatrix}
+\langle T(e_1),f_1\rangle&&\langle T(e_n),f_1\rangle\\&\ddots&\\\langle T(e_1),f_n\rangle&&\langle T(e_n),f_n\rangle
+\end{pmatrix}.
 \]
-\end{observacao}
+\end{proposicao}
+\begin{proof}
+Seja:
+\[
+[T]_{B,C}=\begin{pmatrix}
+a_{1,1}&&a_{1,n}\\&\ddots&\\a_{n,1}&&a_{n,n}
+\end{pmatrix}.
+\]
+Para todo $j$ então:
+\[
+T(e_j)=\sum_{k=1}^na_{k,j}f_k,
+\]
+assim para $i$ temos:
+\[
+\langle T(e_j),f_i\rangle=\left\langle \sum_{k=1}^na_{k,j}f_k,f_i\right\rangle=\sum_{k=1}^na_{k,j}\langle f_k,f_i\rangle=a_{i,j}\langle f_i,f_i\rangle=a_{i,j}.
+\]
+\end{proof}
+
+\subsection{Complemento Ortogonal}
 
 \begin{definicao}
 Agora seja $V$ um espaço com produto interno e $S$ um subconjunto de $V$. Definimos o conjunto:
 \[
-S^\perp=\{v\in V:\mid \forall s\in S:\langle v,s\rangle=0\},
+S^\perp=\{v\in V\mid \forall s\in S :\langle v,s\rangle=0\},
 \]
 e chamamos de \textbf{complemento ortogonal} de $S$.
 \end{definicao}
 
 \begin{proposicao}
-Para qualquer subconjunto $S$ temos:
+Para qualquer subconjunto $S$ então:
 \begin{itemize}
-\item[1)] $S^\perp$ é um subespaço de $V$.
-\item[2)] Se $W\subseteq V$ é um subespaço, então $V=W\oplus W^\perp$.
-\item[3)] Se $W\subseteq V$ é um subespaço, então $W^{\perp\perp}=W$.
+\item[1)] $S^\perp$ é um subespaço de $V.$
+\item[2)] $S^\perp=\langle S\rangle^\perp.$
 \end{itemize}
 \end{proposicao}
 \begin{proof}
+Temos o seguinte:
 \begin{itemize}
-\item[2)] Escolhemos em $W$ uma base ortonormal $(v_1,\dots,v_k)$. Seja $u\in V$ arbitrário. Consideremos:
+\item[1)] Para $s\in S$ temos $\langle 0,s\rangle=0$; aí $0\in S^\perp$. Para $a,b\in K$ e $x,y\in S^\perp$, então para $s\in S$ temos $\langle x,s\rangle=0$ e $\langle y,s\rangle=0,$ assim:
 \[
-\tilde{u}=\langle u,v_1\rangle v_1+dots+\langle u,v_k\rangle v_k\in W.
+\langle ax+by,s\rangle=a\langle x,s\rangle+b\langle y,s\rangle=0;
+\]
+logo $ax+by\in S^\perp.$
+\item[2)] É fácil ver que $\langle S\rangle^\perp\subseteq S^\perp.$ Agora, para $x\in S^\perp$, então para $t\in \langle S\rangle$, existe um $k\in\mathbb{N}$ e existem $a_1,\dots,a_k\in K$ e $s_1,\dots,s_k\in S$ tais que:
+\[
+x=\sum_{i=1}^ka_is_i,
+\]
+assim:
+\[
+\langle x,t\rangle=\left\langle x,\sum_{i=1}^ka_is_i\right\rangle=\sum_{i=1}^k\overline{a_i}\left\langle x,s_i\right\rangle=0;
+\]
+logo $x\in\langle S\rangle^\perp.$
+\end{itemize}
+\end{proof}
+
+\begin{proposicao}\label{proj1}
+Para subespaço $W$ de $V$, se $\dim(W)<\infty$, então:
+\begin{itemize}
+\item[1)] $V=W\oplus W^\perp$.
+\item[2)] $W^{\perp\perp}=W$.
+\end{itemize}
+\end{proposicao}
+\begin{proof}
+Temos o seguinte:
+\begin{itemize}
+\item[1)] Escolhemos em $W$ uma base ortonormal $(v_1,\dots,v_k)$. Seja $u\in V$ arbitrário. Consideremos:
+\[
+\tilde{u}=\langle u,v_1\rangle v_1+\dots+\langle u,v_k\rangle v_k\in W.
 \]
 Provemos que $u-\tilde{u}\in W^\perp$. Notemos que $W^\perp=\{v_1,\dots,v_k\}^\perp$. Para $i=1,\dots,k$, então temos:
 \[
-\begin{array}{rcl}
-\langle u-\tilde{u},v_i\rangle&=&\langle u,v_i\rangle-\langle\sum_{j=1}^k\langle u,v_j\rangle,v_i\rangle\\
-&=&\langle u,v_i\rangle-\sum_{j=1}^k\langle u,v_i\rangle\langle v_j,v_i\rangle\\
-&=&\langle u,v_i\rangle-\langle u,v_i\rangle\langle u,v_i\rangle\\
-&=&0;
-\end{array}
+\langle \tilde{u},v_i\rangle=\left\langle\sum_{j=1}^k\langle u,v_j\rangle v_j,v_i\right\rangle
+=\sum_{j=1}^k\langle u,v_j\rangle\langle v_j,v_i\rangle
+=\langle u,v_i\rangle\langle v_i,v_i\rangle
+=\langle u,v_i\rangle,
+\]
+aí temos:
+\[
+\langle u-\tilde{u},v_i\rangle=\langle u,v_i\rangle-\langle \tilde{u},v_i\rangle=0;
 \]
 logo $u-\tilde{u}\in W^\perp$, aí $u=\tilde{u}+(u-\tilde{u})\in W+W^\perp$. Para $v\in W\cap W^\perp$, então $\langle u,u\rangle=0$, aí $u=0$.
-\item[3)] Temos $V=W\oplus W^\perp=W^\perp\oplus W^{\perp\perp}$, aí:
-\[
-\dim(W)=\dim(V)-\dim(W^\perp)=\dim(W^{\perp\perp}),
-\]
-mas é fácil ver que $W\subseteq W^{\perp\perp}$, aí $W=W^{\perp\perp}$.
+\item[2)] É fácil ver que $W\subseteq W^{\perp\perp}$. Além disso, para $x\in W^{\perp\perp}$, então existem $w\in W$ e $w^\perp\in W^\perp$ tais que $x=w+w^\perp$, aí $w^\perp=x-w\in W^\perp\cap W^{\perp\perp}=0$, aí $w^\perp=0$, aí $x=w\in W;$ logo $W=W^{\perp\perp}$.
 \end{itemize}
 \end{proof}
 
 \begin{definicao}
-Para subespaço $W$ de $V$, definimos a \textbf{projeção ortogonal} como a função $E_W:V\rightarrow W$ tal que, para $v\in V$ tenhamos $v-E_W(v)\in W^\perp$.
+Para subespaço $W$ de $V$ tal que $\dim(W)<\infty$, definimos a \textbf{projeção ortogonal} como a função $E_W:V\rightarrow W$ tal que, para $v\in V$ tenhamos $v-E_W(v)\in W^\perp$.
 \end{definicao}
 
-\begin{proposicao}
-Para subespaço $W$ e para $v\in V$, temos:
+\begin{proposicao}\label{proj2}
+Para subespaço $W$ tal que $\dim(W)<\infty$ e para $v\in V$, temos:
 \[
-\norm{v-E_W(v)}=\min\{\norm{v-w}\mid w\in W\}.
+\norm{v-E_W(v)}=\min\left\{\norm{v-w}\mid w\in W\right\}.
 \]
 \end{proposicao}
 \begin{proof}
@@ -3225,7 +3451,7 @@ v-w=v^\perp+E_W(v)-w,
 \]
 mas $v^\perp\in W^\perp$ e $E_W(v)-w\in W$, aí:
 \[
-\norm{v-w}^2=\norm{v^\perp}^2+\norm{E_W(v)-w}^2\geq\norm{v^\perp}^2=\abs{v-E_W(v)}^2.
+\norm{v-w}^2=\norm{v^\perp}^2+\norm{E_W(v)-w}^2\geq\norm{v-E_W(v)}^2.
 \]
 \end{proof}
 
@@ -3236,46 +3462,116 @@ Sejam $v_1,\dots,v_k\in V$ vetores não nulos mutuamente ortogonais. Então para
 \]
 \end{teorema}
 \begin{proof}
-\textcolor{red}{Seilah}
+Seja $e_i=\frac{v_i}{\norm{v_i}}.$ Então $(e_1,\dots,e_k)$ é ortonormal, aí pelo teorema de Pitágoras temos:
+\[
+0\leq\norm{v-\sum_{i=1}^k\langle v,e_i\rangle e_i}^2=\norm{v}^2-2\sum_{i=1}^k\abs{\langle v,e_i\rangle}^2+\sum_{i=1}^k\abs{\langle v,e_i\rangle}^2=\norm{v}^2-\sum_{i=1}^k\abs{\langle v,e_i\rangle}^2,
+\]
+aí temos:
+\[
+\norm{v}^2\geq\sum_{i=1}^k\abs{\langle v,e_i\rangle}^2=\sum_{i=1}^k\frac{\abs{\langle v,v_i\rangle}^2}{\norm{v_i}^2}.
+\]
 \end{proof}
+
+\begin{observacao}
+Pela demonstração, podemos ver que a igualdade ocorre se e só se o vetor $v$ é combinação linear de $v_1,\dots,v_k.$
+\end{observacao}
+
+\newpage
 
 \section{Transformação Adjunta}
 
+Antes de começarmos os estudos, apresentaremos uma proposição útil:
+
+\begin{proposicao}\label{util}
+Seja $u,v\in V$ vetores tais que para todo $x\in V$ tenhamos $\langle x,u\rangle=\langle x,v\rangle.$ Então $u=v.$
+\end{proposicao}
+\begin{proof}
+Fazendo $x=u-v$, então:
+\[
+\langle u-v,u-v\rangle=\langle u-v,u\rangle-\langle u-v,v\rangle=0,
+\]
+aí $u-v=0$, aí $u=v.$
+\end{proof}
+
+\subsection{Funcionais Lineares}
+
+\begin{proposicao}
+Seja $V$ um espaço com produto interno. Para $u\in V$, definimos $\varphi_u:V\rightarrow K$ assim:
+\[
+\varphi_u(v)=\langle v,u\rangle.
+\]
+Então $\varphi_u$ é um funcional linear.
+\end{proposicao}
+\begin{proof}
+Pela definição de produto interno, então temos:
+\[
+\varphi_v(ax+by)=\langle ax+by,v\rangle=a\langle x,v\rangle+b\langle y,v\rangle=a\varphi_v(x)+b\varphi_v(y).
+\]
+\end{proof}
+
+\begin{teorema}[Teorema de Riesz]
+Se $\dim(V)<\infty$, então para todo $f\in V^*$ existe um único $u\in V$ tal que $f=\varphi_u$.
+\end{teorema}
+\begin{proof}
+Seja $f\in V^*$. Escolhemos uma base ortonormal $B=(e_1,\dots,e_n)$ em $V$ e seja $\alpha_i=f(e_i)\in K$ para $i=1,\dots,n$. Consideremos $u=\overline{\alpha_1}e_1+\dots+\overline{\alpha_n}e_n.$ Então para $k=1,\dots,n$ temos:
+\[
+\begin{array}{rcl}
+\varphi_u(e_k)=\langle e_k,u\rangle&=&\langle e_k,\overline{\alpha_1}e_1+\dots+\overline{\alpha_n}e_n\rangle\\
+&=&\alpha_k\langle e_k,e_k\rangle=\alpha_k=f(e_k),
+\end{array}
+\]
+ou seja, $\varphi_u(e_k)=f(e_k)$; logo $\varphi_u=f$. Para $v\in V$, se $\varphi_v=f$, então para $x\in V$ temos:
+\[
+\langle x,v\rangle=\varphi_v(x)=f(x)=\varphi_u(x)=\langle x,u\rangle;
+\]
+logo pela Proposição \ref{util} temos $v=u.$
+\end{proof}
+
+\begin{observacao}
+O teorema de Riesz não é válido para espaços com produto interno de dimensão finita. De fato, se $V=\mathcal{C}[a,b]$, então seja $x_0\in[a,b]$ e seja $\varphi\in V^*$ dada por:
+\[
+\varphi(f)=f(x_0).
+\]
+\end{observacao}
+
+\subsection{Transformação Adjunta}
+
 \begin{definicao}
-Sejam $U$ e $V$ espaços com produto interno de dimensão finita e $T\in\mathcal{L}(U,V)$. Uma \textbf{transformação adjunta} para $T$ é uma função $T^*\in\mathcal{L}(V,U)$ tal que para quaisquer $u\in U$ e $v\in V$ tenhamos:
+Sejam $U$ e $V$ espaços com produto interno e $T\in\mathcal{L}(U,V)$. Uma \textbf{transformação adjunta} para $T$ é uma função $T^*\in\mathcal{L}(V,U)$ tal que para quaisquer $u\in U$ e $v\in V$ tenhamos:
 \[
 \langle T(u),v\rangle_V=\langle u,T^*(v)\rangle_U.
 \]
 \end{definicao}
 
 \begin{teorema}
-$T^*$ sempre existe e é única.
+Se $T\in\mathcal{L}(U,V)$ e $\dim(U)<\infty$, então existe uma única adjunta $T^*$.
 \end{teorema}
-\begin{proof}
-\textcolor{red}{Preencher os detalhes.}
-
-\medskip
-\noindent
-Seja $v\in V$. Consideremos a função:
+\begin{proof} Seja $v\in V$. Consideremos a função:
 \[
-\varphi_v:u\mapsto\langle T(u),v\rangle\in K.
+\psi_v:u\mapsto\langle T(u),v\rangle\in K.
 \]
-Então $\varphi_v\in U^*$. Assim, pelo teorema de Riesz, então existe um único $T^*(v)\in U$ tal que:
+Então $\psi=\varphi_v\circ T\in U^*$. Como $\dim(U)<\infty,$ então, pelo teorema de Riesz, existe um único $T^*(v)\in U$ tal que:
 \[
-\forall u\in U:\varphi_v(u)=\langle u,T^*(v)\rangle.
+\forall u\in U:\psi_v(u)=\langle u,T^*(v)\rangle.
 \]
 Consideremos a função:
 \[
 T^*:v\mapsto T^*(v).
 \]
-É fácil ver que $T^*\in\mathcal{L}(V,U)$.
-\end{proof}
-
-\begin{teorema}
-Sejam $B=(e_1,\dots,e_n)$ e $C=(f_1,\dots,f_m)$ bases ortonormais de $U$ e $V$, e seja $T\in\mathcal{L}(U,V)$. Se $A=[T]_{B,C}$, então $A^*=[T^*]_{C,B}$.
-\end{teorema}
-\begin{proof}
-\textcolor{red}{Seilah}
+Para $a,b\in K$ e $u,v\in V$, então para todo $x\in U$ temos o seguinte:
+\[
+\begin{array}{rcl}
+\langle x,T^*(au+bv)\rangle&=&\langle T(x),au+bv\rangle\\
+&=&\overline{a}\langle T(x),u\rangle+\overline{b}\langle T(x),v\rangle\\
+&=&\overline{a}\langle x,T^*(u)\rangle+\overline{b}\langle x,T^*(v)\rangle\\
+&=&\langle x,aT^*(u)+bT^*(v)\rangle;
+\end{array}
+\]
+logo pela Proposição \ref{util} temos $T^*(au+bv)=aT^*(u)+bT^*(v).$ Portanto $T^*$ é adjunta de $T$. Se $T'$ é outra adjunta de $T$, então para $v\in V$, então para todo $u\in U$ temos:
+\[
+\langle u,T'(v)\rangle=\langle T(u),v\rangle=\langle u,T^*(v)\rangle;
+\] 
+logo pela Proposição \ref{util} temos $T'(v)=T^*(v);$ portanto $T'=T^*.$
 \end{proof}
 
 \begin{observacao}
@@ -3290,25 +3586,120 @@ Consideremos o operador derivação $D=\mathcal{L}(V)$ dado por:
 Então $D$ não tem um adjunto.
 \end{observacao}
 
+\subsection{Propriedades da Adjunção}
+
 \begin{proposicao}
-Sejam $U$ e $V$ e $W$ espaços com produto interno de dimensão finita e sejam $T,S\in\mathcal{L}(U,V)$ e $P\in\mathcal{L}(V,W)$ e $\alpha\in K$. Então:
+Sejam $U$ e $V$ e $W$ espaços com produto interno de \emph{dimensão finita} e sejam $T,S\in\mathcal{L}(U,V)$ e $P\in\mathcal{L}(V,W)$ e $\alpha\in K$. Então:
 \begin{itemize}
 \item $(T+S)^*=T^*+S^*.$
 \item $(\alpha T)^*=\overline{\alpha}T^*.$
-\item $(TP)^*=P^*T^*.$
+\item $(PT)^*=T^*P^*.$
 \item $T^{**}=T.$
 \end{itemize}
 \end{proposicao}
 \begin{proof}
-\textcolor{red}{É só fazer umas continhas.}
+Temos o seguinte:
+\begin{itemize}
+\item Para $u\in U$ então para $x$ temos:
+\[
+\begin{array}{rcl}
+\langle x,(T+S)^*(u)\rangle&=&\langle (T+S)(x),u\rangle\\
+&=&\langle T(x)+S(x),u\rangle\\
+&=&\langle T(x),u\rangle+\langle S(x),u\rangle\\
+&=&\langle x,T^*(u)\rangle+\langle x,S^*(u)\rangle\\
+&=&\langle x,T^*(u)+S^*(u)\rangle\\
+&=&\langle x,(T^*+S^*)(u)\rangle;
+\end{array}
+\]
+logo pela Proposição \ref{util} temos $(T+S)^*(u)=(T^*+S^*)(u)$; portanto $(T+S)^*=T^*+S^*.$
+\item Para $u\in U$ então para $x$ temos:
+\[
+\begin{array}{rcl}
+\langle x,(\alpha T)^*(u)\rangle&=&\langle (\alpha T)(x),u\rangle\\
+&=&\langle \alpha T(x),u\rangle\\
+&=&\alpha\langle T(x),u\rangle\\
+&=&\alpha\langle x,T^*(u)\rangle\\
+&=&\langle x,\overline{\alpha}T^*(u)\rangle\\
+&=&\langle x,(\overline{\alpha}T^*)(u)\rangle;
+\end{array}
+\]
+logo pela Proposição \ref{util} temos $(\alpha T)^*(u)=(\overline{\alpha}T^*)(u)$; portanto $(\alpha T)^*=\overline{\alpha}T^*.$
+\item Para $u\in U$ então para $x$ temos:
+\[
+\begin{array}{rcl}
+\langle x,(PT)^*(u)\rangle&=&\langle (PT)(x),u\rangle\\
+&=&\langle P(T(x)),u\rangle\\
+&=&\langle T(x),P^*(u)\rangle\\
+&=&\langle x,T^*(P^*(u))\rangle\\
+&=&\langle x,(T^*P^*)(u)\rangle;
+\end{array}
+\]
+logo pela Proposição \ref{util} temos $(PT)^*(u)=(T^*P^*)(u)$; portanto $(PT)^*=T^*P^*.$
+\item Para $u\in U$ então para $x$ temos:
+\[
+\begin{array}{rcl}
+\langle x,T^{**}(u)\rangle&=&\langle T^*(x),u\rangle\\
+&=&\overline{\langle u,T^*(x)\rangle}\\
+&=&\overline{\langle T(u),x\rangle}\\
+&=&\langle x,T(u)\rangle;
+\end{array}
+\]
+logo pela Proposição \ref{util} temos $T^{**}(u)=T(u)$; portanto $T^{**}=T.$
+\end{itemize}
 \end{proof}
 
+\begin{proposicao}\label{keradjunto}
+Se $T\in\mathcal{L}(U,V)$ e $T^*$ é uma adjunta de $T,$ então:
+\[
+\mathrm{Ker}(T^*)=(\mathrm{Im}(T))^\perp.
+\]
+\end{proposicao}
+\begin{proof}
+Pela Proposição \ref{util}, temos as seguintes equivalências:
+\[
+\begin{array}{rcl}
+v\in\mathrm{Ker}(T^*)&\Leftrightarrow& T^*(v)=0\\
+&\Leftrightarrow&\forall x\in U:\langle x,T^*(v)\rangle=0\\
+&\Leftrightarrow&\forall x\in U:\langle T(x),v\rangle=0\\
+&\Leftrightarrow&v\in(\mathrm{Im}(T))^\perp.
+\end{array}
+\]
+\end{proof}
+
+\subsection{Matriz Adjunta}
+
 \begin{definicao}
-Um operador $L\in\mathcal{L}(V)$ se chama \textbf{autoadjunto}, ou também \textbf{Hermitiano}, se e só se $T^*=T.$
+Seja $A=(a_{i,j})$ uma matriz sobre $K$. Definimos a \textbf{adjunta} de $A$ como a matriz $A^*$ dada por:
+\[
+A^*=(\overline{a_{j,i}}).
+\]
 \end{definicao}
 
-\noindent
-Agora seja $T\in\mathcal{L}(U,V)$ e $b\in V$. Queremos encontrar $x\in U$ que dê a melhor aproximação da equação:
+\begin{teorema}
+Sejam $B=(e_1,\dots,e_n)$ e $C=(f_1,\dots,f_m)$ bases ortonormais de $U$ e $V$, e seja $T\in\mathcal{L}(U,V)$. Se $A=[T]_{B,C}$, então $A^*=[T^*]_{C,B}$.
+\end{teorema}
+\begin{proof}
+Pela Proposição \ref{matriz}, temos o seguinte:
+\[
+[T]_{B,C}=\begin{pmatrix}
+\langle T(e_1),f_1\rangle&&\langle T(e_n),f_1\rangle\\&\ddots&\\\langle T(e_1),f_n\rangle&&\langle T(e_n),f_n\rangle
+\end{pmatrix}=\begin{pmatrix}
+\langle e_1,T^*(f_1)\rangle&&\langle e_n,T^*(f_1)\rangle\\&\ddots&\\\langle e_1,T^*(f_n)\rangle&&\langle e_n,T^*(f_n)\rangle
+\end{pmatrix},
+\]
+assim temos:
+\[
+[T]_{B,C}^*=\begin{pmatrix}
+\overline{\langle e_1,T^*(f_1)\rangle}&&\overline{\langle e_1,T^*(f_n)\rangle}\\&\ddots&\\\overline{\langle e_n,T^*(f_1)\rangle}&&\overline{\langle e_n,T^*(f_n)\rangle}
+\end{pmatrix}=\begin{pmatrix}
+\langle T^*(f_1),e_1\rangle&&\langle T^*(f_n),e_1\rangle\\&\ddots&\\\langle T^*(f_1),e_n\rangle&&\langle T^*(f_n),e_n\rangle
+\end{pmatrix}=[T^*]_{C,B},
+\]
+\end{proof}
+
+\subsection{Métodos de Aproximação}
+
+Agora seja $T\in\mathcal{L}(U,V)$ e $b\in V$, e suponhamos que $\dim(U)<\infty.$ Queremos encontrar $x\in U$ que dê a melhor aproximação da equação:
 \[
 T(x)=b,
 \]
@@ -3316,57 +3707,45 @@ ou seja, queremos encontrar $x\in U$ tal que a distância:
 \[
 \norm{T(x)-b}
 \]
-seja \emph{mínima}. Isso significa encontrarmos um $x\in U$ tal que a projeção ortogonal de $b$ em $\mathrm{Im}(T)$ seja $T(x)$. Temos de encontrar $x\in U$ tal que para todo $v\in\mathrm{Im}(T)$ tenhamos:
-\[
-\langle T(x)-b,v\rangle=0;
-\]
-ou seja,
-\[
-T(x)-b\in(\mathrm{Im}(T))^\perp.
-\]
-Seja $(e_1,\dots,e_n)$ uma base de $U$. Então:
-\[
-\begin{array}{rcl}
-T(x)-b\in(\mathrm{Im}(T))^\perp&\Leftrightarrow&\forall i=1,\dots,n:\langle T(x)-b,T(e_i)\rangle=0\\
-&\Leftrightarrow&\forall i=1,\dots,n:\langle T(x),T(e_i)\rangle=\langle b,T(e_i)\rangle\\
-&\Leftrightarrow&\forall i=1,\dots,n:\langle T^*T(x),e_i\rangle=\langle T^*(b),e_i\rangle\\
-&\Leftrightarrow& T^*T(x)=T^*(b).
-\end{array}
-\]
+seja \emph{mínima}. Para isso, pela Proposição \ref{proj2}, podemos considerar $x\in U$ tal que $T(x)$ seja a projeção ortogonal de $b$ em $\mathrm{Im}(T).$ Pela Proposição \ref{keradjunto}, temos $(\mathrm{Im}(T))^\perp=\mathrm{Ker}(T^*),$ de modo que basta encontrarmos um $x\in U$ tal que $T(x)-b\in\mathrm{Ker}(T^*),$ ou seja, $T^*T(x)=T^*(b).$
 
-\medskip
+\bigskip
 \noindent
 \textcolor{red}{EXEMPLO NUMÉRICO QUE ESTOU COM PREGUIÇA DE ESCREVER PORQUE É CHATO DEMAIS}
 
+\newpage
+
 \section{Operadores Unitários}
 
-\begin{teorema}
-Seja $U$ e $V$ espaços com produto interno de \emph{uma mesma} dimensão finita e seja $T\in\mathcal{L}(U,V)$. Sao equivalentes:
+\subsection{Operadores Unitários}
+
+\begin{definicao}
+Sejam $U$ e $V$ espaços com produto interno. Um \textbf{isomorfismo de espaços com produto interno} é uma transformação linear bijetora $T$ tal que para $u,v\in U$ tenhamos:
+\[
+\langle T(u),T(v)\rangle=\langle u,v\rangle.
+\]
+\end{definicao}
+
+\begin{teorema}\label{unitario}
+Seja $U$ e $V$ espaços com produto interno de \emph{uma mesma dimensão finita} e seja $T\in\mathcal{L}(U,V)$. São equivalentes:
 \begin{itemize}
-\item Para $u,v\in U$ temos $\langle u,v\rangle=\langle T(u),T(v)\rangle$.
-\item $T$ é um isomorfismo de espaços com produto interno.
-\item Para toda base ortonormal $B$ de $U$, a sua imagem $T[B]$ é uma base ortonormal de $V$. 
-\item Existe uma base ortonormal $B$ de $U$ tal que $T[B]$ seja uma base ortonormal de $V$.
+\item[i)] Para $u,v\in U$ temos $\langle u,v\rangle=\langle T(u),T(v)\rangle$.
+\item[ii)] $T$ é um isomorfismo de espaços com produto interno.
+\item[iii)] Para toda base ortonormal $B$ de $U$, a sua imagem $T[B]$ é uma base ortonormal de $V$. 
+\item[iv)] Existe uma base ortonormal $B$ de $U$ tal que $T[B]$ seja uma base ortonormal de $V$.
 \end{itemize}
 \end{teorema}
 \begin{proof}
-Se (i), então primeiro provemos que $\Ker(T)=0$. Para $v\in \Ker(T)$, então $T(v)=0$, aí:
+Temos o seguinte:
+\begin{itemize}
+\item Se (i), então primeiro provemos que $\Ker(T)=0$. Para $v\in \Ker(T)$, então $T(v)=0$, aí:
 \[
 \langle v,v\rangle=\langle T(v),T(v)\rangle=0,
 \]
-aí $v=0$. Como $\dim \ V=\dim \ U=\dim \ \mathrm{Im} \ T+\dim \ \Ker \ T$, então $\dim \ \mathrm{Im} \ T=\dim \ V$, aí $T$ é sobrejetora, aí (ii).
-
-\medskip
-\noindent
-Se (ii), então para base ortonormal $B=(e_1,\dots,e_n)$ de $U$, então $(T(e_1),\dots,T(e_n))$ é um conjunto ortonormal em $V$, aí é uma base ortonormal de $V$; logo (iii).
-
-\medskip
-\noindent
-Se (iii), como sempre existe uma base ortonormal de $U$, então (iv) é evidente.
-
-\medskip
-\noindent
-Se (iv), então seja $B=(e_1,\dots,e_n)$ uma base ortonormal de $U$ tal que $(T(e_1),\dots,T(e_n))$ seja base ortonormal de $V$. Para $u,v\in U$, então existem $a_1,dots,a_n\in K$ e $b_1,\dots,b_n$ tais que:
+aí $v=0$. Como $\dim(V)=\dim(U)=\dim(\mathrm{Im}(T))+\dim(\Ker(T))$, então $\dim(\mathrm{Im}(T))=\dim(V)$, aí $T$ é sobrejetora, aí (ii).
+\item Se (ii), então, para base ortonormal $B=(e_1,\dots,e_n)$ de $U$, a sequência $(T(e_1),\dots,T(e_n))$ é ortonormal em $V$, aí é uma base ortonormal de $V$; logo (iii).
+\item Se (iii), como sempre existe uma base ortonormal de $U$, então (iv) é evidente.
+\item Se (iv), então seja $B=(e_1,\dots,e_n)$ uma base ortonormal de $U$ tal que $(T(e_1),\dots,T(e_n))$ seja base ortonormal de $V$. Para $u,v\in U$, então existem $a_1,\dots,a_n\in K$ e $b_1,\dots,b_n$ tais que:
 \[
 u=a_1e_1+\dots+a_ne_n,\quad\quad v=b_1e_1+\dots+b_ne_n,
 \]
@@ -3387,6 +3766,7 @@ aí:
 &=&\langle u,v\rangle.
 \end{array}
 \]
+\end{itemize}
 \end{proof}
 
 \begin{corolario}
@@ -3394,13 +3774,13 @@ Dois espaços vetoriais $U$ e $V$ com produto interno de dimensão finita são i
 \end{corolario}
 
 \begin{proof}
-$(\Rightarrow)$ é claro. Por outro lado, se $\dim \ U=\dim \ V$, então escolhamos bases ortonormais $B=(e_1,\dots,e_n)$ de $U$ e $C=(f_1,\dots,f_n)$ de $V$, aí seja $T:U\rightarrow V$ dada por:
+Se $\dim(U)=\dim(V)$, então escolhamos bases ortonormais $B=(e_1,\dots,e_n)$ de $U$ e $C=(f_1,\dots,f_n)$ de $V$, aí seja $T:U\rightarrow V$ dada por:
 \[
 T(a_1e_1+\dots+a_ne_n)=a_1f_1+\dots+a_nf_n,
 \]
 então $T\in\mathcal{L}(U,V)$, e para $u,v\in U$, sendo:
 \[
-u=a_1e_1+\dots+a_ne_n,\dots\dots v=b_1e_1+\dots+b_ne_n,
+u=a_1e_1+\dots+a_ne_n,\quad\quad v=b_1e_1+\dots+b_ne_n,
 \]
 então:
 \[
@@ -3421,14 +3801,22 @@ Se $V$ é um espaço com produto interno e $T\in\mathcal{L}(V)$, dizemos que $T$
 \end{definicao}
 
 \begin{teorema}
-Seja $T\in\mathcal{L}(U,V)$. Então $T$ preserva o produto interno se e só se $\forall u\in U:\norm{T(u)}=\norm{u}$.
+Seja $T\in\mathcal{L}(U,V)$. Então as seguintes propriedades são equivalentes:
+\begin{itemize}
+\item[i)] $\langle T(u),T(v)\rangle=
+\langle u,v\rangle.$
+\item[ii)] $\forall u\in U:\norm{T(u)}=\norm{u}.$
+\end{itemize}
 \end{teorema}
 \begin{proof}
-$(\Rightarrow)$ É fácil pois:
+Temos o seguinte:
+\begin{itemize}
+\item[a)] Suponhamos (i). Então, para todo $u\in U$ temos:
 \[
-\norm{T(u)}^2=\langle T(u),T(u)\rangle=\langle u,u\rangle=\norm{u}^2.
+\norm{T(u)}^2=\langle T(u),T(u)\rangle=\langle u,u\rangle=\norm{u}^2,
 \]
-$(\Leftarrow)$ Por outro lado, então:
+aí $\norm{T(u)}=\norm{u};$ logo (ii).
+\item[b)] Suponhamos (ii). Então, para quaisquer $u,v\in U$ temos:
 \[
 \norm{T(u+v)}^2=\norm{u+v}^2,
 \]
@@ -3440,55 +3828,130 @@ aí:
 aí:
 \[
 \langle T(u),T(v)\rangle+\langle T(v),T(u)\rangle=
+\langle u,v\rangle+\langle v,u\rangle.
+\]
+Agora temos dois casos:
+\begin{itemize}
+\item[$\bullet$] Se $K=\mathbb{R}$, então para $u,v\in U$ temos:
+\[
+\langle T(u),T(v)\rangle+\langle T(v),T(u)\rangle=
 \langle u,v\rangle+\langle v,u\rangle,
 \]
+aí temos:
+\[
+\langle T(u),T(v)\rangle+\langle T(u),T(v)\rangle=
+\langle u,v\rangle+\langle u,v\rangle,
+\]
+aí temos:
+\[
+2\langle T(u),T(v)\rangle=
+2\langle u,v\rangle,
+\]
+aí concluímos que:
+\[
+\langle T(u),T(v)\rangle=
+\langle u,v\rangle.
+\]
+\item[$\bullet$] Se $K=\mathbb{C}$, então para $u,v\in U$ temos:
+\[
+\langle T(u),T(v)\rangle+\langle T(v),T(u)\rangle=
+\langle u,v\rangle+\langle v,u\rangle,
+\]
+mas também:
+\[
+\langle T(iu),T(v)\rangle+\langle T(v),T(iu)\rangle=
+\langle iu,v\rangle+\langle v,iu\rangle,
+\]
+assim temos:
+\[
+i\langle T(u),T(v)\rangle-i\langle T(v),T(u)\rangle=
+i\langle u,v\rangle-i\langle v,u\rangle,
+\]
+aí temos:
+\[
+\langle T(u),T(v)\rangle-\langle T(v),T(u)\rangle=
+\langle u,v\rangle-\langle v,u\rangle,
+\]
+assim temos:
+\[
+\begin{array}{rcl}
+2\langle T(u),T(v)\rangle&=&\left(\langle T(u),T(v)\rangle+\langle T(v),T(u)\rangle\right)+\left(\langle T(u),T(v)\rangle-\langle T(v),T(u)\rangle\right)\\
+&=&\left(\langle u,v\rangle+\langle v,u\rangle\right)+\left(\langle u,v\rangle-\langle v,u\rangle\right)\\
+&=& 2\langle u,v\rangle,
+\end{array}
+\]
+assim concluímos que:
+\[
+\langle T(u),T(v)\rangle=
+\langle u,v\rangle.
+\]
+\end{itemize}
+De qualquer modo concluímos que (i) ocorre.
+\end{itemize}
 \end{proof}
 
 \begin{proposicao}
-Sejam $T,S\in\mathcal{L}(V)$ unitários. Então $T\circ S$ é operador unitário. O conjunto dos operadores unitários formam um grupo em relação à composição.
+Seja $V$ um espaço com produto interno.
+\begin{itemize}
+\item[a)] Sejam $T,S\in\mathcal{L}(V)$ unitários. Então $T\circ S$ é operador unitário.
+\item[b)] Se $\dim(V)<\infty,$ então o conjunto dos operadores unitários formam um grupo em relação à composição.
+\end{itemize}
 \end{proposicao}
 \begin{proof}
+Temos o seguinte:
+\begin{itemize}
+\item[a)] Para operadores unitários $T$ e $S$, para todo $u,v\in V$ temos o seguinte:
 \[
-\langle TS(u),TS(v)\rangle=\langle S(u),S(v)\rangle=\langle u,v\rangle.
+\langle TS(u),TS(v)\rangle=\langle S(u),S(v)\rangle=\langle u,v\rangle;
 \]
+logo $TS$ é unitário. Além disso é fácil ver que o operador identidade $I$ é unitário.
+\item[b)] Se $\dim(V)<\infty,$ então, pelo Teorema \ref{unitario}, todo operador unitário $T$ é inversível, e para $u,v\in V$ temos:
+\[
+\langle u,v\rangle=\langle TT^{-1}(u),TT^{-1}(v)\rangle=\langle T^{-1}(u),T^{-1}(v)\rangle;
+\]
+logo $T^{-1}$ é unitário; portanto o conjunto dos operadores unitários é subgrupo do conjunto dos operadores inversíveis.
+\end{itemize}
 \end{proof}
 
 \begin{definicao}
-O conjunto dos operadores unitários no espaço $K^n$ se denota por $U(n,K)$.
+O conjunto dos operadores unitários no espaço $K^n$ se denota por $U_n(K)$.
 \end{definicao}
 
 \begin{teorema}
-Para $T\in\mathcal{L}(V)$, então $T$ é unitário se e somente se $T^*=T^{-1}$.
+Para $T\in\mathcal{L}(V)$ \emph{inversível}, então $T$ é unitário se e somente se $T^*=T^{-1}$.
 \end{teorema}
 \begin{proof}
-$(\Rightarrow)$ Se $T$ é unitário, então para todo $v\in V$ temos:
+Temos o seguinte:
+\begin{itemize}
+\item Se $T$ é unitário, então para todo $v\in V$ temos:
 \[
 \forall u\in V: \langle u,v\rangle=\langle T(u),T(v)\rangle=\langle u,T^*T(v)\rangle,
 \]
-aí $T^*T(v)=v$; logo $T^*T=I$.
+aí $T^*T(v)=v$; logo $T^*T=I,$ aí $T^*=T^{-1}.$
 
-\medskip
-\noindent
-$(\Leftarrow)$ se $T^*=T^{-1}$, então para $u,v\in V$ temos:
+\item Se $T^*=T^{-1}$, então para $u,v\in V$ temos:
 \[
 \langle T(u),T(v)\rangle=\langle u,T^*T(v)\rangle=\langle u,T^{-1}T(v)\rangle=\langle u,v\rangle;
 \]
 logo $T$ é unitário.
+\end{itemize}
 \end{proof}
 
+\subsection{Matrizes Unitárias}
+
 \begin{definicao}
-Uma matriz $A\in\m{n}{K}$ se chama \textbf{unitária} se e só se $A^*=A^{-1}$. 
+Uma matriz $A\in\m{n}{K}$ se chama \textbf{unitária} se e só se $A^*$ é inversa de $A$. 
 \end{definicao}
 
 \begin{corolario}
-Para operador $T\in\mathcal{L}(V)$, então $T$ é unitário se e só se para toda base $B$ de $V$ a matriz $[T]_B$ é unitária.
+Num espaço com produto interno de \emph{dimensão finita}, para $T\in\mathcal{L}(V)$, então $T$ é unitário se e só se para toda base $B$ de $V$ a matriz $[T]_B$ é unitária.
 \end{corolario}
 
 \begin{teorema}
 Para matriz $A\in\m{n}{K}$, então $A$ é unitária se e só se as linhas de $A$ formam conjunto ortonormal em $K^n$, e isso equivale a dizer que as colunas de $A$ formam um conjunto ortonormal em $K^n$.
 \end{teorema}
 \begin{proof}
-Seja $A\in\m{n}{K}$ uma matriz unitária, então $AA^*=I$, aí sendo:
+Seja $A\in\m{n}{K}$ uma matriz unitária, então $AA^*=I$, aí, sendo:
 \[
 A=\begin{pmatrix}
 a_{1,1}&\dots&a_{1,n}\\\dots&\dots&\dots\\a_{n,1}&\dots&a_{n,n}
@@ -3502,7 +3965,7 @@ A^*=\begin{pmatrix}
 \]
 então temos:
 \[
-A_i=(a_{i,1},\dots,a_{i,n}),\quad\quad(A^*)^j=\begin{pmatrix}
+A_{i,?}=(a_{i,1},\dots,a_{i,n}),\quad\quad A^*_{?,j}=\begin{pmatrix}
 \overline{a_{j,1}}\\\vdots\\\overline{a_{j,n}}
 \end{pmatrix},
 \]
@@ -3516,6 +3979,8 @@ assim:
 \]
 \end{proof}
 
+\subsection{Matrizes Ortogonais}
+
 \begin{definicao}
 Para $A\in\m{n}{K}$, dizemos que $A$ se chama \textbf{ortogonal} se e só se $A^{-1}=A^t$.
 \end{definicao}
@@ -3527,6 +3992,8 @@ Toda matriz real ortogonal é unitária. Toda matriz unitária ortogonal é real
 \begin{definicao}
 Definimos o \textbf{grupo ortogonal} $O(n,\mathbb{R})$ como o conjunto das matrizes reais ortogonais.
 \end{definicao}
+
+\subsection{Equivalência Unitária e Equivalência Ortogonal}
 
 \begin{definicao}
 Para matrizes $A,B\in\m{n}{K}$, dizemos que $A$ é \textbf{unitariamente equivalente} a $B$ se e só se existe uma matriz $U\in\m{n}{K}$ \emph{unitária} tal que $U^{-1}AU=B$.
@@ -3546,13 +4013,19 @@ Seja $P_{B,C}$ a matriz de mudança de $B$ para $C$. Então $P_{B,C}$ é unitár
 \]
 \end{proof}
 
+\newpage
+
 \section{Operadores Normais}
 
 Assim como estudamos os operadores que possuíssem uma base de autovetores em espaços vetoriais, agora queremos estudar os operadores que possuam uma base \emph{ortonormal} de autovetores em espaços com \emph{produto interno}.
 
-\medskip
-\noindent
-Seja $T\in\mathcal{L}(V)$ que possua uma base $B=(e_1,\dots,e_n)$ de autovetores. Então:
+\subsection{Operadores Normais}
+
+\begin{proposicao}
+Se $V$ tem dimensão finita e $T\in\mathcal{V}$ tem uma base ortonormal de autovetores, então $TT^*=T^*T.$
+\end{proposicao}
+\begin{proof}
+Seja $T\in\mathcal{L}(V)$ que possua uma base ortonormal $B=(e_1,\dots,e_n)$ de autovetores. Então:
 \[
 [T]_B=\begin{pmatrix}
 \lambda_1&&0\\&\dots&\\0&&\lambda_n
@@ -3560,7 +4033,7 @@ Seja $T\in\mathcal{L}(V)$ que possua uma base $B=(e_1,\dots,e_n)$ de autovetores
 \]
 e também:
 \[
-[T]_B=\begin{pmatrix}
+[T^*]_B=\begin{pmatrix}
 \overline{\lambda_1}&&0\\&\dots&\\0&&\overline{\lambda_n}
 \end{pmatrix},
 \]
@@ -3573,6 +4046,7 @@ aí:
 \end{pmatrix}=[T^*]_B[T]_B=[T^*T]_B,
 \]
 assim $TT^*=T^*T$.
+\end{proof}
 
 \begin{definicao}
 Para $T\in\mathcal{L}(V)$, dizemos que $T$ é \textbf{normal} se e só se $TT^*=T^*T$.
@@ -3587,73 +4061,295 @@ Temos alguns exemplos:
 \end{itemize}
 \end{exemplo}
 
-\begin{lema}
-Seja $T\in\mathcal{L}(V)$ normal e $\lambda$ um autovalor de $T$. Então $\overline{\lambda}$ é um autovalor de $T$.
-\end{lema}
-\begin{proof}
-Seja $v\in V$ tal que $v\neq 0$ e $T(v)=\lambda v$. Então $(T-\lambda I)(v)=0$, aí para $u\in V$:
+\begin{teorema}\label{normal}
+Seja $V$ um espaço com produto interno de \emph{dimensão finita}. Seja $T\in\mathcal{L}(V)$ um operador normal. Então temos as seguinte propriedades:
+\begin{enumerate}
+\item Para quaisquer $u,v\in V$ temos:
 \[
-\begin{array}{rcl}
-0&=&\langle(T-\lambda I)(v),(T-\lambda I)(v)\rangle\\
-&=&\langle v,(T-\lambda I)^*(T-\lambda I)(v)\rangle\\
-&=&\langle v,(T^*-\overline{\lambda}I)(T-\lambda I)(v)\rangle\\
-&=&\langle v,(T-\lambda I)(T^*-\overline{\lambda}I)(v)\rangle\\
-&=&\langle (T-\lambda I)^*(v),(T^*-\overline{\lambda}I)(v)\rangle\\
-&=&\langle (T^*-\overline{\lambda}I)(v),(T^*-\overline{\lambda}I)(v)\rangle,
-\end{array}
+\langle T(u),T(v)\rangle=\langle T^*(u),T^*(v)\rangle.
 \]
-aí $(T^*-\overline{\lambda}I)(v)=0$, aí $T^*(v)=\overline{\lambda}v$.
-\end{proof}
-
-\begin{lema}
-Seja $T\in\mathcal{L}(V)$ e $W\subseteq V$ um subespaço $T$-invariante. Então $W^\perp$ é $T^*$-invariante.
-\end{lema}
-\begin{proof}
-Seja $w'\in W^\perp$. Para $w\in W$ então $T(w)\in W$, aí $\langle T(w),w'\rangle=0$, aí $\langle w,T^*(w')\rangle=0$. Logo $T^*(w')\in W^\perp$.
-\end{proof}
-
-\begin{lema}
-Seja $T\in\mathcal{L}(V)$ normal e sejam $\lambda,\mu$ tais que $\lambda\neq\mu$. Se $u$ e $v$ são autovetores associados a $\lambda$ e $\mu$ respectivamente, então $\langle u,v\rangle=0$.
-\end{lema}
-\begin{proof}
-Temos o seguinte:
+Em particular, para $v\in V$ temos:
 \[
-\begin{array}{rcl}
-\lambda\langle u,v\rangle&=&\langle\lambda u,v\rangle\\
-&=&\langle T(u),v\rangle\\
-&=&\langle u,T^*(v)\rangle\\
-&=&\langle u,\overline{\mu}v\rangle\\
-&=&\mu\langle u,v\rangle,
-\end{array}
+\norm{T(v)}=\norm{T^*(v)}.
 \]
-aí $(\lambda-\mu)\langle u,v\rangle=0$, mas $\lambda-\mu\neq 0$, aí $\langle u,v\rangle=0$.
-\end{proof}
-
-\section{Formas Canônicas}
-
-\subsection{Caso dos Números Complexos}
-
-\begin{teorema}
-Seja $V$ um espaço com produto interno sobre $\mathbb{C}$ e $T\in\mathcal{L}(V)$. Então $T$ é normal se e somente se existe uma base ortonormal $B$ de $V$ tal que $[T]_B$ seja diagonal.
+Portanto temos:
+\[
+\mathrm{Ker}(T)=\mathrm{Ker}(T^*).
+\]
+\item Temos:
+\[
+\mathrm{Ker}(T^*T)=\mathrm{Ker}{T}.
+\]
+\item Para $k\geq 1$ temos:
+\[
+\mathrm{Ker}(T^k)=\mathrm{Ker}(T).
+\]
+\item O polinômio minimal $m_T$ é um produto de fatores irredutíveis \emph{distintos}.
+\item Para $\lambda\in K$ e $v\in V$ temos:
+\[
+T(v)=\lambda v\Leftrightarrow T^*(v)=\overline{\lambda}v.
+\]
+\item Para polinômios $f$ e $g$ primos entre si, então para $x,y\in V$, se $f(T)(x)=0$ e $g(T)(y)=0$, então $x$ e $y$ são ortogonais.
+\item Para $\lambda,\mu\in K$, se $\lambda\neq\mu$, então todo autovetor associado a $\lambda$ é ortogonal a todo autovetor associado a $\mu.$
+\end{enumerate}
 \end{teorema}
 \begin{proof}
-$(\Leftarrow)$ Já foi provado.
-
-\medskip
-\noindent
-$(\Rightarrow)$ Indução em $n=\dim(V)$. Para $n=1$ é claro. Para $n>1$, se assumirmos o teorema válido para $\dim(V)<n$, então seja $\lambda$ um autovalor e seja $v\neq 0$ tal que $T(v)=\lambda v$. Nós temos $V=\langle v\rangle\oplus\langle v\rangle^\perp$. Sabemos que $\langle v\rangle^\perp$ é $T^*$-invariante. Provaremos que $\langle v\rangle^\perp$ é $T$-invariante. Seja $u\in\langle v\rangle^\perp$, então para $u\in V$ temos:
+Temos o seguinte:
+\begin{enumerate}
+\item Para quaisquer $u,v\in V$ temos:
 \[
-\langle v,T(u)\rangle=\langle T^*(v),u\rangle=\langle \overline{\lambda}v,u\rangle=\overline{\lambda}\langle v,u\rangle=0;
+\langle T(u),T(v)\rangle=\langle u,T^*T(v)\rangle=\langle u,TT^*(v)\rangle=\langle T^*(u),T^*(v)\rangle.
 \]
-logo $T(v)\in\langle v\rangle^\perp$. Além disso, $\dim\langle v\rangle=n-1$. Portanto podemos definir $T\upharpoonright_{\langle v\rangle^\perp}$ e ele é normal \textcolor{red}{(Cheque!)}. Assim por hipótese de indução existe uma base ortonormal $B'=(e_2,\dots,e_n)$ de $\langle v\rangle^\perp$ tal que $[T\upharpoonright_{\langle v\rangle^\perp}]_{B'}$ seja diagonal. Seja $e_1=\frac{v}{\norm{v}}$, então $B=(e_1,e_2,\dots,e_n)$ uma base ortonormal e é fácil ver que $[T]_B$ é diagonal.
+Em particular, para $v\in V$ temos:
+\[
+\norm{T(v)}=\sqrt{\langle T(v),T(v)\rangle}=\sqrt{\langle T^*(v),T^*(v)\rangle}=\norm{T^*(v)}.
+\]
+Portanto temos:
+\[
+x\in\mathrm{Ker}(T)\Leftrightarrow\norm{T(x)}=0\Leftrightarrow\norm{T^*(x)}=0\Leftrightarrow x\in\mathrm{Ker}(T^*).
+\]
+\item Para $v\in V$, se $T^*T(v)=0$, então:
+\[
+\langle T(v),T(v)\rangle=\langle T^*T(v),v\rangle=0,
+\]
+aí $T(v)=0$.
+\item Para $v\in V,$ se $T^2(v)=0$, então:
+\[
+\langle T^*T(v),T^*T(v)\rangle=\langle TT(v),TT(v)\rangle=0,
+\]
+aí $T^*T(v)=0$, aí $T(v)=0$. Para $k>1$, para $v\in V$, se $T^k(v)=0$, então $T^2T^{k-2}(v)=T^k(v)=0$, aí $T^{k-1}(v)=TT^{k-2}(v)=0.$ O resto procede por indução.
+\item Seja $m_T=p_1^{e_1}\dots p_r^{e_r}.$ Para cada $i$ seja $q_i=\frac{m_t}{p_i^{e_i}}$. Então para $v\in V$ temos $p_i^{e_i}(T)q_i(T)(v)=m_T(T)(v)=0$, mas $p_i(T)$ é normal, aí $p_i(T)q_i(T)(v)=0;$ logo $m_t\mid p_iq_i$, aí $e_i=1.$
+\item É fácil ver que $T-\lambda I$ é normal, então:
+\[
+\mathrm{Ker}(T-\lambda I)=\mathrm{Ker}(T-\lambda I)^*=\mathrm{Ker}(T^*-\overline{\lambda}I).
+\]
+\item Para polinômios $f$ e $g$ primos entre si, então existem polinômios $a$ e $b$ tais que $af+bg=1$, aí para $x,y\in V$, se $f(T)(x)=0$ e $g(T)(y)=0$, então $b(T)g(T)(y)=0$, mas $b(T)g(T)$ é normal, aí $(b(T)g(T))^*(y)=0$, assim:
+\[
+\begin{array}{rcl}
+\langle x,y\rangle&=&\langle (a(T)f(T)+b(T)g(T))(x),y\rangle\\
+&=&\langle a(T)f(T)(x)+b(T)g(T)(x),y\rangle\\
+&=&\langle b(T)g(T)(x),y\rangle\\
+&=&\langle x,(b(T)g(T))^*(y)\rangle\\
+&=&\langle x,0\rangle\\
+&=&0.
+\end{array}
+\]
+\item Para $\lambda,\mu\in K$, se $\lambda\neq\mu$, então os polinômios $x-\lambda$ e $x-\mu$ são primos entre si, aí segue a propriedade.
+\end{enumerate}
+\end{proof}
+
+\newpage
+
+\subsection{Formas Canônicas no Caso Complexo}
+
+\begin{proposicao}
+Seja $A$ uma matriz sobre $K$ tal que $\mathrm{tr}(AA^*)=0,$ então $A=0$.
+\end{proposicao}
+\begin{proof}
+Seja $A=(a_{i,j})$. Então temos:
+\[
+\mathrm{tr}(AA^*)=\sum_i(AA^*)_{i,i}=\sum_i\sum_jA_{i,j}A^*_{j,i}=\sum_i\sum_ja_{i,j}\overline{a_{i,j}}=\sum_i\sum_j\abs{a_{i,j}}^2,
+\]
+aí $\mathrm{tr}(AA^*)=0$ implica que para todo $(i,j)$ tenhamos $a_{i,j}=0;$ logo $A=0.$
+\end{proof}
+
+\begin{proposicao}\label{invariante}
+Seja $V$ um espaço com produto interno de dimensão finita e seja $T$ um operador normal. Então, para todo subespaço $W$, se $W$ é $T$-invariante, então $W^\perp$ é $T$-invariante.
+\end{proposicao}
+\begin{proof}
+Seja $(e_1,\dots,e_m)$ base ortonormal de $W$ e seja $(e_{m+1},\dots,e_n)$ base ortonormal de $W^\perp$, e consideremos $B=(e_1,\dots,e_n),$ que será uma base ortonormal de $V$. Então temos algo assim:
+\[
+[T]_B=\begin{pmatrix}
+X&Z\\0&Y
+\end{pmatrix},
+\]
+assim:
+\[
+[TT^*]_B=\begin{pmatrix}
+X&Z\\0&Y
+\end{pmatrix}\begin{pmatrix}
+X^*&0\\Z^*&Y^*
+\end{pmatrix}=\begin{pmatrix}
+XX^*+ZZ^*&ZY^*\\YZ^*&YY^*
+\end{pmatrix}
+\]
+e também:
+\[
+[T^*T]_B=\begin{pmatrix}
+X^*&0\\Z^*&Y^*
+\end{pmatrix}\begin{pmatrix}
+X&Z\\0&Y
+\end{pmatrix}=\begin{pmatrix}
+X^*X&X^*Z\\Z^*X&Z^*Z+Y^*Y
+\end{pmatrix},
+\]
+mas $TT^*=T^*T$, assim $XX^*+ZZ^*=X^*X$, assim $\mathrm{tr}(XX^*)+\mathrm{tr}(ZZ^*)=\mathrm{tr}(X^*X),$ mas $\mathrm{tr}(XX^*)=\mathrm{tr}(X^*X),$ aí $\mathrm{tr}(ZZ^*)=0,$ aí $Z=0,$ assim:
+\[
+[T]_B=\begin{pmatrix}
+X&0\\0&Y
+\end{pmatrix},
+\]
+o que implica que $W^\perp$ seja $T$ invariante.
+\end{proof}
+
+\begin{teorema}
+Seja $V$ um espaço com produto interno sobre $\mathbb{C}$ de dimensão finita e seja $T\in\mathcal{L}(V)$ um operador normal. Então existe uma base ortonormal $B$ de $V$ tal que $[T]_B$ seja diagonal.
+\end{teorema}
+\begin{proof}
+Indução na dimensão de $V.$ Se $\dim(V)=0$ é fácil. Se $\dim(V)>0$, como $\mathbb{C}$ é algebricamente fechado, então existem um $\lambda\in \mathbb{C}$ e um $v\neq 0$ tais que $T(v)=\lambda v$, aí seja $W=Kv$, então $W$ é $T$-invariante, aí pela Proposição \ref{invariante} o subespaço $W^\perp$ é $T$-invariante e a restrição de $T$ a $W^\perp$ é normal, aí por hipótese de indução existe uma base ortonormal $C$ de autovetores de $W^\perp$, assim $B=\{v\}\cup C$ é uma base ortonormal de autovetores de $V.$
 \end{proof}
 
 \noindent
 \textcolor{red}{Outro exemplo numérico enfadonho!}
 
-\subsection{Caso dos Números Reais}
+\subsection{Formas Canônicas no Caso Real}
 
-Para isso primeiro definimos o seguinte.
+\begin{proposicao}
+Sejam $a,b\in\mathbb{R}$. Então a matriz:
+\[
+A=\begin{pmatrix}
+a&-b\\b&a
+\end{pmatrix}
+\]
+é normal.
+\end{proposicao}
+\begin{proof}
+É fácil ver que $AA^*$ e $A^*A$ valem:
+\[
+\begin{pmatrix}
+a^2+b^2&0\\0&a^2+b^2
+\end{pmatrix}.
+\]
+\end{proof}
+
+\begin{proposicao}\label{cicloreal}
+Sejam $\alpha,\beta\in\mathbb{R}$ com $\beta\neq 0$, seja $p(x)=(x-\alpha)^2+\beta^2$, e seja $V$ um espaço com produto interno sobre $\mathbb{R}$ de dimensão finita e seja $T\in\mathcal{L}(V)$ um operador normal tal que $p(T)=0.$ Então existe uma base ortonormal $B$ tal que:
+\[
+[T]_B=\begin{pmatrix}
+A&&0\\&\ddots&\\0&&A
+\end{pmatrix},
+\]
+em que:
+\[
+A=\begin{pmatrix}
+\alpha&-\beta\\\beta&\alpha
+\end{pmatrix}.
+\]
+\end{proposicao}
+\begin{proof}
+Indução na dimensão de $V$. Se $\dim(V)=0$ é fácil. Se $\dim(V)>0$ então pegue um $e$ tal que $m_{T,e}=p$, aí seja $W=Z(e,T)$, então $W$ é $T$-invariante, aí pela Proposição \ref{invariante}, o subespaço $W^\perp$ é $T$-invariante e $T\upharpoonright_W$ e $T\upharpoonright_{W^\perp}$ são normais, assim podemos pegar uma base ortonormal $B$ de $W$, aí a matriz $[T\upharpoonright_W]_B$ tem a seguinte forma:
+\[
+[T\upharpoonright_W]_B=\begin{pmatrix}
+a&c\\b&d
+\end{pmatrix},
+\]
+aí, como $T\upharpoonright_W$ é normal e $B$ é ortonormal, temos o seguinte:
+\[
+\begin{pmatrix}
+a&b\\c&d
+\end{pmatrix}\begin{pmatrix}
+a&c\\b&d
+\end{pmatrix}=\begin{pmatrix}
+a&c\\b&d
+\end{pmatrix}\begin{pmatrix}
+a&b\\c&d
+\end{pmatrix},
+\]
+assim dividiremos em dois casos:
+\begin{itemize}
+\item Se $b=c$ então:
+\[
+[T\upharpoonright_W]_B=\begin{pmatrix}
+a&b\\b&d
+\end{pmatrix},
+\]
+mas o polinômio característico desta matriz é:
+\[
+q(x)=(x-a)(x-d)-b^2=x^2-(a+d)x+ad-b^2,
+\]
+de modo que:
+\[
+\Delta=(a+d)^2-4\cdot1\cdot(ad-b^2)=(a-d)^2+b^2\geq 0,
+\]
+aí $q$ tem raiz real, porém $q\mid p,$ aí $p$ tem raiz real, contradição.
+\item Se $b\neq c$, então a igualdade das matrizes nos permite inferir que $b=-c$ e $a=d$, aí:
+\[
+[T\upharpoonright_W]_B=\begin{pmatrix}
+a&-b\\b&a
+\end{pmatrix},
+\]
+e além disso devemos ter $b\neq 0$, assim o polinômio característico da matriz é:
+\[
+q(x)=(x-a)^2+b^2=x^2-2ax+a^2+b^2,
+\]
+que é irredutível em $\mathbb{R}$, mas $q\mid p$, aí $q=p$, e isso implica que $a=\alpha$ e também $b=\beta$ ou $b=-\beta$, aí, sendo $B=(e_1,e_2)$ e $B'=(e_2,e_1)$, temos $[T\upharpoonright_W]_{B}=A$ ou $[T\upharpoonright_W]_{B'}=A$.
+\end{itemize}
+Com isso existe uma base ortonormal $\tilde{B}$ tal que $[T\upharpoonright_W]_{\tilde{B}}=A$. Além disso, por hipótese de indução, podemos pegar uma base ortonormal $C$ de $W^\perp$ tal que $[T\upharpoonright_{W^\perp}]_C$ tenha a seguinte forma:
+\[
+[T\upharpoonright_{W^\perp}]_C=\begin{pmatrix}
+A&&0\\&\ddots&\\0&&A
+\end{pmatrix}.
+\]
+Portanto concluímos que:
+\[
+[T]_{B\cup C}=\begin{pmatrix}
+[T\upharpoonright_W]_{\tilde{B}}&0\\0&[T\upharpoonright_{W^\perp}]_C
+\end{pmatrix}=\begin{pmatrix}
+A&&&\\&A&&\\&&\ddots&\\&&&A
+\end{pmatrix}.
+\]
+\end{proof}
+
+\begin{teorema}
+Seja $V$ um espaço com produto interno sobre $\mathbb{R}$ de dimensão finita e seja $T\in\mathcal{L}(V)$ um operador normal. Então existe uma base ortonormal $B$ de $V$ tal que:
+\[
+[T]_B=\begin{pmatrix}
+A_1&&0\\&\ddots&\\0&&A_n
+\end{pmatrix},
+\]
+em que $A_i$ esteja em uma das seguintes formas:
+\[
+\begin{array}{ccccl}
+A_i&=&\begin{pmatrix}
+a_i
+\end{pmatrix}&,&\text{com }a_i\in\mathbb{R}.\\
+A_i&=&\begin{pmatrix}
+a_i&-b_i\\b_i&a_i
+\end{pmatrix}&,&\text{com }a_i,b_i\in\mathbb{R}\text{ tais que }b_i\neq 0.
+\end{array}
+\]
+\end{teorema}
+\begin{proof}
+Pelo Teorema \ref{normal}, podemos inferir que o polinômio minimal de $T$ deve ser da forma:
+\[
+m_t(x)=\left(x-\lambda_1\right)\dots\left(x-\lambda_r\right)\left(\left(x-a_1\right)^2+b_1^2\right)\dots\left(\left(x-a_s\right)^2+b_s^2\right)
+\]
+com $\lambda_1,\dots,\lambda_r$ distintos e com os pares $(a_1,b_1),\dots,(a_s,b_s)$ distintos e $b_1,\dots,b_s\neq 0$, assim, sendo:
+\[
+V_i=\mathrm{Ker}\left(T-\lambda_iI\right),\quad\quad W_j=\mathrm{Ker}\left(\left(T-a_sI\right)^2+b_s^2I\right),
+\]
+a decomposição primária nos permite inferir que:
+\[
+V=V_1\oplus\dots\oplus V_r\oplus W_1\oplus\dots\oplus W_s,
+\]
+e pelo Teorema \ref{normal} podemos ver que dois vetores de somandos diferentes são ortogonais. Para cada $i$, pegue uma base ortonormal $B_i$ de $V_i$. Para cada $j$, como $T$ é normal e $W_j$ é $T$-invariante, então pelo Teorema \ref{invariante}, o subespaço $W_j$ também é $T^*$-invariante, aí seja $T_j=T\upharpoonright_{W_j}$, então $T_j$ é normal e também $m_{T_j}=(x-a_j)^2+b_j^2,$ assim pela Proposição \ref{cicloreal} podemos pegar uma base ortonormal $C_j$ tal que:
+\[
+[T_j]_{C_j}=\begin{pmatrix}
+A_j&&0\\&\ddots&\\0&&A_j
+\end{pmatrix},
+\]
+em que:
+\[
+A_j=\begin{pmatrix}
+a_j&-b_j\\b_j&a_j
+\end{pmatrix}.
+\]
+Agora junte os $B_1,\dots,B_r$ e $C_1,\dots,C_s$ para obter uma base ortonormal de $V$ que satisfaça o objetivo do enunciado em questão.
+\end{proof}
+
+\newpage
+
+\section{Complexificação}
 
 \begin{definicao}
 Seja $V$ um espaço vetorial sobre $\mathbb{R}$. Definimos a \textbf{complexificação} de $V$ como:
@@ -3775,29 +4471,817 @@ $T\in\mathcal{L}(V)$ é normal (resp. unitário; autoadjunto) se e só se $T_\ma
 \textcolor{red}{É só fazer umas continhas.}
 \end{proof}
 
-\begin{teorema}
-Seja $V$ um espaço com produto interno sobre os reais e seja $T\in\mathcal{L}(V)$. Então $T$ é normal se e só se existe uma base ortonormal $B$ de $V$ tal que:
+\newpage
+
+\section{Operadores Positivos}
+
+\subsection{Operadores Autoadjuntos}
+
+\begin{definicao}
+Um operador $L\in\mathcal{L}(V)$ se chama \textbf{autoadjunto}, ou também \textbf{Hermitiano}, se e só se $T^*=T.$
+\end{definicao}
+
+\begin{teorema}\label{hermitiano}
+Seja $V$ um espaço com produto interno sobre $\mathbb{R}$ de dimensão finita e seja $T\in\mathcal{L}(V)$ um operador autoadjunto. Então existe uma base ortonormal $B$ de $V$ tal que $[T]_B$ seja diagonal.
+\end{teorema}
+\begin{proof}
+Seja $B$ uma base ortonormal de $V$ tal que:
 \[
 [T]_B=\begin{pmatrix}
 A_1&&0\\&\ddots&\\0&&A_n
 \end{pmatrix},
 \]
 em que $A_i$ esteja em uma das seguintes formas:
-\begin{itemize}
-\item
 \[
-A_i=\begin{pmatrix}
+\begin{array}{ccccl}
+A_i&=&\begin{pmatrix}
 a_i
-\end{pmatrix},\quad\quad a_i\in\mathbb{R}
+\end{pmatrix}&,&\text{com }a_i\in\mathbb{R}.\\
+A_i&=&\begin{pmatrix}
+a_i&-b_i\\b_i&a_i
+\end{pmatrix}&,&\text{com }a_i,b_i\in\mathbb{R}\text{ tais que }b_i\neq 0.
+\end{array}
 \]
-\item
+Entretanto, temos:
 \[
-A_i=r_i\begin{pmatrix}
-\cos(\varphi_i)&-\sin(\varphi_i)\\\sin(\varphi_i)&\cos(\varphi_i)
-\end{pmatrix},\quad\quad r_i\neq 0,0<\varphi<\pi
+[T^*]_B=\begin{pmatrix}
+A_1^*&&0\\&\ddots&\\0&&A_n^*
+\end{pmatrix},
 \]
+assim para todo $i$ devemos ter $A^*_i=A_i,$ aí $A_i$ deve ser da forma $(a_i);$ portanto $[T]_B$ é diagonal.
+\end{proof}
+
+\subsection{Matrizes Autoadjuntas}
+
+\begin{definicao}
+Uma matriz $A$ se chama \textbf{autoadjunta}, ou também \textbf{Hermitiana}, se e só se $A^*=A.$
+\end{definicao}
+
+\begin{proposicao}
+Uma matriz autoadjunta sempre tem um autovalor real.
+\end{proposicao}
+\begin{proof}
+Seja $A$ uma matriz autoadjunta. Então $\det(xI-A)$ tem uma raiz $\lambda$, aí existe um $v\in\mathcal{C}^n$ não nulo tal que $Av=\lambda v$, mas $A$ é normal, aí:
+\[
+\overline{\lambda}v=A^*v=Av=\lambda v,
+\]
+aí $\overline{\lambda}=\lambda,$ aí $\lambda\in\mathbb{R}.$
+\end{proof}
+
+\noindent
+Com isso podemos obter uma demonstração alternativa do Teorema \ref{hermitiano}.
+
+\begin{proof}
+Indução na dimensão de $V$. Se $\dim(V)=0$, então é fácil. Se $\dim(V)>0$, então existem $\lambda\in\mathbb{R}$ e $x\neq 0$ tais que $T(x)=\lambda x$, aí seja $W=\mathbb{R}x$, então $W$ é $T$-invariante, aí pela Proposição \ref{invariante} o subespaço $W^\perp$ é $T$-invariante, aí existe uma base ortonormal de autovetores $C$ de $W^\perp$, aí $B=\{x\}\cup C$ é uma base de autovetores de $V$.
+\end{proof}
+
+\subsection{Operadores Positivos}
+
+\begin{definicao}
+Seja $T$ um operador autoadjunto.
+\begin{itemize}
+\item $T$ é dito \textbf{positivo semidefinido} se e só se para todo $x\in V$ temos $\langle T(x),x\rangle\geq 0.$ Nesse caso, denotamos a propriedade por $T\geq 0.$
+\item $T$ é dito \textbf{positivo definido} se e só se para todo $x\in V$ tal que $x\neq 0$ temos $\langle T(x),x\rangle>0.$ Nesse caso, denotamos a propriedade por $T\rhd 0.$
+\end{itemize} 
+\end{definicao}
+
+\begin{teorema}
+Seja $T\in\mathcal{L}(V)$ um operador autoadjunto e suponhamos que $\dim(V)<\infty$. Então:
+\begin{itemize}
+\item $T\geq 0$ se e só se para todo autovalor $\alpha$ temos $\alpha\geq 0.$
+\item $T\rhd 0$ se e só se para todo autovalor $\alpha$ temos $\alpha> 0.$
+\end{itemize} 
+\end{teorema}
+
+\begin{corolario}
+Se $T\in\mathcal{L}(V)$ é um operador autoadjunto e $\dim(V)<\infty$, então $T\rhd0$ se e só se $T\geq 0$ e $T$ é inversível.
+\end{corolario}
+
+\newpage
+
+\section{Matriz de Gram}
+
+\begin{definicao}
+Seja $V$ um espaço com produto interno. A \textbf{matriz de Gram} de uma sequência $(v_1,\dots,v_k)$ é a matriz:
+\[
+G(v_1,\dots,v_k)=\begin{pmatrix}
+\langle v_1,v_1\rangle&\dots&\langle v_1,v_k\rangle\\\dots&\dots&\dots\\\langle v_k,v_1\rangle&\dots&\langle v_k,v_k\rangle
+\end{pmatrix}.
+\]
+\end{definicao}
+
+\begin{proposicao}
+Seja $B=(e_1,\dots,e_n)$ uma base de $V$. Então $G(e_1,\dots,e_n)$ é inversível.
+\end{proposicao}
+\begin{proof}
+Primeiro observemos que para quaisquer $u,v\in V$, com:
+\[
+[u]_B=(\alpha_1,\dots,\alpha_n),\quad [v]_B^*=(\beta_1,\dots,\beta_n)
+\]
+então:
+\[
+\langle u,v\rangle=[u]_BA[v]_B^*.
+\]
+De fato:
+\[
+\langle u,v\rangle=\sum_{i,j}\alpha_i\overline{\beta_j}\langle e_i,e_j\rangle,
+\]
+aí:
+\[
+\begin{array}{rcl}
+[u]_BA[v]_B^*&=&(\alpha_1,\dots,\alpha_n)\begin{pmatrix}
+\langle e_1,e_1\rangle&\dots&\langle e_1,e_n\rangle\\\dots&\dots&\dots\\\langle e_n,e_1\rangle&\dots&\langle e_n,e_n\rangle
+\end{pmatrix}\begin{pmatrix}
+\overline{\beta_1}\\\vdots\\\overline{\beta_n}
+\end{pmatrix}\\
+&=&\begin{pmatrix}
+\alpha_1\langle e_1,e_1\rangle+\dots+\alpha_n\langle e_n,e_1\rangle\\\vdots\\\alpha_1\langle e_1,e_n\rangle+\dots+\alpha_n\langle e_n,e_n\rangle
+\end{pmatrix}\begin{pmatrix}
+\overline{\beta_1}\\\vdots\\\overline{\beta_n}
+\end{pmatrix}
+\end{array}.
+\]
+Se $A$ não for inversível, então existe $u\neq 0$ tal que $[u]_BA=0$. Neste caso, $\langle u,u\rangle=[u]_BA[u]_B^*=0$, aí $u=0$, contradição.
+\end{proof}
+
+\noindent
+Se $B=(e_1,\dots,e_n)$ é uma base de $V$ e $A=G(e_1,\dots,e_n)$ então para todo $v\in V$ temos:
+\[
+[v]_BA[v]_B^*\geq 0
+\]
+e a igualdade ocorre se e somente se $v=0$.
+
+\begin{definicao}
+Uma matriz Hermitiana $A$ é dita:
+\begin{itemize}
+\item \textbf{Positiva semidefinitiva} se e só se para todo $x\in K^n$ temos $xAx^*\geq 0$.
+\item \textbf{Positiva definitiva} se e só se para todo $x\in K^n$ tal que $x\neq 0$ temos $xAx^*>0$.
+\end{itemize}
+\end{definicao}
+
+\begin{proposicao}
+Seja $A\in\m{n}{K}$ uma matriz Hermitiana positiva definitiva. Seja $V$ um espaço vetorial com base $B=(e_1,\dots,e_n)$. Definamos, para $u,v\in V$, o seguinte:
+\[
+\langle u,v\rangle=[u]_BA[v]_B^*.
+\]
+Então $\langle u,v\rangle$ é um produto interno.
+\end{proposicao}
+
+\newpage
+
+\section{Matriz de Gram}
+
+\begin{definicao}
+Seja $V$ um espaço sobre $K$ com produto interno. Sejam $v_1,\dots,v_m\in V$. A matriz:
+\[
+G(v_1,\dots,v_n)=\left(\langle v_i,v_j\rangle\right)\in\m{n}{K}
+\]
+chama-se a \textbf{matriz de Gram} do sistema $\{v_1,\dots,v_n\}$.
+\end{definicao}
+
+\noindent
+A matriz $G(v_1,\dots,v_n)$ é Hermitiana, ou seja:
+\[
+G(v_1,\dots,v_n)^*=G(v_1,\dots,v_n),
+\]
+pois para todo $i,j$ temos:
+\[
+\overline{\langle v_i,v_j\rangle}=\langle v_j,v_i\rangle.
+\]
+
+\begin{proposicao}
+Seja $\dim(V)=n$, $B=(e_1,\dots,e_n)$ uma base de $V$. Se $C=(f_1,\dots,f_n)$ é outra base de $V$, então:
+\[
+G(f_1,\dots,f_n)=P^t_{B,C}G(e_1,\dots,e_n)\overline{P_{B,C}}.
+\]
+\end{proposicao}
+\begin{proof}
+Observemos que para todo $x,y\in V$ temos:
+\[
+\langle x,y\rangle=[x]^t_BG_B\overline{[y]_B}=(x_1,\dots,x_n)\left(\langle e_i,e_j\rangle\right)\begin{pmatrix}
+\overline{y_1}\\\vdots\\\overline{y_n},
+\end{pmatrix}
+\]
+em que:
+\[
+x=\sum_i x_ie_i,\quad\quad y=\sum_i y_ie_i,
+\]
+pois:
+\[
+\langle x,y\rangle=\sum_{i,j}x_i\overline{y_j}\langle e_i,e_j\rangle.
+\]
+Agora temos:
+\[
+[x]_B=[x]_CP_{B,C}^t,
+\]
+aí sendo:
+\[
+P=(a_{ij}),
+\]
+temos:
+\[
+f_i=\sum_{j=1}^na_{ji}e_j,
+\]
+aí:
+\[
+x=x_1e_1+\dots+x_ne_n=\sum_{i=1}^nx'_if_i=\sum_{i,j}x'_ia_{ji}e_j=
+\]
+\end{proof}
+
+\begin{corolario}
+Se $B=(e_1,\dots,e_n)$ é uma base de $V$ então $\det G(e_1,\dots,e_n)>0$.
+\end{corolario}
+\begin{proof}
+Seja $C$ uma base de $V$. Então:
+\[
+G_C=P^t_{B,C}G_B\overline{P_{B,C}},
+\]
+então, sendo $\det(P_{B,C})=\alpha$, temos:
+\[
+1=\det(G_C)=\det(P^t_{B,C})\det(G_B)\det(\overline{P_{B,C}})=\alpha\det(G_B)\overline{\alpha}=\abs{\alpha}^2\det(G_B).
+\]
+\end{proof}
+
+\begin{corolario}
+Seja $V$ um espaço com produto interno, $v_1,\dots,v_n\in V$ que são linearmente independentes. Então:
+\[
+\det G(v_1,\dots,v_n)>0
+\]
+\end{corolario}
+\begin{proof}
+Seja $V_0=\langle v_1,\dots,v_n\rangle$, então $V_0$ é um espaço com produto interno e $\dim(V_0)=n$ e $(v_1,\dots,v_n)$ é uma base de $V_0$. Assim, pelo corolário anterior, temos $G(v_1,\dots,v_n)>0$.
+\end{proof}
+
+\begin{proposicao}
+Se $v_1,\dots,v_n$ são linearmente dependentes, então $G(v_1,\dots,v_n)$ é degenerada; em particular $\det G(v_1,\dots,v_n)=0$.
+\end{proposicao}
+\begin{proof}
+Seja $B=\{e_1,\dots,e_n\}$ uma base e $C=\{f_1,\dots,f_n\}$ um conjunto arbitrário. Seja:
+\[
+P_{B,C}=\left([f_1]_B,\dots,[f_n]_B\right),
+\]
+a matriz de coordenadas de $\{f_1,\dots,f_n\}$ na base $B$. Então para $x$, sendo:
+\[
+x=x'_1f_1+\dots+x'_nf_n,
+\]
+então:
+\[
+[x]_B=\left(x'_1,\dots,x'_n\right)P^t_{B,C}.
+\]
+\end{proof}
+
+\begin{proposicao}
+Seja $U\subseteq V$ um subespaço, e seja $U=\langle u_1,\dots,u_m\rangle$ com $u_i$ linearmente independentes, e seja $v\in V$. Então:
+\[
+d(v,U)=\sqrt{\frac{\det G(u_1,\dots,u_m,v)}{\det G(u_1,\dots,u_m)}}.
+\]
+\end{proposicao}
+\begin{proof}
+Seja $v=u+w$ com $u\in U$ e $w\perp U$. Então para $i=1,\dots,m$ temos:
+\[
+\langle u_i,v\rangle=\langle u_i,u\rangle;
+\]
+assim temos:
+\[
+G(u_1,\dots,u_m,v)=\begin{pmatrix}
+G(u_1,\dots,u_m)&\begin{matrix}\langle u_1,u\rangle\\\vdots\\\langle u_m,u\rangle\end{matrix}\\\begin{matrix}\langle u,u_1\rangle&\ldots&\langle u,u_m\rangle\end{matrix}&\langle u,u\rangle+\langle w,w\rangle
+\end{pmatrix},
+\]
+assim:
+\[
+\det G(u_1,\dots,u_m,v)=\det G(u_1,\dots,u_m,u)+\det\begin{pmatrix}
+G(u_1,\dots,u_m)&\begin{matrix}0\\\vdots\\0\end{matrix}\\\begin{matrix}\langle u,u_1\rangle&\ldots&\langle u,u_m\rangle\end{matrix}&\norm{w}^2
+\end{pmatrix},
+\]
+aí:
+\[
+\det G(u_1,\dots,u_n,v)=\det G(u_1,\dots,u_n)\cdot\norm{w}^2.
+\]
+\end{proof}
+
+\begin{proposicao}
+Seja $V$ um espaço sobre $K$ com uma base $B=(v_1,\dots,v_n)$. Se $V$ possui um produto interno então $G(v_1,\dots,v_n)>0$. Reciprocamente, seja $A=(a_{ij})\in\m{n}{K}$ uma matriz positiva definida, aí definamos em $V$ o produto escalar $\langle v_i,v_j\rangle=a_{ij}$, então $V$ é um espaço com produto interno.
+\end{proposicao}
+
+\begin{teorema}
+Seja $A=(a_{ij})\in\m{n}{K}$ uma matriz hermitiana. Então são equivalentes:
+\begin{itemize}
+\item $A$ é positiva definida.
+\item $\mathrm{Spec}(A)=\{\lambda_1,\dots,\lambda_n\}$ com $\lambda_i>0$ para todo $i=1,\dots,n$
+\item $A=B^2$ para alguma matriz $B$ tal que $B=B^*$ e $\det B\neq 0$. De modo mais geral $A=TT^*$ com $\det T\neq 0$.
+\item Todos os menores principais de $A$ são positivos.
 \end{itemize}
 \end{teorema}
+\begin{proof}
+$(1)\Rightarrow(4)$ Se $A$ é positiva definida, então existe um produto interno tal que $G(e_1,\dots,e_n)=A$. Em particular, sendo:
+\[
+A_i=\begin{pmatrix}
+a_{11}&&a_{1i}\\&\ddots&\\a_{i1}&&a_{ii}
+\end{pmatrix},
+\]
+então $A_i=G(e_1,\dots,e_i)$, aí $\det(A_i)>0$.
+
+\medskip
+\noindent
+$(4)\Rightarrow(1)$ Indução sobre $n$. Seja $\mathrm{Spec}(A)=\{\lambda_1,\dots,\lambda_n\}$ ($\lambda_i\in\mathbb{R}$ com repetição). Sabemos que $\det(A)=\lambda_1\dots>0$. Se $A$ não é positiva definida, então existem $i$ e $j$ tais que $\lambda_i\lambda_j<0$, aí sejam $u,v$ autovetores não nulos associados aos autovalores $\lambda_i,\lambda_j$. Escolhamos $\alpha,\beta\in K$ tais que $x=\alpha u+\beta v\in\langle e_1,\dots,e_{n-1}\rangle$, então:
+\[
+\begin{array}{rcl}
+\langle Ax,x\rangle&=&\langle \alpha Au+\beta Av,\alpha u+\beta v\rangle\\
+&=&\langle \lambda_i\alpha u+\lambda)j\beta v,\alpha u+\beta v\rangle\\
+&=&\lambda_i\norm{\alpha u}^2+\lambda_j\norm{\beta v}^2+\lambda_i\alpha\overline{\beta}\langle u,v\rangle+\lambda_j\beta\overline{\alpha}\langle v,u\rangle\\
+&=&\lambda_i\norm{\alpha u}^2+\lambda_j\norm{\beta v}^2,
+\end{array}{rcl}
+\]
+assim:
+\[
+\lambda_i\norm{\alpha u}^2+\lambda_j\norm{\beta v}^2<0,
+\]
+contradizendo a hipótese de indução.
+\end{proof}
+
+\chapter{Formas Bilineares}
+
+\section{Definições e Exemplos}
+
+\begin{definicao}
+Sejam $U,V,W$ espaços vetoriais sobre $K$. Uma \textbf{função bilinear} de $U$ e $V$ em $W$ é uma função $f:U\times V\rightarrow W$ que satisfaz o seguinte:
+\begin{itemize}
+\item $f(\alpha_1u_1+\alpha_2u_2,v)=\alpha_1f(u_1,v)+\alpha_2f(u_2,v)$.
+\item $f(u,\beta_1v_1+\beta_2v_2)=\beta_1f(u,v_1)+\beta_2f(u,v_2)$.
+\end{itemize}
+Denotamos o conjunto das funções bilineares de $U$ e $V$ em $W$ por $B(U,V;W)$.
+\end{definicao}
+
+\begin{definicao}
+Se $U=V=W$, cada $f\in B(U,V;W)$ determina em $U$ um produto:
+\[
+u\cdot v=f(u,v).
+\]
+Neste caso, $A=(U,f)$ chama-se uma \textbf{álgebra} sobre o corpo $K$.
+\end{definicao}
+
+\begin{exemplo}
+Seja $A=(\mathbb{R}^3,\times)$, em que $\times$ é o produto vetorial usual, então $A$ é uma $\mathbb{R}$-álgebra.
+\end{exemplo}
+
+\begin{exemplo}
+A estrutura dos complexos $\mathbb{C}$ é uma $\mathbb{R}$-álgebra de dimensão $2$.
+\end{exemplo}
+
+\begin{exemplo}
+$K$ é uma $K$-álgebra de dimensão $1$.
+\end{exemplo}
+
+\begin{exemplo}
+O conjunto das matrizes $\m{n}{K}$ é uma $K$-álgebra com:
+\[
+f(A,B)=AB.
+\]
+\end{exemplo}
+
+\begin{exemplo}
+Seja:
+\[
+H_n(\mathbb{R})=\{A\in\m{n}{K}\mid A^t=A\},
+\]
+e definamos:
+\[
+f(A,B)=AB+BA,
+\]
+então $H_n(\mathbb{R})$ é uma $\mathbb{R}$-álgebra, chamada \textbf{álgebra de Jordan}.
+\end{exemplo}
+
+\begin{definicao}
+Uma \textbf{forma bilinear} entre dois espaços vetoriais $U$ e $V$ sobre $K$ é uma função bilinear de $U$ e $V$ em $K$. Denotamos o conjunto das formas bilineares entre $U$ e $V$ por $B(U,V)$.
+\end{definicao}
+
+\begin{exemplo}
+Alguns exemplos são:
+\begin{itemize}
+\item Um produto interno sobre um espaço vetorial \textit{real}.
+\item $(A,B)\mapsto\mathrm{tr}(AB)$.
+\item Sejam $\varphi\in U^*$ e $\psi\in V^*$, então definamos $(\varphi\otimes\psi)(u,v)=\varphi(u)\psi(v)$, o \textbf{produto tensorial} de $\varphi$ e $\psi$.
+\end{itemize}
+\end{exemplo}
+
+\section{Formas Não Degeneradas}
+
+\begin{definicao}
+Seja $(V,f)$ um espaço com uma forma bilinear $f$. Um subespaço $U\subseteq V$ chama-se \textbf{não-degenerado} se e só se a restrição $f\upharpoonright_U$ é não degenerada, e chama-se \textbf{isotrópico} se e só se $f\upharpoonright_U=0$.
+\end{definicao}
+
+\noindent
+Por exemplo, num espaço simplético todo subespaço de dimensão $1$ é simplético.
+
+\begin{proposicao}
+Seja $(V,f)$ de dimensão finita.
+\begin{itemize}
+\item Se $U\subseteq V$ é não degenerado, então $V=U\oplus U^\perp$.
+\item Se os dois $U$ e $U^\perp$ são não degenerados, então $U^{\perp\perp}=U$.
+\end{itemize}
+\end{proposicao}
+\begin{proof}
+\begin{itemize}
+\item Seja $B=(u_1,\dots,u_m)$ uma base de $U$ e completemos a uma base $C=(v_1,\dots,v_m)$ de $V$. Consideremos $f'\in B(U,V)$ e $f''\in B(U,U)$ que são restrições de $f$ sobre $U\times V$ e $U\times U$. Sejam $A=[f']_{B,C}\in\m{m,n}{K}$ e $B=[f'']_{B,B}\in\m{n}{K}$. É claro que a matriz $B$ é formada pelas $m$ primeiras colunas da matriz $A$. Como $f\upharpoonright_U$ é não degenerada, então a matriz $B$ é não degenerada. Assim $\mathrm{posto}(B)=\mathrm{posto}(A)=m$. Agora consideremos:
+\[
+U^\perp=\{v\in V\mid[f']_{B,C}[v]^t_C=A[v]^t_C=0\},
+\]
+então:
+\[
+\begin{array}{rcl}
+v\in U^\perp&\Leftrightarrow&\forall u\in U:f(u,v)=0\\
+&\Leftrightarrow&\forall u\in U:[u]_B[f]_{B,C}[v]^t_C=0\\
+&\Leftrightarrow&[f]_{B,C}[v]^t_C=0\\
+&\Leftrightarrow&A[v]^t_C=0.
+\end{array}
+\]
+Assim, como $A\in\m{m,n}{K}$, então $\dim(U^\perp)=n-m.$ Como $U$ é não degenerado, então $U\cap U^\perp=0$, portanto $V=U\oplus U^\perp.$
+\item É claro que $U^{\perp\perp}.$ Se $U^\perp$ é não degenerado então $\dim(U^{\perp\perp})=n-\dim(U^\perp)=n-(n-m)=m=\dim(U),$ portanto $\dim(U^{\perp\perp})=U$.
+\end{itemize}
+\end{proof}
+
+\begin{teorema}
+Seja $(V,f)$ um espaço com uma forma bilinear $f$ simétrica ou antissimétrica. Então $V$ se decompõe numa soma ortogonal de subespaços:
+\[
+V=V_1\oplus\dots\oplus V_m,
+\]
+em que $\dim(V_i)=1$ no caso simétrico e $\dim(V_i)=1,2$ no caso antissimétrico, sendo $\dim(V_i)=1$ com $V_i$ isotrópico e $\dim(V_i)=2$ com $V_i$ não degenerado.
+\end{teorema}
+\begin{proof}
+Indução sobre $\dim(V).$
+\begin{itemize}
+\item[1)] Caso simétrico. Se $f=0$, então $V=Ke_1\oplus\dots\oplus Ke_n$ para qualquer base $B=(e_1,\dots,e_n)$ é a soma desejada. Agora suponhamos que $f\neq 0$. Se $\forall v:f(v,v)=0$, então já vimos que para $u$ e $v$ temos $f(u,v)=-f(v,u)=f(v,u)$, aí $f(u,v)=0$, contradição. Assim existe $v$ tal que $f(v,v)\neq0.$ Agora tomemos $V_1=\langle v\rangle,$ então $V_1$ é não degenerado, portanto $V=V_1\oplus V_1^\perp$. Por indução, $V_1^\perp=V_2\oplus\dots\oplus V_m$, aí $V=V_1\oplus\dots\oplus V_m.$
+\item[2)] Caso antissimétrico. Se $f=0$, então tudo é evidente. Se $f\neq 0$, então existem $u$ e $v$ tais que $f(u,v)=\alpha\neq0.$ Seja $V_1=\langle u,v\rangle,$ então $B=(u,v)$ é uma base de $V_1.$ Temos:
+\[
+[f\upharpoonright_{V_1}]_B=\begin{pmatrix}
+0&\alpha\\-\alpha&0
+\end{pmatrix},
+\]
+então $f\upharpoonright_{V_1}$ é não degenerada, aí $V_1$ é não degenerado e $V=V_1\oplus V_1^\perp.$
+\end{itemize}
+\end{proof}
+
+\begin{corolario}
+Seja $A\in\m{n}{K}$ uma matriz simétrica ou antissimétrica. Então existe $P\in\m{n}{K}$ não degenerada tal que:
+\begin{itemize}
+\item[1)] No caso simétrico:
+\[
+P^tAP=\begin{pmatrix}
+\alpha_1&&0\\&\ddots&\\0&&\alpha_n
+\end{pmatrix}
+\]
+em que $\alpha_i\in K.$
+\item[2)] No caso antissimétrico:
+\[
+P^tAP=\begin{pmatrix}
+A_1&&&&&\\&\ddots&&&&\\&&A_m&&&\\&&&0&&\\&&&&\ddots&\\&&&&&0
+\end{pmatrix}
+\]
+em que:
+\[
+A_i=\begin{pmatrix}
+0&1\\-1&0
+\end{pmatrix}.
+\]
+\end{itemize}
+\end{corolario}
+
+\begin{corolario}[Teorema da Inversão]
+Se $K=\mathbb{R}$ e $f\in B(V,\mathbb{R})$, então existe uma base $B$ de $V$ tal que:
+\[
+[f]_B=\begin{pmatrix}
+I_r&0&0\\0&-I_s&0\\0&0&0_t
+\end{pmatrix},
+\]
+em que $I_m$ é a matriz identidade de tamanho $m$ e $0_m$ é a matriz quadrada nula de tamanho $m.$ O trio $(r,s,t)$ se chama \textbf{assinatura} da forma $f$ e está unicamente determinada.
+\end{corolario}
+\begin{proof}
+Temos $V=V_+\oplus V_-\oplus V_0$, em que $\dim(V_+)=r$ e $\dim(V_-)=s$ e $\dim(V_0)=t$, e também $r+s=\mathrm{posto}[f]_B$, assim $t=n-\mathrm{posto}[f]_B$ está determinado unicamente.
+
+\medskip
+\noindent
+Agora seja $V=V'_+\oplus V'_-\oplus V'_0,$ e seja $\dim(V'_+)=r$ e $\dim(V'_-)=s'$. Basta provar que $r=r'.$ Suponhamos que $r>r'.$ Consideremos a projeção:
+\[
+\begin{array}{rcl}
+\pi:V&\rightarrow&V'_+\\
+v=v'_++v'_-+v'_0\mapsto v'_+
+\end{array}
+\]
+Seja $\pi_+=\pi\upharpoonright_{V_+},$ então $\pi_+:V_+\rightarrow V'_+.$ Como $r>r'$ então $\dim(V_+)>\dim(V'_+),$ portanto existe $v\in V_+$ tal que $v\neq 0$ e $\pi_+(v)=0,$ aí $v\in V_+$ e $v\in V'_-\oplus V'_0$, pois $v'_+=0,$ aí:
+\[
+0<f(v,v)=f(v'_-+v'_0,v'_-+v'_0)=f(v'_-,v'_-)+f(v'_0,v'_0)\leq 0,
+\]
+chegando a contradição.
+\end{proof}
+
+\begin{observacao}
+A forma bilinear de assinatura $(3,1,0)$ no espaço $\mathbb{R}^4$ determina a \textbf{geometria do espaço de Minkowski}, associada com a teoria da relatividade.
+\end{observacao}
+
+\section{Formas Quadráticas}
+
+\begin{definicao}
+Um polinômio homogêneo nas variáveis $x_1,\dots,x_n$ de grau $2$ com coeficientes no corpo $K$ chama-se uma \textbf{forma quadrática} nas variáveis $x_1,\dots,x_n,$ e sua aparência genérica é assim:
+\[
+q(x_1,\dots,x_n)=\sum_{i,j=1}^na_{ij}x_ix_j.
+\]
+A matriz $A=(a_{ij})$ chama-se matriz da forma quadrática $q.$
+\end{definicao}
+
+\noindent
+Então a matriz $A^t=A$ e para $x\in K^n$ temos $a(x)=[x]A[x]^t.$
+
+\medskip
+\noindent
+Associemos com $q$ a forma bilinear simétrica:
+\[
+f(x,y)=[x]A[y]^t,
+\]
+de modo que $q(x)=f(x,x).$
+
+\medskip
+\noindent
+Se $\mathrm{Char}(K)\neq 2,$ então:
+\[
+f(x,y)=\frac{1}{2}\left(q(x+y)-q(x)-q(y)\right).
+\]
+
+\begin{definicao}
+Uma aplicação $q:V\rightarrow K$ é chamada uma \textbf{forma quadrática} sobre $V$ se e só se existe uma forma bilinear $f$ simétrica tal que:
+\[
+\forall x\in V:q(x)=f(x,x).
+\]
+A forma $f$ chama-se a forma bilinear associada com a forma quadrática $q.$ A forma $q$ é dita \textbf{não degenerada} se e só se a $f$ é uma forma não degenerada.
+\end{definicao}
+
+\begin{teorema}
+Temos o seguinte:
+\begin{itemize}
+\item Seja $V$ um espaço vetorial sobre $K$ de dimensão $n$ e $q:V\rightarrow K$ uma forma quadrática. Então exsite uma base $B$ de $V$ e $\lambda_1,\dots,\lambda_n\in K$ tais que:
+\[
+q(x)=\lambda_1x_1^2+\dots+\lambda_nx_n^2,
+\]
+em que $(x_1,\dots,x_n)=[x]_B.$
+\item Se $K=\mathbb{R}$ então no caso anterior existe uma base $B$ de $V$ tal que nesta base:
+\[
+q(x)=x_1^2+\dots+x_r^2-x_{r+1}^2-\dots-x_{r+s}^2,
+\]
+em que os números $r$ e $s$ estão unicamente determinados.
+\end{itemize}
+\end{teorema}
+
+\section{Produto Tensorial}
+
+\begin{definicao}
+Sejam $U$ e $V$ espaços vetoriais sobre $K.$ Um espaço $W$ junto com uma função bilinear $\iota$ de $U$ e $V$ a $W$ formam um \textbf{produto tensorial} de $U$ e $V$ se e só se para qualquer espaço $L$ e função bilinear $\varphi$ de $U$ e $V$ a $L$ existe uma única aplicação linear $\overline{\varphi}:W\rightarrow L$ tal que $\varphi=\overline{\varphi}\circ\iota.$
+\end{definicao}
+
+\begin{proposicao}
+O par $(W,\iota)$ é únicamente determinado sob isomorfismo.
+\end{proposicao}
+\begin{proof}
+Seja $(W',\iota')$ um outro produto tensorial. Então:
+\begin{itemize}
+\item Existe uma função linear $\varphi:W\rightarrow W'$ tal que $\iota'=\varphi\circ\iota.$
+\item Existe uma função linear $\varphi':W'\rightarrow W$ tal que $\iota=\varphi'\circ\iota'.$
+\end{itemize}
+Assim:
+\begin{itemize}
+\item $(\varphi'\circ\varphi)\circ\iota=\iota,$ mas $I_W\circ\iota=\iota,$ aí $\varphi'\circ\varphi=I_W.$
+\item $(\varphi\circ\varphi')\circ\iota'=\iota',$ mas $I_{W'}\circ\iota'=\iota',$ aí $\varphi\circ\varphi'=I_{W'}.$
+\end{itemize}
+\end{proof}
+
+\begin{proposicao}
+Para $U$ e $V$ existe um produto tensorial $(W,\iota).$
+\end{proposicao}
+\begin{proof}
+Consideremos o espaço vetorial $X$ com base $U\times V.$ Seja $E$ a reunião do conjunto dos elementos de $X$ da forma:
+\[
+(a_1u_1+a_2u_2,v)-a_1(u_1,v)-a_2(u_2,v),\quad\quad a_1,a_2\in K,\quad u_1,u_2,v\in V
+\]
+com o conjunto dos elementos de $X$ da forma:
+\[
+(u,a_1v_1+a_2v_2)-a_1(u,v_1)-a_2(u,v_2),\quad\quad a_1,a_2\in K,\quad u,v_1,v_2\in V
+\]
+e seja $Y$ o subespaço gerado por $E$. Agora consideremos $W=X/Y$ juntamente com a projeção canônica $\iota:X\rightarrow W.$ Então podemos mostrar que $(W,\iota)$ é um produto tensorial \textcolor{red}{(Completar detalhes)}.
+\end{proof}
+
+\begin{definicao}
+Denotamos o par $(W,\iota)$ definido na demonstração por $(U\otimes V,\otimes).$
+\end{definicao}
+
+\begin{proposicao}
+Sejam $U$ e $V$ espaços. Então a imagem de $\langle\mathrm{Im}(\otimes)\rangle=U\otimes V$.
+\end{proposicao}
+\begin{proof}
+Seja $L=(U\otimes V)/\langle\mathrm{Im}(\otimes)\rangle,$ e consideremos a projeção canônica $\pi:U\times V\rightarrow L.$ Então $\pi\circ\otimes=0$ e $0\circ\otimes=0$, assim $\pi=0$, aí $\langle\mathrm{Im}(\otimes)\rangle=U\otimes V.$
+\end{proof}
+
+\begin{teorema}
+Sejam $U$ e $V$ espaços, $(e_i)_{i\in I}$ uma base de $U$ e $(f_j)_{j\in J}$ uma base de $V.$ Então a família $(e_i\otimes f_j)_{(i,j)\in I\times J}$ é uma base de $U\otimes V.$
+\end{teorema}
+
+\begin{proposicao}
+Sejam $U$ e $V$ espaços vetoriais sobre $K.$ Seja $w=\sum_{i=1}^n u_i\otimes v_i\in U\otimes V$, em que $(v_1,\dots,v_n)$ é linearmente independente. Então os elementos $(u_1,\dots,u_n)$ estão determinados unicamente, isto é, se $w=\sum_{i=1}^nu'_i\otimes v_i,$ então $u'_i=u_i$ para todo $i=1,\dots,n.$ O mesmo é válido quando o $(u_1,\dots,u_n)$ é linearmente independente.
+\end{proposicao}
+\begin{proof}
+Suponhamos que $\sum_{i=1}^nu_i\otimes v_i=\sum_{i=1}^nu'_i\otimes v_i,$ então:
+\[
+0=\sum_{i=1}^n\left(u_i\otimes v_i-u'_i\otimes v_i\right)=\sum_{i=1}^n(u_i-u'_i)\otimes v_i.
+\]
+Assim basta provar que, se:
+\[
+\sum_{i=1}^nu_i\otimes v_i=0
+\]
+então:
+\[
+u_1=\dots=u_n=0.
+\]
+\end{proof}
+
+\section{Extensão Escalar}
+
+\begin{definicao}
+Para corpo $F$ e subcorpo $K$ e espaço $V$ sobre $K$, então uma \textbf{extensão escalar} de $V$ por $F$ é um espaço vetorial sobre $F$ munido de uma função $K$-linear $i:V\rightarrow W$ tal que para todo espaço $U$ sobre $F$ e para todo $\varphi\in\mathcal{L}_K(V,U)$ exista um único $\overline{\varphi}\in\mathcal{L}_F(W,U)$ tal que $\overline{\varphi}\circ i=\varphi.$
+\end{definicao}
+
+\begin{proposicao}
+Para corpo $F$ e subcorpo $K$ e espaço $V$ sobre $K$, então uma extensão escalar de $V$ por $F$ é determinado unicamente sob isomorfismo.
+\end{proposicao}
+
+\begin{proposicao}
+Se $V$ é um espaço vetorial sobre $\mathbb{R}$, então a complexificação $V_\mathbb{C}$ munida da função $i:V\rightarrow V_\mathbb{C}$ dada por $\forall x\in V:i(x)=(x,0)$ é uma extensão escalar de $V$ por $\mathbb{C}.$
+\end{proposicao}
+
+\begin{proposicao}
+Para corpo $F$ e subcorpo $K$ e espaço $V$ sobre $K$, então $F\otimes V$ munido da função $i:V\rightarrow F\otimes V$ dada por $\forall x\in V:i(x)=1\otimes x$ é uma extensão escalar de $V$ por $F.$
+\end{proposicao}
+
+\begin{definicao}
+Para corpo $F$ e subcorpo $K$ e espaço $V$ sobre $K$, definimos $V_F=F\otimes V$ e definimos $\iota_F:V\rightarrow F\otimes V$ por $\forall x\in V:\iota_F(x)=1\otimes x.$
+\end{definicao}
+
+\begin{proposicao}
+Propriedades da extensão escalar.
+\begin{itemize}
+\item $\dim_F(V_F)=\dim_K(V).$
+\item Para qualquer base $(e_i)_{i\in I}$ de $V$ sobre $K$, então $(\iota(e_i))_{i\in I}$ é uma base de $V_F$ sobre $F.$
+\end{itemize}
+\end{proposicao}
+
+\begin{proposicao}[\textbf{Isomorfismos Canônicos}]
+Temos os seguintes isomorfismos canônicos:
+\begin{itemize}
+\item Se $V$ é um espaço sobre $K$ então:
+\[
+\begin{array}{rcl}
+K\otimes V&\cong&V\\
+\alpha\otimes v&\mapsto&v.
+\end{array}
+\]
+\item Se $U$ e $V$ são espaços sobre $K$, então:
+\[
+\begin{array}{rcl}
+U\otimes V&\cong&V\otimes U\\
+u\otimes v&\mapsto&v\otimes u.
+\end{array}
+\]
+\item Se $U$ e $V$ e $W$ são espaços sobre $K$ então:
+\[
+\begin{array}{rcl}
+(U\otimes V)\otimes W&\cong&U\otimes(V\otimes W)\\
+(u\otimes v)\otimes w&\mapsto&u\otimes(v\otimes w).
+\end{array}
+\]
+\end{itemize}
+\end{proposicao}
+
+\chapter{Mecânica Quântica}
+
+\section{Postulados}
+
+Apresentaremos alguns postulados.
+
+\begin{postulado}
+O estado de um sistema quântico num espaço $X$ (em geral $X=\mathbb{R}^n$ ou afins) está completamente determinado por uma função de onda $\psi:X\rightarrow\mathbb{C}$ tal que:
+\[
+\int_{X}\abs{\psi(x)}^2\dif x=1.
+\]
+Além disso, interpretamos $\abs{\psi(x)}^2$ como a distribuição de probabilidade de encontrarmos a partícula na posição $x.$
+\end{postulado}
+
+\begin{postulado}
+Toda grandeza física $\alpha$ de um estado quântico está associado a um operador linear autoadjunto $\hat{\alpha}$ em $L^2.$ Para algumas grandezas podemos mostrar mais especificamente seus operadores correspondentes.
+\begin{itemize}
+\item Cada coordenada cartesiana de posição $x_i$ em $\mathbb{R}^n$ corresponde ao operador $\hat{x}_i$ dado pela multiplicação por $x_i$, ou seja:
+\[
+(\hat{x}_if)(x_1,\dots,x_n)=x_if(x_1,\dots,x_n).
+\]
+\item Cada coordenada cartesiana de momento linear $p_i$ corresponde ao operador $\hat{p}_i$ dado por:
+\[
+\hat{p}_i(f)=\frac{\hslash}{i}\pd{f}{x_i},
+\]
+em que $\hslash$ é a \textbf{constante reduzida de Planck}:
+\[
+\hslash=\frac{h}{2\pi},\quad\quad\quad h\cong 6,62607015\cdot10^{-34}J\cdot s,
+\]
+e $h$ é a \textbf{constante de Planck}.
+\item Para a energia cinética $K_i$ na coordenada $i$, temos as seguintes contas:
+\[
+K_i=\frac{mv_i^2}{2}=\frac{m^2v_i^2}{2m}=\frac{p_i^2}{2m},
+\]
+pois o momento linear na coordenada $i$ é dado por:
+\[
+p_i=mv_i.
+\]
+Por enquanto desconsideramos efeitos relativísticos, assim a massa $m$ é uma constante, de modo que podemos associar $K_i$ ao operador:
+\[
+\hat{K}_i=\frac{\hat{p}_i^2}{2m}=-\frac{\hslash^2}{2m}\pd{}{x_i}.
+\]
+\item Para a energia cinética $K$, lembrando que:
+\[
+K=K_1+\dots+K_n,
+\]
+então associamos $K$ ao operador
+\[
+\hat{K}=\hat{K}_1+\dots+\hat{K}_n=-\frac{\hslash^2}{2m}\left(\pd[2]{}{x_1}+\dots+\pd[2]{}{x_n}\right)=-\frac{\hslash^2}{2m}\nabla^2.
+\]
+\item Para a energia potencial $V$, consideramos o operador $\hat{V}$ dado pela multiplicação por $V$, ou seja:
+\[
+(\hat{V}f)(x_1,\dots,x_n)=V(x_1,\dots,x_n)f(x_1,\dots,x_n).
+\]
+\item A energia total $E$ é dada por:
+\[
+E=K+V,
+\]
+assim associamos $E$ ao \textbf{operador Hamiltoniano}:
+\[
+\hat{H}=\hat{K}+\hat{V}=-\frac{\hslash^2}{2m}\nabla^2+V.
+\]
+\item Em $\mathbb{R}^3$, o momento angular $\bm{L}=(L_x,L_y,L_z)$ é dado pelo seguinte:
+\[
+\begin{array}{rcl}
+L_x&=&yp_z-zp_y\\
+L_y&=&zp_x-xp_z\\
+L_z&=&xp_y-yp_x\\
+\end{array}
+\]
+assim associamos os componentes de $\bm{L}$ aos seguintes operadores:
+\[
+\begin{array}{rclcl}
+\hat{L}_x&=&\hat{y}\hat{p}_z-\hat{z}\hat{p}_y=\frac{\hslash}{i}\left(y\pd{}{z}-z\pd{}{y}\right)\\
+\hat{L}_y&=&\hat{z}\hat{p}_x-\hat{x}\hat{p}_z=\frac{\hslash}{i}\left(z\pd{}{x}-x\pd{}{z}\right)\\
+\hat{L}_z&=&\hat{x}\hat{p}_y-\hat{y}\hat{p}_x=\frac{\hslash}{i}\left(x\pd{}{y}-y\pd{}{x}\right)\\
+\end{array}
+\]
+\item Também associamos o quadrado da magnitude de $\bm{L}$, que é:
+\[
+L^2=L_x^2+L_y^2+L_z^2
+\]
+ao seguinte operador:
+\[
+\hat{L}^2=\hat{L}_x^2+\hat{L}_y^2+\hat{L}_z^2.
+\]
+\end{itemize}
+\end{postulado}
+
+\begin{postulado}
+Em qualquer medição de uma grandeza física $\alpha$ num sistema quântico, os únicos possíveis valores que serão observados são os autovalores $(\alpha_i)_{i\in I}$ do operador correspondente $\hat{\alpha}$, ou seja, que satisfazem a seguinte equação:
+\[
+\hat{\alpha}\psi_i=\alpha_i\psi_i.
+\]
+Além disso, se $\psi_i$ é um autovetor de $\hat{\alpha}$ com autovalor $\alpha_i$, então uma medição de $\alpha$ sobre $\psi_i$ sempre retornará o valor $\alpha_i$.
+\end{postulado}
+
+\begin{postulado}
+Se um sistema quântico é descrito por uma função de onda $\psi$, então o valor esperado de uma grandeza física $\alpha$ é dado por:
+\[
+\langle\alpha\rangle=\int_{\mathbb{R}^n}\psi^*\hat{\alpha}\psi\dif x.
+\]
+\end{postulado}
+
+\begin{postulado}
+Um sistema quântico temporal:
+\[
+\begin{array}{rcl}
+\Psi:\mathbb{R}^n\times\mathbb{R}&\rightarrow&\mathbb{C}\\
+(x,t)&\mapsto&\Psi(x,t)
+\end{array}
+\]
+evolui no tempo de acordo com a \textbf{equação de Schrödinger temporal}:
+\[
+\hat{H}\Psi(x,t)=-\frac{\hslash}{i}\pd{\Psi(x,t)}{t},
+\]
+em que $\hat{H}$ é o operador Hamiltoniano:
+\[
+\hat{H}=-\frac{\hslash^2}{2m}\nabla^2+V(x,t).
+\]
+\end{postulado}
+
+\section{Princípio da Incerteza}
+
+Postulamos que, se uma função de onda $\psi$ é um autovetor de um operador $\hat{\alpha}$ com autovalor $a$, então uma medição da grandeza física $\alpha$ sempre retornará o valor $a$. Assim, se $\psi$ é simultaneamente um autovetor de dois operadores $\hat{\alpha}$ e $\hat{\beta}$, ou seja, se $\hat{\alpha}(\psi)=a\psi$ e $\hat{\beta}\psi=b\psi$, então podemos associar simultaneamente as grandezas físicas $\alpha$ e $\beta$ aos valores definitivos $a$ e $b$. Portanto, seria interessante saber quando podemos encontrar um ``conjunto completo''\footnote{Se o espaço tem dimensão finita, podemos simplesmente definir um conjunto completo como uma base. Em alguns outros casos, podemos definir um conjunto completo como uma base de Schauder.} $(e_i)_{i\in I}$ de autovetores simultâneos de $\hat{\alpha}$ e $\hat{\beta}$. Sabemos que, num espaço dimensional de dimensão finita, uma família de operadores é simultaneamente diagonalizável se e somente se eles são diagonalizáveis e se comutam um com outro.
 
 \printindex
 

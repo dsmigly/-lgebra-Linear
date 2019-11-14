@@ -1,5 +1,11 @@
 \begin{theindex}
 
+  \item Autoespa\IeC {\c c}o, 31
+  \item Autovalor, 31
+  \item Autovetor, 31
+
+  \indexspace
+
   \item Espa\IeC {\c c}o Vetorial
     \subitem Base, 9
     \subitem Base dual, 19
@@ -8,6 +14,10 @@
     \subitem Soma direta, 14
     \subitem Teorema do N\IeC {\'u}cleo-Imagem, 18
     \subitem Transforma\IeC {\c c}\IeC {\~o}es Lineares, 17
+
+  \indexspace
+
+  \item Spectrum, 31
 
   \indexspace
 

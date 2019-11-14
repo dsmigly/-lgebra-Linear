@@ -1,0 +1,752 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{estilosexercicios}
+
+% ---------------------------------------------------
+\title{Álgebra Linear}
+\author{MAT5730}
+\date{2 semestre de 2019}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+\begin{comment}
+
+\begin{center}
+\large\textbf{\textcolor{Floresta}{Lista 1}}\\
+\end{center}
+
+\end{comment}
+
+\section{\textcolor{Floresta}{Lista para P3}}
+
+\begin{exercicio}
+ Seja $T$ um operador autoadjunto. Mostre que $\Ker T^2 = \Ker T.$
+\end{exercicio} 
+
+\solucao{Vamos mostrar as duas inclusões:
+\begin{itemize}
+    \item $\Ker T \subset \Ker T^2:$ é óbvio, bastando notar que, se $x \in \Ker T,$ então $T(x) = 0,$ e consequentemente \[T^2(x) = T(\textcolor{Red}{T(x)}) = T(\textcolor{Red}{0}) = 0.\]
+    
+    \item $\Ker T^2 \subset \Ker T:$ Sendo $T$ autoadjunto, então para todos $u, w \in V$ temos que
+\[
+\prin{T(u), w} = \prin{u, T(w)}
+\]
+Escrevendo $w = T(v),$ ficamos com
+\[
+\prin{T(u), \textcolor{Mahogany}{w}} = \prin{u, T(\textcolor{Mahogany}{w})} \Rightarrow \prin{T(u), \textcolor{Mahogany}{T(v)}} = \prin{u, T(\textcolor{Mahogany}{T(v)})} \Rightarrow \prin{T(u), T(v)} = \prin{u, T^2(v)}
+\]
+Seja $x \in \Ker T^2.$ Então, $T^2(x) = 0.$ Fazendo $u = v = x$ na expressão acima, vem
+\[\prin{T(x), T(x)} = \prin{x, \textcolor{PineGreen}{T^2(x)}} = \prin{x, \textcolor{PineGreen}{0}} = 0 \Rightarrow \prin{T(x), T(x)} = 0 \Rightarrow \norm{T(x)}^2 = 0 \Rightarrow T(x) = 0.\]
+Portanto, concluímos que $x \in \Ker T.$
+\end{itemize}
+Logo, $\Ker T^2 = \Ker T$ se $T$ for autoadjunto.
+}
+
+\begin{exercicio}
+ 
+Seja $V$ um espaço complexo com produto interno. Prove que se $\prin{T(v), v}$ é real para
+qualquer $v \in V,$ então $T$ é autoadjunto.
+
+\end{exercicio}
+\solucao{$(\Rightarrow)$ Seja $T$ um operador auto-adjunto. Então, sabemos que $T^{*} = T.$ Para mostrar que certo $z \in \mathbb{C}$ é real, basta verificar que $z = \overline{z}.$ Dado  $v \in V,$ tem-se que
+\[
+\langle T(v), v \rangle = \langle v, \textcolor{Brown}{T^{*}}(v) \rangle = \langle v, \textcolor{Brown}{T}(v) \rangle = \overline{\langle T(v),v \rangle} \Rightarrow \langle T(v), v \rangle \in \mathbb{R}
+\]
+$(\Leftarrow)$ Dado $v \in V,$ se $\prin{T(v), v} \in \mathbb{R}$, então temos que $\prin{T(v), v} = \overline{\prin{T(v), v}}.$ Assim, para todo $v\in V$:
+\[
+\langle T(v), v \rangle = \overline{ \langle T(v), v \rangle } = \overline{ \langle v, T^{*}(v) \rangle } = \langle T^{*}(v), v \rangle \Rightarrow \langle (T - T^{*})(v), v \rangle = 0.
+\]
+Como $V$ é um espaço vetorial sobre $\mathbb{C},$ então pelo Exercício 19 da Lista 5 podemos concluir que $T - T^{*}=0,$ acarretando $T = T^{*}.$
+}
+
+\begin{exercicio}
+ Sejam $S$ e $T$ autoadjuntos. Mostre que $ST$ é autoadjunto se e somente se $ST = TS.$
+\end{exercicio}
+\solucao{Se $S$ e $T$ são autoadjuntas, então $S = S^{*}$ e $T = T^{*}.$ Logo, temos que
+\[
+ST=(ST)^*\Leftrightarrow ST=T^*S^*\Leftrightarrow ST=TS,
+\]
+ou seja, $ST$ é autoadjunta se e somente se $ST=TS$.}
+
+\begin{exercicio}
+ 
+Para cada uma das seguintes matrizes simétricas $A,$, encontre uma matriz ortogonal $P$ para a qual a matriz $P^tAP$ seja diagonal, ou seja, encontre a Forma Alternativa de cada matriz:
+
+\dividiritensdiv{3}{
+\task[\pers{a}] $A = \begin{pmatrix}
+1 & 2 \\
+2 & -2
+\end{pmatrix}$
+\task[\pers{b}] $B = \begin{pmatrix}
+5 & 4 \\
+4 & -1
+\end{pmatrix}$
+\task[\pers{c}] $C = \begin{pmatrix}
+7 & 3 \\
+3 & -1
+\end{pmatrix}$
+}
+\end{exercicio}
+\solucao{
+\dividiritens{
+\task[\pers{a}] Vamos primeiramente encontrar os autovalores e autovetores de $A.$ Temos:
+\[
+p_A(\lambda) = \det(A - \lambda I) = \det \left( \begin{pmatrix}
+1 & 2 \\
+2 & -2
+\end{pmatrix} - \begin{pmatrix}
+\lambda & 0 \\
+0 & \lambda
+\end{pmatrix}  \right) = \det \left( \begin{pmatrix}
+1-\lambda & 2 \\
+2 & -2-\lambda
+\end{pmatrix}  \right) = \lambda^2 + \lambda - 6
+\]
+Como $p_A(\lambda) = (\lambda + 3)(\lambda - 2),$ os autovalores são $\lambda_1 = -3$ e $\lambda_2 = 2.$ Encontremos autovetores associados a eles. Seja $v_i = (x_i,y_i)$ um autovetor associado a $\lambda_i, i =1,2.$ Então
+\[
+Av=  \lambda_1 v_1 \Rightarrow \begin{pmatrix}
+1 & 2 \\
+2 & -2
+\end{pmatrix} \begin{pmatrix}
+x_1 \\ y_1
+\end{pmatrix} =  \begin{pmatrix}
+-3x_1 \\ -3y_1
+\end{pmatrix} \Rightarrow \begin{cases}
+4x_1+2y_1 = 0 \\
+2x_1 + y_1 = 0
+\end{cases} \Rightarrow v_1 = y_1 \left(-\frac{1}{2}, 1 \right).
+\]
+Podemos tomar $v_1 = (-1,2)$ como autovetor associado a $\lambda_1 = -3.$ Analogamente,
+\[
+Av=  \lambda_2 v_2 \Rightarrow \begin{pmatrix}
+1 & 2 \\
+2 & -2
+\end{pmatrix} \begin{pmatrix}
+x_2 \\ y_2
+\end{pmatrix} =  \begin{pmatrix}
+2x_2 \\ 2y_2
+\end{pmatrix} \Rightarrow \begin{cases}
+-x_2+2y_2 = 0 \\
+2x_2 - 4y_2 = 0
+\end{cases} \Rightarrow v_2 = y_2 \left(2, 1 \right).
+\]
+
+Logo, temos que $v_2 = (2,1)$ é um autovetor associado a $\lambda_2 = 2.$ 
+Podemos escolher as colunas da matriz $P$ como autovetores ortogonais normalizados de $A,$ e os elementos diagonais serão os autovalores associados.
+Já que $A$ é simétrica, temos que$\prin{v_1, v_2} = 0.$ Basta agora normalizá-los. Dado que $\norm{v_1} = \norm{v_2} = \sqrt{5},$ os autovetores ortogonais normalizados de $A$ que procuramos são
+\[
+w_1 = \frac{v_1}{\norm{v_1}} = \frac{(-1,2)}{\sqrt{5}} = \left(-\frac{\sqrt{5}}{5}, \frac{2 \sqrt{5}}{5} \right) \quad \mbox{e} \quad w_2 = \frac{v_2}{\norm{v_2}} = \frac{(2,1)}{\sqrt{5}} = \left(\frac{2\sqrt{5}}{5}, \frac{ \sqrt{5}}{5} \right) 
+\]
+Portanto, temos que
+\[
+P = \begin{pmatrix}
+-\frac{\sqrt{5}}{5} & \frac{2\sqrt{5}}{5} \\
+\frac{2 \sqrt{5}}{5} & \frac{\sqrt{5}}{5} 
+\end{pmatrix}
+\]
+De fato, uma rápida verificação confirma que
+\[
+ \begin{pmatrix}
+-3 & 0 \\
+0 & 2
+\end{pmatrix} = \begin{pmatrix}
+-\frac{\sqrt{5}}{5} & \frac{2\sqrt{5}}{5} \\
+\frac{2 \sqrt{5}}{5} & \frac{\sqrt{5}}{5} 
+\end{pmatrix}
+ \begin{pmatrix}
+1 & 2 \\
+2 & -2
+\end{pmatrix}
+\begin{pmatrix}
+-\frac{\sqrt{5}}{5} & \frac{2\sqrt{5}}{5} \\
+\frac{2 \sqrt{5}}{5} & \frac{\sqrt{5}}{5} 
+\end{pmatrix}
+\]
+
+\task[\pers{b}] Encontremos os autovalores e autovetores de $B:$
+\[
+p_B(\lambda) = \det(B - \lambda I) = \det \left( \begin{pmatrix}
+5 & 4 \\
+4 & -1
+\end{pmatrix} - \begin{pmatrix}
+\lambda & 0 \\
+0 & \lambda
+\end{pmatrix}  \right) = \det \left( \begin{pmatrix}
+5-\lambda & 4 \\
+4 & -1-\lambda
+\end{pmatrix}  \right) = \lambda^2 - 4\lambda - 21
+\]
+Como $p_B(\lambda) = (\lambda + 3)(\lambda - 7),$ os autovalores são $\lambda_1 = -3$ e $\lambda_2 = 7.$ Encontremos autovetores associados a eles. Seja $v_i = (x_i,y_i)$ um autovetor associado a $\lambda_i, i =1,2.$ Então
+\[
+Bv=  \lambda_1 v_1 \Rightarrow \begin{pmatrix}
+5 & 4 \\
+4 & -1
+\end{pmatrix} \begin{pmatrix}
+x_1 \\ y_1
+\end{pmatrix} =  \begin{pmatrix}
+-3x_1 \\ -3y_1
+\end{pmatrix} \Rightarrow \begin{cases}
+8x_1+4y_1 = 0 \\
+4x_1 + 2y_1 = 0
+\end{cases} \Rightarrow v_1 = y_1 \left(-\frac{1}{2}, 1 \right).
+\]
+Podemos tomar $v_1 = (-1,2)$ como autovetor associado a $\lambda_1 = -3.$ Analogamente,
+\[
+Bv=  \lambda_2 v_2 \Rightarrow \begin{pmatrix}
+5 & 4 \\
+4 & -1
+\end{pmatrix} \begin{pmatrix}
+x_2 \\ y_2
+\end{pmatrix} =  \begin{pmatrix}
+7x_2 \\ 7y_2
+\end{pmatrix} \Rightarrow \begin{cases}
+-2x_2+4y_2 = 0 \\
+4x_2 - 8y_2 = 0
+\end{cases} \Rightarrow v_2 = y_2 \left(2, 1 \right).
+\]
+
+Logo, temos que $v_2 = (2,1)$ é um autovetor associado a $\lambda_2 = 7.$ 
+Sendo $B$ simétrica, $\prin{v_1, v_2} = 0.$ Basta agora normalizá-los. Dado que $\norm{v_1} = \norm{v_2} = \sqrt{5},$ os autovetores ortogonais normalizados de $B$ que procuramos são
+\[
+w_1 = \frac{v_1}{\norm{v_1}} = \frac{(-1,2)}{\sqrt{5}} = \left(-\frac{\sqrt{5}}{5}, \frac{2 \sqrt{5}}{5} \right) \quad \mbox{e} \quad w_2 = \frac{v_2}{\norm{v_2}} = \frac{(2,1)}{\sqrt{5}} = \left(\frac{2\sqrt{5}}{5}, \frac{ \sqrt{5}}{5} \right) 
+\]
+Portanto, temos que
+\[
+P = \begin{pmatrix}
+-\frac{\sqrt{5}}{5} & \frac{2\sqrt{5}}{5} \\
+\frac{2 \sqrt{5}}{5} & \frac{\sqrt{5}}{5} 
+\end{pmatrix}
+\]
+Assim,
+\[
+ \begin{pmatrix}
+-3 & 0 \\
+0 & 7
+\end{pmatrix} = \begin{pmatrix}
+-\frac{\sqrt{5}}{5} & \frac{2\sqrt{5}}{5} \\
+\frac{2 \sqrt{5}}{5} & \frac{\sqrt{5}}{5} 
+\end{pmatrix}
+ \begin{pmatrix}
+5 & 4 \\
+4 & -1
+\end{pmatrix}
+\begin{pmatrix}
+-\frac{\sqrt{5}}{5} & \frac{2\sqrt{5}}{5} \\
+\frac{2 \sqrt{5}}{5} & \frac{\sqrt{5}}{5} 
+\end{pmatrix}
+\]
+
+\task[\pers{c}] Encontremos os autovalores e autovetores de $C:$
+\[
+p_C(\lambda) = \det(C - \lambda I) = \det \left( \begin{pmatrix}
+7 & 3 \\
+3 & -1
+\end{pmatrix} - \begin{pmatrix}
+\lambda & 0 \\
+0 & \lambda
+\end{pmatrix}  \right) = \det \left( \begin{pmatrix}
+7-\lambda & 3 \\
+3 & -1-\lambda
+\end{pmatrix}  \right) = \lambda^2 - 6\lambda - 16
+\]
+Como $p_B(\lambda) = (\lambda + 2)(\lambda - 8),$ os autovalores são $\lambda_1 = -2$ e $\lambda_2 = 8.$ Encontremos autovetores associados a eles. Seja $v_i = (x_i,y_i)$ um autovetor associado a $\lambda_i, i =1,2.$ Então
+\[
+Cv=  \lambda_1 v_1 \Rightarrow \begin{pmatrix}
+7 & 3 \\
+3 & -1
+\end{pmatrix} \begin{pmatrix}
+x_1 \\ y_1
+\end{pmatrix} =  \begin{pmatrix}
+-2x_1 \\ -2y_1
+\end{pmatrix} \Rightarrow \begin{cases}
+9x_1+3y_1 = 0 \\
+3x_1 + y_1 = 0
+\end{cases} \Rightarrow v_1 = y_1 \left(-\frac{1}{3}, 1 \right).
+\]
+Podemos tomar $v_1 = (-1,3)$ como autovetor associado a $\lambda_1 = -2.$ Analogamente,
+\[
+Cv=  \lambda_2 v_2 \Rightarrow \begin{pmatrix}
+7 & 3 \\
+3 & -1
+\end{pmatrix} \begin{pmatrix}
+x_2 \\ y_2
+\end{pmatrix} =  \begin{pmatrix}
+8x_2 \\ 8y_2
+\end{pmatrix} \Rightarrow \begin{cases}
+-x_2+3y_2 = 0 \\
+3x_2 - 9y_2 = 0
+\end{cases} \Rightarrow v_2 = y_2 \left(3, 1 \right).
+\]
+
+Logo, temos que $v_2 = (3,1)$ é um autovetor associado a $\lambda_2 = 8.$ 
+Sendo $B$ simétrica, $\prin{v_1, v_2} = 0.$ Basta agora normalizá-los. Dado que $\norm{v_1} = \norm{v_2} = \sqrt{10},$ os autovetores ortogonais normalizados de $B$ que procuramos são
+\[
+w_1 = \frac{v_1}{\norm{v_1}} = \frac{(-1,3)}{\sqrt{10}} = \left(-\frac{\sqrt{10}}{10}, \frac{3 \sqrt{10}}{10} \right) \quad \mbox{e} \quad w_2 = \frac{v_2}{\norm{v_2}} = \frac{(3,1)}{\sqrt{10}} = \left(\frac{3\sqrt{10}}{10}, \frac{ \sqrt{10}}{10} \right) 
+\]
+Portanto, 
+\[
+P = \begin{pmatrix}
+-\frac{\sqrt{10}}{10} & \frac{3\sqrt{10}}{10} \\
+\frac{3 \sqrt{10}}{10} & \frac{\sqrt{10}}{10} 
+\end{pmatrix}
+\]
+Logo,
+\[
+ \begin{pmatrix}
+-2 & 0 \\
+0 & 8
+\end{pmatrix} = \begin{pmatrix}
+-\frac{\sqrt{10}}{10} & \frac{3\sqrt{10}}{10} \\
+\frac{3 \sqrt{10}}{10} & \frac{\sqrt{10}}{10} 
+\end{pmatrix}
+ \begin{pmatrix}
+7 & 3 \\
+3 & -1
+\end{pmatrix}
+\begin{pmatrix}
+-\frac{\sqrt{10}}{10} & \frac{3\sqrt{10}}{10} \\
+\frac{3 \sqrt{10}}{10} & \frac{\sqrt{10}}{10}  
+\end{pmatrix}
+\]
+} 
+}
+
+
+\begin{exercicio}
+
+Seja $T \in \mathcal{L}(\mathbb{C}^2)$ definido por $T(1, 0) = (1 + i, 2)$ e $T(0, 1) = (i, i).$ $T$ é normal?
+\end{exercicio}
+
+\solucao{Seja $A \in \mathcal{M}_2(\mathbb{C})$ a matriz que representa $T.$ Pelas informações do enunciado, se
+\[
+A = \begin{pmatrix}
+\alpha & \beta \\
+\gamma & \delta
+\end{pmatrix},
+\]
+devemos ter
+\[
+\begin{pmatrix}
+\alpha & \beta \\
+\gamma & \delta
+\end{pmatrix} \begin{pmatrix}
+1 \\ 0
+\end{pmatrix} =  \begin{pmatrix}
+1+i \\ 2
+\end{pmatrix} \quad \mbox{e} \quad \begin{pmatrix}
+\alpha & \beta \\
+\gamma & \delta
+\end{pmatrix} \begin{pmatrix}
+0 \\ 1
+\end{pmatrix} =  \begin{pmatrix}
+i \\ i
+\end{pmatrix}.
+\]
+Daí, segue que $\alpha = 1 + i, \gamma = 2, $ e $\beta = \delta = i.$ Portanto, a matriz de $T$ na base canônica de $\mathbb{C}^2$ é \[\begin{pmatrix}
+1+i & i \\
+2 & i
+\end{pmatrix}.\]
+Observe que a matriz adjunta $T^{*}$ corresponde ao hermitiano de $A,$ ou seja,
+\[
+[T^{*}]_{\mbox{can}} = A^{*} = A^{H} = \overline{A}^t.
+\]
+Logo, temos que a matriz procurada é
+\[[T^{*}]_{\mbox{can}} = A^{*} = \overline{\begin{pmatrix}
+1+i & i \\
+2 & i
+\end{pmatrix}}^t = \begin{pmatrix}
+1-i & -i \\
+2 & -i
+\end{pmatrix}^t = \begin{pmatrix}
+1-i & 2\\
+-i & -i
+\end{pmatrix}\]
+Observe que
+\[AA^{*} = \begin{pmatrix}
+1+i & i \\
+2 & i
+\end{pmatrix}\begin{pmatrix}
+1-i & 2\\
+-i & -i
+\end{pmatrix} = \begin{pmatrix}
+3 & 3 +2i\\
+3-2i & 5
+\end{pmatrix}
+\]
+\[
+A^{*}A = 
+\begin{pmatrix}
+1-i & 2\\
+-i & -i
+\end{pmatrix} \begin{pmatrix}
+1+i & i \\
+2 & i
+\end{pmatrix} =
+\begin{pmatrix}
+6 & 1+3i\\
+1-3i & 2
+\end{pmatrix}
+\]
+Logo $TT^{*} \neq T^{*}T$ nesse caso, ou seja, $T$ não é um operador normal.
+}
+
+\begin{exercicio}
+ Sejam $V$ um espaço unitário e $T \in \mathcal{L}(V)$ um operador normal. Mostre que
+\dividiritens{
+\task[\pers{a}] $T$ é autoadjunto se e somente se $\mbox{Spec }T \subseteq \mathbb{R}.$
+\task[\pers{b}] $T$ é unitário se e somente se, para todo $\lambda \in \mbox{Spec }T, \abs{\lambda} = 1.$
+}
+\end{exercicio}
+\solucao{
+\dividiritens{
+\task[\pers{a}] Seja $\lambda$ um autovalor de $T.$ Considere $v \neq 0$ um autovetor associado a $\lambda,$ ou seja, tal que $T(v) = \lambda v.$ Observe que
+\[
+\begin{array}{rcl}
+\lambda \prin{v,v} &=& \prin{\textcolor{Cerulean}{\lambda v},v } \\
+&=& \prin{\textcolor{Cerulean}{T(v)},v } \\
+&=& \prin{v, \textcolor{Blue}{T^{*}}(v)} \\
+&=& \prin{v, \textcolor{Blue}{T}(v)} \\
+&=& \overline{\prin{\textcolor{Cerulean}{T(v)},v}} \\
+&=& \overline{\prin{\textcolor{Cerulean}{\lambda v},v}} \\
+&=& \overline{\lambda} \prin{v,v}
+\end{array}
+\]
+Como $v \neq 0,$ então $\prin{v,v} \neq 0.$ Portanto,
+\[
+\lambda \prin{v,v} = \overline{\lambda} \prin{v,v} \Rightarrow \lambda = \overline{\lambda} \Rightarrow \lambda \in \mathbb{R}.
+\]
+A recíproca é análoga.
+\task[\pers{b}] Sabemos que um operador unitário preserva o produto interno, isto é, para todos $u, v \in V,$
+\[
+\prin{T(u), T(v) } = \prin{u,v}
+\]
+tome $\lambda$ um autovalor de $T$ e  $w \neq 0$ um autovetor associado a $\lambda.$ Então, $T(w) = \lambda w,$ e daí
+\[
+\prin{w,w} = \prin{T(w), T(w) } = \prin{\lambda w, \lambda w} = \lambda \overline{\lambda} \prin{w,w} = \abs{\lambda}^2 \prin{w,w}
+\]
+Sendo $\prin{w,w} \neq 0,$ pois $w$ é um autovetor, então concluímos que $\abs{\lambda}^2 = 1 \Rightarrow \abs{\lambda} = 1.$
+Novamente, a recíproca é análoga.
+}
+}
+
+\begin{exercicio}\textcolor{red}{incompleto}
+Seja $V = \mathbb{R}^n$ com produto interno usual e $T \in \mathcal{L}(\mathbb{R}^n).$ Suponhamos que $v_1 = (1, 1, \ldots , 1), v_2 = (1, 1, \ldots , 1, 0), \ldots , v_n = (1, 0, .\ldots, 0)$ sejam autovetores de $T.$
+Mostre que $T$ é autoadjunto se e somente se $T$ possui um único autovalor.
+\end{exercicio}
+\solucao{$(\Rightarrow)$ Suponha que $T$ seja autoadjunto. Considere $\lambda_i \in \mathbb{R}$ (pelo exercício 40) autovalores distintos de $T.$ Temos portanto que:
+\[
+\begin{array}{ccc}
+T(1, 1, \ldots , 1, 1, 1) &=& \lambda_1(1, 1, \ldots , 1, 1, 1) \\
+T(1, 1, \ldots , 1, 1, 0) &=& \lambda_2(1, 1, \ldots , 1, 1, 0) \\
+T(1, 1, \ldots , 1, 0, 0) &=& \lambda_3(1, 1, \ldots , 1, 0, 0)  \\
+& \vdots & \\
+T(1, 0, \ldots , 0, 0, 0) &=& \lambda_n(1, 0, \ldots , 0, 0, 0) \\
+\end{array}
+\]
+Assim, veja que
+\[
+T(2, 1, 0, \ldots, 0) = 2T(v_{n}) + T(v_{n-1}) = (2
+\]
+
+}
+
+\begin{exercicio}
+Consideremos $V = \mathbb{C}$ como um $\mathbb{R}$-espaço vetorial.
+\dividiritens{
+\task[\pers{a}] Mostre que $\prin{\alpha, \beta} = \mbox{Re}(\alpha \overline{\beta})$ é um produto interno em $\mathbb{C}.$
+
+\task[\pers{b}] Para cada $\gamma \in V,$ seja a função $M_{\gamma} \colon \mathbb{C} \to \mathbb{C}$ dada por $M_{\gamma}(\alpha) = \gamma \alpha.$ Mostrar
+que $(M_{\gamma})^{*} = M_{\overline{\gamma}}.$
+
+\task[\pers{c}] Para quais $\gamma \in \mathbb{C}$, $M_{\gamma}$ é autoadjunto?
+
+\task[\pers{d}] Para quais $\gamma \in \mathbb{C}$, $M_{\gamma}$ é unitário?
+}
+\end{exercicio}
+\solucao{
+\dividiritens{
+\task[\pers{a}] Vamos verificar os axiomas de produto interno:
+\begin{itemize}
+    \item[$\clubsuit$] $\prin{\alpha+\beta, \gamma} = \prin{\alpha, \gamma} + \prin{\beta, \gamma}.$
+    Sejam $\alpha = \alpha_1 + i \alpha_2, \beta = \beta_1 + \beta_2 i, \gamma = \gamma_1 + \gamma_2 i \in \mathbb{C}.$ Então
+    \[
+    \prin{\alpha+\beta, \gamma} =  \mbox{Re}((\alpha+\beta) \overline{\gamma}) =  \mbox{Re}((\alpha_1 + i \alpha_2+\beta_1 + \beta_2 i) \overline{ \gamma_1 + \gamma_2 i}) = \]\[ \mbox{Re}(((\alpha_1 + \beta_1) + i (\alpha_2+\beta_2))(\gamma_1 - \gamma_2 i)) = (\alpha_1 + \beta_1)\gamma_1 + (\alpha_2+\beta_2)\gamma_2 = 
+    \]
+    \item[$\textcolor{Red}{\varheart}$]
+    \item[$\spadesuit$]
+    \item[$\textcolor{Red}{\vardiamond}$]
+\end{itemize}
+}
+
+}
+\begin{exercicio} Para cada uma das seguintes matrizes $A,$ encontre uma matriz ortogonal $T$ tal que a matriz $T^tAT$ seja diagonal.
+\dividiritens{
+\task[\pers{a}] $A = \begin{bmatrix}
+11 & 2 & -8 \\
+2 & 2 & 10 \\
+-8 & 10 & 5
+\end{bmatrix}$
+\task[\pers{b}] $A = \begin{bmatrix}
+5 & -1 & -1 \\
+-1 & 5 & -1 \\
+-1 & -1 & 5
+\end{bmatrix}$
+\task[\pers{c}] $A = \begin{bmatrix}
+0 & 0 & 1 \\
+0 & 1 & 0 \\
+1 & 0 & 0
+\end{bmatrix}$
+}
+\end{exercicio}
+\solucao{
+\dividiritens{
+\task[\pers{a}]
+\task[\pers{b}]
+\task[\pers{c}] Vamos encontrar os autovalores de $A.$ Observe que o polinômio característico de $A$ será $p_A(\lambda) = \lambda^3 - \lambda^2 - \lambda + 1 = (\lambda - 1)^2(\lambda + 1).$ Logo, os autovalores são $\lambda_1 = 1$ e $\lambda_2 = -1.$ Encontremos os respectivos autovetores associados:
+\begin{itemize}
+    \item Para $\lambda_1 = 1$ e $v = (x,y,z),$ temos
+    \[
+    (A - I)v = 0 \Rightarrow \begin{bmatrix}
+-1 & 0 & 1 \\
+0 & 0 & 0 \\
+1 & 0 & -1
+\end{bmatrix}\begin{bmatrix}
+x \\
+y \\
+z
+\end{bmatrix} = \begin{bmatrix}
+0\\
+0 \\
+0
+\end{bmatrix} \Rightarrow \begin{cases}
+-x+z = 0 \\
+x - z = 0
+\end{cases} \Rightarrow v = x(1,0,1) + y(0,1,0)
+    \]
+    Logo, temos que $\Ker(A - I) = \langle (1,0,1), (0,1,0) \rangle,$ e $(1,0,1)$ e $(0,1,0)$ são autovetores associados a $\lambda_1 = 1.$
+      \item Para $\lambda_2 = -1$ e $v = (x,y,z),$ temos
+    \[
+    (A + I)v = 0 \Rightarrow \begin{bmatrix}
+1 & 0 & 1 \\
+0 & 2 & 0 \\
+1 & 0 & 1
+\end{bmatrix}\begin{bmatrix}
+x \\
+y \\
+z
+\end{bmatrix} = \begin{bmatrix}
+0\\
+0 \\
+0
+\end{bmatrix} \Rightarrow \begin{cases}
+x+z = 0 \\
+2y = 0 \\
+x+z=0
+\end{cases} \Rightarrow v = x(1,0,-1)
+    \]
+    Logo, temos que $\Ker(A + I) = \langle (1,0,-1) \rangle,$ e $(1,0,-1)$é um autovetor associado a $\lambda_2 = -1.$
+\end{itemize}
+Logo, a matriz $T$ procurada é 
+\[
+T = \begin{bmatrix}
+1 & 0 & 1 \\
+0 & 1 & 0 \\
+1 & 0 & -1
+\end{bmatrix}
+\]
+Assim, segue que
+\[
+D = T^tAT \Rightarrow \begin{bmatrix}
+1 & 0 & 0 \\
+0 &  1 & 0\\
+0 & 0 & -1
+\end{bmatrix} = \begin{bmatrix}
+1 & 0 & 1 \\
+0 & 1 & 0 \\
+1 & 0 & -1
+\end{bmatrix}\begin{bmatrix}
+0 & 0 & 1 \\
+0 & 1 & 0 \\
+1 & 0 & 0
+\end{bmatrix}\begin{bmatrix}
+1 & 0 & 1 \\
+0 & 1 & 0 \\
+1 & 0 & -1
+\end{bmatrix}
+\]
+Observe que $T$ é ortogonal, pois $A$ é simétrica.
+}
+}
+
+
+\begin{exercicio}\textcolor{red}{conta grande}
+Para cada uma das seguintes matrizes $A,$ mostre que ela é uma matriz normal e ache uma matriz unitária $P$ tal que $\overline{P^t}AP$ seja diagonal.
+\dividiritensdiv{2}{
+\task[\pers{a}] $\begin{bmatrix}
+1 & 1 \\
+i & 3+2i
+\end{bmatrix}$
+\task[\pers{b}] $\begin{bmatrix}
+2 & i \\
+i & 2
+\end{bmatrix}$
+}
+\end{exercicio}
+\solucao{
+\dividiritens{
+\task[\pers{a}]
+}
+}
+
+\begin{exercicio}
+Mostre que se $T$ é normal, então $\Ker T = \Ker T^{*}$ e $\mbox{Im } T = \mbox{Im } T^{*}.$
+\end{exercicio}
+\solucao{Lembrando que, como $T$ é normal, então $TT^{*} = T^{*}T:$
+\begin{itemize}
+    \item $\Ker T = \Ker T^{*}:$ Seja $v \in \Ker T.$ Então, $T(v) = 0.$ Logo,
+    \[
+    T(T^{*}(v)) = T^{*}(\textcolor{Green}{T(v)}) = T^{*}(\textcolor{Green}{0}) = 0 \Rightarrow T^{*}(v) = 0.
+    \]
+    Assim, $v \in \Ker T^{*}.$ Assim, $\Ker T \subset \Ker T^{*}.$ Analogamente, verifica-se que $\Ker T^{*} \subset \Ker T.$
+    \item $\mbox{Im } T = \mbox{Im } T^{*}:$ Mostremos equivalentemente que $\mbox{Im }(TT^{*}) = \mbox{Im }(T).$ Se $TT^{*}(x) = 0,$ então
+    \[
+    \prin{TT^{*}(x),x} = \prin{T^{*}T(x),x} = \prin{T(x),T(x)} = 0 \Rightarrow T(x) = 0
+    \]
+    Logo $\Ker(TT^{*}) \subset \Ker(T),$ e temos que $T(x) = 0$ implica $T^{*}(T(x)) = T(T^{*}(x)) = 0,$ de onde segue que $\Ker(T) \subset \Ker(TT^{*})$ e assim $\Ker(T) = \Ker(TT^{*}).$ Logo, $\dim(\mbox{Im }(T)) = \dim(\mbox{Im }(TT^{*})).$ Assim, concluímos que $\mbox{Im } T = \mbox{Im } T^{*}.$
+    
+\end{itemize}
+}
+
+\begin{exercicio}
+Mostre que $T \in \mathcal{L}(V)$ é normal se, e somente se, $\norm{T(v)} = \norm{T^{*}(v)} \ \forall v \in V.$
+\end{exercicio}
+\solucao{Mostremos que $\prin{T(v), T(v)} = \prin{T^{*}(v), T^{*}(v)},$ para todo $v \in V.$ De fato,
+\[
+\prin{T(v), T(v)} = \prin{v, T^{*}T(v)} = \prin{v, TT^{*}(v)} = \prin{T^{*}(v), T^{*}(v)}.
+\]
+Como $\norm{T(v)} = \sqrt{\prin{T(v), T(v)}}$ e $\norm{T^{*}(v)} = \sqrt{\prin{T^{*}(v), T^{*}(v)}},$ segue o resultado desejado. 
+}
+
+\begin{exercicio}
+Mostre que uma matriz triangular é normal se, e somente se, ela é diagonal.
+\end{exercicio}
+\solucao{}
+\begin{exercicio}
+Um operador $S$ chama-se anti-autoadjunto se $S^{*} = -S.$ Mostre que um operador $T$ é autoadjunto se, e somente se, o operador $iT$ é anti-autoadjunto.
+\end{exercicio}
+\solucao{$(\Rightarrow)$ Se $T$ é autoadjunto, então $T^{*} = T.$ Logo,
+\[
+(iT)^{*} = \overline{i}T^{*} = iT^{*} = iT
+\]
+Portanto, $iT$ é anti-autoadjunto.
+$(\Leftarrow)$ Se $iT$ é anti-autoadjunto, então
+\[
+iT = (iT)^{*} = \overline{i}T^{*} = iT^{*} 
+\]
+Portanto, $T^{*} = T$ e $T$ é autoadjunto.
+} 
+
+\begin{exercicio}
+Seja $V$ um espaço euclidiano e $T \in \mathcal{L}(V)$ é um operador antiautoadjunto. Prove que se $\dim_{\mathbb{R}}(V)$ é ímpar então $T$ é degenerado.
+\end{exercicio}
+\solucao{}
+
+\begin{exercicio}
+Seja $V$ um espaço euclidiano e $T \in \mathcal{L}(V).$ Prove que $T$ é antiautoadjunto se, e somente se, $\prin{T(v), v} = 0 \ \forall v \in V.$
+\end{exercicio}
+\solucao{}
+
+\begin{exercicio}
+Um operador auto-adjunto $T \in \mathcal{L}(V)$ chama-se \emph{positivo definido} (\emph{positivo semidefinido}) se $\prin{T(v), v} > 0$ (equivalentemente, $\prin{T(v), v} \ge 0$) para qualquer vetor $v \in V.$ De maneira semelhante, uma matriz $A \in \mathcal{M}_n(K)$ chama-se \emph{positiva definida} (\emph{positiva semidefinida}) se o operador $A \in \mathcal{L}(K^n)$ cuja matriz na base canônica de $K^n$
+é A, é positiva (não negativo).
+\textcolor{Red}{NAÕ EXISTE PERGUNTA! CRIAR DEPOIS}
+\end{exercicio}
+\solucao{}
+\begin{exercicio} Determine quais das seguintes matrizes são positivo definidas (semidefinidas):
+\dividiritens{
+\task[\pers{a}] $\begin{pmatrix}
+1 & 1 \\
+1 & 1
+\end{pmatrix}$
+\task[\pers{b}] $\begin{pmatrix}
+0 & i \\
+-i & 0
+\end{pmatrix}$
+\task[\pers{c}] $\begin{pmatrix}
+0 & 1 \\
+-1 & 0
+\end{pmatrix}$
+\task[\pers{d}] $\begin{pmatrix}
+1 & 1 \\
+0 & 1
+\end{pmatrix}$
+\task[\pers{e}] $\begin{pmatrix}
+2 & 1 \\
+1 & 2
+\end{pmatrix}$
+\task[\pers{f}] $\begin{pmatrix}
+1 & 2 \\
+2 & 1
+\end{pmatrix}$
+}
+\end{exercicio}
+\solucao{}
+\begin{exercicio}
+Decomponha num produto $T = SU$ de um operador auto-adjunto positivo definido $S$ e um operador ortogonal $U$ cada um dos operadores $T$ representados numa base ortonormal pelas seguintes matrizes:
+\dividiritens{
+\task[\pers{a}] $\begin{pmatrix}
+2 & -1 \\
+2 & 1
+\end{pmatrix}$
+\task[\pers{b}] $\begin{pmatrix}
+1 & -4 \\
+1 & 4
+\end{pmatrix}$
+\task[\pers{c}] $\begin{pmatrix}
+4 & -2 &2 \\
+4 & 4 & 1 \\
+-2 & 4 & 2
+\end{pmatrix}$
+}
+\end{exercicio}
+\solucao{}
+
+\begin{exercicio}
+Determine a matriz de cada uma das formas bilineares abaixo, relativamente à base especificada:
+\dividiritens{
+\task[\pers{a}] $f \colon \mathbb{R}^4 \times \mathbb{R}^4 \to \mathbb{R}$ dada por $f(u,v) = \langle u,v \rangle,$ $\forall u,v \in \mathbb{R}^4,$ com relação à base
+\[
+\mathcal{B} = \{ (-2,0,3,1), (1,2,1,-1), (0,1,2,-1),(1,2,3,1) \}
+\]
+\task[\pers{b}] $f \colon \mathbb{C}^3 \times \mathbb{C}^3 \to \mathbb{C}$ dada por $f(u,v) = \langle u, a \rangle \langle b, v \rangle,$ com $a,b \in \mathbb{C}^3$ fixos, com relação à base canônica e $\mathbb{C}^3$ 
+\task[\pers{c}] $f \colon \mathbb{R}^3 \times \mathbb{R}^3 \to \mathbb{C}$ dada por $f(u,v) = \langle T(u), v \rangle,$ onde $T \in \mathcal{L}(\mathbb{R}^3),$ com relação à base canônica de $\mathbb{R}^3.$  
+}
+\end{exercicio}
+\solucao{
+\dividiritens{
+\task[\pers{a}] Sejam $u_1 = (-2,0,3,1), u_2 = (1,2,1,-1), u_3 = (0,1,2,-1)$ e $u_4 = (1,2,3,1).$ Tomando $A = [a_{ij}],$ com $a_{ij} = f(u_i, u_j),$ obtemos
+\[
+\begin{array}{cccc}
+a_{11} = f(u_1,u_1) = 14 & a_{12} = f(u_1, u_2) = 0 & a_{13} = f(u_1, u_3) = 5 & a_{14} = f(u_1,u_4) = 8 \\
+a_{21} = f(u_2,u_1) = 0 & a_{22} = f(u_2, u_2) = 7 & a_{23} = f(u_2, u_3) = 5 & a_{24} = f(u_2,u_4) = 7 \\
+a_{31} = f(u_3,u_1) = 5 & a_{32} = f(u_3, u_2) = 5 & a_{33} = f(u_3, u_3) = 6 & a_{34} = f(u_3,u_4) = 7 \\
+a_{41} = f(u_4,u_1) = 8 & a_{42} = f(u_4, u_2) = 7 & a_{43} = f(u_4, u_3) = 7 & a_{44} = f(u_4,u_4) = 15 \\
+\end{array}
+\]
+
+Assim, 
+\[
+A =\begin{pmatrix}
+14 &0 & 5 &  8 \\
+0 &  7 &  5 &7 \\
+5 &  5 & 6 & 7 \\
+ 8 &  7 &  7 &  15
+\end{pmatrix}
+\]
+é a matriz de $f$ na base $\mathcal{B} = \{ u_1, u_2, u_3, u_4 \}.$
+}
+}
+
+
+\end{document}
