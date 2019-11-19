@@ -106,7 +106,7 @@ a & b & c & d\\
 \begin{exercicio}
 Encontre o polinômio característico e o polinômio minimal da matriz
 \[
-\begin{bmatrix}
+A = \begin{bmatrix}
 1 & -1 & 1 & -1 & 1 & -1 \\
 1 & -1 & 1 & -1 & 1 & -1 \\
 1 & -1 & 1 & -1 & 1 & -1 \\
@@ -115,9 +115,152 @@ Encontre o polinômio característico e o polinômio minimal da matriz
 1 & -1 & 1 & -1 & 1 & -1
 \end{bmatrix} \in \mathcal{M}_6(K)
 \]
- 
 \end{exercicio}
-\solucao{}
+\solucao{
+Temos que
+\[
+p_A(\lambda) = \det(A - \lambda I) = \det \begin{bmatrix}
+1-\lambda & -1 & 1 & -1 & 1 & -1 \\
+1 & -1-\lambda & 1 & -1 & 1 & -1 \\
+1 & -1 & 1-\lambda & -1 & 1 & -1 \\
+1 & -1 & 1 & -1-\lambda & 1 & -1 \\
+1 & -1 & 1 & -1 & 1-\lambda & -1 \\
+1 & -1 & 1 & -1 & 1 & -1-\lambda
+\end{bmatrix} =  \]\[ \det \begin{bmatrix}
+-\lambda & -1 & 1 & -1 & 1 & -1 \\
+- \lambda & -1-\lambda & 1 & -1 & 1 & -1 \\
+0 & -1 & 1-\lambda & -1 & 1 & -1 \\
+0 & -1 & 1 & -1-\lambda & 1 & -1 \\
+0 & -1 & 1 & -1 & 1-\lambda & -1 \\
+0 & -1 & 1 & -1 & 1 & -1-\lambda
+\end{bmatrix} = \]\[  -\lambda \det \begin{bmatrix}
+-1-\lambda & 1 & -1 & 1 & -1 \\
+-1 & 1-\lambda & -1 & 1 & -1 \\
+-1 & 1 & -1-\lambda & 1 & -1 \\
+ -1 & 1 & -1 & 1-\lambda & -1 \\
+ -1 & 1 & -1 & 1 & -1-\lambda
+\end{bmatrix} + \lambda \det 
+\begin{bmatrix}
+-1 & 1 & -1 & 1 & -1 \\
+-1 & 1-\lambda & -1 & 1 & -1 \\
+-1 & 1 & -1-\lambda & 1 & -1 \\
+-1 & 1 & -1 & 1-\lambda & -1 \\
+-1 & 1 & -1 & 1 & -1-\lambda
+\end{bmatrix}.
+\]
+Temos também que
+\[
+\det \begin{bmatrix}
+-1-\lambda & 1 & -1 & 1 & -1 \\
+-1 & 1-\lambda & -1 & 1 & -1 \\
+-1 & 1 & -1-\lambda & 1 & -1 \\
+ -1 & 1 & -1 & 1-\lambda & -1 \\
+ -1 & 1 & -1 & 1 & -1-\lambda
+\end{bmatrix} = \det \begin{bmatrix}
+-\lambda & 1 & -1 & 1 & -1 \\
+-\lambda & 1-\lambda & -1 & 1 & -1 \\
+0 & 1 & -1-\lambda & 1 & -1 \\
+0 & 1 & -1 & 1-\lambda & -1 \\
+0 & 1 & -1 & 1 & -1-\lambda
+\end{bmatrix} = \]\[ - \lambda \det \begin{bmatrix}
+ 1-\lambda & -1 & 1 & -1 \\
+ 1 & -1-\lambda & 1 & -1 \\
+ 1 & -1 & 1-\lambda & -1 \\
+ 1 & -1 & 1 & -1-\lambda
+\end{bmatrix}  + \lambda \det \begin{bmatrix}
+1 & -1 & 1 & -1 \\
+1 & -1-\lambda & 1 & -1 \\
+1 & -1 & 1-\lambda & -1 \\
+1 & -1 & 1 & -1-\lambda
+\end{bmatrix} = \]\[
+- \lambda \det \begin{bmatrix}
+-\lambda & -1 & 1 & -1 \\
+-\lambda & -1-\lambda & 1 & -1 \\
+0 & -1 & 1-\lambda & -1 \\
+0 & -1 & 1 & -1-\lambda
+\end{bmatrix}  + \lambda \det \begin{bmatrix}
+0 & -1 & 1 & -1 \\
+-\lambda & -1-\lambda & 1 & -1 \\
+0 & -1 & 1-\lambda & -1 \\
+0 & -1 & 1 & -1-\lambda
+\end{bmatrix} = \]\[ - \lambda \left( -\lambda
+\det \begin{bmatrix}
+ -1-\lambda & 1 & -1 \\
+ -1 & 1-\lambda & -1 \\
+ -1 & 1 & -1-\lambda
+\end{bmatrix} + \lambda \begin{bmatrix}
+-1 & 1 & -1 \\
+-1 & 1-\lambda & -1 \\
+-1 & 1 & -1-\lambda
+\end{bmatrix} \right)
++ \lambda \left(  \lambda   \det \begin{bmatrix}
+-1 & 1 & -1 \\
+-1 & 1-\lambda & -1 \\
+-1 & 1 & -1-\lambda
+\end{bmatrix}  \right) = \]\[  - \lambda \left( -\lambda
+(-\lambda^3 - \lambda^2) - \lambda^3 \right)
++ \lambda \left(  - \lambda^3 \right) = - \lambda^5 - \lambda^4
+\]
+e
+\[
+ \det 
+\begin{bmatrix}
+-1 & 1 & -1 & 1 & -1 \\
+-1 & 1-\lambda & -1 & 1 & -1 \\
+-1 & 1 & -1-\lambda & 1 & -1 \\
+-1 & 1 & -1 & 1-\lambda & -1 \\
+-1 & 1 & -1 & 1 & -1-\lambda
+\end{bmatrix} =  \det 
+\begin{bmatrix}
+0 & 1 & -1 & 1 & -1 \\
+-\lambda & 1-\lambda & -1 & 1 & -1 \\
+0 & 1 & -1-\lambda & 1 & -1 \\
+0 & 1 & -1 & 1-\lambda & -1 \\
+0 & 1 & -1 & 1 & -1-\lambda
+\end{bmatrix} = \]\[ \lambda \det 
+\begin{bmatrix}
+ 1 & -1 & 1 & -1 \\
+ 1 & -1-\lambda & 1 & -1 \\
+ 1 & -1 & 1-\lambda & -1 \\
+ 1 & -1 & 1 & -1-\lambda
+\end{bmatrix} = \]\[\lambda \det 
+\begin{bmatrix}
+0 & -1 & 1 & -1 \\
+ -\lambda & -1-\lambda & 1 & -1 \\
+0 & -1 & 1-\lambda & -1 \\
+0 & -1 & 1 & -1-\lambda
+\end{bmatrix} = \lambda \left(\lambda \det \begin{bmatrix}
+ -1 & 1 & -1 \\
+ -1 & 1-\lambda & -1 \\
+ -1 & 1 & -1-\lambda
+\end{bmatrix} \right) = - \lambda^4
+\]
+Assim, 
+\[
+\begin{bmatrix}
+1 & -1 & 1 & -1 & 1 & -1 \\
+1 & -1 & 1 & -1 & 1 & -1 \\
+1 & -1 & 1 & -1 & 1 & -1 \\
+1 & -1 & 1 & -1 & 1 & -1 \\
+1 & -1 & 1 & -1 & 1 & -1 \\
+1 & -1 & 1 & -1 & 1 & -1
+\end{bmatrix} = -\lambda \det \begin{bmatrix}
+-1-\lambda & 1 & -1 & 1 & -1 \\
+-1 & 1-\lambda & -1 & 1 & -1 \\
+-1 & 1 & -1-\lambda & 1 & -1 \\
+ -1 & 1 & -1 & 1-\lambda & -1 \\
+ -1 & 1 & -1 & 1 & -1-\lambda
+\end{bmatrix} + \]\[ \lambda \det 
+\begin{bmatrix}
+-1 & 1 & -1 & 1 & -1 \\
+-1 & 1-\lambda & -1 & 1 & -1 \\
+-1 & 1 & -1-\lambda & 1 & -1 \\
+-1 & 1 & -1 & 1-\lambda & -1 \\
+-1 & 1 & -1 & 1 & -1-\lambda
+\end{bmatrix} = -\lambda (- \lambda^5 - \lambda^4)  + \lambda(-\lambda^4) = \lambda^6 
+\]
+Assim, o polinômio característico de $A$ é $p_A(\lambda) = \lambda^6.$ Observe agora que $A^2 = 0.$ Assim, o polinômio minimal de $A$ é $m_A(\lambda) = \lambda^2.$
+}
 \begin{exercicio}
  Dentre as três matrizes abaixos, quais delas são semelhantes?
 \[
@@ -136,14 +279,42 @@ A = \begin{pmatrix}
 \end{pmatrix}
 \]
 \end{exercicio}
-\solucao{}
+\solucao{
+Como as matrizes são $3 \times 3,$ duas matrizes são semelhantes se e somente se possuem o mesmo polinômio minimal e o mesmo polinômio característico. Calculemos então os polinômios minimal e característico de cada matriz:
+\[
+p_A(\lambda) = \det(A - \lambda I) = \det \begin{pmatrix}
+1-\lambda & 1 & 1 \\
+-1& -1-\lambda & -1 \\
+1 & 1 & 1-\lambda
+\end{pmatrix} = \lambda^3 - \lambda^2 = \lambda^2(\lambda - 1)
+\]
+O polinômio minimal será $m_A(\lambda) = \lambda(\lambda - 1).$
+\[
+p_B(\lambda) = \det(B - \lambda I) = \det \begin{pmatrix}
+1-\lambda & 0 & 0 \\
+0& -\lambda & 0 \\
+0 & 0 &-\lambda
+\end{pmatrix} = \lambda^2(\lambda - 1)
+\]
+O polinômio minimal será $m_B(\lambda) = \lambda(\lambda - 1).$
+\[p_C(\lambda) = \det(C - \lambda I) = \det \begin{pmatrix}
+-1- \lambda & -2 & -3 \\
+2& 4- \lambda & 6 \\
+-1& -2 &-3- \lambda
+\end{pmatrix} = \lambda^3
+\]
+O polinômio minimal será $m_C(\lambda) = \lambda^2.$
+
+Logo, temos que as matrizes $A$ e $B$ são semelhantes.
+}
 \begin{exercicio} Seja $V = \mathcal{P}_3(\mathbb{R})$ o espaço vetorial formado por todos os polinômios de grau menor ou igual a $3.$ Considere o operador $T \in \mathcal{L}(V)$ dado por
 \[
 T(f(x)) = (x-1) f^{\prime}(x)
 \]
 \dividiritens{
-\task[\pers{a}] Encontre o polinômio característico e o polinômio minimal de $T.$
-\task[\pers{b}] $T$ é diagonalizável? Em caso afirmativo, apresente uma base de autovetores para $V.$
+\task[\pers{a}] Determine a matriz do operador $T$ em $\mathcal{P}_3(\mathbb{R})$ em relação à base canônica desse espaço.
+\task[\pers{b}] Encontre o polinômio característico e o polinômio minimal de $T.$
+\task[\pers{c}] $T$ é diagonalizável? Em caso afirmativo, apresente uma base de autovetores para $V.$
 }
 \end{exercicio}
 \solucao{
@@ -166,7 +337,34 @@ Logo,
 \]
 
 
-\task[\pers{b}]
+\task[\pers{b}] %Para encontrar os autovalores e autovetores de $T,$ precisamos encontrar a matriz que representa $T$ 
+Encontremos os autovalores de $[T]_B:$
+\[
+p_{[T]_B}(\lambda) = \det([T]_B - \lambda I) = \det \begin{pmatrix}
+-\lambda & 0 & 0 & 0 \\
+-1 & 1-\lambda & 0 & 0 \\
+0 & -2 & 2-\lambda & 0 \\
+0 & 0 & -3 & 3-\lambda
+\end{pmatrix} = \lambda^4 - 6\lambda^3 + 11 \lambda^2 - 6 \lambda = \lambda (\lambda - 1)(\lambda - 2)( \lambda - 3).
+\]
+Assim, os autovalores são $0, 1, 2$ e $3.$ Agora, vejamos os autovetores:
+\[
+v = (a, b, c, d) \in \Ker([T]_B - 0 I) \Rightarrow \begin{pmatrix}
+0  & 0 & 0 & 0 \\
+-1 & 1 & 0 & 0 \\
+0 & -2 & 2 & 0 \\
+0 & 0 & -3 & 3
+\end{pmatrix}\begin{pmatrix}
+a \\
+b \\
+c \\
+d
+\end{pmatrix} = 0 \Rightarrow \begin{cases}
+a + b = 0 \\
+-2b + 2c = 0 \\
+-3c + 3d = 0
+\end{cases} \Rightarrow v = a(1,-1,-1,-1)
+\]
 }
 
 }
@@ -193,9 +391,97 @@ Logo,
 \dividiritens{
 \task[\pers{a}] Sejam $e_1 = (1,1)$ e $e_2 = (1,i).$ Como $\mathcal{B}$ é ortonormal, então $\prin{e_i, e_j} = \delta_{ij}.$ Com base nisso, vamos calcular cada um dos produtos requisitados:
 \begin{itemize}
-    \item $\prin{(i,1),(-i,i)}:$
-\end{itemize}
+    \item $\prin{(i,1),(-i,i)} = 0,$ pois
+    
+\[\prin{(i,1),(-i,i)} = \prin{(i+1)e_1 - e_2, -e_1 + (1-i)e_2} = \]\[ \prin{(i+1)e_1, -e_1} + \prin{(i+1)e_1, (1-i)e_2} + \prin{-e_2, -e_1} + \prin{-e_2, (1-i)e_2} = \]\[ (i+1)\overline{(-1)} \underbrace{\prin{e_1, e_1}}_{=1}+ (i+1)\overline{(1-i)} \underbrace{\prin{e_1, e_2}}_{=0} + (-1)\overline{(-1)} \underbrace{\prin{e_2, e_1}}_{=1} + (-1)\overline{1-i} \underbrace{\prin{e_2, e_2}}_{=1} = \]
+\[
+-(i-1) + (i-1) = 0
+\]
+%\[\begin{array}{rcl}\prin{(i,1),(-i,i)} &=& \prin{(i+1)e_1 - e_2, -e_1 + (1-i)e_2} \\ &=& \prin{(i+1)e_1, -e_1} + \prin{(i+1)e_1, (1-i)e_2} + \prin{-e_2, -e_1} + \prin{-e_2, (1-i)e_2} \\ &=&  (i+1)\overline{(-1)} \underbrace{\prin{e_1, e_1}}_{=1}+ (i+1)\overline{(1-i)} \underbrace{\prin{e_1, e_2}}_{=0} + (-1)\overline{(-1)} \underbrace{\prin{e_2, e_1}}_{=1} + (-1)\overline{1-i} \underbrace{\prin{e_2, e_2}}_{=1} \\ &=& \\\end{array}\]
+    \item $\prin{(-1,1),(1,1)} = i,$ pois
+    
+\[\prin{(-1,1),(1,1)} = \prin{(ie_1 -(i+1)e_2, e_1} = \]\[ \prin{ie_1, e_1} + \prin{-(i+1)e_2, e_1} = \]\[ i \underbrace{\prin{e_1, e_1}}_{=1} -(i+1) \underbrace{\prin{e_2, e_1}}_{=0} = i\]
 
+    \item $\prin{(1,0),(0,1)} = -1,$ pois
+    
+\[\prin{(-1,1),(1,1)} = \prin{\left(\frac{1 - i}{2}\right)e_1 + \left(\frac{1+i}{2} \right)e_2, \left(\frac{i - 1}{2}\right)e_1 - \left(\frac{1+i}{2} \right)e_2} = \]\[
+\prin{\left(\frac{1 - i}{2}\right)e_1, \left(\frac{i - 1}{2}\right)e_1} + \prin{\left(\frac{1 - i}{2}\right)e_1, - \left(\frac{1+i}{2} \right)e_2} + \]\[ \prin{\left(\frac{1+i}{2} \right)e_2, \left(\frac{i - 1}{2}\right)e_1} + \prin{\left(\frac{1+i}{2} \right)e_2, - \left(\frac{1+i}{2} \right)e_2} = 
+\]\[
+\left(\frac{1 - i}{2}\right) \overline{\left(\frac{i - 1}{2}\right)}  \underbrace{\prin{e_1, e_1}}_{=1}+ \left(\frac{1 - i}{2}\right)\overline{  \left(-\frac{1+i}{2} \right) } \underbrace{\prin{e_1, e_2}}_{=0}+\]\[ \left(\frac{1+i}{2} \right) \overline{\left(\frac{i - 1}{2}\right)} \underbrace{\prin{e_2, e_1}}_{=0}+ \left(\frac{1+i}{2} \right) \overline{\left(-\frac{1+i}{2} \right)} \underbrace{\prin{e_2, e_2}}_{=1}= \]\[
+= -\left(\frac{1 - i}{2}\right) \left(\frac{i + 1}{2}\right) + \left(\frac{1+i}{2} \right) \left(\frac{i-1}{2} \right) = -1 
+\]
+\end{itemize}
+\task[\pers{b}] Dada a matriz apresentada, temos que 
+\[
+T(1,0) = \begin{pmatrix}
+  i+1 & -1 \\
+  i & 0
+  \end{pmatrix}\begin{pmatrix}
+  1 \\
+  0
+  \end{pmatrix} = \begin{pmatrix}
+  i+1 \\
+  i
+  \end{pmatrix}
+\]
+\[
+T(0,1) = \begin{pmatrix}
+  i+1 & -1 \\
+  i & 0
+  \end{pmatrix}\begin{pmatrix}
+  0 \\
+  1
+  \end{pmatrix} = \begin{pmatrix}
+  -1 \\
+  0
+  \end{pmatrix}
+\]
+Do item anterior, sabemos que 
+\[
+(1,0) = \left(\frac{1 - i}{2}\right)e_1 + \left(\frac{1+i}{2} \right)e_2 \quad \mbox{e} \quad (0,1) =  \left(\frac{i + 1}{2}\right)e_1 - \left(\frac{1+i}{2} \right)e_2.
+\]
+Além disso, 
+\[
+(i+1,i) = \left(\frac{i+3}{2}\right)e_1 + \left(\frac{i-1}{2} \right)e_2 \quad \mbox{e} \quad (-1,0) =  \left(\frac{i - 1}{2}\right)e_1 - \left(\frac{1+i}{2} \right)e_2.
+\]
+Logo,
+\[
+\begin{cases}
+T\left(\left(\frac{1 - i}{2}\right)e_1 + \left(\frac{1+i}{2} \right)e_2  \right) = \left(\frac{i+3}{2}\right)e_1 + \left(\frac{i-1}{2} \right)e_2 \\
+T\left( \left(\frac{i + 1}{2}\right)e_1 - \left(\frac{1+i}{2} \right)e_2  \right) =  \left(\frac{i - 1}{2}\right)e_1 - \left(\frac{1+i}{2} \right)e_2 
+\end{cases}
+\Rightarrow \]\[
+\begin{cases}
+\left(\frac{1 - i}{2}\right)T(e_1) + \left(\frac{1+i}{2} \right)T(e_2) = \left(\frac{i+3}{2}\right)e_1 + \left(\frac{i-1}{2} \right)e_2 \\
+\left(\frac{i + 1}{2}\right) T(e_1) - \left(\frac{1+i}{2} \right) T(e_2) =  \left(\frac{i - 1}{2}\right)e_1 - \left(\frac{1+i}{2} \right)e_2
+\end{cases}
+\]
+Resolvendo o sistema formado em $T(e_1)$ e $T(e_2):$
+\[
+\begin{cases}
+\left(\frac{1 - i}{2}\right)T(e_1) + \left(\frac{1+i}{2} \right)T(e_2) = \left(\frac{i+3}{2}\right)e_1 + \left(\frac{i-1}{2} \right)e_2 \\
+\left(\frac{i + 1}{2}\right) T(e_1) - \left(\frac{1+i}{2} \right) T(e_2) =  \left(\frac{i - 1}{2}\right)e_1 - \left(\frac{1+i}{2} \right)e_2
+\end{cases} \Rightarrow \]\[
+T(e_1) = \left(\frac{i + 1}{2}\right)e_1 - e_2 \quad \mbox{e} \quad T(e_2) = e_1 
+\]
+Assim, 
+\[
+A = [T]_B = \begin{pmatrix}
+\frac{i + 1}{2} & 1 \\
+-1 & 0
+\end{pmatrix}
+\]
+Observe que
+\[
+AA^{*} = \left(\begin{matrix}
+\frac{3}{2} & \frac{-1-i}{2} \\
+\frac{-1+i}{2} & 1
+\end{matrix}\right) \neq \left(\begin{matrix}
+\frac{3}{2} & \frac{1-i}{2} \\
+\frac{1+i}{2} & 1
+\end{matrix}\right) = A^{*}A
+\]
+Logo, $T$ não é normal.
 }
 
 }
@@ -204,10 +490,85 @@ Logo,
 Determine o polinômio de grau $2$ cujo gráfico melhor se ajusta aos pontos $(-1,-1), (0,0), (1,1)$ e $(-1,1).$
 \end{exercicio}
 \solucao{
-
-
-
+Seja $p(x) = ax^2 + bx + c$ o polinômio de grau $2$ procurado. Pelas informações do enunciado, queremos que $p(-1) = -1, p(0) = 0, p(1) = 1$ e $p(-1) = 1.$ Assim, devemos ter
+\[
+\begin{cases}
+(-1, -1) \Rightarrow a(-1)^2 + b(-1) + c = -1 \\
+(0,0) \Rightarrow a \cdot 0^2 + b \cdot 0 + c = 0 \\
+(1,1) \Rightarrow a \cdot 1^2 + b \cdot 1 + c = 1 \\
+(-1,1) \Rightarrow a \cdot (-1)^2 + b(-1) + c = 1
+\end{cases} \Rightarrow \begin{cases}
+a - b + c = -1\\
+c = 0 \\
+a + b + c = 1 \\
+a - b + c = 1
+\end{cases} \Rightarrow \]\[ \begin{cases}
+a - b  = -1\\
+a + b = 1 \\
+a - b = 1
+\end{cases} \Rightarrow \begin{bmatrix}
+1 & -1 \\
+1 & 1 \\
+1 & -1 
+\end{bmatrix}\begin{bmatrix}
+a \\ 
+b
+\end{bmatrix} = \begin{bmatrix}
+-1 \\
+1 \\
+1
+\end{bmatrix}
+\]
+Tomando $T = \begin{bmatrix}
+1 & -1 \\
+1 & 1 \\
+1 & -1 
+\end{bmatrix},$ $x = (a, b)$ e $b = (-1,1,1),$ temos o sistema $T(x) = b.$ Para encontrar o valor de $x$ que melhor se ajusta à situação, basta resolvermos o sistema $(T^{*}T)(x) = T^{*}(b).$ Temos
+\[
+T^{*} = \begin{bmatrix}
+1 & 1 & 1 \\
+-1 & 1 & -1
+\end{bmatrix},
+\]
+daí
+\[
+(T^{*}T)(x) = T^{*}(b) \Rightarrow \begin{bmatrix}
+1 & 1 & 1 \\
+-1 & 1 & -1
+\end{bmatrix} \begin{bmatrix}
+1 & -1 \\
+1 & 1 \\
+1 & -1 
+\end{bmatrix} \begin{bmatrix}
+a \\ 
+b
+\end{bmatrix} = \begin{bmatrix}
+1 & 1 & 1 \\
+-1 & 1 & -1
+\end{bmatrix}\begin{bmatrix}
+-1 \\
+1 \\
+1
+\end{bmatrix} \Rightarrow \]\[ \left(\begin{matrix}
+3 & -1 \\
+-1 & 3
+\end{matrix}\right) \begin{bmatrix}
+a \\ 
+b
+\end{bmatrix} = \begin{bmatrix}
+1 \\ 
+1
+\end{bmatrix} \Rightarrow \begin{cases}
+3a - b = 1 \\
+-a + 3b = 1
+\end{cases} \Rightarrow a = b = \frac{1}{2}.
+\]
+Como já havíamos visto no início que $c = 0,$ concluímos que o polinômio de grau $2$ que melhor se ajusta aos pontos descritos é
+\[
+p(x) = \frac{1}{2}(x^2 + x).
+\]
 }
+
 
 \begin{exercicio}
 Sejam $U$ e $V$ espaços com produto interno, $T \in \mathcal{L}(U,V)$ uma aplicação linear de $U$ a $V$ e $T^{*} \in \mathcal{L}(V,U)$ a aplicação adjunta. Considere as afirmações abaixo e assinale quais delas são corretas:
@@ -222,11 +583,11 @@ Sejam $U$ e $V$ espaços com produto interno, $T \in \mathcal{L}(U,V)$ uma aplic
 \[
 \mbox{Im }(T^{*}) = (\Ker T)^{\perp} \quad \mbox{e} \quad (\mbox{Im } T)^{\perp} = \Ker (T^{*})
 \]
-Suponha então que $T$ seja injetora. Logo, $\mbox{Im }(T^{*}) = \{ 0 \}^{\perp} = V.$ Assim, $T^{*}$ é sobrejetora. 
+Suponha então que $T$ seja injetora. Logo, $\mbox{Im }(T^{*}) = \{ 0 \}^{\perp} = V.$ Assim, $T^{*}$ é sobrejetora. A recíproca é análoga. 
 
-Se $T^{*}$ é injetora, então $\Ker T^{*} = \{ 0 \},$ acarretando $\mbox{Im }T = V.$ Assim, $T$ é injetora. 
+Se $T^{*}$ é injetora, então $\Ker T^{*} = \{ 0 \},$ acarretando $\mbox{Im }T = V.$ Assim, $T$ é sobrejetora. A recíproca é análoga. 
 
-Logo, as alternativas corretas são a $T$ e a $T.$
+Logo, as alternativas corretas são a $c$ e a $d.$
 }
 \begin{exercicio}
 Encontre as formas de Jordan e racional do operador $T \in \mathcal{L}(\mathbb{R}^n)$ se a matriz de $T$ na base canônica do $\mathbb{R}^n$ é a seguinte:
@@ -252,14 +613,251 @@ Encontre as formas de Jordan e racional do operador $T \in \mathcal{L}(\mathbb{R
 \end{pmatrix}
 \]
 \end{exercicio}
-\solucao{}
+\solucao{
+Encontremos os autovalores e autovetores de $T:$
+\[
+p_T(\lambda) = \det (T - \lambda I) = \det \begin{pmatrix}
+-5-\lambda & -6 & -15 & 14 \\
+4 & 5-\lambda & 9 & -6 \\
+0 & 0 & 2-\lambda & -4 \\
+0 & 0 & 1 & -2-\lambda
+\end{pmatrix} = \]\[\det \begin{pmatrix}
+-5-\lambda & -6  \\
+4 & 5-\lambda  
+\end{pmatrix} \det \begin{pmatrix}
+2-\lambda & -4 \\
+1 & -2-\lambda
+\end{pmatrix} = (\lambda^2 - 1)\lambda^2 = \lambda^2(\lambda + 1)(\lambda - 1)
+\]
+Os autovalores são $\lambda_1 = 0,$ com multiplicidade $2,$ $\lambda_2 = 1$ e $\lambda_3 = -1.$ Encontremos agora os autovetores:
+\[
+v \in \Ker(T - 0I) \Rightarrow \begin{pmatrix}
+-5 & -6 & -15 & 14 \\
+4 & 5 & 9 & -6 \\
+0 & 0 & 2 & -4 \\
+0 & 0 & 1 & -2
+\end{pmatrix} \begin{pmatrix}
+x \\
+y \\
+z \\
+w
+\end{pmatrix} = 0 \Rightarrow v = w(-8,4,2,1)
+\]
+\[
+v \in \Ker(T - 1I) \Rightarrow \begin{pmatrix}
+-6 & -6 & -15 & 14 \\
+4 & 4 & 9 & -6 \\
+0 & 0 & 1 & -4 \\
+0 & 0 & 1 & -3
+\end{pmatrix} \begin{pmatrix}
+x \\
+y \\
+z \\
+w
+\end{pmatrix} = 0 \Rightarrow v = y(-1,1,0,0)
+\]
+\[
+v \in \Ker(T + 1I) \Rightarrow \begin{pmatrix}
+-4 & -6 & -15 & 14 \\
+4 & 6 & 9 & -6 \\
+0 & 0 & 3 & -4 \\
+0 & 0 & 1 & -1
+\end{pmatrix} \begin{pmatrix}
+x \\
+y \\
+z \\
+w
+\end{pmatrix} = 0 \Rightarrow v = y\left(-\frac{3}{2},1,0,0 \right)
+\]
+Encontremos agora a forma de Jordan e a forma racional.
+Para encontrar a forma de Jordan, observe que o autovalor $0$ possui multiplicidade algébrica $2,$ e como $\dim (\Ker(A)) = 1,$ então este corresponde a um bloco de Jordan $2 \times 2.$ Como a multiplicidade algébrica dos outros dois autovalores é $1,$ então esses correspondem a um bloco de Jordan $1 \times 1.$ Assim, a forma de Jordan correspondente é
+\[
+J = \begin{array}{cc:c:c}
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 \\ \hdashline 
+0 & 0 & 1 & 0 \\ \hdashline
+0 & 0 & 0 & -1
+\end{array}
+\]
+Encontremos a matriz $P$ tal que $A = PJP^{-1}.$
+Para isso, observe que precisamos encontrar um autovetor generalizado associado ao autovalor $0.$ Já sabemos que $(-8,4,2,1)$ é um autovalor "genuíno" para $0$. Seja $v = (x,y,z,w)$ o autovetor generalizado procurado. Devemos ter
+\[
+(T - 0I)v = \begin{pmatrix}
+-8 \\
+4 \\
+2 \\
+1
+\end{pmatrix} \Rightarrow \begin{pmatrix}
+-5 & -6 & -15 & 14 \\
+4 & 5 & 9 & -6 \\
+0 & 0 & 2 & -4 \\
+0 & 0 & 1 & -2
+\end{pmatrix} \begin{pmatrix}
+x \\
+y \\
+z \\
+w
+\end{pmatrix} = \begin{pmatrix}
+-8 \\
+4 \\
+2 \\
+1
+\end{pmatrix} \Rightarrow \]\[ \begin{cases}
+-5x -6y -15z +14w = -8 \\
+4x + 5y + 9z -6w = 4 \\
+2z -4w = 2 \\
+z - 2w = 1
+\end{cases} \Rightarrow v = (-5,3,1, 0) + w(-8,4,2,1) \Rightarrow v = (-5,3,1,0)
+\]
+Logo, $(-5,3,1,0)$ é o autovetor generalizado procurado. Portanto,
+\[
+P = \begin{pmatrix}
+-8 & -5 & -1 & -\frac{3}{2} \\
+4 & 3 & 1 & 1 \\
+2 & 1 & 0 & 0 \\
+1 & 0 & 0 & 0
+\end{pmatrix}.
+\]
+É fácil ver que
+\[
+PJP^{-1} = \left(\begin{matrix}
+-8 & -5 & -1 & \frac{-3}{2} \\
+4 & 3 & 1 & 1 \\
+2 & 1 & 0 & 0 \\
+1 & 0 & 0 & 0
+\end{matrix}\right)\left(\begin{matrix}
+0 & 1 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & -1
+\end{matrix}\right)\left(\begin{matrix}
+0 & 0 & 0 & 1 \\
+0 & 0 & 1 & -2 \\
+2 & 3 & 1 & 2 \\
+-2 & -2 & -4 & 0
+\end{matrix}\right) = \left(\begin{matrix}
+-5 & -6 & -15 & 14 \\
+4 & 5 & 9 & -6 \\
+0 & 0 & 2 & -4 \\
+0 & 0 & 1 & -2
+\end{matrix}\right) = T
+\]
+
+Vamos agora encontrar a forma racional de $T.$ Para isso, encontremos primeiramente o polinômio minimal de $T.$ Nesse caso, uma rápida verificação mostra que o polinômio minimal coincide com o característico. Daí,
+\[
+m_T(\lambda) = p_T(\lambda) = \lambda^4 - \lambda^2.
+\]
+Assim, temos que
+\[
+\mathbb{R}^4 = Z(v_1, T),
+\]
+pois o polinômio minimal será o polinômio anulador de $Z(v_1,T),$ de onde $\dim(Z(v_1, T)) = \deg(m_T(\lambda)) = 4.$ Assim, a matriz $R$ corresponde à matriz companheira do polinômio minimal, ou seja,
+\[R = \begin{pmatrix}
+0 & 0 & 0 & -a_0 \\
+1 & 0 & 0 & -a_1 \\
+0 & 1 & 0 & -a_2 \\
+0 & 0 & 1 &  -a_3
+\end{pmatrix} = \begin{pmatrix}
+0 & 0 & 0 & 0 \\
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 1 \\
+0 & 0 & 1 & 0
+\end{pmatrix}
+\]
+Vamos encontrar agora a matriz $P$ tal que $T = PRP^{-1}.$ Como $\dim(Z(v_1, T)) = 4,$ uma base para $Z(v_1, T)$ é $\{ v_1, T(v_1), T^2(v_1), T^3(v_1) \}.$ Falta agora encontrar o vetor $v_1.$ Como o $T$-anulador de $v_1$ é o polinômio minimal, devemos escolher um vetor de cada um dos autoespaços associados aos respectivos autovalores. Sejam então $u_1 = (-5,3,1,0), u_2 = (-1,1,0,0)$ e $u_3 = \left( - \frac{3}{2}, 1, 0, 0 \right).$ Daí, tomemos $v_1 = u_1 + u_2 + u_3 = \left(-\frac{15}{2}, 5, 1, 0 \right).$  Agora, estamos aptos a encontrar uma base para $Z(v_1, T):$
+\[
+T(v_1) = \begin{pmatrix}
+-5 & -6 & -15 & 14 \\
+4 & 5 & 9 & -6 \\
+0 & 0 & 2 & -4 \\
+0 & 0 & 1 & -2
+\end{pmatrix} \begin{pmatrix}
+-\frac{15}{2} \\
+5 \\
+1 \\
+0
+\end{pmatrix} = \left(\begin{matrix}
+\frac{-15}{2} \\
+4 \\
+2 \\
+1
+\end{matrix}\right);
+\]
+\[
+T^2(v_1) = \left(\begin{matrix}
+1 & 0 & 5 & -2 \\
+0 & 1 & -3 & 2 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{matrix}\right) \begin{pmatrix}
+-\frac{15}{2} \\
+5 \\
+1 \\
+0
+\end{pmatrix} = \left(\begin{matrix}
+\frac{-5}{2} \\
+2 \\
+0 \\
+0
+\end{matrix}\right);
+\]
+\[
+T^3(v_1) = \left(\begin{matrix}
+-5 & -6 & -7 & -2 \\
+4 & 5 & 5 & 2 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{matrix}\right) \begin{pmatrix}
+-\frac{15}{2} \\
+5 \\
+1 \\
+0
+\end{pmatrix} = \begin{pmatrix}
+\frac{1}{2} \\
+0 \\
+0 \\
+0
+\end{pmatrix}.
+\]
+Portanto, a base procurada é $\left\{ \left(-\frac{15}{2},5,1,0\right), \left(-\frac{15}{2},4,2,1\right), \left(-\frac{5}{2},2,0,0\right), \left(\frac{1}{2},0,0,0\right) \right\},$ e segue que
+\[P = \begin{pmatrix}
+-\frac{15}{2} & -\frac{15}{2}& -\frac{5}{2} & \frac{1}{2} \\
+5 & 4 & 2 & 0 \\ 
+1 & 2 & 0 & 0 \\
+0 & 1 & 0 & 0\end{pmatrix} \]
+De fato, é fácil ver que
+\[
+PRP^{-1} = \begin{pmatrix}
+-\frac{15}{2} & -\frac{15}{2}& -\frac{5}{2} & \frac{1}{2} \\
+5 & 4 & 2 & 0 \\ 
+1 & 2 & 0 & 0 \\
+0 & 1 & 0 & 0\end{pmatrix}\begin{pmatrix}
+0 & 0 & 0 & 0 \\
+1 & 0 & 0 & 0 \\
+0 & 1 & 0 & 1 \\
+0 & 0 & 1 & 0
+\end{pmatrix}\left(\begin{matrix}
+0 & 0 & 1 & -2 \\
+0 & 0 & 0 & 1 \\
+0 & \frac{1}{2} & \frac{-5}{2} & 3 \\
+2 & \frac{5}{2} & \frac{5}{2} & 0
+\end{matrix}\right) = \begin{pmatrix}
+-5 & -6 & -15 & 14 \\
+4 & 5 & 9 & -6 \\
+0 & 0 & 2 & -4 \\
+0 & 0 & 1 & -2
+\end{pmatrix}.
+\]
+}
 \begin{exercicio}
 Sejam $V$ um $K$-espaço vetorial com produto interno, $T \in \mathcal{L}(V)$ e $W \subseteq V$ um subespaço $T$-invariante. Mostre que se $T$ é normal, então $W$ também é $T^{*}$-invariante.
 \end{exercicio}
-\solucao{}
+\solucao{
+%https://math.stackexchange.com/questions/436466/if-a-is-normal-then-am-subset-m-rightarrow-am-perp-subset-m-perp
+}
 
 \newpage
-\section{\textcolor{Floresta}{Prova 2}}
+\section{\textcolor{Floresta}{Prova 3}}
 
 
 \begin{exercicio}
@@ -278,7 +876,131 @@ T(1,2,3) = (1,2,3) \quad \mbox{e} \quad T(1,1,1) = (0,0,0).
 \]
 }
 \end{exercicio}
-\solucao{}
+\solucao{
+\dividiritens{
+\task[\pers{a}] Se $A$ é normal, então $A^{*}A = AA^{*}.$ Lembrando que $A^{*} = \overline{A}^{t},$ temos que 
+\[
+(A^t)(A^t)^{*} = A^t(\overline{A}^{t})^t = A^t \overline{A} = (\overline{A}^t A)^t = (\textcolor{Red}{A^{*}A})^t =(\textcolor{Red}{AA^{*}})^t = \]\[ (A^{*})^t A^t = (\overline{A}^t)^t A^t = \overline{A} A^t = (\overline{A}^{t})^t A^t = (A^t)^{*} (A^t)
+\]
+Portanto, concluímos que $A^t$ é normal.
+\task[\pers{b}] Se $A$ é normal, então $A^{*}A = AA^{*}.$ Lembrando que $A^{*} = \overline{A}^{t},$ temos que 
+\[
+\overline{A}\overline{A}^{*} = \overline{A} \overline{\overline{A}}^t = \overline{A}A^t = (A \overline{A}^t)^t = (\textcolor{Red}{AA^{*}})^t = (\textcolor{Red}{A^{*}A})^t = A^t (A^{*})^t = A^t (\overline{A}^t)^t = A^t \overline{A} = \overline{\overline{A}}^t \overline{A} = \overline{A} ^{*} \overline{A}
+\]
+Portanto, concluímos que $\overline{A}$ é normal.
+\task[\pers{c}]  Considere 
+\[
+A = \begin{pmatrix}
+1 & 1 \\
+i & 3 +2i
+\end{pmatrix}.
+\]
+Observe que
+\[
+A = \begin{pmatrix}
+1 & 1 \\
+0 & 3
+\end{pmatrix} + i \begin{pmatrix}
+0 & 0 \\
+1 & 2
+\end{pmatrix},
+\]
+mas as matrizes $B = \begin{pmatrix}
+1 & 1 \\
+0 & 3
+\end{pmatrix}$ e $C = \begin{pmatrix}
+0 & 0 \\
+1 & 2
+\end{pmatrix}$ não são normais, já que
+\[
+BB^{*} = \begin{pmatrix}
+1 & 1 \\
+0 & 3
+\end{pmatrix}\begin{pmatrix}
+1 & 0 \\
+1 & 3
+\end{pmatrix} = \left(\begin{matrix}
+2 & 3 \\
+3 & 9
+\end{matrix}\right) \neq \left(\begin{matrix}
+1 & 1 \\
+1 & 10
+\end{matrix}\right) = \begin{pmatrix}
+1 & 0 \\
+1 & 3
+\end{pmatrix}\begin{pmatrix} 
+1 & 1 \\
+0 & 3
+\end{pmatrix}= B^{*}B
+\]
+e
+\[
+CC^{*} = \left(\begin{matrix}
+0 & 0 \\
+1 & 2
+\end{matrix}\right)\left(\begin{matrix}
+0 & 1 \\
+0 & 2
+\end{matrix}\right) = \left(\begin{matrix}
+0 & 0 \\
+0 & 5
+\end{matrix}\right) \neq  \left(\begin{matrix}
+1 & 2 \\
+2 & 4
+\end{matrix}\right) =
+\left(\begin{matrix}
+0 & 1 \\
+0 & 2
+\end{matrix}\right) \left(\begin{matrix}
+0 & 0 \\
+1 & 2
+\end{matrix}\right) = C^{*}C
+\]
+\task[\pers{d}] Sejam $B$ e $C,$ duas matrizes normais com entradas reais, digamos
+\[
+B = \begin{pmatrix}
+1 & 2 \\
+2 & 0
+\end{pmatrix} \quad \mbox{e} \quad C = \begin{pmatrix}
+2 & 0 \\
+0 & 5
+\end{pmatrix}.
+\]
+Então,
+\[
+A = B + iC = \begin{pmatrix}
+1+2i & 2 \\
+2 & 5i
+\end{pmatrix}.
+\]
+Mas veja que
+\[
+AA^{*} = \begin{pmatrix}
+1+2i & 2 \\
+2 & 5i
+\end{pmatrix}\begin{pmatrix}
+1-2i & 2 \\
+2 & -5i
+\end{pmatrix} = \left(\begin{matrix}
+9 & 2-6i \\
+2+6i & 29
+\end{matrix}\right) \neq \left(\begin{matrix}
+9 & 2+6i \\
+2-6i & 29
+\end{matrix}\right) = \]\[\begin{pmatrix}
+1-2i & 2 \\
+2 & -5i
+\end{pmatrix}\begin{pmatrix}
+1+2i & 2 \\
+2 & 5i
+\end{pmatrix} = A^{*}A
+\]
+Assim, $A$ não é normal.
+
+\task[\pers{e}] Vamos mostrar que, se $B, C \in \mathcal{M}_n(\mathbb{R})$ e $BC = CB,$ ou seja, $B$ e $C$ comutam, então $A = B + iC$ é normal.
+}
+
+}
 
 \begin{exercicio}
 (2,0) Decomponha a matriz
@@ -339,7 +1061,180 @@ z
 \]
 Logo, $\Ker(AA^{*} - 4I) = \langle (0,1,0), (0,0,1) \rangle.$
 
-Assim, $e_1, e_2$ e $e_3$ são autovetores de $AA^{*}.$ Portanto, temos a matriz $P = I.$
+Assim, $e_1 = (1,0,0), e_2 = (0,1,0)$ e $e_3 = (0, 0, 1)$ são autovetores de $AA^{*}.$ 
+Para obter $S$ e $U$, podemos proceder de duas maneiras distintas:
+
+\begin{itemize}
+    \item Sabemos que $A(e_i) = r_if_i.$ Com base nisso, é possível encontrar os elementos da base $C = \{f_1, f_2, f_3 \}.$ Realizando os cálculos, vem:
+    \[
+    \begin{array}{l}
+    A(e_1) = r_1f_1 \Rightarrow f_1 = \frac{1}{2} \begin{bmatrix}
+0 & 2 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & -1
+\end{bmatrix} \begin{pmatrix}
+1 \\
+0 \\
+0 \\
+\end{pmatrix} \Rightarrow f_1 = \left(0, \frac{1}{2}, 0 \right)    \\
+              A(e_2) = r_2f_2 \Rightarrow f_2 = \frac{1}{1} \begin{bmatrix}
+0 & 2 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & -1
+\end{bmatrix} \begin{pmatrix}
+0 \\
+1 \\
+0 \\
+\end{pmatrix} \Rightarrow f_2 = \left(2, 0 , 0 \right)  \\
+         A(e_3) = r_3f_3 \Rightarrow f_3 = \frac{1}{1} \begin{bmatrix}
+0 & 2 & 0 \\
+1 & 0 & 0 \\
+0 & 0 & -1
+\end{bmatrix} \begin{pmatrix}
+0 \\
+0 \\
+1 \\
+\end{pmatrix} \Rightarrow f_3 = \left(0, 0 , -1 \right)  \\
+    \end{array}
+    \]
+
+Para encontrar $U,$ façamos
+\[
+\left(\begin{array}{c|c}
+e_1 & f_1 \\
+e_2 & f_2 \\
+e_3 & f_3
+\end{array} \right) = \left(\begin{array}{ccc|ccc}
+1 & 0 & 0 & 0 & \frac{1}{2} & 0  \\
+0 & 1 & 0 & 2 & 0 & 0  \\
+0 & 0 & 1 & 0 & 0 & -1
+\end{array} \right) \Rightarrow U =  \left(\begin{array}{ccc}
+0 & \frac{1}{2} & 0  \\
+2 & 0 & 0  \\
+0 & 0 & -1
+\end{array} \right)^t =  \left(\begin{array}{ccc}
+0 & 2 & 0  \\
+\frac{1}{2} & 0 & 0  \\
+0 & 0 & -1
+\end{array} \right)
+\]
+Calculemos agora a matriz $S.$ Temos que
+\[
+\left(\begin{array}{c|c}
+f_1 & r_1f_1 \\
+f_2 & r_2f_2 \\
+f_3 & r_3f_3
+\end{array} \right) = \left(\begin{array}{ccc|ccc}
+0 & \frac{1}{2} & 0 & 0 & 1 & 0 \\
+2 & 0 & 0 & 2 & 0 & 0  \\
+0 0 & -1 & 0 & 0 & -1
+\end{array} \right) \sim \left(\begin{array}{ccc|ccc}
+1 & 0 & 0 & 1 & 0 & 0  \\
+0 & 1 & 0 & 0 & 2 & 0 \\
+0 & 0 & 1 & 0 & 0 & 1
+\end{array} \right) \Rightarrow S =  \left(\begin{array}{ccc}
+1 & 0 & 0  \\
+0 & 2 & 0  \\
+0 & 0 & 1
+\end{array} \right)
+\]
+Assim, a matriz positiva procurada é $S = \left(\begin{array}{ccc}
+1 & 0 & 0  \\
+0 & 2 & 0  \\
+0 & 0 & 1
+\end{array} \right),$ e a matriz unitária(?) é $U = \left(\begin{array}{ccc}
+0 & 2 & 0  \\
+\frac{1}{2} & 0 & 0  \\
+0 & 0 & -1
+\end{array} \right).$ De fato, é fácil ver que
+\[
+SU =  \left(\begin{array}{ccc}
+1 & 0 & 0  \\
+0 & 2 & 0  \\
+0 & 0 & 1
+\end{array} \right) \left(\begin{array}{ccc}
+0 & 2 & 0  \\
+\frac{1}{2} & 0 & 0  \\
+0 & 0 & -1
+\end{array} \right) = \left(\begin{array}{ccc}
+0 & 2 & 0  \\
+1 & 0 & 0  \\
+0 & 0 & -1
+\end{array} \right) = A.
+\]
+\item  Como $e_1 = (1,0,0), e_2 = (0,1,0)$ e $e_3 = (0, 0, 1)$ são autovetores de $AA^{*},$ temos que
+\[
+P = \begin{bmatrix}
+e_1 & e_2 & e_3
+\end{bmatrix} = \begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\]
+Já que $P = I, $ obviamente $P^{*} = I^{*} = I = P.$ Desse modo,
+\[
+S = P\begin{bmatrix}
+r_1 & 0 ¨& 0 \\
+0 & r_2 & 0 \\
+0 & 0 & r_3
+\end{bmatrix}P^{*} =  \begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix} \begin{bmatrix}
+2 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix} \begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix} =  \begin{bmatrix}
+2 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\]
+Então, sabemos que $A = SU \Rightarrow U = S^{-1}A.$ Vemos que
+\[
+S^{-1} = PD^{-1}P^{*} = \begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix} \begin{bmatrix}
+\frac{1}{2} & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix} \begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix} =  \begin{bmatrix}
+\frac{1}{2} & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix}
+\]
+Daí,
+\[
+U = \begin{bmatrix}
+\frac{1}{2} & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1
+\end{bmatrix} \left(\begin{array}{ccc}
+0 & 2 & 0  \\
+1 & 0 & 0  \\
+0 & 0 & -1
+\end{array} \right) =  \left(\begin{array}{ccc}
+0 & 1 & 0  \\
+1 & 0 & 0  \\
+0 & 0 & -1
+\end{array} \right)
+\]
+Logo, $S$ é a matriz positiva procurada e $U$ é a matriz ortogonal.
+\end{itemize}
+Salientamos que a resposta não é única, o que pode ser claramente visto ao se adotar métodos distintos para encontrar as matrizes $S$ e $U.$
 }
 
 \begin{exercicio}
@@ -353,7 +1248,106 @@ A = \begin{bmatrix}
 \]
 ache a raiz quadrada de $A,$ ou seja, encontre uma matriz simétrica positiva $B \in \mathcal{M}_3(\mathbb{R})$ tal que $B^2 = A.$
 \end{exercicio}
-\solucao{}
+\solucao{
+Observe que como $A$ é uma matriz simétrica, então $A$ é diagonalizável. Assim, existem uma matriz $P$ e uma matriz diagonal $D$ tais que $A = PDP^{-1}.$ Sendo $A$ positiva, então todos os seus autovalores são positivos, o que implica que $B = P \sqrt{D}P^{-1}.$ Vamos encontrar $P$ e $D.$
+O polinômio característico de $A$ é
+\[
+p_A(\lambda) = \det(A - \lambda I) = \det \begin{bmatrix}
+11 - \lambda & 7 & 7 \\
+7 & 11 - \lambda & 7 \\
+7 & 7 & 11- \lambda
+\end{bmatrix} = \lambda^3 - 33\lambda^2 + 216 \lambda - 400 = (\lambda - 25)(\lambda - 4)^2
+\]
+Daí, $\lambda_1 = 25$ e $\lambda_2 = 4$ são os autovalores. Logo, a matriz $D$ é dada por
+\[
+D = \begin{bmatrix}
+25 & 0 & 0 \\
+0 & 4 & 0 \\
+0 & 0 & 4 
+\end{bmatrix}
+\]
+\[
+(A - 25I)v = 0 \Rightarrow \begin{bmatrix}
+-14 & 7 & 7 \\
+7 & -14 & 7 \\
+7 & 7 & -14
+\end{bmatrix}\begin{bmatrix}
+x \\
+y \\
+z
+\end{bmatrix} \Rightarrow v = x(1,1,1)
+\]
+Logo, 
+\[
+\Ker(A - 25I) = \langle (1,1,1) \rangle
+\]
+Também,
+\[
+(A - 4I)v = 0 \Rightarrow \begin{bmatrix}
+7 & 7 & 7 \\
+7 & 7 & 7 \\
+7 & 7 & 7
+\end{bmatrix}\begin{bmatrix}
+x \\
+y \\
+z
+\end{bmatrix} \Rightarrow v = x(-1,1,0) + y(-1,0,1)
+\]
+Logo, 
+\[
+\Ker(A - 4I) = \langle (-1,1,0), (-1,0,1) \rangle
+\]
+Assim, os autovetores são $(1,1,1),(-1,1,0)$ e $(-1,0,1).$ Como a matriz $P$ deve ser ortogonal, precisamos ortogonalizar o conjunto $\{ (-1,1,0),(-1,0,1)\}.$ Pelo processo de ortogonalização de Gram-Schmidt, temos
+\[
+v_1 =  (-1,1,0), v_2 = (-1,0,1) - \frac{\prin{(-1,0,1),(-1,1,0)}}{\norm{(-1,1,0)}^2}(-1,1,0) = \left(- \frac{1}{2}, - \frac{1}{2}, 1  \right) 
+\]
+Normalizando os vetores, temos $w_1 = \left( \frac{\sqrt{3}}{3}, \frac{\sqrt{3}}{3}, \frac{\sqrt{3}}{3} \right), w_2 = \left( - \frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}, 0 \right)$ e $w_3 = \left( - \frac{\sqrt{6}}{6}, - \frac{\sqrt{6}}{6},  \frac{\sqrt{6}}{3}  \right).$
+Logo, 
+\[
+P = \begin{bmatrix}
+ \frac{\sqrt{3}}{3} & - \frac{\sqrt{2}}{2} & - \frac{\sqrt{6}}{6} \\
+ \frac{\sqrt{3}}{3} & \frac{\sqrt{2}}{2} & - \frac{\sqrt{6}}{6} \\
+ \frac{\sqrt{3}}{3} & 0 &  \frac{\sqrt{6}}{3}  
+\end{bmatrix}
+\]
+Assim, temos que
+\[
+\sqrt{A} = P\sqrt{D}P^{*} =  \begin{bmatrix}
+ \frac{\sqrt{3}}{3} & - \frac{\sqrt{2}}{2} & - \frac{\sqrt{6}}{6} \\
+ \frac{\sqrt{3}}{3} & \frac{\sqrt{2}}{2} & - \frac{\sqrt{6}}{6} \\
+ \frac{\sqrt{3}}{3} & 0 &  \frac{\sqrt{6}}{3}  
+\end{bmatrix}\begin{bmatrix}
+\sqrt{25} & 0 & 0 \\
+0 & \sqrt{4} & 0 \\
+0 & 0 & \sqrt{4} 
+\end{bmatrix}\begin{bmatrix}
+ \frac{\sqrt{3}}{3} &  \frac{\sqrt{3}}{3}  &  \frac{\sqrt{3}}{3} \\
+- \frac{\sqrt{2}}{2} &\frac{\sqrt{2}}{2} & 0 \\
+- \frac{\sqrt{6}}{6} & - \frac{\sqrt{6}}{6}&  \frac{\sqrt{6}}{3}  
+\end{bmatrix} = \begin{bmatrix}
+ \frac{\sqrt{3}}{3} & - \frac{\sqrt{2}}{2} & - \frac{\sqrt{6}}{6} \\
+ \frac{\sqrt{3}}{3} & \frac{\sqrt{2}}{2} & - \frac{\sqrt{6}}{6} \\
+ \frac{\sqrt{3}}{3} & 0 &  \frac{\sqrt{6}}{3}  
+\end{bmatrix}\begin{bmatrix}
+5 & 0 & 0 \\
+0 & 2 & 0 \\
+0 & 0 & 2
+\end{bmatrix}\begin{bmatrix}
+ \frac{\sqrt{3}}{3} &  \frac{\sqrt{3}}{3}  &  \frac{\sqrt{3}}{3} \\
+- \frac{\sqrt{2}}{2} &\frac{\sqrt{2}}{2} & 0 
+- \frac{\sqrt{6}}{6} & - \frac{\sqrt{6}}{6}&  \frac{\sqrt{6}}{3}  
+\end{bmatrix} = \begin{bmatrix}
+3 & 1 & 1 \\
+1 & 3 & 1 \\
+1 & 1 & 3
+\end{bmatrix}.
+\]
+Assim, temos que $B = \begin{bmatrix}
+3 & 1 & 1 \\
+1 & 3 & 1 \\
+1 & 1 & 3
+\end{bmatrix}.$
+}
 \begin{exercicio}
 (2,0) Prove que um operador $T \in \mathcal{L}(\mathbb{R}^n)$ é diagonalizável se e somente se o espaço $\mathbb{R}^n$ pode ser mundio com um produto interno tal que o operador $T$ seja simétrico relativamente a este produto. Qual é a matriz de Gram que define este produto na base canônica do $\mathbb{R}^n?$
 \end{exercicio}
@@ -361,9 +1355,70 @@ ache a raiz quadrada de $A,$ ou seja, encontre uma matriz simétrica positiva $B
 \begin{exercicio}
 (1,0) Fazendo uma troca ortogonal de variáveis conveniente, transforme a forma quadrática
 \[
-q(x) = x^2 + y^2 +5z^2 - 6xy - 2xz + 2yz
+q(x,y,z) = x^2 + y^2 +5z^2 - 6xy - 2xz + 2yz
 \]
 para uma forma diagonal.
 \end{exercicio}
-\solucao{}
+\solucao{
+Utilizando o processo de Gauss, dada uma forma quadrática em $\mathbb{R}^n$ $q(x_1, \ldots, x_n) = \sum\limits_{i,j = 1}^n a_{ij}x_ix_j$ com $a_{ij} = a_{ji},$ façamos a seguinte mudança de coordenadas:
+\[
+\begin{cases}
+x_1 = y_1 - \frac{1}{a_{11}}(a_{12}y_2 + \ldots + a_{1n}y_n) \\
+x_2 = y_2 \\
+\vdots \\
+x_n = y_n
+\end{cases}
+\]
+Obteremos assim uma forma quadrática na forma $q(y_1, \ldots, y_n) = a_{11}y_1^2 + q^{\prime}(y_2, \ldots, y_n).$
+Apliquemos então o processo de Gauss à forma quadrática do enunciado. 
+Observe que a matriz que representa $q(x,y,z)$ é dada por
+\[
+A = \begin{pmatrix}
+1 & -3 & -1 \\
+-3 & 1 & 1 \\
+-1 & 1 & 5
+\end{pmatrix}
+\]
+de onde vemos que $a_{11} = 1,$ $a_{12} = a_{21} = -3,$ $a_{13} = a_{31} = -1,$ $a_{22} = 1,$ $a_{23} = a_{32} = 1$ e $a_{33} = 5.$
+Façamos a seguinte mudança de coordenadas:
+\[
+\begin{cases}
+x = x_1 - \frac{1}{1}(-3y_1 -z_1) \\
+y = y_1 \\
+z = z_1
+\end{cases}
+\]
+Temos então:
+\[
+q(x_1,y_1,z_1) = (x_1 + 3y_1 + z_1)^2 + y_1^2 +5z_1^2 - 6(x_1 + 3y_1 + z_1)y_1 - 2(x_1 + 3y_1 + z_1)z_1 + 2y_1z_1 = x_1^2 - 4(y_1z_1 + 2y_1^2 - z_1^2)
+\]
+Tomemos $q_1(y_1, z_1) = -8y_1^2+4y_1z_1 + 4z_1^2.$ A matriz que representa $q_1(y_1, z_1)$ é dada por
+\[
+B = \begin{pmatrix}
+-8 & 2 \\
+ 2 & 4
+\end{pmatrix}
+\]
+de onde $b_{11} = -8,$ $b_{12} = b_{21} = 2$ e $b_{22} = 4.$
+Façamos a mudança de coordenadas:
+\[
+\begin{cases}
+y_1 = y_2 - \frac{1}{-8}(2 z_2) = y_2 - \frac{z_2}{4} \\
+z_1 = z_2
+\end{cases}
+\]
+Temos então:
+\[
+q(y_2,z_2) =  -8\left( y_2 - \frac{z_2}{4} \right)^2+4\left( y_2 - \frac{z_2}{4} \right)z_1 + 4z_2^2 = -8y_2^2 - \frac{9}{2}z_2^2.
+\]
+Assim, a forma diagonal de  $q(x,y,z)$ é 
+\[
+q(x^{\prime}, y^{\prime}, z^{\prime}) = (x^{\prime})^2 - 8 (y^{\prime})^2 - \frac{9}{2}(z^{\prime})^2.
+\]
+
+
+
+
+
+}
  \end{document}
